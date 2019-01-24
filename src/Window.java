@@ -10,7 +10,7 @@ public class Window extends JFrame {
         image = new ImageIcon(getClass().getResource("Graphics/SmallBoard.png"));
         label = new JLabel(image);
         label.setHorizontalAlignment(SwingConstants.RIGHT);     //Position in bottom right
-        label.setVerticalAlignment(SwingConstants.BOTTOM);
+        label.setVerticalAlignment(SwingConstants.TOP);
         add(label);
         setPreferredSize(new Dimension(1100, 800)); //Ensuring the window always stays the same size
         setMaximumSize(new Dimension(1100, 800));
