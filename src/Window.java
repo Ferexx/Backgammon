@@ -34,7 +34,7 @@ public class Window extends JFrame {
         String text1;
         text1 = JOptionPane.showInputDialog("Enter command");
         JOptionPane.showMessageDialog(null, "You entered " + text1 , "Enter command", JOptionPane.PLAIN_MESSAGE );
-        System.out.println("You entered " + text1);
+        System.out.println("You entered " + text1); //printing this to console too for the time being
     }
 }
 
