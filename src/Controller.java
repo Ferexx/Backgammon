@@ -2,5 +2,6 @@ public class Controller {
     public static void main(String args[]) {
         new Handler();
         new Display();
+        new Dice();
     }
 }
