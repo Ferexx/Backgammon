@@ -1,12 +1,11 @@
-import java.util.LinkedList;
 
 public class Handler {
-    LinkedList<Checker> checker = new LinkedList<Checker>();
+    Checker Player1Checkers[] = new Checker[14];
+    Checker Player2Checkers[] = new Checker[14];
 
-    public void addChecker(Checker checker) {
-        this.checker.add(checker);
+    public Handler() {
     }
-    public void removeChecker(Checker checker) {
-        this.checker.remove(checker);
-    }
+    public void addChecker() {}
 }
+
+
