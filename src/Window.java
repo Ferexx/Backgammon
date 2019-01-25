@@ -1,7 +1,4 @@
-import javafx.event.ActionEvent;
-
 import javax.swing.*;
-import javax.swing.text.html.ImageView;
 import java.awt.*;
 
 import java.awt.Dimension;
@@ -9,9 +6,8 @@ import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
     private ImageIcon image, image2;
-    private ImageView image;
     private JLabel label, label2;
-    JFrame frame = new JFrame();
+    static JFrame frame = new JFrame();
 
     Window(int width, int height, String title) {
         frame.setTitle(title);
@@ -39,9 +35,11 @@ public class Window extends JFrame {
         JOptionPane.showMessageDialog(null, "You entered " + text1 , "Enter command", JOptionPane.PLAIN_MESSAGE );
         System.out.println("You entered " + text1); //printing this to console too for the time being
     }
-    public void addChecker(ImageIcon image) {
-        label2 = new JLabel(image);
-        frame.add(label2);
+    public static void addPlayer1Checkers(String string) {
+        Checker check = new Checker(string);
+        frame.add(check.getCheckerLabel());
+        frame.revalidate();
+        frame.repaint();
     }
 }
 

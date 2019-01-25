@@ -1,40 +1,40 @@
 import javax.swing.*;
+import java.util.Random;
 
 public class Checker {
     private String color;
     private ImageIcon image;
-    private JLabel label;
+    JLabel checkerLabel = new JLabel();
+    Random r = new Random();
 
-    public Checker(String color, Window window) {
-        setColor(color, window);
+    public Checker(String color) {
+        setColor(color);
     }
 
-    public void setColor(String color, Window window) {
+    public void setColor(String color) {
         this.color = color;
         if (this.color=="White") {
             image = new ImageIcon("Graphics/WhiteChecker.png");
-            label = new JLabel(image);
+            checkerLabel.setIcon(image);
         }
         if (this.color=="Black") {
             image = new ImageIcon("Graphics/BlackChecker.png");
-            label = new JLabel(image);
+            checkerLabel.setIcon(image);
         }
         if (this.color=="Lime") {
             image = new ImageIcon("Graphics/LimeChecker.png");
-            label = new JLabel(image);
+            checkerLabel.setIcon(image);
         }
         if (this.color=="Purple") {
             image = new ImageIcon("Graphics/PurpleChecker.png");
-            label = new JLabel(image);
+            checkerLabel.setIcon(image);
         }
         if (this.color=="Red") {
             image = new ImageIcon(getClass().getResource("Graphics/RedChecker.png"));
-            label = new JLabel(image);
+            checkerLabel.setIcon(image);
         }
-        System.out.println("Hello ther");
-        window.addChecker(image);
     }
-    public String getColor() {
-        return this.color;
+    public JLabel getCheckerLabel() {
+        return checkerLabel;
     }
 }
