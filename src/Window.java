@@ -1,7 +1,10 @@
+import javafx.event.ActionEvent;
+
 import javax.swing.*;
 import java.awt.*;
 
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
     private ImageIcon image;
@@ -22,5 +25,11 @@ public class Window extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+        //Below needs to be encapsulated into an if statement for teams.
+        JTextField txt = new JTextField("");
+        String text1;
+        text1 = JOptionPane.showInputDialog("Enter command");
+        JOptionPane.showMessageDialog(null, "You entered " + text1 , "Enter command", JOptionPane.PLAIN_MESSAGE );
     }
 }
+
