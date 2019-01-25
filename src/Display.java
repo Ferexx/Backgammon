@@ -7,7 +7,6 @@ public class Display {
     Display() {
         new Window(WIDTH, HEIGHT, TITLE);
         new Screen();
-        Window.addPlayer1Checkers("Purple");
     }
 
 }

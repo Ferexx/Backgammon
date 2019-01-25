@@ -5,12 +5,13 @@ import java.awt.Dimension;
 import java.awt.event.ActionListener;
 
 public class Window extends JFrame {
-    private ImageIcon image, image2;
-    private JLabel label, label2;
+    private ImageIcon image;
+    private JLabel label;
     static JFrame frame = new JFrame();
 
     Window(int width, int height, String title) {
         frame.setTitle(title);
+        setLayout(null);
         getContentPane().setBackground(Color.BLACK);
         image = new ImageIcon(getClass().getResource("Graphics/SmallBoard.png"));
         label = new JLabel(image);
@@ -34,12 +35,6 @@ public class Window extends JFrame {
         text1 = JOptionPane.showInputDialog("Enter command");
         JOptionPane.showMessageDialog(null, "You entered " + text1 , "Enter command", JOptionPane.PLAIN_MESSAGE );
         System.out.println("You entered " + text1); //printing this to console too for the time being
-    }
-    public static void addPlayer1Checkers(String string) {
-        Checker check = new Checker(string);
-        frame.add(check.getCheckerLabel());
-        frame.revalidate();
-        frame.repaint();
     }
 }
 
