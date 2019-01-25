@@ -1,3 +1,7 @@
+import javafx.event.ActionEvent;
+
+import java.awt.event.ActionListener;
+
 public class Display {
 
     public static int WIDTH = 1280, HEIGHT = 720;
@@ -7,5 +11,10 @@ public class Display {
     Display() {
         new Window(WIDTH, HEIGHT, TITLE);
         new Screen();
+
+
     }
+
+
 }
+
