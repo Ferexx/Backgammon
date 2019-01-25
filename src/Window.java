@@ -17,6 +17,9 @@ public class Window extends JFrame {
         label = new JLabel(image);
         label.setHorizontalAlignment(SwingConstants.RIGHT);     //Position in bottom right
         label.setVerticalAlignment(SwingConstants.BOTTOM);
+        //Broken but basic concept
+        //JTextField textField = new JTextField("Test", 20);
+        //frame.add(textField);
         frame.add(label);
         frame.setPreferredSize(new Dimension(width, height)); //Ensuring the window always stays the same size
         frame.setMaximumSize(new Dimension(width, height));
@@ -25,12 +28,13 @@ public class Window extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
+
         //Below needs to be encapsulated into an if statement for teams.
         JTextField txt = new JTextField("");
         String text1;
         text1 = JOptionPane.showInputDialog("Enter command");
         JOptionPane.showMessageDialog(null, "You entered " + text1 , "Enter command", JOptionPane.PLAIN_MESSAGE );
-        System.out.print(text1);
+
     }
 }
 
