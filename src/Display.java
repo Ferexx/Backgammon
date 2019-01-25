@@ -7,7 +7,7 @@ public class Display {
     Display() {
         new Window(WIDTH, HEIGHT, TITLE);
         new Screen();
-        Window.addPlayer1Checkers("Red");
+        Window.addPlayer1Checkers("Black");
     }
 
 }

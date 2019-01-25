@@ -14,19 +14,19 @@ public class Checker {
     public void setColor(String color) {
         this.color = color;
         if (this.color=="White") {
-            image = new ImageIcon("Graphics/WhiteChecker.png");
+            image = new ImageIcon(getClass().getResource("Graphics/WhiteChecker.png"));
             checkerLabel.setIcon(image);
         }
         if (this.color=="Black") {
-            image = new ImageIcon("Graphics/BlackChecker.png");
+            image = new ImageIcon(getClass().getResource("Graphics/BlackChecker.png"));
             checkerLabel.setIcon(image);
         }
         if (this.color=="Lime") {
-            image = new ImageIcon("Graphics/LimeChecker.png");
+            image = new ImageIcon(getClass().getResource("Graphics/LimeChecker.png"));
             checkerLabel.setIcon(image);
         }
         if (this.color=="Purple") {
-            image = new ImageIcon("Graphics/PurpleChecker.png");
+            image = new ImageIcon(getClass().getResource("Graphics/PurpleChecker.png"));
             checkerLabel.setIcon(image);
         }
         if (this.color=="Red") {
