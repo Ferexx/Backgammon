@@ -33,17 +33,17 @@ public class Window extends JFrame {
         bglabel = new JLabel(image);
 
         //Creating the panel at bottom and adding components
-        JPanel panel = new JPanel(); // the panel is not visible in output
+        JPanel panel = new JPanel();
         JLabel label = new JLabel("Enter command");
-        JTextField tf = new JTextField(20); // accepts upto 10 characters
-        JButton send = new JButton("Enter");
+        JTextField textfield = new JTextField(20); // accepts up to 20 characters
+        JButton enter = new JButton("Enter");
         //Maybe a button to clear the command field? We can just do away with this either, the command field only allows 20 characters anyway.
         JButton reset = new JButton("Reset");
 
         //Add panel stuff
         panel.add(label);
-        panel.add(tf);
-        panel.add(send);
+        panel.add(textfield);
+        panel.add(enter);
         panel.add(reset);
 
         //Adding Components to the frame.
