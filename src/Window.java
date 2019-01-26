@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import java.awt.Dimension;
@@ -56,10 +57,11 @@ public class Window extends JFrame {
         panel.add(enter);
         panel.add(reset);
 
-        //Adding Components to the frame.
+        //Adding Components to the frame and padding for the backgammon board.
+        bglabel.setBorder( new EmptyBorder( 16, 16, 16, 64 ) );
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
-        frame.getContentPane().add(BorderLayout.CENTER, bglabel);
+        frame.getContentPane().add(BorderLayout.EAST, bglabel);
 
         frame.setVisible(true);
     }
