@@ -2,15 +2,15 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 
 public class Window extends JFrame {
     private ImageIcon image;
-    private JLabel bglabel;
+    private JLabel boardLabel;
     static JFrame frame = new JFrame();
+    int[] pointXCoords = new int[]{ 72, 122, 171, 221, 271, 321, 413, 463, 513, 563, 612, 662};
 
     Window(int width, int height, String title) {
         frame.setTitle(title);
@@ -33,7 +33,7 @@ public class Window extends JFrame {
         m1.add(m12);
 
         image = new ImageIcon(getClass().getResource("Graphics/SmallBoard.png"));
-        bglabel = new JLabel(image);
+        boardLabel = new JLabel(image);
 
         //Creating the panel at bottom and adding components
         JPanel panel = new JPanel();
@@ -58,10 +58,10 @@ public class Window extends JFrame {
         panel.add(reset);
 
         //Adding Components to the frame and padding for the backgammon board.
-        bglabel.setBorder( new EmptyBorder( 16, 16, 16, 64 ) );
+        boardLabel.setBorder( new EmptyBorder( 16, 16, 16, 64 ) );
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.NORTH, mb);
-        frame.getContentPane().add(BorderLayout.EAST, bglabel);
+        frame.getContentPane().add(BorderLayout.EAST, boardLabel);
 
         frame.setVisible(true);
     }
@@ -73,18 +73,15 @@ public class Window extends JFrame {
     //Graphics for drawing a circle, also messy.
     public void enterperfomed(ActionEvent e)
     {
-        Graphics graphics = bglabel.getGraphics();
+        Graphics graphics = boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
-        Ellipse2D.Double Window = new Ellipse2D.Double(x, y, 10, 10);
+        Ellipse2D.Double Window = new Ellipse2D.Double(662, 535, 40, 40);
         g.setColor(Color.BLACK);
         g.fill(Window);
     }
 
 
-    //Calculates X Y coordinates of where to place the circles.
-    public Window(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
+
+
 }
 
