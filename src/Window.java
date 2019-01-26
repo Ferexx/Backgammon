@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
 
 public class Window extends JFrame {
     private ImageIcon image;
@@ -40,6 +42,14 @@ public class Window extends JFrame {
         //Maybe a button to clear the command field? We can just do away with this either, the command field only allows 20 characters anyway.
         JButton reset = new JButton("Reset");
 
+        //Action listeners for buttons, messy
+        enter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                enterperfomed(e);
+            }
+        });
+
         //Add panel stuff
         panel.add(label);
         panel.add(textfield);
@@ -52,6 +62,27 @@ public class Window extends JFrame {
         frame.getContentPane().add(BorderLayout.CENTER, bglabel);
 
         frame.setVisible(true);
+    }
+
+    //Used for the this context
+    int x, y, width, height;
+
+
+    //Graphics for drawing a circle, also messy.
+    public void enterperfomed(ActionEvent e)
+    {
+        Graphics graphics = bglabel.getGraphics();
+        Graphics2D g = (Graphics2D) graphics;
+        Ellipse2D.Double Window = new Ellipse2D.Double(x, y, 10, 10);
+        g.setColor(Color.BLACK);
+        g.fill(Window);
+    }
+
+
+    //Calculates X Y coordinates of where to place the circles.
+    public Window(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
 
