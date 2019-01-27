@@ -10,9 +10,9 @@ public class Window extends JFrame {
     int x, y, width, height;
 
     //Declarations for JFrame, JLabel, and ImageIcon
-    protected static ImageIcon image;
-    protected static JLabel boardLabel;
-    protected static JFrame frame = new JFrame();
+    protected static ImageIcon image;               //board image
+    protected static JLabel boardLabel;             //Label with the board image on it
+    protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Declarations for x-axis coordinates for the checker positions
     int[] pointXCoords = new int[]{72, 122, 171, 221, 271, 321, 413, 463, 513, 563, 612, 662};
@@ -28,6 +28,8 @@ public class Window extends JFrame {
         frame.setMaximumSize(new Dimension(width, height));
         frame.setMinimumSize(new Dimension(width, height));
         frame.setResizable(false);
+        //Sets window in middle of screen, as opposed to top left by default
+        frame.setLocationRelativeTo(null);
         //Ensures that the program quits when you hit (X)
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -38,30 +40,31 @@ public class Window extends JFrame {
         Buttons.buttons(this);
     }
 
+    /*
     //SETTERS AND GETTERS FOR IMAGE, FRAME AND LABEL
     public ImageIcon getImage() {
         return image;
     }
 
-    public void setImage(ImageIcon image) {
-        this.image = image;
+    public void setImage(ImageIcon img) {
+        this.image = img;
     }
 
     public static JFrame getFrame() {
         return frame;
     }
 
-    public void setFrame(JFrame frame) {
-        this.frame = frame;
+    public void setFrame(JFrame jfrm) {
+        this.frame = jfrm;
     }
 
     public JLabel getBoardLabel() {
         return boardLabel;
     }
 
-    public void setBoardLabel(JLabel boardLabel) {
-        this.boardLabel = boardLabel;
-    }
+    public void setBoardLabel(JLabel jbL) {
+        this.boardLabel = jbL;
+    }*/
 }
 
 
