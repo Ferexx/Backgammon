@@ -3,12 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
-
 public class Buttons {
 
-    private JLabel boardLabelButton;
-
-    public void buttons(JFrame frame) {
+    //MAKING BUTTONS
+    public static void buttons(final Window window){
         //All button creation from Window.java will be in here soon
         //MENU BAR BUTTONS AND BUTTON OPTIONS
         JMenuBar mb = new JMenuBar();
@@ -37,9 +35,7 @@ public class Buttons {
         //Action listeners for buttons, messy
         enter.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                enterperfomed(e);
-            }
+            public void actionPerformed(ActionEvent e) { enterperfomed(e); }
         });
 
         //Adding these interfaces to the panel
@@ -49,16 +45,16 @@ public class Buttons {
         panel.add(reset);
 
         //Adding Components to the frame
-        frame.getContentPane().add(BorderLayout.SOUTH, panel);
-        frame.getContentPane().add(BorderLayout.NORTH, mb);
-        frame.getContentPane().add(BorderLayout.EAST, boardLabelButton);
-        frame.setVisible(true);
+        Window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        Window.frame.getContentPane().add(BorderLayout.NORTH, mb);
+        Window.frame.getContentPane().add(BorderLayout.EAST, window.boardLabel);
+        Window.frame.setVisible(true);
     }
 
-    public void enterperfomed(ActionEvent e) {
+    public static void enterperfomed(ActionEvent e) {
 
         //Draws first checker when enter button is pressed - temporary measure for now
-        Graphics graphics = boardLabelButton.getGraphics();
+        Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
         Ellipse2D.Double Window = new Ellipse2D.Double(662, 535, 40, 40);
         g.setColor(Color.BLACK);
