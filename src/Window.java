@@ -13,9 +13,6 @@ public class Window extends JFrame {
     protected static JLabel boardLabel;             //Label with the board image on it
     protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
-    //Declarations for x-axis coordinates for the checker positions
-    int[] pointXCoords = new int[]{75, 125, 175, 225, 275, 325, 416, 466, 516, 566, 615, 665};
-
     //Window constructor - takes in width height and the title on top, all from Display
     Window(int width, int height, String title) {
 
