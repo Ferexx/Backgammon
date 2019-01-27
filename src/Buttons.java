@@ -57,7 +57,7 @@ public class Buttons {
         //Draws first checker when enter button is pressed - temporary measure for now
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
-        Ellipse2D.Double Window = new Ellipse2D.Double(665, 540, 32, 32);
+        Ellipse2D.Double Window = new Ellipse2D.Double(75, 540, 32, 32);
         g.setColor(Color.BLACK);
         g.fill(Window);
     }

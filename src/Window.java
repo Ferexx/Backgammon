@@ -14,8 +14,7 @@ public class Window extends JFrame {
     protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Declarations for x-axis coordinates for the checker positions
-    //Evin: these may need to be changed because I made the checker smaller to fit more in each triangle
-    int[] pointXCoords = new int[]{72, 122, 171, 221, 271, 321, 413, 463, 513, 563, 612, 662};
+    int[] pointXCoords = new int[]{75, 125, 175, 225, 275, 325, 416, 466, 516, 566, 615, 665};
 
     //Window constructor - takes in width height and the title on top, all from Display
     Window(int width, int height, String title) {
