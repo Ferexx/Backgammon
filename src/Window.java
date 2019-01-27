@@ -10,9 +10,9 @@ public class Window extends JFrame {
     int x, y, width, height;
 
     //Declarations for JFrame, JLabel, and ImageIcon
-    public ImageIcon image;
-    public static JLabel boardLabel;
-    static JFrame frame = new JFrame();
+    protected static ImageIcon image;
+    protected static JLabel boardLabel;
+    protected static JFrame frame = new JFrame();
 
     //Declarations for x-axis coordinates for the checker positions
     int[] pointXCoords = new int[]{72, 122, 171, 221, 271, 321, 413, 463, 513, 563, 612, 662};
@@ -36,6 +36,31 @@ public class Window extends JFrame {
 
         //ADDING BUTTONS
         Buttons.buttons(this);
+    }
+
+    //SETTERS AND GETTERS FOR IMAGE, FRAME AND LABEL
+    public ImageIcon getImage() {
+        return image;
+    }
+
+    public void setImage(ImageIcon image) {
+        this.image = image;
+    }
+
+    public static JFrame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
+
+    public JLabel getBoardLabel() {
+        return boardLabel;
+    }
+
+    public void setBoardLabel(JLabel boardLabel) {
+        this.boardLabel = boardLabel;
     }
 }
 
