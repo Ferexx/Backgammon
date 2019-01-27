@@ -9,12 +9,12 @@ public class Window extends JFrame {
     //Used for the this context
     int x, y, width, height;
 
-    //Declarations for JFrame, JLabel, and ImageIcon
-    protected static ImageIcon image;               //board image
+    //Declarations for JFrame and JLabel
     protected static JLabel boardLabel;             //Label with the board image on it
     protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Declarations for x-axis coordinates for the checker positions
+    //Evin: these may need to be changed because I made the checker smaller to fit more in each triangle
     int[] pointXCoords = new int[]{72, 122, 171, 221, 271, 321, 413, 463, 513, 563, 612, 662};
 
     //Window constructor - takes in width height and the title on top, all from Display
@@ -40,16 +40,8 @@ public class Window extends JFrame {
         Buttons.buttons(this);
     }
 
-    /*
-    //SETTERS AND GETTERS FOR IMAGE, FRAME AND LABEL
-    public ImageIcon getImage() {
-        return image;
-    }
 
-    public void setImage(ImageIcon img) {
-        this.image = img;
-    }
-
+    /*//SETTERS AND GETTERS FOR FRAME AND LABEL
     public static JFrame getFrame() {
         return frame;
     }
