@@ -7,7 +7,7 @@ public class Checker {
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
         Ellipse2D.Double Window;
-        if(point.getyLoc()==58) {
+        if(point.getyLoc()==51) {
              Window = new Ellipse2D.Double(point.getxLoc(), point.getyLoc() + point.getDrawingOffset(), 32, 32);
         }
         else {
