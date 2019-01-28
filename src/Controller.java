@@ -16,7 +16,7 @@ public class Controller {
             System.exit(-1);
         }
     }
-    private static Point[] pointList = new Point[23];
+    private static Point[] pointList = new Point[24];
     private static int[] pointXCoords = new int[]{662,612,563,513,463,413,321,271,221,171,122,72,72,122,171,221,271,321,413,463,513,563,612,662};
     private static int[] pointYCoords = new int[]{535,535,535,535,535,535,535,535,535,535,535,535,58,58,58,58,58,58,58,58,58,58,58,58};
     private static Checker[] storeCheckers = new Checker[30];
