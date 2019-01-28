@@ -58,6 +58,6 @@ public class Buttons {
     public static void enterperfomed(ActionEvent e) {
 
         //Draws first checker when enter button is pressed - temporary measure for now
-        Checker.startingPositions();
+        //hecker.startingPositions();
     }
 }
