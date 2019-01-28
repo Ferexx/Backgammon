@@ -2,7 +2,9 @@ import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
 public class Checker {
+    private Point currentPoint;
     public Checker(Point point, String color) {
+        this.currentPoint = point;
         //Designs checkers and adds to board
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
@@ -20,5 +22,11 @@ public class Checker {
             g.setColor(Color.RED);
         }
         g.fill(Window);
+    }
+    public Point getCurrentPoint() {
+        return this.currentPoint;
+    }
+    public void setCurrentPoint(Point point) {
+        this.currentPoint = point;
     }
 }
