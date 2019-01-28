@@ -18,11 +18,13 @@ public class Buttons {
         mb.add(m1);
         mb.add(m2);
         //defining menu button options
-        JMenuItem m11 = new JMenuItem("Save winner");
-        JMenuItem m12 = new JMenuItem("Reset game");
+        JMenuItem m11 = new JMenuItem("New game");
+        JMenuItem m12 = new JMenuItem("Save winner");
+        JMenuItem m13 = new JMenuItem("Reset game");
         //adding menu button options
         m1.add(m11);
         m1.add(m12);
+        m1.add(m13);
 
         //USER INTERACTION WITH BOARD OPTIONS
         JPanel panel = new JPanel();
@@ -34,7 +36,7 @@ public class Buttons {
         JButton reset = new JButton("Reset");
 
         //Action listeners for buttons, messy for now
-        enter.addActionListener(new ActionListener() {
+        m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { enterperfomed(e); }
         });
@@ -55,10 +57,6 @@ public class Buttons {
     public static void enterperfomed(ActionEvent e) {
 
         //Draws first checker when enter button is pressed - temporary measure for now
-        Graphics graphics = Window.boardLabel.getGraphics();
-        Graphics2D g = (Graphics2D) graphics;
-        Ellipse2D.Double Window = new Ellipse2D.Double(75, 540, 32, 32);
-        g.setColor(Color.BLACK);
-        g.fill(Window);
+        Checker.startingPositions();
     }
 }
