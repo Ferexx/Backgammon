@@ -2,7 +2,7 @@
 import javax.swing.*;
 
 //Java awt layouts
-import java.awt.Dimension;
+import java.awt.*;
 
 public class Window extends JFrame {
 
@@ -19,6 +19,8 @@ public class Window extends JFrame {
         //CREATING WINDOW
         //Creating the window frame with title
         frame.setTitle(title);
+        //Set window icon
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Graphics/Yay.jpeg")));
         //Ensures that window always stays the same dimensions, as set in Display
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
