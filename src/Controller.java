@@ -16,7 +16,7 @@ public class Controller {
         }
     }
     private static Point[] pointList = new Point[24];
-    private static int[] pointXCoords = new int[]{665,615,566,516,465,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665};
+    private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665};
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51};
     private static Checker[] storeCheckers = new Checker[30];
 
