@@ -35,7 +35,8 @@ public class Buttons {
         JButton enter = new JButton("Enter");
         JButton reset = new JButton("Reset");
 
-        //Action listeners for buttons, messy for now
+        //Action Listener for New Game Option
+        //New Game places the checkers in starting positions
         m11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { enterperfomed(e); }
