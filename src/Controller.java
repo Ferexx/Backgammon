@@ -27,22 +27,38 @@ public class Controller {
     }
     private static void startingPositions() {
         for(int i=0; i<30; i++) {
-            if(i<2)
-                storeCheckers[i] = new Checker(pointXCoords[0], pointYCoords[0], "White");
-            if(i>1&&i<7)
-                storeCheckers[i] = new Checker(pointXCoords[5], pointYCoords[5], "Black");
-            if(i>6&&i<10)
-                storeCheckers[i] = new Checker(pointXCoords[7], pointYCoords[7], "Black");
-            if(i>9&&i<15)
-                storeCheckers[i] = new Checker(pointXCoords[11], pointYCoords[11], "White");
-            if(i>14&&i<20)
-                storeCheckers[i] = new Checker(pointXCoords[12], pointYCoords[12], "Black");
-            if(i>19&&i<23)
-                storeCheckers[i] = new Checker(pointXCoords[16], pointYCoords[16], "White");
-            if(i>22&&i<28)
-                storeCheckers[i] = new Checker(pointXCoords[18],pointYCoords[18], "White");
-            if(i>27&&i<30)
-                storeCheckers[i] = new Checker(pointXCoords[23], pointYCoords[23], "Black");
+            if(i<2) {
+                storeCheckers[i] = new Checker(pointList[0], "Red");
+                pointList[0].addChecker();
+            }
+            if(i>1&&i<7) {
+                storeCheckers[i] = new Checker(pointList[5], "Black");
+                pointList[5].addChecker();
+            }
+            if(i>6&&i<10) {
+                storeCheckers[i] = new Checker(pointList[7], "Black");
+                pointList[7].addChecker();
+            }
+            if(i>9&&i<15) {
+                storeCheckers[i] = new Checker(pointList[11], "Red");
+                pointList[11].addChecker();
+            }
+            if(i>14&&i<20) {
+                storeCheckers[i] = new Checker(pointList[12], "Black");
+                pointList[12].addChecker();
+            }
+            if(i>19&&i<23) {
+                storeCheckers[i] = new Checker(pointList[16], "Red");
+                pointList[16].addChecker();
+            }
+            if(i>22&&i<28) {
+                storeCheckers[i] = new Checker(pointList[18], "Red");
+                pointList[18].addChecker();
+            }
+            if(i>27&&i<30) {
+                storeCheckers[i] = new Checker(pointList[23], "Black");
+                pointList[23].addChecker();
+            }
         }
     }
 }
