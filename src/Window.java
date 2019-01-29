@@ -20,7 +20,7 @@ public class Window extends JFrame {
         //Creating the window frame with title
         frame.setTitle(title);
         //Set window icon
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Graphics/Yay.jpeg")));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resources/Yay.jpeg")));
         //Ensures that window always stays the same dimensions, as set in Display
         frame.setPreferredSize(new Dimension(width, height));
         frame.setMaximumSize(new Dimension(width, height));
@@ -56,5 +56,3 @@ public class Window extends JFrame {
         this.boardLabel = jbL;
     }*/
 }
-
-

@@ -5,7 +5,7 @@ public class Display {
 
     public static int WIDTH = 1280, HEIGHT = 720;
 
-    public static final String TITLE = "Backgammon Window - Pre-Alpha v0.8";
+    public static final String TITLE = "Backgammon Window - Pre-Alpha v0.9";
 
     Display() {
         new Window(WIDTH, HEIGHT, TITLE);
@@ -13,8 +13,10 @@ public class Display {
         playSound();
     }
     public void playSound()  {
+
+        //Sound file for launching game - credit to Ankish
         try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/Graphics/Ankish.wav"));
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/Resources/Ankish.wav"));
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
@@ -23,6 +25,5 @@ public class Display {
             e.printStackTrace();
             System.exit(-1);
         }
-
     }
 }
