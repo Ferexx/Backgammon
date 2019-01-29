@@ -23,32 +23,32 @@ public class Dice {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         } else if (diceRoll1 == 2) {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         } else if (diceRoll1 == 3) {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         } else if (diceRoll1 == 4) {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         } else if (diceRoll1 == 5) {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         } else if (diceRoll1 == 6) {
             image1 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
             //Giving the die a padding border
             Window.dieLabel1 = new JLabel(image1);
-            Window.dieLabel1.setBorder(new EmptyBorder(16, 160, 16, 16));
+            Window.dieLabel1.setBorder(new EmptyBorder(260, 360, 0, 0));
         }
 
 
@@ -57,32 +57,32 @@ public class Dice {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         } else if (diceRoll2 == 2) {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         } else if (diceRoll2 == 3) {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         } else if (diceRoll2 == 4) {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         } else if (diceRoll2 == 5) {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         } else if (diceRoll2 == 6) {
             image2 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
             //Giving the die a padding border
             Window.dieLabel2 = new JLabel(image2);
-            Window.dieLabel2.setBorder(new EmptyBorder(16, 16, 16, 16));
+            Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
         }
     }
 }
