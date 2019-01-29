@@ -1,6 +1,7 @@
 import static java.lang.Thread.sleep;
 
-public class Controller {
+public class
+Controller {
     public static void main(String args[]) {
         try {
             new Display();
