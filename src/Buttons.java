@@ -5,6 +5,10 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
+    public static void enterperfomed(ActionEvent e) {
+
+    }
+
     //MAKING BUTTONS
     public static void buttons(final Window window){
         //All button creation from Window.java will be in here soon
@@ -47,14 +51,7 @@ public class Buttons {
         panel.add(enter);
         panel.add(reset);
 
-        //Adding Components to the frame
         Window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
         Window.frame.getContentPane().add(BorderLayout.NORTH, mb);
-        Window.frame.getContentPane().add(BorderLayout.EAST, window.boardLabel);
-        Window.frame.setVisible(true);
-    }
-
-    public static void enterperfomed(ActionEvent e) {
-
     }
 }

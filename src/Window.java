@@ -11,6 +11,8 @@ public class Window extends JFrame {
 
     //Declarations for JFrame and JLabel
     protected static JLabel boardLabel;             //Label with the board image on it
+    protected static JLabel dieLabel1;             //Label with the Die image on it
+    protected static JLabel dieLabel2;             //Label with the Die image on it
     protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Window constructor - takes in width height and the title on top, all from Display
@@ -31,28 +33,21 @@ public class Window extends JFrame {
         //Ensures that the program quits when you hit (X)
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        //ADDING WINDOW COMPONENTS
         //ADDING BOARD
         Board.board(this);
 
+        //ADDING DIE
+        Dice.drawDice(this);
+
         //ADDING BUTTONS
         Buttons.buttons(this);
+
+        //Adding Components to the frame and positioning them
+        Window.frame.getContentPane().add(BorderLayout.EAST, Window.boardLabel);
+        Window.frame.getContentPane().add(BorderLayout.WEST, Window.dieLabel1);
+        Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel2);
+        Window.frame.setVisible(true);
     }
 
-
-    /*//SETTERS AND GETTERS FOR FRAME AND LABEL
-    public static JFrame getFrame() {
-        return frame;
-    }
-
-    public void setFrame(JFrame jfrm) {
-        this.frame = jfrm;
-    }
-
-    public JLabel getBoardLabel() {
-        return boardLabel;
-    }
-
-    public void setBoardLabel(JLabel jbL) {
-        this.boardLabel = jbL;
-    }*/
 }
