@@ -12,7 +12,7 @@ public class Controller {
             //sleep(50); //not necessary anymore as initPoints takes up enough time
             initPoints();
             startingPositions();
-            storeCheckers[0].redraw(pointList[1], "Red");
+            storeCheckers[0].move(pointList[1], "Red");
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -62,6 +62,13 @@ public class Controller {
             if(i>27&&i<30) {
                 storeCheckers[i] = new Checker(pointList[23], "Black");
                 pointList[23].addChecker();
+            }
+        }
+    }
+    public static void redrawPoint(Point point) {
+        for(int i=0;i<30;i++) {
+            if (point == storeCheckers[i].getCurrentPoint()) {
+                storeCheckers[i].drawChecker(point, storeCheckers[i].getCurrentColor());
             }
         }
     }

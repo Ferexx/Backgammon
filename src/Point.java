@@ -10,6 +10,9 @@ public class Point {
     public void removeChecker() {
         count--;
     }
+    public void clearCheckers() {
+        count = 0;
+    }
     public int getDrawingOffset() {
         return this.count * 32;
     }
