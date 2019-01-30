@@ -9,7 +9,7 @@ public class Controller {
             new Display();
             new Dice();
             //Adding to avoid race condition where checkers are drawn before board is, resulting in board being drawn over them
-            //sleep(50);
+            //sleep(50); //not necessary anymore as initPoints takes up enough time
             initPoints();
             startingPositions();
             storeCheckers[0].redraw(pointList[1], "Red");
