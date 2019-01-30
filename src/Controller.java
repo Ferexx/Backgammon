@@ -1,13 +1,12 @@
 import static java.lang.Thread.sleep;
 
-public class
-Controller {
+public class Controller {
     public static void main(String args[]) {
         try {
             new Display();
             new Dice();
             //Adding to avoid race condition where checkers are drawn before board is, resulting in board being drawn over them
-            sleep(50);
+            //sleep(50);
             initPoints();
             startingPositions();
         }
