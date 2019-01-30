@@ -1,6 +1,11 @@
 import static java.lang.Thread.sleep;
 
 public class Controller {
+    
+    //PlayerPlaying string will be used for controlling turns and which dice display
+    //Currently only used for displaying Dice
+    public static String PlayerPlaying = "Player2";
+    
     public static void main(String args[]) {
         try {
             new Display();
