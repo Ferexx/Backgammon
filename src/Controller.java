@@ -9,6 +9,7 @@ public class Controller {
             //sleep(50);
             initPoints();
             startingPositions();
+            storeCheckers[0].redraw(pointList[1], "Red");
         }
         catch (Exception e) {
             e.printStackTrace();
