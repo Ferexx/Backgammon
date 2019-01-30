@@ -1,17 +1,20 @@
-public class Controller {
+import static java.lang.Thread.sleep;
 
+public class Controller {
+    
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     public static String PlayerPlaying = "Player2";
-
+    
     public static void main(String args[]) {
         try {
             new Display();
             new Dice();
             //Adding to avoid race condition where checkers are drawn before board is, resulting in board being drawn over them
-            //sleep(50);    //not necessary anymore as initPoints takes up enough time to delay
+            //sleep(50);
             initPoints();
             startingPositions();
+            storeCheckers[0].redraw(pointList[1], "Red");
         }
         catch (Exception e) {
             e.printStackTrace();
