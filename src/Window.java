@@ -11,16 +11,18 @@ public class Window extends JFrame {
 
     //WINDOW > JFRAME > JPANEL > JLABEL
     //Declarations for JFrame, JPanel and JLabel
-    protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
+    //FRAME FOR CONTAINING LABEL + IMAGE IN WINDOW
+    protected static JFrame frame = new JFrame();
 
-    protected static JPanel diePanel= new JPanel(); //Adding new diePanel for 2 dieLabels
+    //JPANEL TO CONTAIN ALL DIE JLABELS
+    protected static JPanel diePanel= new JPanel();
 
-    protected static JLabel boardLabel;             //Label with the board image on it
-    protected static JLabel dieLabel1_1;            //Label with the Die image on it
-    protected static JLabel dieLabel1_2;            //Label with the Die image on it
-    protected static JLabel dieLabel2_1;            //Label with the Die image on it
-    protected static JLabel dieLabel2_2;            //Label with the Die image on it
-    protected static JTextArea infoLabel;
+    protected static JLabel boardLabel;     //Label with the board image on it
+    protected static JLabel dieLabel1_1;    //Label with the Die image on it
+    protected static JLabel dieLabel1_2;    //Label with the Die image on it
+    protected static JLabel dieLabel2_1;    //Label with the Die image on it
+    protected static JLabel dieLabel2_2;    //Label with the Die image on it
+    protected static JTextArea infoLabel;   //Label with info text area
 
     //Window constructor - takes in width height and the title on top, all from Display
     Window(int width, int height, String title) {
@@ -40,21 +42,16 @@ public class Window extends JFrame {
         //Ensures that the program quits when you hit (X)
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //ADDING WINDOW COMPONENTS
-        //ADDING BOARD
+        //CREATING WINDOW COMPONENTS
+        //CREATING BOARD
         Board.board(this);
-
-        //ADDING DIE
-        Dice.drawP1Dice(this);  //Player 1 Dice Call
-        Dice.drawP2Dice(this);  //Player 2 Dice Call
-
-        //ADDING BUTTONS
+        //CREATING DIE
+        Dice.dice(this);
+        //CREATING BUTTONS
         Buttons.buttons(this);
-
-        //ADDING TEXT
-        JTextArea info = new JTextArea("   Welcome       to       Backgammon!    ");
+        //CREATING TEXT BOX
+        JTextArea info = new JTextArea("Welcome to Backgammon!");
         info.setBounds(20,20,300,500);
-        add(info);
 
         //ADDING DICE JLABELS TO JPANEL, AND THEN TO JFRAME - STILL TWEAKING
         diePanel.setOpaque(true);
@@ -63,18 +60,16 @@ public class Window extends JFrame {
         diePanel.add(dieLabel2_1);  //Player 2 Dice 1
         diePanel.add(dieLabel2_2);  //Player 2 Dice 2
 
-        //Adding Components to the frame and positioning them
+        //ADDING COMPONENTS TO JFRAME
         //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));    //might need for positioning
         Window.frame.getContentPane().add(BorderLayout.CENTER, Window.diePanel);  //STILL TWEAKING - alternatively might need for tweaking
-
-        //Adding Board JLabel to JFrame
+        //ADDING BOARD JLABEL TO JFRAME
         Window.frame.getContentPane().add(BorderLayout.LINE_END, Window.boardLabel);
-        //Adding Die JPanel to JFrame
+        //ADDING DIE JPANEL TO JFRAME
         Window.frame.add(diePanel);
-        //Adding Info JPanel to JFrame
+        //ADDING INFO JPANEL TO JFRAME
         Window.frame.getContentPane().add(BorderLayout.LINE_START, info);
-        //Setting Jframe to visible
+        //SETTING JFRAME TO VISIBLE
         Window.frame.setVisible(true);
     }
-
 }
