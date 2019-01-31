@@ -21,118 +21,118 @@ public class Dice {
         //PLAYER 1 DICE
 
         //If playerplaying (currently set in Controller)
-        if(Controller.PlayerPlaying == "Player2") {
+        if(Controller.PlayerPlaying == "Player1") {
             //PLAYER 1 DICE 1 CREATION
             if (diceRoll1 == 1) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             } else if (diceRoll1 == 2) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             } else if (diceRoll1 == 3) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             } else if (diceRoll1 == 4) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             } else if (diceRoll1 == 5) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             } else if (diceRoll1 == 6) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(260, 350, 0, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(100, 0, 0, 100));
             }
 
             //PLAYER 1 DICE 2 CREATION
             if (diceRoll2 == 1) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             } else if (diceRoll2 == 2) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             } else if (diceRoll2 == 3) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             } else if (diceRoll2 == 4) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             } else if (diceRoll2 == 5) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             } else if (diceRoll2 == 6) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(360, 0, 8, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 190, 400, 0));
             }
         }
 
         //PLAYER 2 DICE
 
         //If playerplaying (currently set in Controller)
-        if(Controller.PlayerPlaying == "Player1") {
+        if(Controller.PlayerPlaying == "Player2") {
             //PLAYER 2 DICE 1 CREATION
             if (diceRoll1 == 1) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll1 == 2) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll1 == 3) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll1 == 4) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll1 == 5) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll1 == 6) {
                 image1 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
                 Window.dieLabel1 = new JLabel(image1);
-                Window.dieLabel1.setBorder(new EmptyBorder(0, 350, 390, 0));
+                Window.dieLabel1.setBorder(new EmptyBorder(0, 0, 0, 0));
             }
 
             //PLAYER 2 DICE 2 CREATION
             if (diceRoll2 == 1) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll2 == 2) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice2.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll2 == 3) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice3.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll2 == 4) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice4.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll2 == 5) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice5.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             } else if (diceRoll2 == 6) {
                 image2 = new ImageIcon(window.getClass().getResource("Resources/Dice6.jpg"));
                 Window.dieLabel2 = new JLabel(image2);
-                Window.dieLabel2.setBorder(new EmptyBorder(60, 0, 360, 0));
+                Window.dieLabel2.setBorder(new EmptyBorder(0, 0, 0, 0));
             }
         }
     }

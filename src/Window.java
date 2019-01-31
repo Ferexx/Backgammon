@@ -51,7 +51,7 @@ public class Window extends JFrame {
 
         //Adding Components to the frame and positioning them
         Window.frame.getContentPane().add(BorderLayout.EAST, Window.boardLabel);
-        Window.frame.getContentPane().add(BorderLayout.WEST, Window.dieLabel1);
+        Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel1);
         Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel2);
         Window.frame.getContentPane().add(BorderLayout.WEST, info);
         Window.frame.setVisible(true);
