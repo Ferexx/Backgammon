@@ -10,11 +10,14 @@ public class Window extends JFrame {
     int x, y, width, height;
 
     //Declarations for JFrame and JLabel
+    protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
+
+    protected static JPanel diePanel= new JPanel(); //Adding new diePanel for 2 dieLabels
+
     protected static JLabel boardLabel;             //Label with the board image on it
-    protected static JLabel dieLabel1;             //Label with the Die image on it
+    protected static JLabel dieLabel1;              //Label with the Die image on it
     protected static JLabel dieLabel2;              //Label with the Die image on it
     protected static JTextArea infoLabel;
-    protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Window constructor - takes in width height and the title on top, all from Display
     Window(int width, int height, String title) {
@@ -49,11 +52,18 @@ public class Window extends JFrame {
         info.setBounds(20,20,300,500);
         add(info);
 
+        //ADDING DICE TO JPANEL TO JFRAME - STILL TWEAKING
+        diePanel.setOpaque(true);
+        diePanel.add(dieLabel1);
+        diePanel.add(dieLabel2);
+        frame.add(diePanel);
+        //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));
+
         //Adding Components to the frame and positioning them
-        Window.frame.getContentPane().add(BorderLayout.EAST, Window.boardLabel);
-        Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel1);
-        Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel2);
-        Window.frame.getContentPane().add(BorderLayout.WEST, info);
+        Window.frame.getContentPane().add(BorderLayout.LINE_END, Window.boardLabel);
+        //Window.frame.getContentPane().add(BorderLayout.CENTER, Window.diePanel);  //STILL TWEAKING
+        Window.frame.add(diePanel);
+        Window.frame.getContentPane().add(BorderLayout.LINE_START, info);
         Window.frame.setVisible(true);
     }
 
