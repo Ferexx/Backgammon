@@ -12,7 +12,8 @@ public class Window extends JFrame {
     //Declarations for JFrame and JLabel
     protected static JLabel boardLabel;             //Label with the board image on it
     protected static JLabel dieLabel1;             //Label with the Die image on it
-    protected static JLabel dieLabel2;             //Label with the Die image on it
+    protected static JLabel dieLabel2;              //Label with the Die image on it
+    protected static JTextArea infoLabel;
     protected static JFrame frame = new JFrame();   //frame for containing Label + image in window
 
     //Window constructor - takes in width height and the title on top, all from Display
@@ -43,10 +44,16 @@ public class Window extends JFrame {
         //ADDING BUTTONS
         Buttons.buttons(this);
 
+        //ADDING TEXT
+        JTextArea info = new JTextArea("Welcome to Backgammon!");
+        info.setBounds(20,20,300,500);
+        add(info);
+
         //Adding Components to the frame and positioning them
         Window.frame.getContentPane().add(BorderLayout.EAST, Window.boardLabel);
         Window.frame.getContentPane().add(BorderLayout.WEST, Window.dieLabel1);
         Window.frame.getContentPane().add(BorderLayout.CENTER, Window.dieLabel2);
+        Window.frame.getContentPane().add(BorderLayout.WEST, info);
         Window.frame.setVisible(true);
     }
 
