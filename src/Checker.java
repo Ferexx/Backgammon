@@ -6,13 +6,13 @@ import static java.lang.Thread.sleep;
 
 public class Checker extends JComponent {
     private Point currentPoint;
-    private Ellipse2D Circle;
     private String color;
     public Checker(Point point, String color) {
-        this.currentPoint = point;
-        //Designs checkers and adds to board
+        setCurrentPoint(point);
+        setCurrentColor(color);
         drawChecker(point, color);
     }
+    //Getters and setters
     public Point getCurrentPoint() {
         return this.currentPoint;
     }
@@ -22,56 +22,64 @@ public class Checker extends JComponent {
     public String getCurrentColor() {
         return color;
     }
+    public void setCurrentColor(String color) {
+        this.color = color;
+    }
+
+    /*Basic drawing method, calls paintComponent to draw checkers,
+    * then adds one to the number of checkers on the current point.*/
     public void drawChecker(Point point, String color) {
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
         setCurrentPoint(point);
         paintComponent(g);
+        currentPoint.addChecker();
     }
-    public void redraw() {
-        try{sleep(1000);
-        Graphics graphics = Window.boardLabel.getGraphics();
-        Graphics2D g = (Graphics2D) graphics;
-        paintComponent(g);} catch(Exception e) {System.exit(-1);}
-    }
+
+    /* Clears the topmost checker on the current point, then repaints the board.
+    * Repainting the board is necessary because clearRect also erases any underlying
+    * images, meaning we get white squares in our image.
+    * After that it updates the currentPoint of the checker.*/
     public void move(Point point, String color) {
         try {
             Graphics graphics = Window.boardLabel.getGraphics();
             Graphics2D g = (Graphics2D) graphics;
             if(getCurrentPoint().getyLoc()==51) {
-                g.clearRect(this.currentPoint.getxLoc(), this.currentPoint.getyLoc() + currentPoint.getDrawingOffset() - 32, 32, 32);
+                g.clearRect(currentPoint.getxLoc(), currentPoint.getyLoc() + currentPoint.getDrawingOffset() - 32, 32, 32);
             }
             else {
-                g.clearRect(this.currentPoint.getxLoc(), this.currentPoint.getyLoc() - currentPoint.getDrawingOffset() + 32, 32, 32);
+                g.clearRect(currentPoint.getxLoc(), currentPoint.getyLoc() - currentPoint.getDrawingOffset() + 32, 32, 32);
             }
             Window.boardLabel.repaint();
             sleep(100);
-            Point temp = this.currentPoint;
-            this.currentPoint.clearCheckers();
+            currentPoint.clearCheckers();
             setCurrentPoint(point);
-            paintComponent(g);
-            Controller.redrawPoint(temp);
+            currentPoint.addChecker();
         }
         catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
     }
+
+    /* Overrides default paintComponent method for our own nefarious uses.
+    * First determines color to use when drawing.
+    * Second draws a circle at the currentPoint. The drawing offset is called
+    * so that checkers are separated and stack nicely on top of each other in
+    * the window.*/
     public void paintComponent(Graphics g) {
+        if(getCurrentColor()=="Black") {
+            g.setColor(Color.BLACK);
+        }
+        if(getCurrentColor()=="Red") {
+            g.setColor(Color.RED);
+        }
         if(getCurrentPoint().getyLoc()==51) {
-            g.fillOval(getCurrentPoint().getxLoc(), getCurrentPoint().getyLoc() + getCurrentPoint().getDrawingOffset(), 32, 32);
+            g.fillOval(currentPoint.getxLoc(), currentPoint.getyLoc() + currentPoint.getDrawingOffset(), 32, 32);
         }
         else {
-            g.fillOval(getCurrentPoint().getxLoc(), getCurrentPoint().getyLoc() - getCurrentPoint().getDrawingOffset(), 32, 32);
+            g.fillOval(currentPoint.getxLoc(), currentPoint.getyLoc() - currentPoint.getDrawingOffset(), 32, 32);
         }
-        if(color=="Black") {
-            g.setColor(Color.BLACK);
-            this.color = "Black";
-        }
-        if(color=="Red") {
-            g.setColor(Color.RED);
-            this.color = "Red";
-        }
-        repaint();
+
     }
 }

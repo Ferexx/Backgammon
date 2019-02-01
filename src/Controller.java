@@ -6,16 +6,15 @@ public class Controller {
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
 
-    public static void main(String args[]) {
+    //Main function, used to get game started, as well as testing new functionality
+    public static void main(String[] args) {
         try {
             new Display();
-            //Adding to avoid race condition where checkers are drawn before board is, resulting in board being drawn over them
-            //sleep(50); //not necessary anymore as initPoints takes up enough time
             initPoints();
             startingPositions();
+            //TODO: Change this sleep to when some sort of user input is received
             sleep(1000);
             storeCheckers[0].move(pointList[1], "Red");
-            sleep(1000);
             redrawCheckers();
         }
         catch (Exception e) {
@@ -28,57 +27,53 @@ public class Controller {
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51};
     private static Checker[] storeCheckers = new Checker[30];
 
+    //Create points and assign the them their pixel locations
     private static void initPoints() {
         for(int i=0; i<24; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
     }
+    //Set up checkers in their initial positions
     private static void startingPositions() {
         for(int i=0; i<30; i++) {
             if(i<2) {
                 storeCheckers[i] = new Checker(pointList[0], "Red");
-                pointList[0].addChecker();
             }
             if(i>1&&i<7) {
                 storeCheckers[i] = new Checker(pointList[5], "Black");
-                pointList[5].addChecker();
             }
             if(i>6&&i<10) {
                 storeCheckers[i] = new Checker(pointList[7], "Black");
-                pointList[7].addChecker();
             }
             if(i>9&&i<15) {
                 storeCheckers[i] = new Checker(pointList[11], "Red");
-                pointList[11].addChecker();
             }
             if(i>14&&i<20) {
                 storeCheckers[i] = new Checker(pointList[12], "Black");
-                pointList[12].addChecker();
             }
             if(i>19&&i<23) {
                 storeCheckers[i] = new Checker(pointList[16], "Red");
-                pointList[16].addChecker();
             }
             if(i>22&&i<28) {
                 storeCheckers[i] = new Checker(pointList[18], "Red");
-                pointList[18].addChecker();
             }
             if(i>27&&i<30) {
                 storeCheckers[i] = new Checker(pointList[23], "Black");
-                pointList[23].addChecker();
             }
         }
     }
-    public static void redrawPoint(Point point) {
-        for(int i=0;i<30;i++) {
-            if (point == storeCheckers[i].getCurrentPoint()) {
-                storeCheckers[i].drawChecker(point, storeCheckers[i].getCurrentColor());
-            }
-        }
-    }
+
+    /*Used for updating board every time a checker is moved.
+     * This is necessary because erasing checkers on the board
+      * also erases the underlying board image, so we need to redraw the board.
+      * This causes the board to be drawn on top of the existing checker images,
+      * meaning that we have to redraw them so that they appear on top.*/
     public static void redrawCheckers() {
+        for(int i=0;i<24;i++) {
+            pointList[i].clearCheckers();
+        }
         for(int i=0;i<30;i++) {
-            storeCheckers[i].redraw();
+            storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint(), storeCheckers[i].getCurrentColor());
         }
     }
 }

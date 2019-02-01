@@ -21,10 +21,6 @@ public class Window extends JFrame {
     //JPANEL TO CONTAIN ALL DIE JLABELS
     protected static JPanel diePanel= new JPanel();
 
-    //JPANEL TO CONTAIN ALL CHECKERS
-    protected static JLayeredPane boardPane = new JLayeredPane();
-    protected static JPanel checkerPanel = new JPanel();
-
     protected static JLabel boardLabel;     //Label with the board image on it
     protected static JLabel dieLabel1_1;    //Label with the Die image on it
     protected static JLabel dieLabel1_2;    //Label with the Die image on it
@@ -75,19 +71,12 @@ public class Window extends JFrame {
         diePanel.add(dieLabel2_1);  //Player 2 Dice 1
         diePanel.add(dieLabel2_2);  //Player 2 Dice 2
 
-        boardPane.add(boardLabel, 1);
-        boardPane.setBorder(new EmptyBorder(16,16,16,64));
-
 
         //ADDING COMPONENTS TO JFRAME
         //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));    //might need for positioning
         frame.getContentPane().add(BorderLayout.CENTER, diePanel);  //STILL TWEAKING - alternatively might need for tweaking
         //ADDING BOARD JLABEL TO JFRAME
         frame.getContentPane().add(BorderLayout.LINE_END, boardLabel);
-        //frame.getContentPane().add(BorderLayout.LINE_END, boardPane);
-        //layers.add(boardLabel, 1);
-        //layers.add(checkerPanel, 2);
-        boardPane.setVisible(true);
         //ADDING DIE JPANEL TO JFRAME
         frame.add(diePanel);
         //ADDING INFO JPANEL TO JFRAME
