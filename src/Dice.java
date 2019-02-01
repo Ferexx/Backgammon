@@ -10,7 +10,10 @@ public class Dice {
     private static ImageIcon image4;
     private static ImageIcon image5;
     private static ImageIcon image6;
-
+    public static int diceRollP1_1;
+    public static int diceRollP1_2;
+    public static int diceRollP2_1;
+    public static int diceRollP2_2;
 
     public static void dice(Window window) {
 
@@ -39,77 +42,86 @@ public class Dice {
 
         //Player 1 random roll
         Random random = new Random();
-        int diceRoll1 = random.nextInt(6) + 1;
-        int diceRoll2 = random.nextInt(6) + 1;
-        System.out.println("\nPlayer 1 - Your dice rolls are " + diceRoll1 + " and " + diceRoll2);
+        diceRollP1_1 = random.nextInt(6) + 1;
+        diceRollP1_2 = random.nextInt(6) + 1;
+        System.out.println("\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2);
 
         //PLAYER 1 DICE 1 CREATION
-        if (diceRoll1 == 1) {
+        if (diceRollP1_1 == 1) {
             Window.dieLabel1_1 = new JLabel(image1);
-        } else if (diceRoll1 == 2) {
+        } else if (diceRollP1_1 == 2) {
             Window.dieLabel1_1 = new JLabel(image2);
-        } else if (diceRoll1 == 3) {
+        } else if (diceRollP1_1 == 3) {
             Window.dieLabel1_1 = new JLabel(image3);
-        } else if (diceRoll1 == 4) {
+        } else if (diceRollP1_1 == 4) {
             Window.dieLabel1_1 = new JLabel(image4);
-        } else if (diceRoll1 == 5) {
+        } else if (diceRollP1_1 == 5) {
             Window.dieLabel1_1 = new JLabel(image5);
-        } else if (diceRoll1 == 6) {
+        } else if (diceRollP1_1 == 6) {
             Window.dieLabel1_1 = new JLabel(image6);
         }
 
         //PLAYER 1 DICE 2 CREATION
-        if (diceRoll2 == 1) {
+        if (diceRollP1_2 == 1) {
             Window.dieLabel1_2 = new JLabel(image1);
-        } else if (diceRoll2 == 2) {
+        } else if (diceRollP1_2 == 2) {
             Window.dieLabel1_2 = new JLabel(image2);
-        } else if (diceRoll2 == 3) {
+        } else if (diceRollP1_2 == 3) {
             Window.dieLabel1_2 = new JLabel(image3);
-        } else if (diceRoll2 == 4) {
+        } else if (diceRollP1_2 == 4) {
             Window.dieLabel1_2 = new JLabel(image4);
-        } else if (diceRoll2 == 5) {
+        } else if (diceRollP1_2 == 5) {
             Window.dieLabel1_2 = new JLabel(image5);
-        } else if (diceRoll2 == 6) {
+        } else if (diceRollP1_2 == 6) {
             Window.dieLabel1_2 = new JLabel(image6);
         }
     }
 
     public static void drawP2Dice(Window window) {
-
         //Player 2 random roll
         Random random = new Random();
-        int diceRoll1 = random.nextInt(6) + 1;
-        int diceRoll2 = random.nextInt(6) + 1;
-        System.out.println("\nPlayer 2 - Your dice rolls are " + diceRoll1 + " and " + diceRoll2);
+        diceRollP2_1 = random.nextInt(6) + 1;
+        diceRollP2_2 = random.nextInt(6) + 1;
+        System.out.println("\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2);
+        //Window.infoLabel.append("Player 1, your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2);
 
         //PLAYER 2 DICE 1 CREATION
-        if (diceRoll1 == 1) {
+        if (diceRollP2_1 == 1) {
             Window.dieLabel2_1 = new JLabel(image1);
-        } else if (diceRoll1 == 2) {
+        } else if (diceRollP2_1 == 2) {
             Window.dieLabel2_1 = new JLabel(image2);
-        } else if (diceRoll1 == 3) {
+        } else if (diceRollP2_1 == 3) {
             Window.dieLabel2_1 = new JLabel(image3);
-        } else if (diceRoll1 == 4) {
+        } else if (diceRollP2_1 == 4) {
             Window.dieLabel2_1 = new JLabel(image4);
-        } else if (diceRoll1 == 5) {
+        } else if (diceRollP2_1 == 5) {
             Window.dieLabel2_1 = new JLabel(image5);
-        } else if (diceRoll1 == 6) {
+        } else if (diceRollP2_1 == 6) {
             Window.dieLabel2_1 = new JLabel(image6);
         }
 
         //PLAYER 2 DICE 2 CREATION
-        if (diceRoll2 == 1) {
+        if (diceRollP2_2 == 1) {
             Window.dieLabel2_2 = new JLabel(image1);
-        } else if (diceRoll2 == 2) {
+        } else if (diceRollP2_2 == 2) {
             Window.dieLabel2_2 = new JLabel(image2);
-        } else if (diceRoll2 == 3) {
+        } else if (diceRollP2_2 == 3) {
             Window.dieLabel2_2 = new JLabel(image3);
-        } else if (diceRoll2 == 4) {
+        } else if (diceRollP2_2 == 4) {
             Window.dieLabel2_2 = new JLabel(image4);
-        } else if (diceRoll2 == 5) {
+        } else if (diceRollP2_2 == 5) {
             Window.dieLabel2_2 = new JLabel(image5);
-        } else if (diceRoll2 == 6) {
+        } else if (diceRollP2_2 == 6) {
             Window.dieLabel2_2 = new JLabel(image6);
         }
     }
+
+    public static String getDice1() {
+        return "\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + "";
+    }
+
+    public static String getDice2() {
+        return "\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2 + "";
+    }
+
 }

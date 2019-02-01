@@ -33,8 +33,10 @@ public class Buttons {
         JPanel panel = new JPanel();
         //label for user commands
         JLabel label = new JLabel("Enter Command");
+
+
         //Text field accepts up to 20 characters
-        JTextField textfield = new JTextField(20);
+        JTextField textField = new JTextField(20);
         JButton enter = new JButton("Enter");
         JButton reset = new JButton("Reset");
 
@@ -47,7 +49,7 @@ public class Buttons {
 
         //Adding these interfaces to the panel
         panel.add(label);
-        panel.add(textfield);
+        panel.add(textField);
         panel.add(enter);
         panel.add(reset);
 

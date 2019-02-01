@@ -1,5 +1,7 @@
 //Java swing imports
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 //Java awt layouts
 import java.awt.*;
@@ -49,9 +51,16 @@ public class Window extends JFrame {
         Dice.dice(this);
         //CREATING BUTTONS
         Buttons.buttons(this);
-        //CREATING TEXT BOX
-        JTextArea info = new JTextArea("Welcome to Backgammon!");
-        info.setBounds(20,20,300,500);
+
+        //CREATING PLAYER-READABLE INFO TEXT BOX
+        infoLabel = new JTextArea("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n\n");
+        infoLabel.setBorder(new EmptyBorder(20,20,20,20));
+        infoLabel.setBounds(20,20,500,720);
+        infoLabel.setEditable(false);
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        infoLabel.setBorder(border);
+        infoLabel.append(Dice.getDice1());
+        infoLabel.append(Dice.getDice2());
 
         //ADDING DICE JLABELS TO JPANEL, AND THEN TO JFRAME - STILL TWEAKING
         diePanel.setOpaque(true);
@@ -68,7 +77,7 @@ public class Window extends JFrame {
         //ADDING DIE JPANEL TO JFRAME
         Window.frame.add(diePanel);
         //ADDING INFO JPANEL TO JFRAME
-        Window.frame.getContentPane().add(BorderLayout.LINE_START, info);
+        Window.frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
         //SETTING JFRAME TO VISIBLE
         Window.frame.setVisible(true);
     }
