@@ -1,3 +1,5 @@
+import static java.lang.Thread.sleep;
+
 public class Controller {
 
     //PlayerPlaying string will be used for controlling turns and which dice display
@@ -11,7 +13,10 @@ public class Controller {
             //sleep(50); //not necessary anymore as initPoints takes up enough time
             initPoints();
             startingPositions();
+            sleep(1000);
             storeCheckers[0].move(pointList[1], "Red");
+            sleep(1000);
+            redrawCheckers();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -69,6 +74,11 @@ public class Controller {
             if (point == storeCheckers[i].getCurrentPoint()) {
                 storeCheckers[i].drawChecker(point, storeCheckers[i].getCurrentColor());
             }
+        }
+    }
+    public static void redrawCheckers() {
+        for(int i=0;i<30;i++) {
+            storeCheckers[i].redraw();
         }
     }
 }

@@ -25,11 +25,44 @@ public class Checker extends JComponent {
     public void drawChecker(Point point, String color) {
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
-        if(point.getyLoc()==51) {
-            Circle = new Ellipse2D.Double(point.getxLoc(), point.getyLoc() + point.getDrawingOffset(), 32, 32);
+        setCurrentPoint(point);
+        paintComponent(g);
+    }
+    public void redraw() {
+        try{sleep(1000);
+        Graphics graphics = Window.boardLabel.getGraphics();
+        Graphics2D g = (Graphics2D) graphics;
+        paintComponent(g);} catch(Exception e) {System.exit(-1);}
+    }
+    public void move(Point point, String color) {
+        try {
+            Graphics graphics = Window.boardLabel.getGraphics();
+            Graphics2D g = (Graphics2D) graphics;
+            if(getCurrentPoint().getyLoc()==51) {
+                g.clearRect(this.currentPoint.getxLoc(), this.currentPoint.getyLoc() + currentPoint.getDrawingOffset() - 32, 32, 32);
+            }
+            else {
+                g.clearRect(this.currentPoint.getxLoc(), this.currentPoint.getyLoc() - currentPoint.getDrawingOffset() + 32, 32, 32);
+            }
+            Window.boardLabel.repaint();
+            sleep(100);
+            Point temp = this.currentPoint;
+            this.currentPoint.clearCheckers();
+            setCurrentPoint(point);
+            paintComponent(g);
+            Controller.redrawPoint(temp);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+    public void paintComponent(Graphics g) {
+        if(getCurrentPoint().getyLoc()==51) {
+            g.fillOval(getCurrentPoint().getxLoc(), getCurrentPoint().getyLoc() + getCurrentPoint().getDrawingOffset(), 32, 32);
         }
         else {
-            Circle = new Ellipse2D.Double(point.getxLoc(), point.getyLoc() - point.getDrawingOffset(), 32, 32);
+            g.fillOval(getCurrentPoint().getxLoc(), getCurrentPoint().getyLoc() - getCurrentPoint().getDrawingOffset(), 32, 32);
         }
         if(color=="Black") {
             g.setColor(Color.BLACK);
@@ -39,33 +72,6 @@ public class Checker extends JComponent {
             g.setColor(Color.RED);
             this.color = "Red";
         }
-        g.fill(Circle);
-    }
-    public void move(Point point, String color) {
-        try {
-            Graphics graphics = Window.boardLabel.getGraphics();
-            Graphics2D g = (Graphics2D) graphics;
-            g.clearRect(this.currentPoint.getxLoc(), this.currentPoint.getyLoc(), 32, 32);
-            if (point.getyLoc() == 51) {
-                Circle = new Ellipse2D.Double(point.getxLoc(), point.getyLoc() + point.getDrawingOffset(), 32, 32);
-            } else {
-                Circle = new Ellipse2D.Double(point.getxLoc(), point.getyLoc() - point.getDrawingOffset(), 32, 32);
-            }
-            if (color == "Black") {
-                g.setColor(Color.BLACK);
-            }
-            if (color == "Red") {
-                g.setColor(Color.RED);
-            }
-            g.fill(Circle);
-            this.currentPoint.clearCheckers();
-            Point temp = this.currentPoint;
-            setCurrentPoint(point);
-            Controller.redrawPoint(temp);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
+        repaint();
     }
 }
