@@ -14,6 +14,6 @@ public class Board {
 
         //Giving the board a padding border
         Window.boardLabel = new JLabel(image);
-        Window.boardLabel.setBorder(new EmptyBorder( 16, 16, 16, 64 ) );
+        Window.boardLabel.setBorder(new EmptyBorder( 16, 16, 16, 48 ) );
     }
 }
