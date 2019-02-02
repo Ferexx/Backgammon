@@ -5,8 +5,12 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    public static void enterperfomed(ActionEvent e) {
+    public static void enterPerformed(ActionEvent e) {
 
+    }
+
+    public static void resetPerformed(ActionEvent e) {
+        commandHandler.restartText();
     }
 
     //MAKING BUTTONS
@@ -44,7 +48,12 @@ public class Buttons {
         //New Game places the checkers in starting positions
         m11.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { enterperfomed(e); }
+            public void actionPerformed(ActionEvent e) { enterPerformed(e); }
+        });
+
+        m13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { resetPerformed(e); }
         });
 
         //Adding these interfaces to the panel

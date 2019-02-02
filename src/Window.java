@@ -55,12 +55,13 @@ public class Window extends JFrame {
         Buttons.buttons(this);
 
         //CREATING PLAYER-READABLE INFO TEXT BOX
-        infoLabel = new JTextArea("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n\n");
+        infoLabel = new JTextArea();
         infoLabel.setBorder(new EmptyBorder(20,20,20,20));
         infoLabel.setBounds(20,20,500,720);
         infoLabel.setEditable(false);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
+        commandHandler.restartText();
         infoLabel.append(Dice.getDice1());
         infoLabel.append(Dice.getDice2());
 
