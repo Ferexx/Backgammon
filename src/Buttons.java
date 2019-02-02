@@ -5,12 +5,21 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
+    protected static JTextField textField = new JTextField();
+
     public static void enterPerformed(ActionEvent e) {
 
     }
 
     public static void resetPerformed(ActionEvent e) {
         commandHandler.restartText();
+    }
+
+    //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
+    public static void enterCommandPerformed(ActionEvent e) {
+        String command = textField.getText();
+        textField.setText(null);
+        commandHandler.appendText(command);
     }
 
     //MAKING BUTTONS
@@ -40,7 +49,7 @@ public class Buttons {
 
 
         //Text field accepts up to 20 characters
-        JTextField textField = new JTextField(20);
+        textField = new JTextField(20);
         JButton enter = new JButton("Enter");
         JButton reset = new JButton("Reset");
 
@@ -51,10 +60,21 @@ public class Buttons {
             public void actionPerformed(ActionEvent e) { enterPerformed(e); }
         });
 
+        //Listener to reset the game. Only resets text currently.
         m13.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { resetPerformed(e); }
         });
+
+        //Listener that we can attach to both a keypress of enter and pressing the enter key.
+        Action enterCommand = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) { enterCommandPerformed(e); }
+        };
+        //Adding action listeners for both.
+        textField.addActionListener(enterCommand);
+        enter.addActionListener(enterCommand);
+
 
         //Adding these interfaces to the panel
         panel.add(label);

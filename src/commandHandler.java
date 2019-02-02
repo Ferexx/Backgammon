@@ -1,8 +1,15 @@
 public class commandHandler {
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
-    public void appendText(String text) {
+    public static void appendText(String text) {
+        if(text.equalsIgnoreCase("quit")) {
+            catchQuit();
+        }
+        //Testing and debug
+        else {
+            Window.infoLabel.append("\n" + text);
 
+        }
     }
 
     //Used for restarting the game
@@ -11,7 +18,8 @@ public class commandHandler {
         Window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n\n");
     }
 
-    public static void catchQuit() {
-        
+    //Quits
+    private static void catchQuit() {
+        System.exit(0);
     }
 }
