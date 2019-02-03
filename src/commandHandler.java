@@ -5,6 +5,9 @@ public class commandHandler {
         if(text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
+        if(text.equalsIgnoreCase("demo")) {
+            Controller.demoCheckers();
+        }
         //Testing and debug
         else {
             Window.infoLabel.append("\n" + text);

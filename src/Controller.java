@@ -12,24 +12,21 @@ public class Controller {
             new Display();
             initPoints();
             startingPositions();
-            //TODO: Change this sleep to when some sort of user input is received
-            sleep(1000);
-            storeCheckers[0].move(pointList[1], "Red");
-            redrawCheckers();
         }
         catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
     }
-    private static Point[] pointList = new Point[24];
-    private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665};
-    private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51};
+    private static Point[] pointList = new Point[26];
+    //Last two points are bar points
+    private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665,370,370};
+    private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
     private static Checker[] storeCheckers = new Checker[30];
 
     //Create points and assign the them their pixel locations
     private static void initPoints() {
-        for(int i=0; i<24; i++) {
+        for(int i=0; i<26; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
     }
@@ -69,11 +66,36 @@ public class Controller {
       * This causes the board to be drawn on top of the existing checker images,
       * meaning that we have to redraw them so that they appear on top.*/
     public static void redrawCheckers() {
-        for(int i=0;i<24;i++) {
+        for(int i=0;i<26;i++) {
             pointList[i].clearCheckers();
         }
         for(int i=0;i<30;i++) {
             storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint(), storeCheckers[i].getCurrentColor());
+        }
+    }
+    public static void demoCheckers() {
+        try {
+            storeCheckers[0].move(pointList[25]);
+            redrawCheckers();
+            sleep(2000);
+            storeCheckers[0].move(pointList[2]);
+            redrawCheckers();
+            sleep(2000);
+            storeCheckers[0].move(pointList[7]);
+            redrawCheckers();
+            sleep(2000);
+            storeCheckers[0].move(pointList[13]);
+            redrawCheckers();
+            sleep(2000);
+            storeCheckers[0].move(pointList[20]);
+            redrawCheckers();
+            sleep(2000);
+            storeCheckers[0].move(pointList[23]);
+            redrawCheckers();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
         }
     }
 }

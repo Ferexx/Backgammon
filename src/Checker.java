@@ -40,11 +40,11 @@ public class Checker extends JComponent {
     * Repainting the board is necessary because clearRect also erases any underlying
     * images, meaning we get white squares in our image.
     * After that it updates the currentPoint of the checker.*/
-    public void move(Point point, String color) {
+    public void move(Point point) {
         try {
             Graphics graphics = Window.boardLabel.getGraphics();
             Graphics2D g = (Graphics2D) graphics;
-            if(getCurrentPoint().getyLoc()==51) {
+            if(getCurrentPoint().getyLoc()==51||getCurrentPoint().getyLoc()==327) {
                 g.clearRect(currentPoint.getxLoc(), currentPoint.getyLoc() + currentPoint.getDrawingOffset() - 32, 32, 32);
             }
             else {
@@ -74,7 +74,7 @@ public class Checker extends JComponent {
         if(getCurrentColor()=="Red") {
             g.setColor(Color.RED);
         }
-        if(getCurrentPoint().getyLoc()==51) {
+        if(getCurrentPoint().getyLoc()==51||getCurrentPoint().getyLoc()==327) {
             g.fillOval(currentPoint.getxLoc(), currentPoint.getyLoc() + currentPoint.getDrawingOffset(), 32, 32);
         }
         else {
