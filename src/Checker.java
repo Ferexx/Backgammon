@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 
 import static java.lang.Thread.sleep;
 
@@ -12,6 +11,7 @@ public class Checker extends JComponent {
         setCurrentColor(color);
         drawChecker(point, color);
     }
+
     //Getters and setters
     public Point getCurrentPoint() {
         return this.currentPoint;

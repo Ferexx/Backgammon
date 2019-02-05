@@ -11,7 +11,6 @@ public class commandHandler {
         //Testing and debug
         else {
             Window.infoLabel.append("\n" + text);
-
         }
     }
 

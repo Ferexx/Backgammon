@@ -1,5 +1,6 @@
 import static java.lang.Thread.sleep;
 
+//Main Class
 public class Controller {
 
     //PlayerPlaying string will be used for controlling turns and which dice display
@@ -12,6 +13,8 @@ public class Controller {
             new Display();
             initPoints();
             startingPositions();
+            //democheckers demonstrates out movement capabilities of the checkers
+            demoCheckers();
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -60,11 +63,11 @@ public class Controller {
         }
     }
 
-    /*Used for updating board every time a checker is moved.
-     * This is necessary because erasing checkers on the board
-      * also erases the underlying board image, so we need to redraw the board.
-      * This causes the board to be drawn on top of the existing checker images,
-      * meaning that we have to redraw them so that they appear on top.*/
+        /*Used for updating board every time a checker is moved.
+        * This is necessary because erasing checkers on the board
+        * also erases the underlying board image, so we need to redraw the board.
+        * This causes the board to be drawn on top of the existing checker images,
+        * meaning that we have to redraw them so that they appear on top.*/
     public static void redrawCheckers() {
         for(int i=0;i<26;i++) {
             pointList[i].clearCheckers();
@@ -73,6 +76,8 @@ public class Controller {
             storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint(), storeCheckers[i].getCurrentColor());
         }
     }
+    //demoCheckers method for testing the checkers movement
+    //2 second gaps between each movement to easily show it on the board
     public static void demoCheckers() {
         try {
             storeCheckers[0].move(pointList[25]);

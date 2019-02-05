@@ -7,10 +7,12 @@ public class Buttons {
 
     protected static JTextField textField = new JTextField();
 
+    //action listener for enter button
     public static void enterPerformed(ActionEvent e) {
 
     }
 
+    //action listener for reset button
     public static void resetPerformed(ActionEvent e) {
         commandHandler.restartText();
     }
