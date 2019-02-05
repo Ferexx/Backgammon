@@ -10,7 +10,7 @@ public class Checker extends JComponent {
     public Checker(Point point, String color) {
         setCurrentPoint(point);
         setCurrentColor(color);
-        drawChecker(point, color);
+        drawChecker(point);
     }
     //Getters and setters
     public Point getCurrentPoint() {
@@ -28,7 +28,7 @@ public class Checker extends JComponent {
 
     /*Basic drawing method, calls paintComponent to draw checkers,
     * then adds one to the number of checkers on the current point.*/
-    public void drawChecker(Point point, String color) {
+    public void drawChecker(Point point) {
         Graphics graphics = Window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
         setCurrentPoint(point);

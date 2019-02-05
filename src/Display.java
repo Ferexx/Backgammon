@@ -6,7 +6,6 @@ public class Display {
 
     Display() {
         new Window(WIDTH, HEIGHT, TITLE);
-        new Drawing();
         SoundManager.playSound();
     }
 }

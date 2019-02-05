@@ -70,7 +70,7 @@ public class Controller {
             pointList[i].clearCheckers();
         }
         for(int i=0;i<30;i++) {
-            storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint(), storeCheckers[i].getCurrentColor());
+            storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint());
         }
     }
     public static void demoCheckers() {
