@@ -4,6 +4,7 @@ import java.util.Random;
 
 public class Dice {
 
+    //creating dice images and dice roll objects per player
     private static ImageIcon image1;
     private static ImageIcon image2;
     private static ImageIcon image3;
@@ -44,7 +45,7 @@ public class Dice {
         Random random = new Random();
         diceRollP1_1 = random.nextInt(6) + 1;
         diceRollP1_2 = random.nextInt(6) + 1;
-        System.out.println("\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2);
+        //System.out.println("\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2);
 
         //PLAYER 1 DICE 1 CREATION
         if (diceRollP1_1 == 1) {
@@ -82,8 +83,7 @@ public class Dice {
         Random random = new Random();
         diceRollP2_1 = random.nextInt(6) + 1;
         diceRollP2_2 = random.nextInt(6) + 1;
-        System.out.println("\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2);
-        //Window.infoLabel.append("Player 1, your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2);
+        //System.out.println("\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2);
 
         //PLAYER 2 DICE 1 CREATION
         if (diceRollP2_1 == 1) {

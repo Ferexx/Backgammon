@@ -6,26 +6,25 @@ import javax.swing.border.EmptyBorder;
 //Java awt layouts
 import java.awt.*;
 
-import static java.lang.Integer.valueOf;
-
+//Window class is the class that makes the window, and controls the objects present on it
 public class Window extends JFrame {
 
     //Used for the this context
     int x, y, width, height;
 
     //WINDOW > JFRAME > JPANEL > JLABEL
-    //Declarations for JFrame, JPanel and JLabel
-    //FRAME FOR CONTAINING LABEL + IMAGE IN WINDOW
+    //Declarations for JFrame
+    //FRAME FOR CONTAINING PANEL, LABEL + IMAGE IN WINDOW
     protected static JFrame frame = new JFrame();
 
     //JPANEL TO CONTAIN ALL DIE JLABELS
     protected static JPanel diePanel= new JPanel();
 
     protected static JLabel boardLabel;     //Label with the board image on it
-    protected static JLabel dieLabel1_1;    //Label with the Die image on it
-    protected static JLabel dieLabel1_2;    //Label with the Die image on it
-    protected static JLabel dieLabel2_1;    //Label with the Die image on it
-    protected static JLabel dieLabel2_2;    //Label with the Die image on it
+    protected static JLabel dieLabel1_1;    //Label with player 1 Die 1 image on it
+    protected static JLabel dieLabel1_2;    //Label with player 1 Die 2 image on it
+    protected static JLabel dieLabel2_1;    //Label with player 2 Die 1 image on it
+    protected static JLabel dieLabel2_2;    //Label with player 2 Die 2 image on it
     protected static JTextArea infoLabel;   //Label with info text area
 
     //Window constructor - takes in width height and the title on top, all from Display
