@@ -5,20 +5,20 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    protected JTextField textField = new JTextField();
+    protected static JTextField textField = new JTextField();
 
     //action listener for enter button
-    public void enterPerformed(ActionEvent e) {
+    public static void enterPerformed(ActionEvent e) {
 
     }
 
     //action listener for reset button
-    public void resetPerformed(ActionEvent e) {
+    public static void resetPerformed(ActionEvent e) {
         commandHandler.restartText();
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
-    public void enterCommandPerformed(ActionEvent e) {
+    public static void enterCommandPerformed(ActionEvent e) {
         String command = textField.getText();
         System.out.println("Command = " + command);
         textField.setText(null);

@@ -13,7 +13,6 @@ public class Controller {
             Display display = new Display();
             initPoints();
             startingPositions();
-            commandHandler handler = new commandHandler();
             //democheckers demonstrates out movement capabilities of the checkers
             sleep(1000);
         }
@@ -26,7 +25,6 @@ public class Controller {
     //Last two points are bar points
     private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665,370,370};
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
-    private static Checker[] storeCheckers = new Checker[30];
 
     //Create points and assign the them their pixel locations
     private static void initPoints() {
@@ -101,47 +99,6 @@ public class Controller {
                 pointList[i].setColor("Black");
                 pointList[i].drawPoint();
             }
-        }
-    }
-
-        /*Used for updating board every time a checker is moved.
-        * This is necessary because erasing checkers on the board
-        * also erases the underlying board image, so we need to redraw the board.
-        * This causes the board to be drawn on top of the existing checker images,
-        * meaning that we have to redraw them so that they appear on top.*/
-    public static void redrawCheckers() {
-        for(int i=0;i<26;i++) {
-            pointList[i].clearCheckers();
-        }
-        for(int i=0;i<30;i++) {
-            storeCheckers[i].drawChecker(storeCheckers[i].getCurrentPoint());
-        }
-    }
-    //demoCheckers method for testing the checkers movement
-    //2 second gaps between each movement to easily show it on the board
-    public static void demoCheckers() {
-        try {
-            storeCheckers[0].move(pointList[25]);
-            redrawCheckers();
-            sleep(2000);
-            storeCheckers[0].move(pointList[2]);
-            redrawCheckers();
-            sleep(2000);
-            storeCheckers[0].move(pointList[7]);
-            redrawCheckers();
-            sleep(2000);
-            storeCheckers[0].move(pointList[13]);
-            redrawCheckers();
-            sleep(2000);
-            storeCheckers[0].move(pointList[20]);
-            redrawCheckers();
-            sleep(2000);
-            storeCheckers[0].move(pointList[23]);
-            redrawCheckers();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
         }
     }
 }
