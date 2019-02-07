@@ -10,18 +10,19 @@ public class Controller {
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
-            new Display();
+            Display display = new Display();
             initPoints();
             startingPositions();
+            commandHandler handler = new commandHandler();
             //democheckers demonstrates out movement capabilities of the checkers
-            demoCheckers();
+            sleep(1000);
         }
         catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
     }
-    private static Point[] pointList = new Point[26];
+    public static Point[] pointList = new Point[26];
     //Last two points are bar points
     private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665,370,370};
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
@@ -36,29 +37,69 @@ public class Controller {
     //Set up checkers in their initial positions
     private static void startingPositions() {
         for(int i=0; i<30; i++) {
-            if(i<2) {
-                storeCheckers[i] = new Checker(pointList[0], "Red");
+            if(i==0) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Red");
+                pointList[i].drawPoint();
             }
-            if(i>1&&i<7) {
-                storeCheckers[i] = new Checker(pointList[5], "Black");
+            if(i==5) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Black");
+                pointList[i].drawPoint();
+
             }
-            if(i>6&&i<10) {
-                storeCheckers[i] = new Checker(pointList[7], "Black");
+            if(i==7) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Black");
+                pointList[i].drawPoint();
             }
-            if(i>9&&i<15) {
-                storeCheckers[i] = new Checker(pointList[11], "Red");
+            if(i==11) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Red");
+                pointList[i].drawPoint();
             }
-            if(i>14&&i<20) {
-                storeCheckers[i] = new Checker(pointList[12], "Black");
+            if(i==12) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Black");
+                pointList[i].drawPoint();
             }
-            if(i>19&&i<23) {
-                storeCheckers[i] = new Checker(pointList[16], "Red");
+            if(i==16) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Red");
+                pointList[i].drawPoint();
+
             }
-            if(i>22&&i<28) {
-                storeCheckers[i] = new Checker(pointList[18], "Red");
+            if(i==18) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Red");
+                pointList[i].drawPoint();
             }
-            if(i>27&&i<30) {
-                storeCheckers[i] = new Checker(pointList[23], "Black");
+            if(i==23) {
+                pointList[i].addChecker();
+                pointList[i].addChecker();
+                pointList[i].setColor("Black");
+                pointList[i].drawPoint();
             }
         }
     }

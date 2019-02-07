@@ -11,6 +11,7 @@ public class Window extends JFrame {
 
     //Used for the this context
     int x, y, width, height;
+    public Board board = new Board(this);
 
     //WINDOW > JFRAME > JPANEL > JLABEL
     //Declarations for JFrame
@@ -46,8 +47,6 @@ public class Window extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //CREATING WINDOW COMPONENTS
-        //CREATING BOARD
-        Board.board(this);
         //CREATING DIE
         Dice.dice(this);
         //CREATING BUTTONS

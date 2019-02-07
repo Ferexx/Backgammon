@@ -1,12 +1,12 @@
 public class commandHandler {
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
-    public static void appendText(String text) {
+    public void appendText(String text) {
         if(text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
-        if(text.equalsIgnoreCase("demo")) {
-            Controller.demoCheckers();
+        if(text.equalsIgnoreCase("1 3")) {
+            Window.board.move(Controller.pointList[0], Controller.pointList[2]);
         }
         //Testing and debug
         else {

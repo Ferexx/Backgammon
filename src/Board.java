@@ -7,13 +7,22 @@ public class Board {
     private static ImageIcon image;
 
     //MAKING BOARD A REALITY
-    public static void board(Window window){
+    public Board(Window window){
         //Assigning an image to a new Board object
-        Board board = new Board();
         image = new ImageIcon(window.getClass().getResource("Resources/SmallBoard.png"));
-
         //Giving the board a padding border
         Window.boardLabel = new JLabel(image);
         Window.boardLabel.setBorder(new EmptyBorder( 16, 16, 16, 48 ) );
+    }
+    public void move(Point from, Point to) {
+        from.removeChecker();
+        to.addChecker();
+        update();
+    }
+    public void update() {
+        Window.boardLabel.repaint();
+        for(int i=0;i<26;i++) {
+            Controller.pointList[i].drawPoint();
+        }
     }
 }
