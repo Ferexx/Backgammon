@@ -16,7 +16,7 @@ public class Dice {
     public static int diceRollP2_1;
     public static int diceRollP2_2;
 
-    public static void dice(Window window) {
+    public Dice(Window window) {
 
         //ASSIGNING DIE IMAGES TO VARIABLE
         image1 = new ImageIcon(window.getClass().getResource("Resources/Dice1.jpg"));
@@ -32,14 +32,14 @@ public class Dice {
         drawP2Dice(window);
 
         //SETS POSITION OF THE JLABEL
-        Window.dieLabel1_1.setBorder(new EmptyBorder(0, 0, 250, 0));
-        Window.dieLabel1_2.setBorder(new EmptyBorder(0, 0, 250, 0));
-        Window.dieLabel2_1.setBorder(new EmptyBorder(500, 0, 0, 0));
-        Window.dieLabel2_2.setBorder(new EmptyBorder(500, 0, 0, 0));
+        window.dieLabel1_1.setBorder(new EmptyBorder(0, 0, 250, 0));
+        window.dieLabel1_2.setBorder(new EmptyBorder(0, 0, 250, 0));
+        window.dieLabel2_1.setBorder(new EmptyBorder(500, 0, 0, 0));
+        window.dieLabel2_2.setBorder(new EmptyBorder(500, 0, 0, 0));
 
     }
 
-    public static void drawP1Dice(Window window) {
+    public void drawP1Dice(Window window) {
 
         //Player 1 random roll
         Random random = new Random();
@@ -49,32 +49,32 @@ public class Dice {
 
         //PLAYER 1 DICE 1 CREATION
         if (diceRollP1_1 == 1) {
-            Window.dieLabel1_1 = new JLabel(image1);
+            window.dieLabel1_1 = new JLabel(image1);
         } else if (diceRollP1_1 == 2) {
-            Window.dieLabel1_1 = new JLabel(image2);
+            window.dieLabel1_1 = new JLabel(image2);
         } else if (diceRollP1_1 == 3) {
-            Window.dieLabel1_1 = new JLabel(image3);
+            window.dieLabel1_1 = new JLabel(image3);
         } else if (diceRollP1_1 == 4) {
-            Window.dieLabel1_1 = new JLabel(image4);
+            window.dieLabel1_1 = new JLabel(image4);
         } else if (diceRollP1_1 == 5) {
-            Window.dieLabel1_1 = new JLabel(image5);
+            window.dieLabel1_1 = new JLabel(image5);
         } else if (diceRollP1_1 == 6) {
-            Window.dieLabel1_1 = new JLabel(image6);
+            window.dieLabel1_1 = new JLabel(image6);
         }
 
         //PLAYER 1 DICE 2 CREATION
         if (diceRollP1_2 == 1) {
-            Window.dieLabel1_2 = new JLabel(image1);
+            window.dieLabel1_2 = new JLabel(image1);
         } else if (diceRollP1_2 == 2) {
-            Window.dieLabel1_2 = new JLabel(image2);
+            window.dieLabel1_2 = new JLabel(image2);
         } else if (diceRollP1_2 == 3) {
-            Window.dieLabel1_2 = new JLabel(image3);
+            window.dieLabel1_2 = new JLabel(image3);
         } else if (diceRollP1_2 == 4) {
-            Window.dieLabel1_2 = new JLabel(image4);
+            window.dieLabel1_2 = new JLabel(image4);
         } else if (diceRollP1_2 == 5) {
-            Window.dieLabel1_2 = new JLabel(image5);
+            window.dieLabel1_2 = new JLabel(image5);
         } else if (diceRollP1_2 == 6) {
-            Window.dieLabel1_2 = new JLabel(image6);
+            window.dieLabel1_2 = new JLabel(image6);
         }
     }
 
@@ -87,32 +87,32 @@ public class Dice {
 
         //PLAYER 2 DICE 1 CREATION
         if (diceRollP2_1 == 1) {
-            Window.dieLabel2_1 = new JLabel(image1);
+            window.dieLabel2_1 = new JLabel(image1);
         } else if (diceRollP2_1 == 2) {
-            Window.dieLabel2_1 = new JLabel(image2);
+            window.dieLabel2_1 = new JLabel(image2);
         } else if (diceRollP2_1 == 3) {
-            Window.dieLabel2_1 = new JLabel(image3);
+            window.dieLabel2_1 = new JLabel(image3);
         } else if (diceRollP2_1 == 4) {
-            Window.dieLabel2_1 = new JLabel(image4);
+            window.dieLabel2_1 = new JLabel(image4);
         } else if (diceRollP2_1 == 5) {
-            Window.dieLabel2_1 = new JLabel(image5);
+            window.dieLabel2_1 = new JLabel(image5);
         } else if (diceRollP2_1 == 6) {
-            Window.dieLabel2_1 = new JLabel(image6);
+            window.dieLabel2_1 = new JLabel(image6);
         }
 
         //PLAYER 2 DICE 2 CREATION
         if (diceRollP2_2 == 1) {
-            Window.dieLabel2_2 = new JLabel(image1);
+            window.dieLabel2_2 = new JLabel(image1);
         } else if (diceRollP2_2 == 2) {
-            Window.dieLabel2_2 = new JLabel(image2);
+            window.dieLabel2_2 = new JLabel(image2);
         } else if (diceRollP2_2 == 3) {
-            Window.dieLabel2_2 = new JLabel(image3);
+            window.dieLabel2_2 = new JLabel(image3);
         } else if (diceRollP2_2 == 4) {
-            Window.dieLabel2_2 = new JLabel(image4);
+            window.dieLabel2_2 = new JLabel(image4);
         } else if (diceRollP2_2 == 5) {
-            Window.dieLabel2_2 = new JLabel(image5);
+            window.dieLabel2_2 = new JLabel(image5);
         } else if (diceRollP2_2 == 6) {
-            Window.dieLabel2_2 = new JLabel(image6);
+            window.dieLabel2_2 = new JLabel(image6);
         }
     }
 

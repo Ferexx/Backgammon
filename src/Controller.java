@@ -6,14 +6,16 @@ public class Controller {
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
+    public static int WIDTH = 1280, HEIGHT = 720;
+    public static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
-            Display display = new Display();
+            commandHandler commands = new commandHandler();
+            Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
             initPoints();
-            startingPositions();
-            //democheckers demonstrates out movement capabilities of the checkers
+            startingPositions(window);
             sleep(1000);
         }
         catch (Exception e) {
@@ -33,13 +35,13 @@ public class Controller {
         }
     }
     //Set up checkers in their initial positions
-    private static void startingPositions() {
+    private static void startingPositions(Window window) {
         for(int i=0; i<30; i++) {
             if(i==0) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
             if(i==5) {
                 pointList[i].addChecker();
@@ -48,7 +50,7 @@ public class Controller {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
 
             }
             if(i==7) {
@@ -56,7 +58,7 @@ public class Controller {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
             if(i==11) {
                 pointList[i].addChecker();
@@ -65,7 +67,7 @@ public class Controller {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
             if(i==12) {
                 pointList[i].addChecker();
@@ -74,14 +76,14 @@ public class Controller {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
             if(i==16) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
 
             }
             if(i==18) {
@@ -91,14 +93,17 @@ public class Controller {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
             if(i==23) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint();
+                pointList[i].drawPoint(window);
             }
         }
+    }
+    public void demoCheckers() {
+
     }
 }

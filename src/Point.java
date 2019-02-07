@@ -29,8 +29,8 @@ public class Point {
         return this.occupyingColor;
     }
 
-    public void drawPoint() {
-        Graphics graphics = Window.boardLabel.getGraphics();
+    public void drawPoint(Window window) {
+        Graphics graphics = window.boardLabel.getGraphics();
         Graphics2D g = (Graphics2D) graphics;
         if(occupyingColor=="Black") {
             g.setColor(Color.BLACK);

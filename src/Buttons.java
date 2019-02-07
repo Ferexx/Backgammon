@@ -6,27 +6,28 @@ import java.awt.event.ActionListener;
 public class Buttons {
 
     protected static JTextField textField = new JTextField();
+    private commandHandler commands = new commandHandler();
 
     //action listener for enter button
-    public static void enterPerformed(ActionEvent e) {
+    public void enterPerformed(ActionEvent e) {
 
     }
 
     //action listener for reset button
-    public static void resetPerformed(ActionEvent e) {
-        commandHandler.restartText();
+    public void resetPerformed(ActionEvent e, Window window) {
+        commands.restartText(window);
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
-    public static void enterCommandPerformed(ActionEvent e) {
+    public void enterCommandPerformed(ActionEvent e, Window window) {
         String command = textField.getText();
         System.out.println("Command = " + command);
         textField.setText(null);
-        commandHandler.appendText(command);
+        commands.appendText(command, window);
     }
 
     //MAKING BUTTONS
-    public static void buttons(final Window window){
+    public Buttons(Window window){
         //All button creation from Window.java will be in here soon
         //MENU BAR BUTTONS AND BUTTON OPTIONS
         JMenuBar mb = new JMenuBar();
@@ -66,13 +67,13 @@ public class Buttons {
         //Listener to reset the game. Only resets text currently.
         m13.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { resetPerformed(e); }
+            public void actionPerformed(ActionEvent e) { resetPerformed(e, window); }
         });
 
         //Listener that we can attach to both a keypress of enter and pressing the enter key.
         Action enterCommand = new AbstractAction() {
             @Override
-            public void actionPerformed(ActionEvent e) { enterCommandPerformed(e); }
+            public void actionPerformed(ActionEvent e) { enterCommandPerformed(e, window); }
         };
         //Adding action listeners for both.
         textField.addActionListener(enterCommand);
@@ -85,7 +86,7 @@ public class Buttons {
         panel.add(enter);
         panel.add(reset);
 
-        Window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
-        Window.frame.getContentPane().add(BorderLayout.NORTH, mb);
+        window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        window.frame.getContentPane().add(BorderLayout.NORTH, mb);
     }
 }
