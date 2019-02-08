@@ -6,17 +6,20 @@ public class Controller {
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
-    public static int WIDTH = 1280, HEIGHT = 720;
-    public static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
+    private static int WIDTH = 1280, HEIGHT = 720;
+    private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
             commandHandler commands = new commandHandler();
             Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
+            //Sleeping to avoid race condition
+            sleep(1000);
             initPoints();
             startingPositions(window);
-            sleep(1000);
+            sleep(2000);
+            demoCheckers(window);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +106,19 @@ public class Controller {
             }
         }
     }
-    public void demoCheckers() {
-
+    public static void demoCheckers(Window window) {
+        try {
+            window.board.move(pointList[0], pointList[1], window);
+            sleep(3000);
+            window.board.move(pointList[1], pointList[10], window);
+            sleep(3000);
+            window.board.move(pointList[10], pointList[16], window);
+            sleep(3000);
+            window.board.move(pointList[16], pointList[23], window);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 }

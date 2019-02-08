@@ -1,12 +1,13 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import static java.lang.Thread.sleep;
+
 public class Board {
 
     //Image icon declaration for board
     private static ImageIcon image;
 
-    //MAKING BOARD A REALITY
     public Board(Window window){
         //Assigning an image to a new Board object
         image = new ImageIcon(window.getClass().getResource("Resources/SmallBoard.png"));
@@ -18,12 +19,22 @@ public class Board {
     public void move(Point from, Point to, Window window) {
         from.removeChecker();
         to.addChecker();
+        to.setColor(from.getColor());
         update(window);
     }
     public void update(Window window) {
-        window.boardLabel.repaint();
-        for(int i=0;i<26;i++) {
-            Controller.pointList[i].drawPoint(window);
+        try{
+            window.boardLabel.repaint();
+            sleep(100);
+            for(int i=0;i<26;i++) {
+                Controller.pointList[i].drawPoint(window);
+            }
         }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+
+
     }
 }
