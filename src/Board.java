@@ -14,7 +14,7 @@ public class Board {
         //Giving the board a padding border
         window.boardLabel = new JLabel(image);
         window.boardLabel.setBorder(new EmptyBorder( 16, 16, 16, 48 ) );
-        SoundManager.playSound();
+        //SoundManager.playSound();
     }
     public void move(Point from, Point to, Window window) {
         from.removeChecker();
