@@ -5,16 +5,16 @@ import java.util.Random;
 public class Dice {
 
     //creating dice images and dice roll objects per player
-    private static ImageIcon image1;
-    private static ImageIcon image2;
-    private static ImageIcon image3;
-    private static ImageIcon image4;
-    private static ImageIcon image5;
-    private static ImageIcon image6;
-    public static int diceRollP1_1;
-    public static int diceRollP1_2;
-    public static int diceRollP2_1;
-    public static int diceRollP2_2;
+    private ImageIcon image1;
+    private ImageIcon image2;
+    private ImageIcon image3;
+    private ImageIcon image4;
+    private ImageIcon image5;
+    private ImageIcon image6;
+    public int diceRollP1_1;
+    public int diceRollP1_2;
+    public int diceRollP2_1;
+    public int diceRollP2_2;
 
     public Dice(Window window) {
 
@@ -78,7 +78,7 @@ public class Dice {
         }
     }
 
-    public static void drawP2Dice(Window window) {
+    public void drawP2Dice(Window window) {
         //Player 2 random roll
         Random random = new Random();
         diceRollP2_1 = random.nextInt(6) + 1;
@@ -116,11 +116,11 @@ public class Dice {
         }
     }
 
-    public static String getDice1() {
+    public String getDice1() {
         return "\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + "";
     }
 
-    public static String getDice2() {
+    public String getDice2() {
         return "\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2 + "";
     }
 

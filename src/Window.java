@@ -45,7 +45,7 @@ public class Window extends JFrame {
 
         //Creating window components
         //Creating dice
-        new Dice(this);
+        Dice dice = new Dice(this);
         //Creating Buttons
         new Buttons(this);
 
@@ -57,8 +57,8 @@ public class Window extends JFrame {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
         commands.restartText(this);
-        infoLabel.append(Dice.getDice1());
-        infoLabel.append(Dice.getDice2());
+        infoLabel.append(dice.getDice1());
+        infoLabel.append(dice.getDice2());
 
         //Adding dice JLabels to JPanel, and then to JFrame - Still tweaking
         diePanel.setOpaque(true);

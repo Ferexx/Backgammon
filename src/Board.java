@@ -27,7 +27,7 @@ public class Board {
             window.boardLabel.repaint();
             sleep(100);
             for(int i=0;i<26;i++) {
-                Controller.pointList[i].drawPoint(window);
+                Game.pointList[i].drawPoint(window);
             }
         }
         catch (Exception e) {

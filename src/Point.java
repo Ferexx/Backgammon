@@ -3,6 +3,7 @@ import java.awt.*;
 public class Point {
     private int count, xLoc, yLoc;
     private String occupyingColor;
+    private static final int CHECKER_DIAMETER = 32;
     public Point(int x, int y)  {
         this.xLoc = x;
         this.yLoc = y;
@@ -40,9 +41,9 @@ public class Point {
         }
         for(int i=0;i<count;i++) {
             if (yLoc == 51 || yLoc == 327) {
-                g.fillOval(xLoc, yLoc + i*32, 32, 32);
+                g.fillOval(xLoc, yLoc + i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
             } else {
-                g.fillOval(xLoc, yLoc - i*32, 32, 32);
+                g.fillOval(xLoc, yLoc - i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
             }
         }
     }

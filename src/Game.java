@@ -1,7 +1,7 @@
 import static java.lang.Thread.sleep;
 
 //Main Class
-public class Controller {
+public class Game {
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
@@ -9,17 +9,19 @@ public class Controller {
     private static int WIDTH = 1280, HEIGHT = 720;
     private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
+    private final commandHandler commands = new commandHandler();
+    private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
+
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
-            commandHandler commands = new commandHandler();
-            Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
+            Game game = new Game();
             //Sleeping to avoid race condition
             sleep(1000);
-            initPoints();
-            startingPositions(window);
+            game.initPoints();
+            game.startingPositions(game.window);
             sleep(2000);
-            demoCheckers(window);
+            game.demoCheckers(game.window);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -32,13 +34,13 @@ public class Controller {
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
 
     //Create points and assign the them their pixel locations
-    private static void initPoints() {
+    private void initPoints() {
         for(int i=0; i<26; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
     }
     //Set up checkers in their initial positions
-    private static void startingPositions(Window window) {
+    private void startingPositions(Window window) {
         for(int i=0; i<30; i++) {
             if(i==0) {
                 pointList[i].addChecker();
@@ -106,7 +108,7 @@ public class Controller {
             }
         }
     }
-    public static void demoCheckers(Window window) {
+    public void demoCheckers(Window window) {
         try {
             window.board.move(pointList[0], pointList[1], window);
             sleep(3000);
