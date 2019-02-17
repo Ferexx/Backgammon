@@ -1,20 +1,28 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
 import static java.lang.Thread.sleep;
 
-public class Board {
+public class Board extends JPanel {
 
     //Image icon declaration for board
-    private static ImageIcon image;
+    private BufferedImage boardImg;
+    private Graphics2D g;
 
     public Board(Window window){
-        //Assigning an image to a new Board object
-        image = new ImageIcon(window.getClass().getResource("Resources/SmallBoard.png"));
-        //Giving the board a padding border
-        window.boardLabel = new JLabel(image);
-        window.boardLabel.setBorder(new EmptyBorder( 16, 16, 16, 48 ) );
         //SoundManager.playSound();
+        try {
+            boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
     public void move(Point from, Point to, Window window) {
         from.removeChecker();
@@ -23,18 +31,24 @@ public class Board {
         update(window);
     }
     public void update(Window window) {
-        try{
-            window.boardLabel.repaint();
-            sleep(100);
-            for(int i=0;i<26;i++) {
-                Game.pointList[i].drawPoint(window);
+    }
+    public void paintComponent(Graphics graphics) {
+        super.paintComponent(graphics);
+        g = (Graphics2D) graphics;
+        //Draw board
+        g.drawImage(boardImg,0,0,743, 600, null);
+        //Drawing numbers on points
+        g.setColor(Color.WHITE);
+        g.setFont(new Font("Courier",Font.BOLD,16));
+        for(int i=0;i<25;i++) {
+            if(Game.pointList[i].getyLoc()==51) {
+                g.drawString(Integer.toString(i), Game.pointList[i].getxLoc(), Game.pointList[i].getyLoc() + 32);
             }
+            else {
+                g.drawString(Integer.toString(i),Game.pointList[i].getxLoc(),Game.pointList[i].getyLoc()-32);
+            }
+            Game.pointList[i].drawPoint(g);
         }
-        catch (Exception e) {
-            e.printStackTrace();
-            System.exit(-1);
-        }
-
 
     }
 }

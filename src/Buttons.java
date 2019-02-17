@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    protected static JTextField textField = new JTextField();
+    protected JTextField textField = new JTextField();
     private commandHandler commands = new commandHandler();
 
     //action listener for enter button

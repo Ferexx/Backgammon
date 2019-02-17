@@ -18,7 +18,7 @@ public class Game {
             Game game = new Game();
             //Sleeping to avoid race condition
             sleep(1000);
-            game.initPoints();
+
             game.startingPositions(game.window);
             sleep(2000);
             game.demoCheckers(game.window);
@@ -41,12 +41,12 @@ public class Game {
     }
     //Set up checkers in their initial positions
     private void startingPositions(Window window) {
+        //TODO: Get rid of for loop
         for(int i=0; i<30; i++) {
             if(i==0) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint(window);
             }
             if(i==5) {
                 pointList[i].addChecker();
@@ -55,7 +55,6 @@ public class Game {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint(window);
 
             }
             if(i==7) {
@@ -63,7 +62,6 @@ public class Game {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint(window);
             }
             if(i==11) {
                 pointList[i].addChecker();
@@ -72,7 +70,6 @@ public class Game {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint(window);
             }
             if(i==12) {
                 pointList[i].addChecker();
@@ -81,14 +78,12 @@ public class Game {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint(window);
             }
             if(i==16) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint(window);
 
             }
             if(i==18) {
@@ -98,13 +93,11 @@ public class Game {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Red");
-                pointList[i].drawPoint(window);
             }
             if(i==23) {
                 pointList[i].addChecker();
                 pointList[i].addChecker();
                 pointList[i].setColor("Black");
-                pointList[i].drawPoint(window);
             }
         }
     }
