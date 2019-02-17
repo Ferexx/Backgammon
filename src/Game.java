@@ -3,6 +3,9 @@ import static java.lang.Thread.sleep;
 //Main Class
 public class Game {
 
+    public static String player1;
+    public static String player2;
+
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
@@ -15,6 +18,7 @@ public class Game {
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
+
             Game game = new Game();
             //Sleeping to avoid race condition
             sleep(1000);
@@ -123,4 +127,5 @@ public class Game {
             System.exit(-1);
         }
     }
+
 }
