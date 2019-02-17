@@ -9,7 +9,8 @@ public class SoundManager {
 
         //Sound file for launching game - credit to Ankish
         try {
-            AudioInputStream audio = AudioSystem.getAudioInputStream(new File("src/Resources/Ankish.wav"));
+            //AudioInputStream defaultSound = AudioSystem.getClass().getResource("resources/Ankish.wav");
+            AudioInputStream audio = AudioSystem.getAudioInputStream(new File(""));
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
