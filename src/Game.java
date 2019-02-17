@@ -15,10 +15,10 @@ public class Game {
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
+            initPoints();
             Game game = new Game();
             //Sleeping to avoid race condition
             sleep(1000);
-
             game.startingPositions(game.window);
             sleep(2000);
             game.demoCheckers(game.window);
@@ -34,7 +34,7 @@ public class Game {
     private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
 
     //Create points and assign the them their pixel locations
-    private void initPoints() {
+    private static void initPoints() {
         for(int i=0; i<26; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }

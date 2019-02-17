@@ -42,10 +42,10 @@ public class Board extends JPanel {
         g.setFont(new Font("Courier",Font.BOLD,16));
         for(int i=0;i<25;i++) {
             if(Game.pointList[i].getyLoc()==51) {
-                g.drawString(Integer.toString(i), Game.pointList[i].getxLoc(), Game.pointList[i].getyLoc() + 32);
+                g.drawString(Integer.toString(i), Game.pointList[i].getxLoc(), Game.pointList[i].getyLoc() - 32);
             }
             else {
-                g.drawString(Integer.toString(i),Game.pointList[i].getxLoc(),Game.pointList[i].getyLoc()-32);
+                g.drawString(Integer.toString(i),Game.pointList[i].getxLoc(),Game.pointList[i].getyLoc() + 32);
             }
             Game.pointList[i].drawPoint(g);
         }
