@@ -1,13 +1,16 @@
 import java.awt.*;
 
 public class Point {
+
     private int count, xLoc, yLoc;
     private String occupyingColor;
     private static final int CHECKER_DIAMETER = 32;
+
     public Point(int x, int y)  {
         this.xLoc = x;
         this.yLoc = y;
     }
+
     public void addChecker() {
         count++;
     }

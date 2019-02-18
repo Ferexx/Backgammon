@@ -1,12 +1,8 @@
 import javax.imageio.ImageIO;
+import java.io.IOException;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import static java.lang.Thread.sleep;
 
 public class Board extends JPanel {
 
@@ -24,19 +20,22 @@ public class Board extends JPanel {
             System.exit(-1);
         }
     }
+
     public void move(Point from, Point to, Window window) {
         from.removeChecker();
         to.addChecker();
         to.setColor(from.getColor());
         update(window);
     }
+
     public void update(Window window) {
     }
+
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         g = (Graphics2D) graphics;
         //Draw board
-        g.drawImage(boardImg,0,0,743, 600, null);
+        g.drawImage(boardImg,250,16,743, 600, null);
         //Drawing numbers on points
         g.setColor(Color.WHITE);
         g.setFont(new Font("Courier",Font.BOLD,16));
@@ -49,6 +48,5 @@ public class Board extends JPanel {
             }
             Game.pointList[i].drawPoint(g);
         }
-
     }
 }

@@ -28,6 +28,7 @@ public class Game {
             System.exit(-1);
         }
     }
+
     public static Point[] pointList = new Point[26];
     //Last two points are bar points
     private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665,370,370};
@@ -39,6 +40,7 @@ public class Game {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
     }
+
     //Set up checkers in their initial positions
     private void startingPositions(Window window) {
         //TODO: Get rid of for loop
@@ -101,6 +103,7 @@ public class Game {
             }
         }
     }
+
     public void demoCheckers(Window window) {
         try {
             window.board.move(pointList[0], pointList[1], window);

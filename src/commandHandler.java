@@ -1,6 +1,8 @@
 public class commandHandler {
 
-    public commandHandler() {}
+    public commandHandler() {
+    }
+
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
     public void appendText(String text, Window window) {
         if(text.equalsIgnoreCase("quit")) {
