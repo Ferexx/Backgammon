@@ -1,5 +1,3 @@
-import javafx.scene.control.TextInputDialog;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
