@@ -57,13 +57,13 @@ public class Game {
 
     public void demoCheckers(Window window) {
         try {
-            window.board.move(pointList[0], pointList[1], window);
+            window.board.move(pointList[0], pointList[1]);
             sleep(3000);
-            window.board.move(pointList[1], pointList[10], window);
+            window.board.move(pointList[1], pointList[10]);
             sleep(3000);
-            window.board.move(pointList[10], pointList[16], window);
+            window.board.move(pointList[10], pointList[16]);
             sleep(3000);
-            window.board.move(pointList[16], pointList[23], window);
+            window.board.move(pointList[16], pointList[23]);
         }
         catch (Exception e) {
             e.printStackTrace();

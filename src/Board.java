@@ -10,7 +10,6 @@ public class Board extends JPanel {
     //Image icon declaration for board
     private BufferedImage boardImg;
     private Graphics2D g;
-    private static final int CHECKER_DIAMETER = 32;
 
     public Board(Window window){
         //SoundManager.playSound();
@@ -23,14 +22,16 @@ public class Board extends JPanel {
         }
     }
 
-    public void move(Point from, Point to, Window window) {
+    public void move(Point from, Point to) {
         from.removeChecker();
         to.addChecker();
         to.setColor(from.getColor());
-        update(window);
+        update();
     }
 
-    public void update(Window window) {
+    public void update() {
+        revalidate();
+        repaint();
     }
 
     public void paintComponent(Graphics graphics) {
