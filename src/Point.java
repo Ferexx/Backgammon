@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
 
 public class Point {
 
@@ -19,6 +20,12 @@ public class Point {
     }
     public void clearCheckers() {
         count = 0;
+    }
+    public void setCheckers(int count) {
+        this.count=count;
+    }
+    public int getCount() {
+        return count;
     }
     public int getxLoc() {
         return this.xLoc;
@@ -41,7 +48,7 @@ public class Point {
             g.setColor(Color.RED);
         }
         for(int i=0;i<count;i++) {
-            if (yLoc == 51 || yLoc == 327) {
+            if (yLoc == 60 || yLoc == 357) {
                 g.fillOval(xLoc, yLoc + i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
             } else {
                 g.fillOval(xLoc, yLoc - i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
