@@ -5,12 +5,15 @@ import java.awt.event.ActionListener;
 
 public class Buttons {
 
-    protected JTextField textField = new JTextField();
+    /*int player1Set = 0;
+    int player2Set = 1;*/
+
+    protected JTextField textField;
+
     private commandHandler commands = new commandHandler();
 
     //action listener for enter button
     public void enterPerformed(ActionEvent e) {
-
     }
 
     //action listener for reset button
@@ -20,14 +23,41 @@ public class Buttons {
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
     public void enterCommandPerformed(ActionEvent e, Window window) {
+
+        //loads of commented out code for player handling. Will be fixed at later date, using JavaFX for now
+        /*if(player1Set == 0)
+        {
+            player1(e, window);
+        }
+        if(player2Set == 0)
+        {
+            player2(e, window);
+        }*/
         String command = textField.getText();
         System.out.println("Command = " + command);
         textField.setText(null);
         commands.appendText(command, window);
+        /*player1Set = 1;
+        player2Set = 1;*/
     }
+
+    /*public void player1(ActionEvent e, Window window)
+    {
+        String name = textField.getText();
+        Player p1 = new Player(name);
+        window.infoLabel.append("\nWelcome " + p1.getName() + " to the game.");
+    }
+
+    public void player2(ActionEvent e, Window window)
+    {
+        String name = textField.getText();
+        Player p2 = new Player(name);
+        window.infoLabel.append("Welcome " + p2.getName() + " to the game.");
+    }*/
 
     //MAKING BUTTONS
     public Buttons(Window window){
+
         //All button creation from Window.java will be in here soon
         //MENU BAR BUTTONS AND BUTTON OPTIONS
         JMenuBar mb = new JMenuBar();
@@ -51,11 +81,12 @@ public class Buttons {
         //label for user commands
         JLabel label = new JLabel("Enter Command");
 
-
         //Text field accepts up to 20 characters
         textField = new JTextField(20);
         JButton enter = new JButton("Enter");
         JButton reset = new JButton("Reset");
+
+
 
         //Action Listener for New Game Option
         //New Game places the checkers in starting positions
@@ -79,7 +110,6 @@ public class Buttons {
         textField.addActionListener(enterCommand);
         enter.addActionListener(enterCommand);
 
-
         //Adding these interfaces to the panel
         panel.add(label);
         panel.add(textField);
@@ -88,5 +118,7 @@ public class Buttons {
 
         window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
         window.frame.getContentPane().add(BorderLayout.NORTH, mb);
+
+
     }
 }

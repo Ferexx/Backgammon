@@ -1,12 +1,9 @@
 import javax.imageio.ImageIO;
+import java.awt.geom.Ellipse2D;
+import java.io.IOException;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import static java.lang.Thread.sleep;
 
 public class Board extends JPanel {
 
@@ -14,7 +11,7 @@ public class Board extends JPanel {
     private BufferedImage boardImg;
     private Graphics2D g;
 
-    public Board(Window window){
+    public Board(){
         //SoundManager.playSound();
         try {
             boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));
@@ -24,31 +21,35 @@ public class Board extends JPanel {
             System.exit(-1);
         }
     }
-    public void move(Point from, Point to, Window window) {
+
+    public void move(Point from, Point to) {
         from.removeChecker();
         to.addChecker();
         to.setColor(from.getColor());
-        update(window);
+        update();
     }
-    public void update(Window window) {
+
+    public void update() {
+        revalidate();
+        repaint();
     }
+
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         g = (Graphics2D) graphics;
         //Draw board
-        g.drawImage(boardImg,0,0,743, 600, null);
+        g.drawImage(boardImg,265,20,743, 600, null);
         //Drawing numbers on points
-        g.setColor(Color.WHITE);
         g.setFont(new Font("Courier",Font.BOLD,16));
-        for(int i=0;i<25;i++) {
-            if(Game.pointList[i].getyLoc()==51) {
-                g.drawString(Integer.toString(i), Game.pointList[i].getxLoc(), Game.pointList[i].getyLoc() + 32);
+        for(int i=0;i<24;i++) {
+            g.setColor(Color.BLACK);
+            if(Game.pointList[i].getyLoc()==60) {
+                g.drawString(Integer.toString(i), Game.pointList[i].getxLoc()+5, Game.pointList[i].getyLoc()-10);
             }
             else {
-                g.drawString(Integer.toString(i),Game.pointList[i].getxLoc(),Game.pointList[i].getyLoc()-32);
+                g.drawString(Integer.toString(i),Game.pointList[i].getxLoc()+5,Game.pointList[i].getyLoc()+52);
             }
             Game.pointList[i].drawPoint(g);
         }
-
     }
 }

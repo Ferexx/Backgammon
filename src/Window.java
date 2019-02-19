@@ -3,16 +3,13 @@ import javafx.scene.control.TextInputDialog;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
-//Java awt layouts
 import java.awt.*;
 import java.util.Optional;
 
 //Window class is the class that makes the window, and controls the objects present on it
 public class Window extends JFrame {
     //Used for the this context
-    int x, y, width, height;
-    public Board board = new Board(this);
+    public Board board = new Board();
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
@@ -73,7 +70,7 @@ public class Window extends JFrame {
         //Adding components to JFrame
         //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));    //might need for positioning
         //Adding die JPanel to JFrame
-        //frame.getContentPane().add(BorderLayout.CENTER, diePanel);  //STILL TWEAKING - alternatively might need for tweaking
+        //frame.getContentPane().add(BorderLayout.CENTER, diePanel);
         //Adding board image to JFrame
         frame.getContentPane().add(BorderLayout.CENTER, board);
         //Adding info JLabel to JFrame

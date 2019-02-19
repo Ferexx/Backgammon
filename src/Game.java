@@ -3,14 +3,14 @@ import static java.lang.Thread.sleep;
 //Main Class
 public class Game {
 
-    public static String player1;
-    public static String player2;
+    public String player1;
+    public String player2;
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
-    private static int WIDTH = 1280, HEIGHT = 720;
-    private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
+    private int WIDTH = 1280, HEIGHT = 720;
+    private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
     private final commandHandler commands = new commandHandler();
     private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
@@ -18,12 +18,8 @@ public class Game {
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         try {
-
+            initPoints();
             Game game = new Game();
-            //Sleeping to avoid race condition
-            sleep(1000);
-
-            game.startingPositions(game.window);
             sleep(2000);
             game.demoCheckers(game.window);
         }
@@ -32,88 +28,45 @@ public class Game {
             System.exit(-1);
         }
     }
+
     public static Point[] pointList = new Point[26];
     //Last two points are bar points
-    private static int[] pointXCoords = new int[]{665,615,566,516,466,415,324,274,224,174,125,75,75,125,174,224,274,324,416,466,516,566,615,665,370,370};
-    private static int[] pointYCoords = new int[]{540,540,540,540,540,540,540,540,540,540,540,540,51,51,51,51,51,51,51,51,51,51,51,51,327,263};
+    private static int[] pointXCoords = new int[]{915,865,816,766,716,665,574,524,474,424,375,325,325,375,424,474,524,574,665,716,766,816,865,915,620,620};
+    private static int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233};
 
-    //Create points and assign the them their pixel locations
-    private void initPoints() {
+    //Create points and assign them their pixel locations
+    private static void initPoints() {
         for(int i=0; i<26; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
+        pointList[0].setCheckers(2);
+        pointList[0].setColor("Red");
+        pointList[5].setCheckers(5);
+        pointList[5].setColor("Black");
+        pointList[7].setCheckers(3);
+        pointList[7].setColor("Black");
+        pointList[11].setCheckers(5);
+        pointList[11].setColor("Red");
+        pointList[12].setCheckers(5);
+        pointList[12].setColor("Black");
+        pointList[16].setCheckers(3);
+        pointList[16].setColor("Red");
+        pointList[18].setCheckers(5);
+        pointList[18].setColor("Red");
+        pointList[23].setCheckers(2);
+        pointList[23].setColor("Black");
     }
-    //Set up checkers in their initial positions
-    private void startingPositions(Window window) {
-        //TODO: Get rid of for loop
-        for(int i=0; i<30; i++) {
-            if(i==0) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Red");
-            }
-            if(i==5) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Black");
 
-            }
-            if(i==7) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Black");
-            }
-            if(i==11) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Red");
-            }
-            if(i==12) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Black");
-            }
-            if(i==16) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Red");
 
-            }
-            if(i==18) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Red");
-            }
-            if(i==23) {
-                pointList[i].addChecker();
-                pointList[i].addChecker();
-                pointList[i].setColor("Black");
-            }
-        }
-    }
     public void demoCheckers(Window window) {
         try {
-            window.board.move(pointList[0], pointList[1], window);
+            window.board.move(pointList[0], pointList[1]);
             sleep(3000);
-            window.board.move(pointList[1], pointList[10], window);
+            window.board.move(pointList[1], pointList[10]);
             sleep(3000);
-            window.board.move(pointList[10], pointList[16], window);
+            window.board.move(pointList[10], pointList[16]);
             sleep(3000);
-            window.board.move(pointList[16], pointList[23], window);
+            window.board.move(pointList[16], pointList[23]);
         }
         catch (Exception e) {
             e.printStackTrace();
