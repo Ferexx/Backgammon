@@ -11,11 +11,11 @@ public class Buttons {
     int player2Set = 1;*/
 
     protected static JTextField textField = new JTextField();
+
     private commandHandler commands = new commandHandler();
 
     //action listener for enter button
     public void enterPerformed(ActionEvent e) {
-
     }
 
     //action listener for reset button
@@ -83,7 +83,6 @@ public class Buttons {
         //label for user commands
         JLabel label = new JLabel("Enter Command");
 
-
         //Text field accepts up to 20 characters
         textField = new JTextField(20);
         JButton enter = new JButton("Enter");
@@ -112,9 +111,6 @@ public class Buttons {
         //Adding action listeners for both.
         textField.addActionListener(enterCommand);
         enter.addActionListener(enterCommand);
-
-
-
 
         //Adding these interfaces to the panel
         panel.add(label);

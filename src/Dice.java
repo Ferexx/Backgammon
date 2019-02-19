@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.util.Random;
 
+//TODO - make Dice graphics the same as Board graphics and position accordingly
 public class Dice {
 
     //creating dice images and dice roll objects per player

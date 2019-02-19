@@ -1,8 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
-
-//Java awt layouts
 import java.awt.*;
 import java.util.Optional;
 
@@ -20,7 +18,6 @@ public class Window extends JFrame {
     //JPanel to contain all die JLabels
     protected JPanel diePanel= new JPanel();
 
-    public JLabel boardLabel;     //Label with the board image on it
     protected JLabel dieLabel1_1;    //Label with player 1 Die 1 image on it
     protected JLabel dieLabel1_2;    //Label with player 1 Die 2 image on it
     protected  JLabel dieLabel2_1;    //Label with player 2 Die 1 image on it
@@ -71,11 +68,10 @@ public class Window extends JFrame {
 
         //Adding components to JFrame
         //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));    //might need for positioning
-        frame.getContentPane().add(BorderLayout.CENTER, diePanel);  //STILL TWEAKING - alternatively might need for tweaking
-        //Adding board JLabel to JFrame
-        frame.getContentPane().add(BorderLayout.LINE_END, boardLabel);
         //Adding die JPanel to JFrame
-        frame.add(diePanel);
+        //frame.getContentPane().add(BorderLayout.CENTER, diePanel);
+        //Adding board image to JFrame
+        frame.getContentPane().add(BorderLayout.CENTER, board);
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
         frame.setVisible(true);
