@@ -1,4 +1,4 @@
-public class Player {
+class Player {
     private String PlayerName;
 
     public Player(String name)

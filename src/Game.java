@@ -1,7 +1,7 @@
 import static java.lang.Thread.sleep;
 
 //Main Class
-public class Game {
+class Game {
 
     public String player1;
     public String player2;
@@ -9,7 +9,8 @@ public class Game {
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
-    private int WIDTH = 1280, HEIGHT = 720;
+    private final int WIDTH = 1280;
+    private final int HEIGHT = 720;
     private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
     private final commandHandler commands = new commandHandler();
@@ -29,10 +30,10 @@ public class Game {
         }
     }
 
-    public static Point[] pointList = new Point[26];
+    public static final Point[] pointList = new Point[26];
     //Last two points are bar points
-    private static int[] pointXCoords = new int[]{915,865,816,766,716,665,574,524,474,424,375,325,325,375,424,474,524,574,665,716,766,816,865,915,620,620};
-    private static int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233};
+    private static final int[] pointXCoords = new int[]{915,865,816,766,716,665,574,524,474,424,375,325,325,375,424,474,524,574,665,716,766,816,865,915,620,620};
+    private static final int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233};
 
     //Create points and assign them their pixel locations
     private static void initPoints() {
@@ -58,7 +59,7 @@ public class Game {
     }
 
 
-    public void demoCheckers(Window window) {
+    private void demoCheckers(Window window) {
         try {
             window.board.move(pointList[0], pointList[1]);
             sleep(3000);

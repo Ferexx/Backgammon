@@ -1,5 +1,4 @@
 import javax.imageio.ImageIO;
-import java.awt.geom.Ellipse2D;
 import java.io.IOException;
 import javax.swing.*;
 import java.awt.*;
@@ -29,7 +28,7 @@ public class Board extends JPanel {
         update();
     }
 
-    public void update() {
+    private void update() {
         revalidate();
         repaint();
     }
