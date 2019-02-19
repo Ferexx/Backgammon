@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Optional;
 
 //Window class is the class that makes the window, and controls the objects present on it
 public class Window extends JFrame {
@@ -74,5 +75,16 @@ public class Window extends JFrame {
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
         frame.setVisible(true);
+
+        //Player name getting
+        JFrame p1frame = new JFrame("Player 1");
+        JFrame p2frame = new JFrame("Player 2");
+        String p1 = JOptionPane.showInputDialog(p1frame, "Player 1, please enter your name");
+        String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
+        Player player1 = new Player(p1);
+        Player player2 = new Player(p2);
+        infoLabel.append("\nWelcome to the game " + player1.getName() + ".");
+        infoLabel.append("\nWelcome to the game " + player2.getName() + ".");
+
     }
 }

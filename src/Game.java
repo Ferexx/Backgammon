@@ -3,6 +3,9 @@ import static java.lang.Thread.sleep;
 //Main Class
 public class Game {
 
+    public static String player1;
+    public static String player2;
+
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
@@ -70,4 +73,5 @@ public class Game {
             System.exit(-1);
         }
     }
+
 }
