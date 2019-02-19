@@ -3,14 +3,14 @@ import static java.lang.Thread.sleep;
 //Main Class
 public class Game {
 
-    public static String player1;
-    public static String player2;
+    public String player1;
+    public String player2;
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
     protected static String PlayerPlaying = "Player1";
-    private static int WIDTH = 1280, HEIGHT = 720;
-    private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
+    private int WIDTH = 1280, HEIGHT = 720;
+    private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
 
     private final commandHandler commands = new commandHandler();
     private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);

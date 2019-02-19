@@ -2,13 +2,11 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Optional;
 
 //Window class is the class that makes the window, and controls the objects present on it
 public class Window extends JFrame {
     //Used for the this context
-    int x, y, width, height;
-    public Board board = new Board(this);
+    public Board board = new Board();
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame

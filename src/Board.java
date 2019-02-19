@@ -11,7 +11,7 @@ public class Board extends JPanel {
     private BufferedImage boardImg;
     private Graphics2D g;
 
-    public Board(Window window){
+    public Board(){
         //SoundManager.playSound();
         try {
             boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));

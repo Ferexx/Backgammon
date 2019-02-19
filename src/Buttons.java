@@ -8,7 +8,7 @@ public class Buttons {
     /*int player1Set = 0;
     int player2Set = 1;*/
 
-    protected static JTextField textField = new JTextField();
+    protected JTextField textField;
 
     private commandHandler commands = new commandHandler();
 

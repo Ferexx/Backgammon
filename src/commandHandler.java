@@ -40,7 +40,7 @@ public class commandHandler {
     }
 
     //Quits
-    private static void catchQuit() {
+    private void catchQuit() {
         System.exit(0);
     }
 }
