@@ -1,7 +1,7 @@
-public class commandHandler {
+class commandHandler {
 
-    String p1Name = "";
-    String p2Name = "";
+    private String p1Name = "";
+    private String p2Name = "";
 
     public commandHandler() {}
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.

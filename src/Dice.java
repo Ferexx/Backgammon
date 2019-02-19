@@ -3,19 +3,19 @@ import javax.swing.border.EmptyBorder;
 import java.util.Random;
 
 //TODO - make Dice graphics the same as Board graphics and position accordingly
-public class Dice {
+class Dice {
 
     //creating dice images and dice roll objects per player
-    private ImageIcon image1;
-    private ImageIcon image2;
-    private ImageIcon image3;
-    private ImageIcon image4;
-    private ImageIcon image5;
-    private ImageIcon image6;
-    public int diceRollP1_1;
-    public int diceRollP1_2;
-    public int diceRollP2_1;
-    public int diceRollP2_2;
+    private final ImageIcon image1;
+    private final ImageIcon image2;
+    private final ImageIcon image3;
+    private final ImageIcon image4;
+    private final ImageIcon image5;
+    private final ImageIcon image6;
+    private int diceRollP1_1;
+    private int diceRollP1_2;
+    private int diceRollP2_1;
+    private int diceRollP2_2;
 
     public Dice(Window window) {
 
@@ -40,7 +40,7 @@ public class Dice {
 
     }
 
-    public void drawP1Dice(Window window) {
+    private void drawP1Dice(Window window) {
 
         //Player 1 random roll
         Random random = new Random();
@@ -79,7 +79,7 @@ public class Dice {
         }
     }
 
-    public void drawP2Dice(Window window) {
+    private void drawP2Dice(Window window) {
         //Player 2 random roll
         Random random = new Random();
         diceRollP2_1 = random.nextInt(6) + 1;

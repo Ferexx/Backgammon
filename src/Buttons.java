@@ -3,26 +3,26 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Buttons {
+class Buttons {
 
     /*int player1Set = 0;
     int player2Set = 1;*/
 
-    protected JTextField textField;
+    private JTextField textField;
 
     private commandHandler commands = new commandHandler();
 
     //action listener for enter button
-    public void enterPerformed(ActionEvent e) {
+    private void enterPerformed(ActionEvent e) {
     }
 
     //action listener for reset button
-    public void resetPerformed(ActionEvent e, Window window) {
+    private void resetPerformed(ActionEvent e, Window window) {
         commands.restartText(window);
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
-    public void enterCommandPerformed(ActionEvent e, Window window) {
+    private void enterCommandPerformed(ActionEvent e, Window window) {
 
         //loads of commented out code for player handling. Will be fixed at later date, using JavaFX for now
         /*if(player1Set == 0)

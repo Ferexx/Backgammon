@@ -4,23 +4,23 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 //Window class is the class that makes the window, and controls the objects present on it
-public class Window extends JFrame {
+class Window extends JFrame {
     //Used for the this context
-    public Board board = new Board();
+    public final Board board = new Board();
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
     //Frame for containing panel, label, and image in Window
-    protected JFrame frame = new JFrame();
+    final JFrame frame = new JFrame();
 
     //JPanel to contain all die JLabels
-    protected JPanel diePanel= new JPanel();
+    private final JPanel diePanel= new JPanel();
 
-    protected JLabel dieLabel1_1;    //Label with player 1 Die 1 image on it
-    protected JLabel dieLabel1_2;    //Label with player 1 Die 2 image on it
-    protected  JLabel dieLabel2_1;    //Label with player 2 Die 1 image on it
-    protected JLabel dieLabel2_2;    //Label with player 2 Die 2 image on it
-    protected JTextArea infoLabel;   //Label with info text area
+    JLabel dieLabel1_1;    //Label with player 1 Die 1 image on it
+    JLabel dieLabel1_2;    //Label with player 1 Die 2 image on it
+    JLabel dieLabel2_1;    //Label with player 2 Die 1 image on it
+    JLabel dieLabel2_2;    //Label with player 2 Die 2 image on it
+    final JTextArea infoLabel;   //Label with info text area
 
     //Window constructor
     Window(int width, int height, String title, commandHandler commands) {

@@ -1,9 +1,10 @@
 import java.awt.*;
-import java.awt.geom.Ellipse2D;
 
 public class Point {
 
-    private int count, xLoc, yLoc;
+    private int count;
+    private final int xLoc;
+    private final int yLoc;
     private String occupyingColor;
     private static final int CHECKER_DIAMETER = 32;
 
