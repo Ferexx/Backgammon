@@ -10,6 +10,8 @@ import java.util.Optional;
 class Window extends JFrame {
     //Used for the this context
     public final Board board = new Board();
+    public Dice dice1 = new Dice();
+    public Dice dice2 = new Dice();
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
@@ -18,11 +20,6 @@ class Window extends JFrame {
 
     //JPanel to contain all die JLabels
     private final JPanel diePanel= new JPanel();
-
-    JLabel dieLabel1_1;    //Label with player 1 Die 1 image on it
-    JLabel dieLabel1_2;    //Label with player 1 Die 2 image on it
-    JLabel dieLabel2_1;    //Label with player 2 Die 1 image on it
-    JLabel dieLabel2_2;    //Label with player 2 Die 2 image on it
     final JTextArea infoLabel;   //Label with info text area
 
     //Window constructor
@@ -41,10 +38,9 @@ class Window extends JFrame {
         frame.setLocationRelativeTo(null);
         //Ensures that the program quits when you hit (X)
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
 
         //Creating window components
-        //Creating dice
-        Dice dice = new Dice(this);
         //Creating Buttons
         new Buttons(this);
 
@@ -56,25 +52,26 @@ class Window extends JFrame {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
         commands.restartText(this);
-        infoLabel.append(dice.getDice1());
-        infoLabel.append(dice.getDice2());
+        infoLabel.append(dice1.getDice1());
+        //infoLabel.append(dice2.getDice2());
+        //infoLabel.append(dice.getDice2());
 
         //Adding dice JLabels to JPanel, and then to JFrame - Still tweaking
+        /*
         diePanel.setOpaque(true);
         diePanel.add(dieLabel1_1);  //Player 1 Dice 1
         diePanel.add(dieLabel1_2);  //Player 1 Dice 2
         diePanel.add(dieLabel2_1);  //Player 2 Dice 1
         diePanel.add(dieLabel2_2);  //Player 2 Dice 2
-
+        */
 
         //Adding components to JFrame
-        //diePanel.setLayout(new BoxLayout(diePanel, BoxLayout.Y_AXIS));    //might need for positioning
-        //Adding die JPanel to JFrame
-        //frame.getContentPane().add(BorderLayout.CENTER, diePanel);
-        //Adding board image to JFrame
-        frame.getContentPane().add(BorderLayout.CENTER, board);
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
+        //Adding die JPanel to JFrame
+        frame.getContentPane().add(BorderLayout.CENTER, dice1);
+        //Adding board image to JFrame
+        frame.getContentPane().add(board);
         frame.setVisible(true);
 
         //Player name getting
