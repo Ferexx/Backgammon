@@ -15,8 +15,11 @@ public class Dice extends JPanel {
     private BufferedImage dice5Img;
     private BufferedImage dice6Img;
     private Graphics2D g;
-    private int diceRollP1_1;
-    private int diceRollP1_2;
+    Random random = new Random();
+    int diceRollP1_1 = random.nextInt(6) + 1;
+    int diceRollP1_2 = random.nextInt(6) + 1;
+    int diceRollP2_1 = random.nextInt(6) + 1;
+    int diceRollP2_2 = random.nextInt(6) + 1;
 
     public Dice(){
         //SoundManager.playSound();
@@ -32,29 +35,82 @@ public class Dice extends JPanel {
             e.printStackTrace();
             System.exit(-1);
         }
-
-        Random random = new Random();
-        int diceRollP1_1 = random.nextInt(6) + 1;
-        int diceRollP1_2 = random.nextInt(6) + 1;
     }
 
-    private void update() {
-        revalidate();
-        repaint();
-    }
-
-    public void paintComponent(Graphics graphics) {
+    public void drawDice(Graphics2D graphics, Boolean player1) {
         super.paintComponent(graphics);
-        g = (Graphics2D) graphics;
+        g = graphics;
+
         //Draw Dice1
-        g.drawImage(dice1Img,128,0,45, 45, null);
+
+        if(player1) {
+
+            if (diceRollP1_1 == 1) {
+                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+            } else if (diceRollP1_1 == 2) {
+                g.drawImage(dice2Img, 86, 120, 45, 45, null);
+            } else if (diceRollP1_1 == 3) {
+                g.drawImage(dice3Img, 86, 120, 45, 45, null);
+            } else if (diceRollP1_1 == 4) {
+                g.drawImage(dice4Img, 86, 120, 45, 45, null);
+            } else if (diceRollP1_1 == 5) {
+                g.drawImage(dice5Img, 86, 120, 45, 45, null);
+            } else if (diceRollP1_1 == 6) {
+                g.drawImage(dice6Img, 86, 120, 45, 45, null);
+            }
+
+            //PLAYER 1 DICE 2 CREATION
+            if (diceRollP1_2 == 1) {
+                g.drawImage(dice1Img, 140, 166, 45, 45, null);
+            } else if (diceRollP1_2 == 2) {
+                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+            } else if (diceRollP1_2 == 3) {
+                g.drawImage(dice3Img, 140, 166, 45, 45, null);
+            } else if (diceRollP1_2 == 4) {
+                g.drawImage(dice4Img, 140, 166, 45, 45, null);
+            } else if (diceRollP1_2 == 5) {
+                g.drawImage(dice5Img, 140, 166, 45, 45, null);
+            } else if (diceRollP1_2 == 6) {
+                g.drawImage(dice6Img, 140, 166, 45, 45, null);
+            }
+        } else {
+
+            if (diceRollP2_1 == 1) {
+                g.drawImage(dice1Img, 86, 420, 45, 45, null);
+            } else if (diceRollP2_1 == 2) {
+                g.drawImage(dice2Img, 86, 420, 45, 45, null);
+            } else if (diceRollP2_1 == 3) {
+                g.drawImage(dice3Img, 86, 420, 45, 45, null);
+            } else if (diceRollP2_1 == 4) {
+                g.drawImage(dice4Img, 86, 420, 45, 45, null);
+            } else if (diceRollP2_1 == 5) {
+                g.drawImage(dice5Img, 86, 420, 45, 45, null);
+            } else if (diceRollP2_1 == 6) {
+                g.drawImage(dice6Img, 86, 420, 45, 45, null);
+            }
+
+            //PLAYER 2 DICE 2 CREATION
+            if (diceRollP2_2 == 1) {
+                g.drawImage(dice1Img, 140, 466, 45, 45, null);
+            } else if (diceRollP2_2 == 2) {
+                g.drawImage(dice2Img, 140, 466, 45, 45, null);
+            } else if (diceRollP2_2 == 3) {
+                g.drawImage(dice3Img, 140, 466, 45, 45, null);
+            } else if (diceRollP2_2 == 4) {
+                g.drawImage(dice4Img, 140, 466, 45, 45, null);
+            } else if (diceRollP2_2 == 5) {
+                g.drawImage(dice5Img, 140, 466, 45, 45, null);
+            } else if (diceRollP2_2 == 6) {
+                g.drawImage(dice6Img, 140, 466, 45, 45, null);
+            }
+        }
     }
 
     public String getDice1() {
         return "\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + "";
     }
 
-    /*public String getDice2() {
+    public String getDice2() {
         return "\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2 + "";
-    }*/
+    }
 }

@@ -8,8 +8,7 @@ import java.util.Optional;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
-    //Used for the this context
-    public final Board board = new Board();
+    public final GUI gui = new GUI(this);
     public Dice dice1 = new Dice();
     public Dice dice2 = new Dice();
 
@@ -19,12 +18,10 @@ class Window extends JFrame {
     final JFrame frame = new JFrame();
 
     //JPanel to contain all die JLabels
-    private final JPanel diePanel= new JPanel();
     final JTextArea infoLabel;   //Label with info text area
 
     //Window constructor
     Window(int width, int height, String title, commandHandler commands) {
-
         //Creating the window frame with title
         frame.setTitle(title);
         //Set window icon
@@ -40,7 +37,6 @@ class Window extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
-        //Creating window components
         //Creating Buttons
         new Buttons(this);
 
@@ -53,36 +49,13 @@ class Window extends JFrame {
         infoLabel.setBorder(border);
         commands.restartText(this);
         infoLabel.append(dice1.getDice1());
-        //infoLabel.append(dice2.getDice2());
-        //infoLabel.append(dice.getDice2());
-
-        //Adding dice JLabels to JPanel, and then to JFrame - Still tweaking
-        /*
-        diePanel.setOpaque(true);
-        diePanel.add(dieLabel1_1);  //Player 1 Dice 1
-        diePanel.add(dieLabel1_2);  //Player 1 Dice 2
-        diePanel.add(dieLabel2_1);  //Player 2 Dice 1
-        diePanel.add(dieLabel2_2);  //Player 2 Dice 2
-        */
+        infoLabel.append(dice2.getDice2());
 
         //Adding components to JFrame
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
-        //Adding die JPanel to JFrame
-        frame.getContentPane().add(BorderLayout.CENTER, dice1);
-        //Adding board image to JFrame
-        frame.getContentPane().add(board);
+        //Adding GUI image to JFrame
+        frame.getContentPane().add(gui);
         frame.setVisible(true);
-
-        //Player name getting
-        JFrame p1frame = new JFrame("Player 1");
-        JFrame p2frame = new JFrame("Player 2");
-        String p1 = JOptionPane.showInputDialog(p1frame, "Player 1, please enter your name");
-        String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
-        Player player1 = new Player(p1);
-        Player player2 = new Player(p2);
-        infoLabel.append("\nWelcome to the game " + player1.getName() + ".");
-        infoLabel.append("\nWelcome to the game " + player2.getName() + ".");
-
     }
 }

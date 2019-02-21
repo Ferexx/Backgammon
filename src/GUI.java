@@ -4,14 +4,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Board extends JPanel {
+public class GUI extends JPanel {
 
-    //Image icon declaration for board
+    //Image icon declaration for GUI
     private BufferedImage boardImg;
     private Graphics2D g;
+    private Window window;
 
-    public Board(){
+    public GUI(Window window){
         //SoundManager.playSound();
+        this.window = window;
         try {
             boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));
         }
@@ -36,7 +38,7 @@ public class Board extends JPanel {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         g = (Graphics2D) graphics;
-        //Draw board
+        //Draw GUI
         g.drawImage(boardImg,265,20,743, 600, null);
         //Drawing numbers on points
         g.setFont(new Font("Courier",Font.BOLD,16));
@@ -50,5 +52,7 @@ public class Board extends JPanel {
             }
             Game.pointList[i].drawPoint(g);
         }
+        window.dice1.drawDice(g, true);
+        window.dice2.drawDice(g, false);
     }
 }
