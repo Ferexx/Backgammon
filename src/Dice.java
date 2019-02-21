@@ -15,10 +15,11 @@ public class Dice extends JPanel {
     private BufferedImage dice5Img;
     private BufferedImage dice6Img;
     private Graphics2D g;
-    private int diceRollP1_1;
-    private int diceRollP1_2;
-    private int diceRollP2_1;
-    private int diceRollP2_2;
+    Random random = new Random();
+    int diceRollP1_1 = random.nextInt(6) + 1;
+    int diceRollP1_2 = random.nextInt(6) + 1;
+    int diceRollP2_1 = random.nextInt(6) + 1;
+    int diceRollP2_2 = random.nextInt(6) + 1;
 
     public Dice(){
         //SoundManager.playSound();
@@ -41,12 +42,6 @@ public class Dice extends JPanel {
         g = graphics;
 
         //Draw Dice1
-
-        Random random = new Random();
-        int diceRollP1_1 = random.nextInt(6) + 1;
-        int diceRollP1_2 = random.nextInt(6) + 1;
-        int diceRollP2_1 = random.nextInt(6) + 1;
-        int diceRollP2_2 = random.nextInt(6) + 1;
 
         if(player1) {
 
