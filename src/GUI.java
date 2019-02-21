@@ -4,14 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Board extends JPanel {
+public class GUI extends JPanel {
 
-    //Image icon declaration for board
+    //Image icon declaration for GUI
     private BufferedImage boardImg;
     private Graphics2D g;
     private Window window;
 
-    public Board(Window window){
+    public GUI(Window window){
         //SoundManager.playSound();
         this.window = window;
         try {
@@ -23,7 +23,7 @@ public class Board extends JPanel {
         }
     }
 
-    public void move(Point from, Point to) {
+    public void movePoint(Point from, Point to) {
         from.removeChecker();
         to.addChecker();
         to.setColor(from.getColor());
@@ -38,7 +38,7 @@ public class Board extends JPanel {
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         g = (Graphics2D) graphics;
-        //Draw board
+        //Draw GUI
         g.drawImage(boardImg,265,20,743, 600, null);
         //Drawing numbers on points
         g.setFont(new Font("Courier",Font.BOLD,16));

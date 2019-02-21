@@ -1,5 +1,3 @@
-import com.sun.corba.se.impl.activation.CommandHandler;
-
 import javax.swing.*;
 import java.util.Scanner;
 
@@ -31,7 +29,7 @@ class commandHandler {
             catchQuit();
         }
         if (text.equalsIgnoreCase("1 3")) {
-            //Window.board.move(Controller.pointList[0], Controller.pointList[2]);
+            //Window.GUI.movePoint(Controller.pointList[0], Controller.pointList[2]);
         }
 
         //Turn handler
@@ -53,7 +51,7 @@ class commandHandler {
             int point1 = sc.nextInt();
             int point2 = sc.nextInt();
             sc.close();
-            Board.move(point1, point2);
+            //GUI.movePoint(point1, point2);
 
         } catch (NumberFormatException e) {
         }

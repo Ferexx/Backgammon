@@ -6,7 +6,7 @@ import java.awt.*;
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
     //Used for the this context
-    public final Board board = new Board(this);
+    public final GUI GUI = new GUI(this);
     public Dice dice1 = new Dice();
     public Dice dice2 = new Dice();
 
@@ -55,8 +55,8 @@ class Window extends JFrame {
         //Adding components to JFrame
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
-        //Adding board image to JFrame
-        frame.getContentPane().add(board);
+        //Adding GUI image to JFrame
+        frame.getContentPane().add(GUI);
         frame.setVisible(true);
 
 
