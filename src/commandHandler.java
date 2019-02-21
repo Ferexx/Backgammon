@@ -57,7 +57,7 @@ class commandHandler {
                 window.infoLabel.append("\nPlease enter a valid move.");
             }
 
-            if(Game.pointList[point1] == null)
+            if(Game.pointList[point1].getCount() == 0)
             {
                 window.infoLabel.append("\nPlease enter a valid move.");
             }
