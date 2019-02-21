@@ -72,7 +72,7 @@ class commandHandler {
     //Used for restarting the game
     public void restartText(Window window) {
         window.infoLabel.setText(null);
-        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n\n");
+        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n\n");
     }
 
     //Quits
