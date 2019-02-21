@@ -3,8 +3,8 @@ import static java.lang.Thread.sleep;
 //Main Class
 class Game {
 
-    public String player1;
-    public String player2;
+    //We use the boolean "player" to handle player turns. Player 1 = true, player 2 = false.
+    public static boolean currentPlayer = true;
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
@@ -21,13 +21,16 @@ class Game {
         try {
             initPoints();
             Game game = new Game();
+            game.commands.setNames(game.window);
             sleep(2000);
             game.demoCheckers(game.window);
+
         }
         catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
+
     }
 
     public static final Point[] pointList = new Point[26];
@@ -61,13 +64,13 @@ class Game {
 
     private void demoCheckers(Window window) {
         try {
-            window.board.move(pointList[0], pointList[1]);
+            window.GUI.movePoint(pointList[0], pointList[1]);
             sleep(3000);
-            window.board.move(pointList[1], pointList[10]);
+            window.GUI.movePoint(pointList[1], pointList[10]);
             sleep(3000);
-            window.board.move(pointList[10], pointList[16]);
+            window.GUI.movePoint(pointList[10], pointList[16]);
             sleep(3000);
-            window.board.move(pointList[16], pointList[23]);
+            window.GUI.movePoint(pointList[16], pointList[23]);
         }
         catch (Exception e) {
             e.printStackTrace();
