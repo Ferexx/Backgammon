@@ -51,7 +51,20 @@ class commandHandler {
             int point1 = sc.nextInt();
             int point2 = sc.nextInt();
             sc.close();
-            window.gui.movePoint(Game.pointList[point1], Game.pointList[point2]);
+
+            if(point1 > 26 || point2 > 26)
+            {
+                window.infoLabel.append("\nPlease enter a valid move.");
+            }
+
+            if(Game.pointList[point1] == null)
+            {
+                window.infoLabel.append("\nPlease enter a valid move.");
+            }
+            else {
+                window.gui.movePoint(Game.pointList[point1], Game.pointList[point2]);
+            }
+
 
         } catch (NumberFormatException e) {
         }
