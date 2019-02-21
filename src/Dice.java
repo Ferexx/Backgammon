@@ -38,16 +38,19 @@ public class Dice extends JPanel {
         int diceRollP1_2 = random.nextInt(6) + 1;
     }
 
-    private void update() {
-        revalidate();
-        repaint();
-    }
 
-    public void paintComponent(Graphics graphics) {
+    public void drawDice(Graphics2D graphics, Boolean player1) {
         super.paintComponent(graphics);
-        g = (Graphics2D) graphics;
+        g = graphics;
         //Draw Dice1
-        g.drawImage(dice1Img,128,0,45, 45, null);
+        if(player1) {
+            g.drawImage(dice1Img, 150, 50, 45, 45, null);
+            g.drawImage(dice2Img, 200, 100, 45, 45, null);
+        }
+        else {
+            g.drawImage(dice1Img, 150, 500, 45, 45, null);
+            g.drawImage(dice2Img, 200, 550, 45, 45, null);
+        }
     }
 
     public String getDice1() {

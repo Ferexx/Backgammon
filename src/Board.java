@@ -9,9 +9,11 @@ public class Board extends JPanel {
     //Image icon declaration for board
     private BufferedImage boardImg;
     private Graphics2D g;
+    private Window window;
 
-    public Board(){
+    public Board(Window window){
         //SoundManager.playSound();
+        this.window = window;
         try {
             boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));
         }
@@ -50,5 +52,7 @@ public class Board extends JPanel {
             }
             Game.pointList[i].drawPoint(g);
         }
+        window.dice1.drawDice(g, true);
+        window.dice2.drawDice(g, false);
     }
 }
