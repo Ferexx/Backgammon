@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Dice extends JPanel {
 
-    //Image icon declaration for GUI
+    //Image icon declaration for board
     private BufferedImage dice1Img;
     private BufferedImage dice2Img;
     private BufferedImage dice3Img;
@@ -46,62 +46,62 @@ public class Dice extends JPanel {
         if(player1) {
 
             if (diceRollP1_1 == 1) {
-                g.drawImage(dice1Img, 150, 50, 45, 45, null);
+                g.drawImage(dice1Img, 86, 120, 45, 45, null);
             } else if (diceRollP1_1 == 2) {
-                g.drawImage(dice2Img, 150, 50, 45, 45, null);
+                g.drawImage(dice2Img, 86, 120, 45, 45, null);
             } else if (diceRollP1_1 == 3) {
-                g.drawImage(dice3Img, 150, 50, 45, 45, null);
+                g.drawImage(dice3Img, 86, 120, 45, 45, null);
             } else if (diceRollP1_1 == 4) {
-                g.drawImage(dice4Img, 150, 50, 45, 45, null);
+                g.drawImage(dice4Img, 86, 120, 45, 45, null);
             } else if (diceRollP1_1 == 5) {
-                g.drawImage(dice5Img, 150, 50, 45, 45, null);
+                g.drawImage(dice5Img, 86, 120, 45, 45, null);
             } else if (diceRollP1_1 == 6) {
-                g.drawImage(dice6Img, 150, 50, 45, 45, null);
+                g.drawImage(dice6Img, 86, 120, 45, 45, null);
             }
 
             //PLAYER 1 DICE 2 CREATION
             if (diceRollP1_2 == 1) {
-                g.drawImage(dice1Img, 200, 100, 45, 45, null);
+                g.drawImage(dice1Img, 140, 166, 45, 45, null);
             } else if (diceRollP1_2 == 2) {
-                g.drawImage(dice2Img, 200, 100, 45, 45, null);
+                g.drawImage(dice2Img, 140, 166, 45, 45, null);
             } else if (diceRollP1_2 == 3) {
-                g.drawImage(dice3Img, 200, 100, 45, 45, null);
+                g.drawImage(dice3Img, 140, 166, 45, 45, null);
             } else if (diceRollP1_2 == 4) {
-                g.drawImage(dice4Img, 200, 100, 45, 45, null);
+                g.drawImage(dice4Img, 140, 166, 45, 45, null);
             } else if (diceRollP1_2 == 5) {
-                g.drawImage(dice5Img, 200, 100, 45, 45, null);
+                g.drawImage(dice5Img, 140, 166, 45, 45, null);
             } else if (diceRollP1_2 == 6) {
-                g.drawImage(dice6Img, 200, 100, 45, 45, null);
+                g.drawImage(dice6Img, 140, 166, 45, 45, null);
             }
         } else {
 
             if (diceRollP2_1 == 1) {
-                g.drawImage(dice1Img, 150, 500, 45, 45, null);
+                g.drawImage(dice1Img, 86, 420, 45, 45, null);
             } else if (diceRollP2_1 == 2) {
-                g.drawImage(dice2Img, 150, 500, 45, 45, null);
+                g.drawImage(dice2Img, 86, 420, 45, 45, null);
             } else if (diceRollP2_1 == 3) {
-                g.drawImage(dice3Img, 150, 500, 45, 45, null);
+                g.drawImage(dice3Img, 86, 420, 45, 45, null);
             } else if (diceRollP2_1 == 4) {
-                g.drawImage(dice4Img, 150, 500, 45, 45, null);
+                g.drawImage(dice4Img, 86, 420, 45, 45, null);
             } else if (diceRollP2_1 == 5) {
-                g.drawImage(dice5Img, 150, 500, 45, 45, null);
+                g.drawImage(dice5Img, 86, 420, 45, 45, null);
             } else if (diceRollP2_1 == 6) {
-                g.drawImage(dice6Img, 150, 500, 45, 45, null);
+                g.drawImage(dice6Img, 86, 420, 45, 45, null);
             }
 
             //PLAYER 2 DICE 2 CREATION
             if (diceRollP2_2 == 1) {
-                g.drawImage(dice1Img, 200, 550, 45, 45, null);
+                g.drawImage(dice1Img, 140, 466, 45, 45, null);
             } else if (diceRollP2_2 == 2) {
-                g.drawImage(dice2Img, 200, 550, 45, 45, null);
+                g.drawImage(dice2Img, 140, 466, 45, 45, null);
             } else if (diceRollP2_2 == 3) {
-                g.drawImage(dice3Img, 200, 550, 45, 45, null);
+                g.drawImage(dice3Img, 140, 466, 45, 45, null);
             } else if (diceRollP2_2 == 4) {
-                g.drawImage(dice4Img, 200, 550, 45, 45, null);
+                g.drawImage(dice4Img, 140, 466, 45, 45, null);
             } else if (diceRollP2_2 == 5) {
-                g.drawImage(dice5Img, 200, 550, 45, 45, null);
+                g.drawImage(dice5Img, 140, 466, 45, 45, null);
             } else if (diceRollP2_2 == 6) {
-                g.drawImage(dice6Img, 200, 550, 45, 45, null);
+                g.drawImage(dice6Img, 140, 466, 45, 45, null);
             }
         }
     }
