@@ -19,8 +19,8 @@ class commandHandler {
         String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
         player1 = new Player(p1, "Black");
         player2 = new Player(p2, "Red");
-        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". Your colour is " + player1.getColour() + ".");
-        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". Your colour is " + player2.getColour() + ".");
+        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". Your colour is " + player1.getColour().toLowerCase() + ".");
+        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". Your colour is " + player2.getColour().toLowerCase() + ".");
     }
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
@@ -55,14 +55,13 @@ class commandHandler {
                 window.infoLabel.append("\nPlease enter a valid move.");
             }
 
-            if(Game.pointList[point1] == null)
+            if(Game.pointList[point1].getCount() == 0)
             {
                 window.infoLabel.append("\nPlease enter a valid move.");
             }
             else {
                 window.gui.move(Game.pointList[point1], Game.pointList[point2]);
             }
-
         }
         catch (NumberFormatException e) {
             e.printStackTrace();
@@ -73,7 +72,7 @@ class commandHandler {
     //Used for restarting the game
     public void restartText(Window window) {
         window.infoLabel.setText(null);
-        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n\n");
+        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n\n");
     }
 
     //Quits

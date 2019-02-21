@@ -42,6 +42,7 @@ class Window extends JFrame {
         infoLabel = new JTextArea();
         infoLabel.setBorder(new EmptyBorder(20,20,20,20));
         infoLabel.setBounds(20,20,500,720);
+        infoLabel.setPreferredSize(new Dimension(275,720));
         infoLabel.setEditable(false);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
