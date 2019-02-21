@@ -23,7 +23,7 @@ class Game {
             Game game = new Game();
             game.commands.setNames(game.window);
             sleep(2000);
-            game.demoCheckers(game.window);
+            //game.demoCheckers(game.window); commenting this for testing
 
         }
         catch (Exception e) {
@@ -64,13 +64,13 @@ class Game {
 
     private void demoCheckers(Window window) {
         try {
-            window.GUI.movePoint(pointList[0], pointList[1]);
+            window.gui.movePoint(pointList[0], pointList[1]);
             sleep(3000);
-            window.GUI.movePoint(pointList[1], pointList[10]);
+            window.gui.movePoint(pointList[1], pointList[10]);
             sleep(3000);
-            window.GUI.movePoint(pointList[10], pointList[16]);
+            window.gui.movePoint(pointList[10], pointList[16]);
             sleep(3000);
-            window.GUI.movePoint(pointList[16], pointList[23]);
+            window.gui.movePoint(pointList[16], pointList[23]);
         }
         catch (Exception e) {
             e.printStackTrace();
