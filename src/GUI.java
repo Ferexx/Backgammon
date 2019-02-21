@@ -23,7 +23,7 @@ public class GUI extends JPanel {
         }
     }
 
-    public void movePoint(Point from, Point to) {
+    public void move(Point from, Point to) {
         from.removeChecker();
         to.addChecker();
         to.setColor(from.getColor());

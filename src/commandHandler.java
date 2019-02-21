@@ -28,9 +28,6 @@ class commandHandler {
         if (text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
-        if (text.equalsIgnoreCase("1 3")) {
-            //Window.GUI.movePoint(Controller.pointList[0], Controller.pointList[2]);
-        }
 
         //Turn handler
         if (text.equalsIgnoreCase("next")) {
@@ -42,7 +39,8 @@ class commandHandler {
             if (!Game.currentPlayer) {
                 window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
             }
-        } else {
+        }
+        else {
             window.infoLabel.append("\n" + text);
         }
 
@@ -62,17 +60,15 @@ class commandHandler {
                 window.infoLabel.append("\nPlease enter a valid move.");
             }
             else {
-                window.gui.movePoint(Game.pointList[point1], Game.pointList[point2]);
+                window.gui.move(Game.pointList[point1], Game.pointList[point2]);
             }
 
 
-        } catch (NumberFormatException e) {
         }
-
-
-        //Testing and debug
-
-
+        catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
     }
 
     //Used for restarting the game
