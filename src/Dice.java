@@ -132,7 +132,7 @@ public class Dice extends JPanel {
                     g.drawImage(p1Dice2Img, 140, 166, 45, 45, null);
                 }
 
-        } else {    //Else for player 2
+        } else {    //Else for player 2 fheuska
             //PLAYER 2 DICE 1 CREATION
             switch(numOfDice) {
                 case 1: diceRollP2_1 = 1;
