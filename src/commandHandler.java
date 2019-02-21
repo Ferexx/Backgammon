@@ -1,6 +1,7 @@
 import com.sun.corba.se.impl.activation.CommandHandler;
 
 import javax.swing.*;
+import java.util.Scanner;
 
 class commandHandler {
 
@@ -18,39 +19,48 @@ class commandHandler {
         JFrame p2frame = new JFrame("Player 2");
         String p1 = JOptionPane.showInputDialog(p1frame, "Player 1, please enter your name");
         String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
-        player1 = new Player(p1);
-        player2 = new Player(p2);
-        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ".");
-        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ".");
+        player1 = new Player(p1, "Black");
+        player2 = new Player(p2, "Red");
+        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". Your colour is " + player1.getColour() + ".");
+        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". Your colour is " + player2.getColour() + ".");
     }
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
     public void appendText(String text, Window window) {
-        if(text.equalsIgnoreCase("quit")) {
+        if (text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
-        if(text.equalsIgnoreCase("1 3")) {
+        if (text.equalsIgnoreCase("1 3")) {
             //Window.board.move(Controller.pointList[0], Controller.pointList[2]);
         }
 
         //Turn handler
-        if(text.equalsIgnoreCase("next")) {
+        if (text.equalsIgnoreCase("next")) {
             Game.currentPlayer = !Game.currentPlayer;
-            if(Game.currentPlayer)
-            {
-                window.infoLabel.append("\nIt is now your turn " + player1.getName());
+            if (Game.currentPlayer) {
+                window.infoLabel.append("\nIt is now your turn " + player1.getName() + ".");
             }
 
-            if(!Game.currentPlayer)
-            {
-                window.infoLabel.append("\nIt is now your turn " + player2.getName());
+            if (!Game.currentPlayer) {
+                window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
             }
-        }
-
-        //Testing and debug
-        else {
+        } else {
             window.infoLabel.append("\n" + text);
         }
+
+        try {
+            Scanner sc = new Scanner(text);
+            int point1 = sc.nextInt();
+            int point2 = sc.nextInt();
+            sc.close();
+            Board.move(point1, point2);
+
+        } catch (NumberFormatException e) {
+        }
+
+
+        //Testing and debug
+
 
     }
 
@@ -58,8 +68,6 @@ class commandHandler {
     public void restartText(Window window) {
         window.infoLabel.setText(null);
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n\n");
-        window.infoLabel.append("\nPlayer 1, please enter your name.");
-
     }
 
     //Quits
