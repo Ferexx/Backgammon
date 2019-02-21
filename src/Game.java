@@ -24,7 +24,6 @@ class Game {
             game.commands.setNames(game.window);
             sleep(2000);
             //game.demoCheckers(game.window); commenting this for testing
-
         }
         catch (Exception e) {
             e.printStackTrace();
