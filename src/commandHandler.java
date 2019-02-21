@@ -51,7 +51,7 @@ class commandHandler {
             int point1 = sc.nextInt();
             int point2 = sc.nextInt();
             sc.close();
-            //GUI.movePoint(point1, point2);
+            window.gui.movePoint(Game.pointList[point1], Game.pointList[point2]);
 
         } catch (NumberFormatException e) {
         }
