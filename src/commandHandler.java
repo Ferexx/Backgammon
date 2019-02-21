@@ -28,17 +28,6 @@ class commandHandler {
 
     }
 
-    public void setName1(String text, Window window) {
-        p1Name = text;
-        window.infoLabel.append("\nWelcome " + p1Name + " to the game. You are player 1.");
-        window.infoLabel.append("\nPlayer 2, please enter your name.");
-    }
-
-    public void setName2(String text, Window window) {
-        p2Name = text;
-        window.infoLabel.append("\nWelcome " + p2Name + " to the game. You are player 2.");
-    }
-
     //Quits
     private void catchQuit() {
         System.exit(0);
