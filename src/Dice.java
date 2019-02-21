@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class Dice extends JPanel {
 
-    //Image icon declaration for GUI
+    //Image icon declaration for board
     private BufferedImage dice1Img;
     private BufferedImage dice2Img;
     private BufferedImage dice3Img;
