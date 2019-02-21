@@ -50,9 +50,7 @@ class Window extends JFrame {
         infoLabel.setBorder(border);
         commands.restartText(this);
         infoLabel.append(dice1.getDice1());
-        //infoLabel.append(dice2.getDice2());
-        //infoLabel.append(dice.getDice2());
-
+        infoLabel.append(dice2.getDice2());
 
         //Adding components to JFrame
         //Adding info JLabel to JFrame
