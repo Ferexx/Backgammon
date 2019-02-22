@@ -5,8 +5,7 @@ import java.awt.*;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
-    //Used for the this context
-    public final GUI gui = new GUI(this);
+    public final Drawing drawing = new Drawing(this);
     public Dice dice1 = new Dice();
     public Dice dice2 = new Dice();
 
@@ -16,12 +15,10 @@ class Window extends JFrame {
     final JFrame frame = new JFrame();
 
     //JPanel to contain all die JLabels
-    private final JPanel diePanel= new JPanel();
     final JTextArea infoLabel;   //Label with info text area
 
     //Window constructor
     Window(int width, int height, String title, commandHandler commands) {
-
         //Creating the window frame with title
         frame.setTitle(title);
         //Set window icon
@@ -37,7 +34,6 @@ class Window extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
 
-        //Creating window components
         //Creating Buttons
         new Buttons(this);
 
@@ -45,7 +41,9 @@ class Window extends JFrame {
         infoLabel = new JTextArea();
         infoLabel.setBorder(new EmptyBorder(20,20,20,20));
         infoLabel.setBounds(20,20,500,720);
+        infoLabel.setPreferredSize(new Dimension(255,720));
         infoLabel.setEditable(false);
+        infoLabel.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
         commands.restartText(this);
@@ -55,11 +53,8 @@ class Window extends JFrame {
         //Adding components to JFrame
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
-        //Adding GUI image to JFrame
-        frame.getContentPane().add(gui);
+        //Adding Drawing image to JFrame
+        frame.getContentPane().add(drawing);
         frame.setVisible(true);
-
-
-
     }
 }
