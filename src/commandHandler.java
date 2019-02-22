@@ -43,6 +43,7 @@ class commandHandler {
         else {
             window.infoLabel.append("\n" + text);
         }
+        window.drawing.update();
 
         try {
             Scanner sc = new Scanner(text);
@@ -50,17 +51,22 @@ class commandHandler {
             int point2 = sc.nextInt();
             sc.close();
 
-            if(point1 > 26 || point2 > 26)
+            if(point1 > 25 || point2 > 27 || point1 < 0 || point2 < 0)
             {
-                window.infoLabel.append("\nPlease enter a valid move.");
+                window.infoLabel.append("\nYour move is out of bounds.");
             }
 
             if(Game.pointList[point1].getCount() == 0)
             {
-                window.infoLabel.append("\nPlease enter a valid move.");
+                window.infoLabel.append("\nThere is no checker on the starting point.");
             }
             else {
-                window.gui.move(Game.pointList[point1], Game.pointList[point2]);
+                if(Game.currentPlayer) {
+                    window.drawing.move(Game.pointList[point1], Game.pointList[point2]);
+                }
+                else {
+                    window.drawing.move(Game.pointList[23-point1], Game.pointList[23-point2]);
+                }
             }
         }
         catch (NumberFormatException e) {

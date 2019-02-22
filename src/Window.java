@@ -2,11 +2,10 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Optional;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
-    public final GUI gui = new GUI(this);
+    public final Drawing drawing = new Drawing(this);
     public Dice dice1 = new Dice();
     public Dice dice2 = new Dice();
 
@@ -42,8 +41,9 @@ class Window extends JFrame {
         infoLabel = new JTextArea();
         infoLabel.setBorder(new EmptyBorder(20,20,20,20));
         infoLabel.setBounds(20,20,500,720);
-        infoLabel.setPreferredSize(new Dimension(275,720));
+        infoLabel.setPreferredSize(new Dimension(255,720));
         infoLabel.setEditable(false);
+        infoLabel.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
         commands.restartText(this);
@@ -53,8 +53,8 @@ class Window extends JFrame {
         //Adding components to JFrame
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
-        //Adding GUI image to JFrame
-        frame.getContentPane().add(gui);
+        //Adding Drawing image to JFrame
+        frame.getContentPane().add(drawing);
         frame.setVisible(true);
     }
 }
