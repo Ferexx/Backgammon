@@ -30,12 +30,14 @@ class commandHandler {
             catchQuit();
         }
 
+        //Demonstrate reroll function for player 1
         if (text.equalsIgnoreCase("roll player 1")) {
             Dice.rerollPlayer1Dice();
             window.infoLabel.append("\nPlayer 1: Your die are" + Dice.getDice1() + ".");
             window.drawing.update();
         }
 
+        //Demonstrate reroll function for player 2
         if (text.equalsIgnoreCase("roll player 2")) {
             Dice.rerollPlayer2Dice();
             window.infoLabel.append("\nPlayer 2: Your die are" + Dice.getDice2() + ".");
