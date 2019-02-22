@@ -85,6 +85,7 @@ class Buttons {
         textField = new JTextField(20);
         JButton enter = new JButton("Enter");
         JButton reset = new JButton("Reset");
+        JButton reroll = new JButton("Roll Dice");
 
 
 
@@ -115,10 +116,10 @@ class Buttons {
         panel.add(textField);
         panel.add(enter);
         panel.add(reset);
+        panel.add(reroll);
 
         window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
         window.frame.getContentPane().add(BorderLayout.NORTH, mb);
-
 
     }
 }

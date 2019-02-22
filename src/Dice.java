@@ -13,14 +13,26 @@ public class Dice extends JPanel {
     private BufferedImage p2Dice1Img;
     private BufferedImage p2Dice2Img;
     private Graphics2D g;
-    Random random = new Random();
-    int diceRollP1_1 = random.nextInt(6) + 1;
-    int diceRollP1_2 = random.nextInt(6) + 1;
-    int diceRollP2_1 = random.nextInt(6) + 1;
-    int diceRollP2_2 = random.nextInt(6) + 1;
+    int diceRollP1_1;
+    int diceRollP1_2;
+    int diceRollP2_1;
+    int diceRollP2_2;
 
     public Dice(){
         //SoundManager.playSound();
+        rerollPlayer1Dice();
+        rerollPlayer2Dice();
+    }
+
+    public void rerollPlayer1Dice() {
+        Random random = new Random();
+        diceRollP1_1 = random.nextInt(6) + 1;
+        diceRollP1_2 = random.nextInt(6) + 1;
+    }
+    public void rerollPlayer2Dice() {
+        Random random = new Random();
+        diceRollP2_1 = random.nextInt(6) + 1;
+        diceRollP2_2 = random.nextInt(6) + 1;
     }
 
     public void drawDice(Graphics2D graphics, Boolean player1) {
