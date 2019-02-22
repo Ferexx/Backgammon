@@ -43,7 +43,9 @@ public class Dice extends JPanel {
 
         //Draw Dice
         //ImageIO.read is set in the switch statement as it is more memory efficient than storing the 6 dice values all the time
+        //PLAYER 1 DIE CREATION
         if(player1) {
+            //PLAYER 1 DICE 1
             switch(diceRollP1_1) {
                 case 1: diceRollP1_1 = 1;
                     try {
@@ -100,8 +102,8 @@ public class Dice extends JPanel {
                     g.drawImage(p1Dice1Img, 86, 120, 45, 45, null);
                     break;
                 }
+            //PLAYER 1 DICE 2
             switch(diceRollP1_2) {
-                //PLAYER 1 DICE 2 CREATION
                 case 1: diceRollP1_2 = 1;
                     try {
                         p1Dice2Img = ImageIO.read(this.getClass().getResource("Resources/Dice1.jpg"));
@@ -157,8 +159,9 @@ public class Dice extends JPanel {
                     g.drawImage(p1Dice2Img, 140, 166, 45, 45, null);
                     break;
                 }
-            } else {    //Else for player 2
-            //PLAYER 2 DICE 1 CREATION
+            //PLAYER 2 DIE CREATION
+            } else {
+            //PLAYER 2 DICE 1
             switch(diceRollP2_1) {
                 case 1: diceRollP2_1 = 1;
                     try {
@@ -215,6 +218,7 @@ public class Dice extends JPanel {
                     g.drawImage(p2Dice1Img, 86, 420, 45, 45, null);
                     break;
                 }
+            //PLAYER 2 DICE 2
             switch(diceRollP2_2){
                 //PLAYER 2 DICE 2 CREATION
                 case 1: diceRollP2_2 = 1;
@@ -275,6 +279,7 @@ public class Dice extends JPanel {
         }
     }
 
+    //Getters for Die values
     public String getDice1() {
         return "\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + "";
     }
