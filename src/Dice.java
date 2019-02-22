@@ -24,11 +24,13 @@ public class Dice extends JPanel {
         rerollPlayer2Dice();
     }
 
+    //reroll method for player 1
     public void rerollPlayer1Dice() {
         Random random = new Random();
         diceRollP1_1 = random.nextInt(6) + 1;
         diceRollP1_2 = random.nextInt(6) + 1;
     }
+    //reroll method for player 2
     public void rerollPlayer2Dice() {
         Random random = new Random();
         diceRollP2_1 = random.nextInt(6) + 1;
