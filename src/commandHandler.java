@@ -29,17 +29,14 @@ class commandHandler {
             catchQuit();
         }
 
-        //Demonstrate reroll function for player 1
-        if (text.equalsIgnoreCase("roll player 1")) {
-            window.dice1.rerollPlayer1Dice();
-            window.infoLabel.append("\nPlayer 1: Your die are" + window.dice1.getDice1() + ".");
-            window.drawing.update();
-        }
-
-        //Demonstrate reroll function for player 2
-        if (text.equalsIgnoreCase("roll player 2")) {
-            window.dice2.rerollPlayer2Dice();
-            window.infoLabel.append("\nPlayer 2: Your die are" + window.dice2.getDice2() + ".");
+        if (text.equalsIgnoreCase("roll")) {
+            if(Game.currentPlayer) {
+                window.dice1.rerollPlayer1Dice();
+                window.infoLabel.append("\n" + window.dice1.getDice1() + ".");
+            }else{
+                window.dice2.rerollPlayer2Dice();
+                window.infoLabel.append("\n" + window.dice2.getDice2() + ".");
+            }
             window.drawing.update();
         }
 

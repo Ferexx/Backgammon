@@ -6,7 +6,6 @@ class Game {
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
-    protected static String PlayerPlaying = "Player1";
     private final int WIDTH = 1280;
     private final int HEIGHT = 720;
     private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
