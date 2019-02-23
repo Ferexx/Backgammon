@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.util.Scanner;
 
+import static java.lang.Thread.sleep;
+
 class commandHandler {
 
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
@@ -19,8 +21,25 @@ class commandHandler {
         String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
         player1 = new Player(p1, "Black");
         player2 = new Player(p2, "Red");
-        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". Your colour is " + player1.getColour().toLowerCase() + ".");
-        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". Your colour is " + player2.getColour().toLowerCase() + ".");
+        window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". You are player 1, and your dice are on top. Your colour is " + player1.getColour().toLowerCase() + ".\n");
+        window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". You are player 2, and your dice are on the bottom. Your colour is " + player2.getColour().toLowerCase() + ".\n");
+        setFirstTurn(window);
+    }
+
+    public static void setFirstTurn(Window window) {
+        if((window.dice1.getDiceP1Total()) > (window.dice2.getDiceP2Total())) {
+            window.infoLabel.append("\nPlayer 1 rolled a higher dice score. " + player1.getName() + " goes first. \n\nType 'start' to begin the game");
+            Game.currentPlayer = true;
+        } else if(window.dice1.getDiceP1Total() == window.dice2.getDiceP2Total()) {
+            //window.infoLabel.append("\nBoth players rolled the same score. Rolling again");
+            //commented this out because user doesn't need to know if the roll is the same
+            window.dice1.rerollPlayer1Dice();
+            window.dice2.rerollPlayer2Dice();
+            setFirstTurn(window);
+        } else {
+            window.infoLabel.append("\nPlayer 2 rolled a higher dice score. " + player2.getName() + " goes first. \n\nType 'start' to begin the game");
+            Game.currentPlayer = false;
+        }
     }
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
@@ -29,15 +48,16 @@ class commandHandler {
             catchQuit();
         }
 
-        if (text.equalsIgnoreCase("roll")) {
-            if(Game.currentPlayer) {
+        if (text.equalsIgnoreCase("start")) {
+            if (Game.currentPlayer) {
+                window.infoLabel.append("\nIt is now your turn " + player1.getName() + ".");
                 window.dice1.rerollPlayer1Dice();
-                window.infoLabel.append("\n" + window.dice1.getDice1() + ".");
-            }else{
+                window.infoLabel.append(window.dice1.getDice1());
+            }else {
+                window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
                 window.dice2.rerollPlayer2Dice();
-                window.infoLabel.append("\n" + window.dice2.getDice2() + ".");
+                window.infoLabel.append(window.dice2.getDice2());
             }
-            window.drawing.update();
         }
 
         //Turn handler
@@ -45,13 +65,14 @@ class commandHandler {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\nIt is now your turn " + player1.getName() + ".");
-            }
-
-            if (!Game.currentPlayer) {
+                window.dice1.rerollPlayer1Dice();
+                window.infoLabel.append(window.dice1.getDice1());
+            }else {
                 window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
+                window.dice2.rerollPlayer2Dice();
+                window.infoLabel.append(window.dice2.getDice2());
             }
-        }
-        else {
+        } else {
             window.infoLabel.append("\n" + text);
         }
         window.drawing.update();

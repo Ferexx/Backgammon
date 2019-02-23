@@ -13,10 +13,10 @@ public class Dice extends JPanel {
     private BufferedImage p2Dice1Img;
     private BufferedImage p2Dice2Img;
     private Graphics2D g;
-    int diceRollP1_1;
-    int diceRollP1_2;
-    int diceRollP2_1;
-    int diceRollP2_2;
+    public int diceRollP1_1;
+    public int diceRollP1_2;
+    public int diceRollP2_1;
+    public int diceRollP2_2;
 
     public Dice(){
         //SoundManager.playSound();
@@ -281,10 +281,18 @@ public class Dice extends JPanel {
 
     //Getters for Die values
     public String getDice1() {
-        return "\nPlayer 1 - Your dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + "";
+        return "\nYour dice rolls are " + diceRollP1_1 + " and " + diceRollP1_2 + ".\n";
     }
 
     public String getDice2() {
-        return "\nPlayer 2 - Your dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2 + "";
+        return "\nYour dice rolls are " + diceRollP2_1 + " and " + diceRollP2_2 + ".\n";
+    }
+
+    public int getDiceP1Total() {
+        return diceRollP1_1 + diceRollP1_2;
+    }
+
+    public int getDiceP2Total(){
+        return diceRollP2_1 + diceRollP2_2;
     }
 }

@@ -78,6 +78,6 @@ public class Drawing extends JPanel {
         //Drawing bear off
         Game.pointList[26].drawSides(g);
         Game.pointList[27].drawSides(g);
-        g.drawString("Bear-Off", 195, 305);
+        g.drawString("Bear-Off", 195, 320);
     }
 }

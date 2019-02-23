@@ -2,7 +2,7 @@
 class Game {
 
     //We use the boolean "player" to handle player turns. Player 1 = true, player 2 = false.
-    public static boolean currentPlayer = true;
+    public static boolean currentPlayer;
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
@@ -18,6 +18,9 @@ class Game {
             initPoints();
             Game game = new Game();
             game.commands.setNames(game.window);
+
+            //Adding Drawing image to JFrame after name input
+            game.window.frame.getContentPane().add(game.window.drawing);
     }
 
     public static final Point[] pointList = new Point[28];
