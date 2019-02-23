@@ -6,7 +6,6 @@ class commandHandler {
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
     public static Player player1;
     public static Player player2;
-    Dice Dice = new Dice();
 
     public commandHandler() {
 
@@ -32,15 +31,15 @@ class commandHandler {
 
         //Demonstrate reroll function for player 1
         if (text.equalsIgnoreCase("roll player 1")) {
-            Dice.rerollPlayer1Dice();
-            window.infoLabel.append("\nPlayer 1: Your die are" + Dice.getDice1() + ".");
+            window.dice1.rerollPlayer1Dice();
+            window.infoLabel.append("\nPlayer 1: Your die are" + window.dice1.getDice1() + ".");
             window.drawing.update();
         }
 
         //Demonstrate reroll function for player 2
         if (text.equalsIgnoreCase("roll player 2")) {
-            Dice.rerollPlayer2Dice();
-            window.infoLabel.append("\nPlayer 2: Your die are" + Dice.getDice2() + ".");
+            window.dice2.rerollPlayer2Dice();
+            window.infoLabel.append("\nPlayer 2: Your die are" + window.dice2.getDice2() + ".");
             window.drawing.update();
         }
 
