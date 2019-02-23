@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.util.Scanner;
 
-import static java.lang.Thread.sleep;
-
 class commandHandler {
 
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
@@ -48,27 +46,28 @@ class commandHandler {
             catchQuit();
         }
 
+        //game happening for start
         if (text.equalsIgnoreCase("start")) {
             if (Game.currentPlayer) {
-                window.infoLabel.append("\nIt is now your turn " + player1.getName() + ".");
+                window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
                 window.dice1.rerollPlayer1Dice();
                 window.infoLabel.append(window.dice1.getDice1());
             }else {
-                window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
+                window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
                 window.dice2.rerollPlayer2Dice();
                 window.infoLabel.append(window.dice2.getDice2());
             }
         }
 
-        //Turn handler
+        //Turn handler activated when next
         if (text.equalsIgnoreCase("next")) {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
-                window.infoLabel.append("\nIt is now your turn " + player1.getName() + ".");
+                window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
                 window.dice1.rerollPlayer1Dice();
                 window.infoLabel.append(window.dice1.getDice1());
             }else {
-                window.infoLabel.append("\nIt is now your turn " + player2.getName() + ".");
+                window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
                 window.dice2.rerollPlayer2Dice();
                 window.infoLabel.append(window.dice2.getDice2());
             }
