@@ -71,13 +71,17 @@ public class Drawing extends JPanel {
         g.drawString(Integer.toString(25), Game.pointList[25].getxLoc()+5, Game.pointList[25].getyLoc()+47);
         Game.pointList[24].drawPoint(g);
         Game.pointList[25].drawPoint(g);
+        g.setColor(Color.BLACK);
         g.drawString("B", 630, 300);
         g.drawString("A", 630, 315);
         g.drawString("R", 630, 330);
 
         //Drawing bear off
+        g.drawString(Integer.toString(26), Game.pointList[26].getxLoc()+5, Game.pointList[26].getyLoc()-5);
+        g.drawString(Integer.toString(27), Game.pointList[27].getxLoc()+5, Game.pointList[27].getyLoc()+52);
         Game.pointList[26].drawSides(g);
         Game.pointList[27].drawSides(g);
+        g.setColor(Color.BLACK);
         g.drawString("Bear-Off", 195, 320);
     }
 }

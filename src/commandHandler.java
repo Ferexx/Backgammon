@@ -87,16 +87,35 @@ class commandHandler {
                 window.infoLabel.append("\nYour move is out of bounds.");
             }
 
-            if(Game.pointList[point1].getCount() == 0)
-            {
-                window.infoLabel.append("\nThere is no checker on the starting point.");
-            }
-            else {
-                if(Game.currentPlayer) {
-                    window.drawing.move(Game.pointList[point1], Game.pointList[point2]);
+            if(Game.currentPlayer) {
+                if (Game.pointList[point1].getCount() == 0) {
+                    window.infoLabel.append("\nThere is no checker on the starting point.");
                 }
                 else {
-                    window.drawing.move(Game.pointList[23-point1], Game.pointList[23-point2]);
+                    window.drawing.move(Game.pointList[point1], Game.pointList[point2]);
+                }
+            }
+            else {
+                if(point1<24&&point2<24) {
+                    if (Game.pointList[23 - point1].getCount() == 0) {
+                        window.infoLabel.append("\nThere is no checker on the starting point.");
+                    } else {
+                        window.drawing.move(Game.pointList[23 - point1], Game.pointList[23 - point2]);
+                    }
+                }
+                if(point1<24&&point2==27) {
+                    if (Game.pointList[23 - point1].getCount() == 0) {
+                        window.infoLabel.append("\nThere is no checker on the starting point.");
+                    } else {
+                        window.drawing.move(Game.pointList[23 - point1], Game.pointList[point2]);
+                    }
+                }
+                if(point1==25&&point2<24) {
+                    if (Game.pointList[point1].getCount() == 0) {
+                        window.infoLabel.append("\nThere is no checker on the starting point.");
+                    } else {
+                        window.drawing.move(Game.pointList[point1], Game.pointList[23-point2]);
+                    }
                 }
             }
         }
