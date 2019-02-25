@@ -81,46 +81,7 @@ class commandHandler {
             int point2 = sc.nextInt();
             sc.close();
 
-            if(point1 > 25 || point2 > 27 || point1 < 0 || point2 < 0)
-            {
-                window.infoLabel.append("\nYour move is out of bounds.");
-            }
-
-            /* The following barrage of if and else statements is a result of our method of using an array
-            of points. For player 2, we need to convert their input to match the array, because for the array, 0
-            is at the bottom right of the board, while for player 2, 0 is at the top right of the board.
-             */
-            if(Game.currentPlayer) {
-                if (Game.pointList[point1].getCount() == 0) {
-                    window.infoLabel.append("\nThere is no checker on the starting point.");
-                }
-                else {
-                    window.drawing.move(Game.pointList[point1], Game.pointList[point2]);
-                }
-            }
-            else {
-                if(point1<24&&point2<24) {
-                    if (Game.pointList[23 - point1].getCount() == 0) {
-                        window.infoLabel.append("\nThere is no checker on the starting point.");
-                    } else {
-                        window.drawing.move(Game.pointList[23 - point1], Game.pointList[23 - point2]);
-                    }
-                }
-                if(point1<24&&point2==27) {
-                    if (Game.pointList[23 - point1].getCount() == 0) {
-                        window.infoLabel.append("\nThere is no checker on the starting point.");
-                    } else {
-                        window.drawing.move(Game.pointList[23 - point1], Game.pointList[point2]);
-                    }
-                }
-                if(point1==25&&point2<24) {
-                    if (Game.pointList[point1].getCount() == 0) {
-                        window.infoLabel.append("\nThere is no checker on the starting point.");
-                    } else {
-                        window.drawing.move(Game.pointList[point1], Game.pointList[23-point2]);
-                    }
-                }
-            }
+            Moves.isValidMove(window, point1, point2);
         }
         catch (NumberFormatException e) {
             e.printStackTrace();
