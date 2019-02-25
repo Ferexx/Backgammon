@@ -41,6 +41,7 @@ public class Point {
         return this.occupyingColor;
     }
 
+    //Drawing for main points
     public void drawPoint(Graphics2D g) {
         if(occupyingColor=="Black") {
             g.setColor(Color.BLACK);
@@ -56,6 +57,8 @@ public class Point {
             }
         }
     }
+
+    //Drawing for bear offs
     public void drawSides(Graphics2D g) {
         if(occupyingColor=="Black") {
             g.setColor(Color.BLACK);

@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 
 public class Drawing extends JPanel {
 
-    //Image icon declaration for Drawing
+    //Image declaration for Drawing
     private BufferedImage boardImg;
     private Graphics2D g;
     private Window window;
@@ -23,6 +23,7 @@ public class Drawing extends JPanel {
         }
     }
 
+    //Basic move function, removes a checker from chosen point, and adds to new point, as well as updating color.
     public void move(Point from, Point to) {
         from.removeChecker();
         to.addChecker();
@@ -35,6 +36,11 @@ public class Drawing extends JPanel {
         repaint();
     }
 
+
+    /*This large boi deals with all drawing in the game. It starts by drawing the board, then draws the numbers
+    around the edges according to whose turn it is. It also draws each point as the loop iterates. It then moves
+    on to drawing dice, followed by bar and bear off.
+    */
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         g = (Graphics2D) graphics;

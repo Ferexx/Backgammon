@@ -24,13 +24,12 @@ class commandHandler {
         setFirstTurn(window);
     }
 
+    //Rolling to decide who goes first
     public static void setFirstTurn(Window window) {
         if((window.dice1.getDiceP1Total()) > (window.dice2.getDiceP2Total())) {
             window.infoLabel.append("\nPlayer 1 rolled a higher dice score. " + player1.getName() + " goes first. \n\nType 'start' to begin the game");
             Game.currentPlayer = true;
         } else if(window.dice1.getDiceP1Total() == window.dice2.getDiceP2Total()) {
-            //window.infoLabel.append("\nBoth players rolled the same score. Rolling again");
-            //commented this out because user doesn't need to know if the roll is the same
             window.dice1.rerollPlayer1Dice();
             window.dice2.rerollPlayer2Dice();
             setFirstTurn(window);
@@ -87,6 +86,10 @@ class commandHandler {
                 window.infoLabel.append("\nYour move is out of bounds.");
             }
 
+            /* The following barrage of if and else statements is a result of our method of using an array
+            of points. For player 2, we need to convert their input to match the array, because for the array, 0
+            is at the bottom right of the board, while for player 2, 0 is at the top right of the board.
+             */
             if(Game.currentPlayer) {
                 if (Game.pointList[point1].getCount() == 0) {
                     window.infoLabel.append("\nThere is no checker on the starting point.");

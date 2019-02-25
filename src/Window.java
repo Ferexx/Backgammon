@@ -47,15 +47,8 @@ class Window extends JFrame {
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         infoLabel.setBorder(border);
         commands.restartText(this);
-        //TODO
-        //infoLabel.append(dice1.getDice1());
-        //infoLabel.append(dice2.getDice2());
-
-        //Adding components to JFrame
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
-
-
         frame.setVisible(true);
     }
 }
