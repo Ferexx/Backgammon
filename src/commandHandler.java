@@ -17,8 +17,8 @@ class commandHandler {
         JFrame p2frame = new JFrame("Player 2");
         String p1 = JOptionPane.showInputDialog(p1frame, "Player 1, please enter your name");
         String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
-        player1 = new Player(p1, "Black");
-        player2 = new Player(p2, "Red");
+        player1 = new Player(p1, "Red");
+        player2 = new Player(p2, "Black");
         window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". You are player 1, and your dice are on top. Your colour is " + player1.getColour().toLowerCase() + ".\n");
         window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". You are player 2, and your dice are on the bottom. Your colour is " + player2.getColour().toLowerCase() + ".\n");
         setFirstTurn(window);
@@ -26,12 +26,12 @@ class commandHandler {
 
     //Rolling to decide who goes first
     public static void setFirstTurn(Window window) {
-        if((window.dice1.getDiceP1Total()) > (window.dice2.getDiceP2Total())) {
+        if((window.dice1.getDiceTotal()) > (window.dice2.getDiceTotal())) {
             window.infoLabel.append("\nPlayer 1 rolled a higher dice score. " + player1.getName() + " goes first. \n\nType 'start' to begin the game");
             Game.currentPlayer = true;
-        } else if(window.dice1.getDiceP1Total() == window.dice2.getDiceP2Total()) {
-            window.dice1.rerollPlayer1Dice();
-            window.dice2.rerollPlayer2Dice();
+        } else if(window.dice1.getDiceTotal() == window.dice2.getDiceTotal()) {
+            window.dice1.rerollDice();
+            window.dice2.rerollDice();
             setFirstTurn(window);
         } else {
             window.infoLabel.append("\nPlayer 2 rolled a higher dice score. " + player2.getName() + " goes first. \n\nType 'start' to begin the game");
@@ -49,12 +49,12 @@ class commandHandler {
         if (text.equalsIgnoreCase("start")) {
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
-                window.dice1.rerollPlayer1Dice();
-                window.infoLabel.append(window.dice1.getDice1());
+                window.dice1.rerollDice();
+                window.infoLabel.append("Your rolls are " + window.dice1.getDice1() + "and" + window.dice1.getDice2());
             }else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
-                window.dice2.rerollPlayer2Dice();
-                window.infoLabel.append(window.dice2.getDice2());
+                window.dice2.rerollDice();
+                window.infoLabel.append("Your rolls are " + window.dice2.getDice1() + "and" + window.dice2.getDice2());
             }
         }
 
@@ -63,12 +63,12 @@ class commandHandler {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
-                window.dice1.rerollPlayer1Dice();
-                window.infoLabel.append(window.dice1.getDice1());
+                window.dice1.rerollDice();
+                window.infoLabel.append("Your rolls are " + window.dice1.getDice1() + "and" + window.dice1.getDice2());
             }else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
-                window.dice2.rerollPlayer2Dice();
-                window.infoLabel.append(window.dice2.getDice2());
+                window.dice2.rerollDice();
+                window.infoLabel.append("Your rolls are " + window.dice2.getDice1() + "and" + window.dice2.getDice2());
             }
         } else {
             window.infoLabel.append("\n" + text);

@@ -35,4 +35,24 @@ public class Moves {
             }
         }
     }
+    public static void possibleMoves(Window window) {
+        if(Game.currentPlayer) {
+            for(int i=0;i<28;i++) {
+                if(Game.pointList[i].getColor()=="Red"&&Game.pointList[i].getCount()!=0) {
+                    if(Game.pointList[i+window.dice1.getDice1()].getCount()==0) {
+                        window.infoLabel.append(Integer.toString(i)+Integer.toString(i+window.dice1.getDice1())+" ");
+                    }
+                    if(Game.pointList[i+window.dice1.getDice2()].getCount()==0) {
+                        window.infoLabel.append(Integer.toString(i)+Integer.toString(i+window.dice1.getDice2())+" ");
+                    }
+                    if(Game.pointList[i+window.dice1.getDice1()].getColor()=="Black"&&Game.pointList[i+window.dice1.getDice1()].getCount()==1) {
+                        window.infoLabel.append(Integer.toString(i)+Integer.toString(i+window.dice1.getDice1())+"* ");
+                    }
+                    if(Game.pointList[i+window.dice1.getDice2()].getColor()=="Black"&&Game.pointList[i+window.dice1.getDice2()].getCount()==1) {
+                        window.infoLabel.append(Integer.toString(i)+Integer.toString(i+window.dice1.getDice2())+"* ");
+                    }
+                }
+            }
+        }
+    }
 }
