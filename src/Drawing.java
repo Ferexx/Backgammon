@@ -69,8 +69,8 @@ public class Drawing extends JPanel {
         }
 
         //Drawing dice
-        window.dice1.drawDice(g, true);
-        window.dice2.drawDice(g, false);
+        window.dice1.drawDice(g);
+        window.dice2.drawDice(g);
 
         //Drawing bar
         g.drawString(Integer.toString(24), Game.pointList[24].getxLoc()+5, Game.pointList[24].getyLoc()-5);
