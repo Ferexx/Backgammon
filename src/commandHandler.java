@@ -56,6 +56,7 @@ class commandHandler {
                 window.dice2.rerollDice();
                 window.infoLabel.append("Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
             }
+            window.drawing.update();
             Moves.possibleMoves(window);
         }
 
@@ -71,11 +72,11 @@ class commandHandler {
                 window.dice2.rerollDice();
                 window.infoLabel.append(" Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
             }
+            window.drawing.update();
             Moves.possibleMoves(window);
         } else {
             window.infoLabel.append("\n" + text);
         }
-        window.drawing.update();
 
         try {
             Scanner sc = new Scanner(text);

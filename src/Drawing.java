@@ -26,6 +26,9 @@ public class Drawing extends JPanel {
     //Basic move function, removes a checker from chosen point, and adds to new point, as well as updating color.
     public void move(Point from, Point to) {
         from.removeChecker();
+        if(from.getCount()==0) {
+            from.setColor(null);
+        }
         to.addChecker();
         to.setColor(from.getColor());
         update();
@@ -35,7 +38,6 @@ public class Drawing extends JPanel {
         revalidate();
         repaint();
     }
-
 
     /*This large boi deals with all drawing in the game. It starts by drawing the board, then draws the numbers
     around the edges according to whose turn it is. It also draws each point as the loop iterates. It then moves
