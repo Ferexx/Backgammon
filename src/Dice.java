@@ -156,6 +156,7 @@ public class Dice extends JPanel {
                 break;
         }
     }
+
     //Getters for Die values
     public int getDice1() {
         return diceRoll1;

@@ -59,8 +59,7 @@ public class Drawing extends JPanel {
                 } else {
                     g.drawString(Integer.toString(i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() + 52);
                 }
-            }
-            else {
+            } else {
                 if (Game.pointList[i].getyLoc() == 60) {
                     g.drawString(Integer.toString(23-i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() - 10);
                 } else {

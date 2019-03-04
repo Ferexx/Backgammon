@@ -16,24 +16,31 @@ public class Point {
     public void addChecker() {
         count++;
     }
+
     public void removeChecker() {
         count--;
     }
+
     public void clearCheckers() {
         count = 0;
     }
+
     public void setCheckers(int count) {
         this.count=count;
     }
+
     public int getCount() {
         return count;
     }
+
     public int getxLoc() {
         return this.xLoc;
     }
+
     public int getyLoc() {
         return this.yLoc;
     }
+
     public void setColor(String color) {
         this.occupyingColor=color;
     }

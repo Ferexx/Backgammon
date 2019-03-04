@@ -26,15 +26,6 @@ class Buttons {
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
     private void enterCommandPerformed(ActionEvent e, Window window) {
 
-        //loads of commented out code for player handling. Will be fixed at later date, using JavaFX for now
-        /*if(player1Set == 0)
-        {
-            player1(e, window);
-        }
-        if(player2Set == 0)
-        {
-            player2(e, window);
-        }*/
         String command = textField.getText();
         System.out.println("Command = " + command);
         textField.setText(null);
@@ -42,20 +33,6 @@ class Buttons {
         /*player1Set = 1;
         player2Set = 1;*/
     }
-
-    /*public void player1(ActionEvent e, Window window)
-    {
-        String name = textField.getText();
-        Player p1 = new Player(name);
-        window.infoLabel.append("\nWelcome " + p1.getName() + " to the game.");
-    }
-
-    public void player2(ActionEvent e, Window window)
-    {
-        String name = textField.getText();
-        Player p2 = new Player(name);
-        window.infoLabel.append("Welcome " + p2.getName() + " to the game.");
-    }*/
 
     //MAKING BUTTONS
     public Buttons(Window window){

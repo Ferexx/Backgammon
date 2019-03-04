@@ -27,4 +27,5 @@ class Player {
     {
         return colour;
     }
+
 }

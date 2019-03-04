@@ -13,7 +13,6 @@ class Window extends JFrame {
     //Declarations for JFrame
     //Frame for containing panel, label, and image in Window
     final JFrame frame = new JFrame();
-
     //JPanel to contain all die JLabels
     final JTextArea infoLabel;   //Label with info text area
 
@@ -33,10 +32,8 @@ class Window extends JFrame {
         //Ensures that the program quits when you hit (X)
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new BorderLayout());
-
         //Creating Buttons
         new Buttons(this);
-
         //Creating player-readable text info box
         infoLabel = new JTextArea();
         infoLabel.setBorder(new EmptyBorder(20,20,20,20));

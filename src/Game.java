@@ -9,7 +9,6 @@ class Game {
     private final int WIDTH = 1280;
     private final int HEIGHT = 720;
     private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
-
     private final commandHandler commands = new commandHandler();
     private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
 

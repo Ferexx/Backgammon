@@ -51,7 +51,7 @@ class commandHandler {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
                 window.dice1.rerollDice();
                 window.infoLabel.append("Your rolls are " + window.dice1.getDice1() + " and " + window.dice1.getDice2());
-            }else {
+            } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
                 window.dice2.rerollDice();
                 window.infoLabel.append("Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
@@ -67,7 +67,7 @@ class commandHandler {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
                 window.dice1.rerollDice();
                 window.infoLabel.append(" Your rolls are " + window.dice1.getDice1() + " and " + window.dice1.getDice2());
-            }else {
+            } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
                 window.dice2.rerollDice();
                 window.infoLabel.append(" Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
@@ -95,8 +95,7 @@ class commandHandler {
             sc.close();
 
             Moves.isValidMove(window, point1, point2);
-        }
-        catch (NumberFormatException e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             System.exit(-1);
         }

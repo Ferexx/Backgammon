@@ -6,12 +6,10 @@ public class Moves {
         if(Game.currentPlayer) {
             if (Game.pointList[from].getCount() == 0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
-            }
-            else {
+            } else {
                 window.drawing.move(Game.pointList[from], Game.pointList[to]);
             }
-        }
-        else {
+        } else {
             if(from<24&&to<24) {
                 if (Game.pointList[23 - from].getCount() == 0) {
                     window.infoLabel.append("\nThere is no checker on the starting point.");
@@ -91,8 +89,7 @@ public class Moves {
                     }
                 }
             }
-        }
-        else {
+        } else {
             dice1 = window.dice2.getDice1();
             dice2 = window.dice2.getDice2();
             //Bar moves
@@ -155,8 +152,7 @@ public class Moves {
             if (Game.pointList[24].getColor() == "Red") {
                 return false;
             }
-        }
-        else {
+        } else {
             for (int i = 23; i > 5; i--) {
                 if (Game.pointList[i].getColor() == "Black") {
                     return false;

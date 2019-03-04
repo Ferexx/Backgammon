@@ -14,8 +14,7 @@ class SoundManager {
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.start();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(-1);
         }
