@@ -79,9 +79,12 @@ class commandHandler {
         }
 
         //cheat command - sv_cheats 1
+        //for testing
         if (text.equalsIgnoreCase("sv_cheats 1")) {
             window.infoLabel.append("\nCheats have been enabled\n\n");
+            //initialised the cheat positions
             Game.cheatPoints();
+            //updates the board
             window.drawing.update();
         }
 

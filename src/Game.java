@@ -54,6 +54,8 @@ class Game {
         pointList[26].setColor("Red");
         pointList[27].setColor("Black");
     }
+
+    //Checker positions for the cheat command testing
     protected static void cheatPoints() {
         for(int i=0; i<28; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
