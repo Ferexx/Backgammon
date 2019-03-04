@@ -29,7 +29,7 @@ class Game {
     private static final int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233,357,233};
 
     //Create points and assign them their pixel locations
-    private static void initPoints() {
+    protected static void initPoints() {
         for(int i=0; i<28; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }

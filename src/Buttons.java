@@ -19,6 +19,8 @@ class Buttons {
     //action listener for reset button
     private void resetPerformed(ActionEvent e, Window window) {
         commands.restartText(window);
+        Game.initPoints();
+        window.drawing.update();
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
@@ -95,6 +97,11 @@ class Buttons {
 
         //Listener to reset the game. Only resets text currently.
         m13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { resetPerformed(e, window); }
+        });
+
+        reset.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) { resetPerformed(e, window); }
         });
