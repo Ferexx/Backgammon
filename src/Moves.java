@@ -42,11 +42,11 @@ public class Moves {
             //Bar moves
             if (Game.pointList[24].getCount() != 0) {
                 if (Game.pointList[dice1].getCount() == 0 || Game.pointList[dice1].getColor() == "Red") {
-                    window.infoLabel.append("BAR-" + Integer.toString(24 + dice1) + " ");
+                    window.infoLabel.append("BAR-" + Integer.toString(24 + dice1) + "\n");
                 }
                 if (Game.pointList[dice2].getCount() == 0 || Game.pointList[dice2].getColor() == "Red") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + Integer.toString(24 + dice2) + " ");
+                        window.infoLabel.append("BAR-" + Integer.toString(24 + dice2) + "\n");
                     }
                 }
                 if (Game.pointList[dice1].getCount() == 1 && Game.pointList[dice1].getColor() == "Black") {
@@ -62,12 +62,12 @@ public class Moves {
                 if (Game.pointList[i].getColor() == "Red" && Game.pointList[i].getCount() != 0) {
                     if (Game.pointList[i + dice1].getCount() == 0 || Game.pointList[i + dice1].getColor() == "Red") {
                         if (i + dice1 < 24) {
-                            window.infoLabel.append(Integer.toString(i) + "-" + Integer.toString(i + dice1) + " ");
+                            window.infoLabel.append(Integer.toString(i) + "-" + Integer.toString(i + dice1) + "\n");
                         }
                     }
                     if (Game.pointList[i + dice2].getCount() == 0 || Game.pointList[i + dice2].getColor() == "Red") {
                         if (i + dice2 < 24 && dice1!=dice2) {
-                            window.infoLabel.append(Integer.toString(i) + "-" + Integer.toString(i + dice2) + " ");
+                            window.infoLabel.append(Integer.toString(i) + "-" + Integer.toString(i + dice2) + "\n");
                         }
                     }
                     if (Game.pointList[i + dice1].getColor() == "Black" && Game.pointList[i + dice1].getCount() == 1) {
@@ -95,11 +95,11 @@ public class Moves {
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor() == "Black") {
-                    window.infoLabel.append("BAR-" + Integer.toString(dice1) + " ");
+                    window.infoLabel.append("BAR-" + Integer.toString(dice1) + "\n");
                 }
                 if (Game.pointList[24 - dice2].getCount() == 0 || Game.pointList[24 - dice2].getColor() == "Black") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + Integer.toString(dice2) + " ");
+                        window.infoLabel.append("BAR-" + Integer.toString(dice2) + "\n");
                     }
                 }
                 if (Game.pointList[24 - dice1].getCount() == 1 && Game.pointList[24 - dice1].getColor() == "Red") {
@@ -115,12 +115,12 @@ public class Moves {
                 if (Game.pointList[i].getColor() == "Black" && Game.pointList[i].getCount() != 0) {
                     if (Game.pointList[i - dice1].getCount() == 0 || Game.pointList[i - dice1].getColor() == "Black") {
                         if (i - dice1 >= 0) {
-                            window.infoLabel.append(Integer.toString(23-i) + "-" + Integer.toString(23-i + dice1) + " ");
+                            window.infoLabel.append(Integer.toString(23-i) + "-" + Integer.toString(23-i + dice1) + "\n");
                         }
                     }
                     if (Game.pointList[i - dice2].getCount() == 0 || Game.pointList[i - dice2].getColor() == "Black") {
                         if (i - dice2 >= 0 && dice1!=dice2) {
-                            window.infoLabel.append(Integer.toString(23-i) + "-" + Integer.toString(23 - i + dice2) + " ");
+                            window.infoLabel.append(Integer.toString(23-i) + "-" + Integer.toString(23 - i + dice2) + "\n");
                         }
                     }
                     if (Game.pointList[i - dice1].getColor() == "Red" && Game.pointList[i - dice1].getCount() == 1) {
