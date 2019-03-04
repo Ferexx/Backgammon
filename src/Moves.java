@@ -90,7 +90,7 @@ public class Moves {
                 }
             }
         } else {
-            dice1 = window.dice2.getDice1();
+            dice1 = window.dice1.getDice1();
             dice2 = window.dice2.getDice2();
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
