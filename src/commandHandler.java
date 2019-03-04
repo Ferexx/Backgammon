@@ -78,6 +78,13 @@ class commandHandler {
             window.infoLabel.append("\n" + text);
         }
 
+        //cheat command - sv_cheats 1
+        if (text.equalsIgnoreCase("sv_cheats 1")) {
+            window.infoLabel.append("\nCheats have been enabled\n\n");
+            Game.cheatPoints();
+            window.drawing.update();
+        }
+
         try {
             Scanner sc = new Scanner(text);
             int point1 = sc.nextInt();

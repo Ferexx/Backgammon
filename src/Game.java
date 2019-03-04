@@ -54,4 +54,33 @@ class Game {
         pointList[26].setColor("Red");
         pointList[27].setColor("Black");
     }
+    protected static void cheatPoints() {
+        for(int i=0; i<28; i++) {
+            pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
+        }
+        pointList[0].setCheckers(3);
+        pointList[0].setColor("Black");
+        pointList[2].setCheckers(3);
+        pointList[2].setColor("Black");
+        pointList[3].setCheckers(3);
+        pointList[3].setColor("Black");
+        pointList[19].setCheckers(2);
+        pointList[19].setColor("Red");
+        pointList[20].setCheckers(2);
+        pointList[20].setColor("Red");
+        pointList[21].setCheckers(2);
+        pointList[21].setColor("Red");
+        pointList[22].setCheckers(2);
+        pointList[22].setColor("Red");
+        pointList[23].setCheckers(2);
+        pointList[23].setColor("Red");
+        pointList[24].setCheckers(3);
+        pointList[24].setColor("Red");
+        pointList[25].setCheckers(3);
+        pointList[25].setColor("Black");
+        pointList[26].setCheckers(2);
+        pointList[26].setColor("Red");
+        pointList[27].setCheckers(3);
+        pointList[27].setColor("Black");
+    }
 }
