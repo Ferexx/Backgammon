@@ -39,9 +39,26 @@ public class Moves {
     }
 
     public static ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
+    public static int getFromMove(char input) {
+        int a = Character.getNumericValue(input);
+        if (a>movesList.size()) {
+            return -1;
+        }
+        Map.Entry<Integer, Integer> move =  movesList.get(a);
+        return move.getKey();
+    }
+    public static int getToMove(char input) {
+        int a = Character.getNumericValue(input);
+        if (a>movesList.size()) {
+            return -1;
+        }
+        Map.Entry<Integer, Integer> move =  movesList.get(a);
+        return move.getValue();
+    }
 
     //TODO: Add a case where a player can move a checker dice1+dice2 positions
     public static void possibleMoves(Window window) {
+        movesList.clear();
         window.infoLabel.append("\nYour possible moves are: ");
         int dice1, dice2;
         if(Game.currentPlayer) {
@@ -170,6 +187,7 @@ public class Moves {
             }
         }
     }
+
     private static Boolean checkBearOffPossible() {
         if(Game.currentPlayer) {
             for (int i = 0; i < 18; i++) {
