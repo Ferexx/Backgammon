@@ -14,20 +14,20 @@ public class Dice extends JPanel {
     public int diceRoll1;
     public int diceRoll2;
 
-    public Dice(){
+    public Dice(Window window){
         //SoundManager.playSound();
-        rerollDice();
+        rerollDice(window);
     }
 
     //reroll method for player 1
-    public void rerollDice() {
+    public void rerollDice(Window window) {
         Random random = new Random();
         diceRoll1 = random.nextInt(6) + 1;
         diceRoll2 = random.nextInt(6) + 1;
+        window.drawing.update();
     }
 
     public void drawDice(Graphics2D graphics) {
-        super.paintComponent(graphics);
         g = graphics;
         //Draw Dice
         //ImageIO.read is set in the switch statement as it is more memory efficient than storing the 6 dice values all the time
@@ -40,7 +40,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
             case 2:
                 diceRoll1 = 2;
@@ -50,7 +55,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
             case 3:
                 diceRoll1 = 3;
@@ -60,7 +70,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
             case 4:
                 diceRoll1 = 4;
@@ -70,7 +85,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
             case 5:
                 diceRoll1 = 5;
@@ -80,7 +100,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
             case 6:
                 diceRoll1 = 6;
@@ -90,7 +115,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice1Img, 86, 120, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice1Img, 86, 420, 45, 45, null);
+                }
                 break;
         }
         switch (diceRoll2) {
@@ -102,7 +132,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
             case 2:
                 diceRoll2 = 2;
@@ -112,7 +147,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
             case 3:
                 diceRoll2 = 3;
@@ -122,7 +162,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
             case 4:
                 diceRoll2 = 4;
@@ -132,7 +177,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
             case 5:
                 diceRoll2 = 5;
@@ -142,7 +192,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
             case 6:
                 diceRoll2 = 6;
@@ -152,7 +207,12 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                if(Game.currentPlayer) {
+                    g.drawImage(dice2Img, 140, 166, 45, 45, null);
+                }
+                else {
+                    g.drawImage(dice2Img, 140, 466, 45, 45, null);
+                }
                 break;
         }
     }
