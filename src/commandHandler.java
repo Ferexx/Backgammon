@@ -95,6 +95,41 @@ class commandHandler {
             Moves.isValidMove(window, point1, point2);
         } catch (NumberFormatException e) {
             e.printStackTrace();
+
+            Scanner sc = new Scanner(text);
+            String letter = sc.nextLine();
+            if (letter.matches("[A-Za-z]{1}")) {
+                switch(letter) {
+                    case "A":
+                        Moves.getFromMove('A');
+                        break;
+
+                    case "B":
+                        Moves.getFromMove('B');
+                        break;
+
+                    case "C":
+                        Moves.getFromMove('C');
+                        break;
+
+                    case "D":
+                        Moves.getFromMove('D');
+                        break;
+
+                    case "E":
+                        Moves.getFromMove('E');
+                        break;
+
+                    case "F":
+                        Moves.getFromMove('F');
+                        break;
+
+                    case "G":
+                        Moves.getFromMove('G');
+                        break;
+                }
+            }
+
             System.exit(-1);
         }
     }
