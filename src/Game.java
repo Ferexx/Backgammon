@@ -6,21 +6,22 @@ class Game {
 
     //PlayerPlaying string will be used for controlling turns and which dice display
     //Currently only used for displaying Dice
-    private final int WIDTH = 1280;
-    private final int HEIGHT = 720;
-    private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
-    private final commandHandler commands = new commandHandler();
+    private static final int WIDTH = 1280;
+    private static final int HEIGHT = 720;
+    private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
+    private static final commandHandler commands = new commandHandler();
     private final Window nameWindow = new Window();
-    private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
+
+    public static boolean mainFrame=false;
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
             initPoints();
             Game game = new Game();
-            game.commands.setNames(game.window);
-
+            while(mainFrame!=true) {}
+            final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
             //Adding Drawing image to JFrame after name input
-            game.window.mainFrame.getContentPane().add(game.window.drawing);
+            window.mainFrame.getContentPane().add(window.drawing);
     }
 
     public static final Point[] pointList = new Point[28];
@@ -84,5 +85,8 @@ class Game {
         pointList[26].setColor("Red");
         pointList[27].setCheckers(3);
         pointList[27].setColor("Black");
+    }
+    public void mainFrame() {
+        final Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
     }
 }

@@ -1,8 +1,14 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.DefaultCaret;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
@@ -17,13 +23,17 @@ class Window extends JFrame {
     //Frame for containing panel, label, and image in Window
     final JFrame nameFrame = new JFrame();
     final JFrame mainFrame = new JFrame();
-    private JTextField nameField1;
-    private JTextField nameField2;
     //JPanel to contain all die JLabels
     final JTextArea infoLabel = new JTextArea();   //Label with info text area
 
     //Window constructor
     Window() {
+        JTextField nameField1 = new JTextField(10);
+        JTextField nameField2 = new JTextField(10);
+        JLabel player1 = new JLabel("Player 1 Name:");
+        JLabel player2 = new JLabel("Player 2 Name:");
+        JLabel error = new JLabel("Please enter names for both players!");
+        JButton goButton = new JButton("Go!");
         nameFrame.setTitle("Player Name Entry");
         nameFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resources/Yay.jpeg")));
         nameFrame.setPreferredSize(new Dimension(500,300));
@@ -33,18 +43,38 @@ class Window extends JFrame {
         nameFrame.setLocationRelativeTo(null);
 
         //Name fields
-        JPanel nameContainer = new JPanel();
-        nameContainer.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        nameContainer.setLayout(new BorderLayout());
+        JPanel nameContainer = (JPanel) nameFrame.getContentPane();
+        nameFrame.setLayout(null);
+        nameContainer.setLayout(null);
 
-        nameField1 = new JTextField(10);
-        nameField2 = new JTextField(10);
-        nameContainer.add(nameField1, BorderLayout.WEST);
-        nameContainer.add(nameField2, BorderLayout.EAST);
-        nameFrame.getContentPane().add(BorderLayout.SOUTH, nameContainer);
+        nameField1.setBounds(175,60,200,30);
+        nameField2.setBounds(175,160,200,30);
+        error.setBounds(100,50, 200, 30);
+        player1.setBounds(80,60,100,30);
+        player2.setBounds(80,160,100,30);
+        goButton.setBounds(200,200, 60, 40);
+        nameContainer.add(nameField1);
+        nameContainer.add(nameField2);
+        nameContainer.add(player1);
+        nameContainer.add(player2);
+        nameContainer.add(goButton);
+        goButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(nameField1.getText()!=null&&nameField2.getText()!=null) {
+                    commandHandler.player1.setName(nameField1.getText());
+                    commandHandler.player2.setName(nameField2.getText());
+                    nameFrame.setVisible(false);
+                    nameFrame.dispose();
+                    Game.mainFrame=true;
+                }
+                else {
+                    nameContainer.add(error);
+                }
+            }
+        });
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
+        nameFrame.pack();
         nameFrame.setVisible(true);
     }
     Window(int width, int height, String title, commandHandler commands) {
