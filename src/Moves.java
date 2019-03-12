@@ -61,8 +61,9 @@ public class Moves {
         window.infoLabel.append("\nYour possible moves are: ");
         int dice1, dice2;
         if(Game.currentPlayer) {
-            dice1 = window.dice1.getDice1();
-            dice2 = window.dice1.getDice2();
+            dice1 = window.dice1_1.getDiceValue();
+            dice2 = window.dice1_2.getDiceValue();
+
             //Bar moves
             if (Game.pointList[24].getCount() != 0) {
                 if (Game.pointList[dice1-1].getCount() == 0 || Game.pointList[dice1-1].getColor()=="Red") {
@@ -96,7 +97,6 @@ public class Moves {
             }
             for (int i = 0; i < 24; i++) {
                 if (Game.pointList[i].getColor()=="Red" && Game.pointList[i].getCount() != 0) {
-                    System.out.println("hi");
                     if (Game.pointList[i + dice1].getCount() == 0 || Game.pointList[i + dice1].getColor()=="Red") {
                         if (i + dice1 < 24) {
                             window.infoLabel.append(Integer.toString(i) + "-" + Integer.toString(i + dice1) + "\n");
@@ -143,8 +143,8 @@ public class Moves {
                 }
             }
         } else {
-            dice1 = window.dice2.getDice1();
-            dice2 = window.dice2.getDice2();
+            dice1 = window.dice2_1.getDiceValue();
+            dice2 = window.dice2_2.getDiceValue();
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor()=="Black") {

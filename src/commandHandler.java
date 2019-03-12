@@ -26,12 +26,17 @@ class commandHandler {
 
     //Rolling to decide who goes first
     public static void setFirstTurn(Window window) {
-        if((window.dice1.getDiceTotal()) > (window.dice2.getDiceTotal())) {
+
+        window.drawing.update();
+
+        if((window.dice1_1.getDiceValue() + window.dice1_2.getDiceValue()) > (window.dice2_1.getDiceValue() + window.dice2_2.getDiceValue())) {
             window.infoLabel.append("\nPlayer 1 rolled a higher dice score. " + player1.getName() + " goes first. \n\nType 'start' to begin the game");
             Game.currentPlayer = true;
-        } else if(window.dice1.getDiceTotal() == window.dice2.getDiceTotal()) {
-            window.dice1.rerollDice(window);
-            window.dice2.rerollDice(window);
+        } else if( (window.dice1_1.getDiceValue() + window.dice1_2.getDiceValue()) == (window.dice2_1.getDiceValue() + window.dice2_2.getDiceValue())) {
+            window.dice1_1.rerollDice(window);
+            window.dice1_2.rerollDice(window);
+            window.dice2_1.rerollDice(window);
+            window.dice2_2.rerollDice(window);
             setFirstTurn(window);
         } else {
             window.infoLabel.append("\nPlayer 2 rolled a higher dice score. " + player2.getName() + " goes first. \n\nType 'start' to begin the game");
@@ -49,12 +54,14 @@ class commandHandler {
         if (text.equalsIgnoreCase("start")) {
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
-                window.dice1.rerollDice(window);
-                window.infoLabel.append("Your rolls are " + window.dice1.getDice1() + " and " + window.dice1.getDice2());
+                window.dice1_1.rerollDice(window);
+                window.dice1_2.rerollDice(window);
+                window.infoLabel.append("Your rolls are " + window.dice1_1.getDiceValue() + " and " + window.dice1_2.getDiceValue());
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
-                window.dice2.rerollDice(window);
-                window.infoLabel.append("Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
+                window.dice2_1.rerollDice(window);
+                window.dice2_2.rerollDice(window);
+                window.infoLabel.append("Your rolls are " + window.dice2_1.getDiceValue() + " and " + window.dice2_2.getDiceValue());
             }
             Moves.possibleMoves(window);
         }
@@ -64,12 +71,14 @@ class commandHandler {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ".");
-                window.dice1.rerollDice(window);
-                window.infoLabel.append(" Your rolls are " + window.dice1.getDice1() + " and " + window.dice1.getDice2());
+                window.dice1_1.rerollDice(window);
+                window.dice1_2.rerollDice(window);
+                window.infoLabel.append("Your rolls are " + window.dice1_1.getDiceValue() + " and " + window.dice1_2.getDiceValue());
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ".");
-                window.dice2.rerollDice(window);
-                window.infoLabel.append(" Your rolls are " + window.dice2.getDice1() + " and " + window.dice2.getDice2());
+                window.dice2_1.rerollDice(window);
+                window.dice2_2.rerollDice(window);
+                window.infoLabel.append("Your rolls are " + window.dice2_1.getDiceValue() + " and " + window.dice2_2.getDiceValue());
             }
             Moves.possibleMoves(window);
         } else {

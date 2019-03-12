@@ -71,10 +71,12 @@ public class Drawing extends JPanel {
 
         //Drawing dice
         if(Game.currentPlayer) {
-            window.dice1.drawDice(g);
+            window.dice1_1.drawDice(g);
+            window.dice1_2.drawDice(g);
         }
         else {
-            window.dice2.drawDice(g);
+            window.dice2_1.drawDice(g);
+            window.dice2_2.drawDice(g);
         }
 
         //Drawing bar

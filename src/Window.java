@@ -7,8 +7,10 @@ import java.awt.*;
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
     public final Drawing drawing = new Drawing(this);
-    public Dice dice1 = new Dice(this);
-    public Dice dice2 = new Dice(this);
+    public Dice dice1_1 = new Dice(this);
+    public Dice dice1_2 = new Dice(this);
+    public Dice dice2_1 = new Dice(this);
+    public Dice dice2_2 = new Dice(this);
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
