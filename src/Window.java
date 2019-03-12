@@ -15,6 +15,8 @@ class Window extends JFrame {
     //Frame for containing panel, label, and image in Window
     final JFrame nameFrame = new JFrame();
     final JFrame mainFrame = new JFrame();
+    private JTextField nameField1;
+    private JTextField nameField2;
     //JPanel to contain all die JLabels
     final JTextArea infoLabel = new JTextArea();   //Label with info text area
 
@@ -27,6 +29,10 @@ class Window extends JFrame {
         nameFrame.setMinimumSize(new Dimension(300,200));
         nameFrame.setResizable(false);
         nameFrame.setLocationRelativeTo(null);
+        nameField1 = new JTextField(10);
+        nameField2 = new JTextField(10);
+        nameFrame.add(nameField1);
+        nameFrame.add(nameField2);
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     Window(int width, int height, String title, commandHandler commands) {
