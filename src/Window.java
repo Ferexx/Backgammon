@@ -24,9 +24,9 @@ class Window extends JFrame {
     Window() {
         nameFrame.setTitle("Player Name Entry");
         nameFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resources/Yay.jpeg")));
-        nameFrame.setPreferredSize(new Dimension(300,200));
-        nameFrame.setMaximumSize(new Dimension(300,200));
-        nameFrame.setMinimumSize(new Dimension(300,200));
+        nameFrame.setPreferredSize(new Dimension(500,300));
+        nameFrame.setMaximumSize(new Dimension(500,300));
+        nameFrame.setMinimumSize(new Dimension(500,300));
         nameFrame.setResizable(false);
         nameFrame.setLocationRelativeTo(null);
         nameField1 = new JTextField(10);
@@ -34,6 +34,7 @@ class Window extends JFrame {
         nameFrame.add(nameField1);
         nameFrame.add(nameField2);
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        nameFrame.setVisible(true);
     }
     Window(int width, int height, String title, commandHandler commands) {
         //Creating the window mainFrame with title
@@ -69,6 +70,6 @@ class Window extends JFrame {
         commands.restartText(this);
         //Adding info JLabel to JFrame
         mainFrame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
-        mainFrame.setVisible(true);
+        mainFrame.setVisible(false);
     }
 }

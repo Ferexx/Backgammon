@@ -10,6 +10,7 @@ class Game {
     private final int HEIGHT = 720;
     private final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
     private final commandHandler commands = new commandHandler();
+    private final Window nameWindow = new Window();
     private final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
 
     //Main function, used to get game started, as well as testing new functionality
