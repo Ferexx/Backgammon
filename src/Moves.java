@@ -40,8 +40,7 @@ public class Moves {
 
     public static ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
     public static int getFromMove(char input) {
-        input = Character.toUpperCase(input);
-        int a = Character.getNumericValue(input);
+        int a = Character.getNumericValue(Character.toUpperCase(input))-65;
         if (a>movesList.size()) {
             return -1;
         }
@@ -49,8 +48,7 @@ public class Moves {
         return move.getKey();
     }
     public static int getToMove(char input) {
-        input = Character.toUpperCase(input);
-        int a = Character.getNumericValue(input);
+        int a = Character.getNumericValue(Character.toUpperCase(input))-65;
         if (a>movesList.size()) {
             return -1;
         }
