@@ -29,11 +29,20 @@ class Window extends JFrame {
         nameFrame.setMinimumSize(new Dimension(500,300));
         nameFrame.setResizable(false);
         nameFrame.setLocationRelativeTo(null);
+
+        //Name fields
+        JPanel nameContainer = new JPanel();
+        nameContainer.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        nameContainer.setLayout(new BorderLayout());
+
         nameField1 = new JTextField(10);
         nameField2 = new JTextField(10);
-        nameFrame.add(nameField1);
-        nameFrame.add(nameField2);
+        nameContainer.add(nameField1, BorderLayout.WEST);
+        nameContainer.add(nameField2, BorderLayout.EAST);
+        nameFrame.getContentPane().add(BorderLayout.SOUTH, nameContainer);
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+
         nameFrame.setVisible(true);
     }
     Window(int width, int height, String title, commandHandler commands) {
