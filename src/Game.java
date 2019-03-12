@@ -19,7 +19,7 @@ class Game {
             game.commands.setNames(game.window);
 
             //Adding Drawing image to JFrame after name input
-            game.window.frame.getContentPane().add(game.window.drawing);
+            game.window.mainFrame.getContentPane().add(game.window.drawing);
     }
 
     public static final Point[] pointList = new Point[28];

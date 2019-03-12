@@ -98,8 +98,8 @@ class Buttons {
         panel.add(enter);
         panel.add(reset);
 
-        window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
-        window.frame.getContentPane().add(BorderLayout.NORTH, mb);
+        window.mainFrame.getContentPane().add(BorderLayout.SOUTH, panel);
+        window.mainFrame.getContentPane().add(BorderLayout.NORTH, mb);
 
     }
 }
