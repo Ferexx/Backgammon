@@ -34,18 +34,20 @@ class Window extends JFrame {
         frame.setLayout(new BorderLayout());
         //Creating Buttons
         new Buttons(this);
+
         //Creating player-readable text info box
         infoLabel = new JTextArea();
-        infoLabel.setBorder(new EmptyBorder(20,20,20,20));
-        infoLabel.setBounds(20,20,500,720);
-        infoLabel.setPreferredSize(new Dimension(255,720));
+        JScrollPane scrollPane = new JScrollPane(infoLabel);
+        scrollPane.setBorder(new EmptyBorder(20,20,20,20));
+        scrollPane.setBounds(20,20,255,600);
+        scrollPane.setPreferredSize(new Dimension(255,600));
         infoLabel.setEditable(false);
         infoLabel.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
-        infoLabel.setBorder(border);
+        scrollPane.setBorder(border);
         commands.restartText(this);
         //Adding info JLabel to JFrame
-        frame.getContentPane().add(BorderLayout.LINE_START, infoLabel);
+        frame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
         frame.setVisible(true);
     }
 }
