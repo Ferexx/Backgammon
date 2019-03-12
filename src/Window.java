@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.DefaultCaret;
 import java.awt.*;
 
 //Window class is the class that makes the window, and controls the objects present on it
@@ -41,6 +42,10 @@ class Window extends JFrame {
         scrollPane.setBorder(new EmptyBorder(20,20,20,20));
         scrollPane.setBounds(20,20,255,600);
         scrollPane.setPreferredSize(new Dimension(255,600));
+
+        DefaultCaret caret = (DefaultCaret)infoLabel.getCaret();
+        caret.setUpdatePolicy(DefaultCaret.ALWAYS_UPDATE);
+
         infoLabel.setEditable(false);
         infoLabel.setLineWrap(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
