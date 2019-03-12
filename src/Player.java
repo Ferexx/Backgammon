@@ -7,6 +7,7 @@ class Player {
         PlayerName = name;
         colour = checkerColour;
     }
+    public Player() {}
 
     public void setName(String name)
     {

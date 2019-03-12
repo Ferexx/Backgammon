@@ -4,21 +4,15 @@ import java.util.Scanner;
 class commandHandler {
 
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
-    public static Player player1;
-    public static Player player2;
-
+    public static Player player1 = new Player();
+    public static Player player2 = new Player();
     public commandHandler() {
 
     }
 
     public static void setNames(Window window) {
-        //Player name getting
-        JFrame p1frame = new JFrame("Player 1");
-        JFrame p2frame = new JFrame("Player 2");
-        String p1 = JOptionPane.showInputDialog(p1frame, "Player 1, please enter your name");
-        String p2 = JOptionPane.showInputDialog(p2frame, "Player 2, please enter your name");
-        player1 = new Player(p1, "Red");
-        player2 = new Player(p2, "Black");
+        player1.setChecker("Red");
+        player2.setChecker("Black");
         window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". You are player 1, and your dice are on top. Your colour is " + player1.getColour().toLowerCase() + ".\n");
         window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". You are player 2, and your dice are on the bottom. Your colour is " + player2.getColour().toLowerCase() + ".\n");
         setFirstTurn(window);

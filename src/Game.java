@@ -18,7 +18,7 @@ class Game {
     public static void main(String[] args) {
             initPoints();
             Game game = new Game();
-            while(mainFrame!=true) {}
+            while(mainFrame!=true) {try{Thread.sleep(1);}catch(Exception e) {System.exit(-1);}}
             final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
             //Adding Drawing image to JFrame after name input
             window.mainFrame.getContentPane().add(window.drawing);

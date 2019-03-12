@@ -12,6 +12,7 @@ import java.io.IOException;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
+
     public final Drawing drawing = new Drawing(this);
     public Dice dice1_1 = new Dice(this);
     public Dice dice1_2 = new Dice(this);
@@ -28,10 +29,10 @@ class Window extends JFrame {
 
     //Window constructor
     Window() {
-        JTextField nameField1 = new JTextField(10);
-        JTextField nameField2 = new JTextField(10);
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
+        JTextField nameField1 = new JTextField(10);
+        JTextField nameField2 = new JTextField(10);
         JLabel error = new JLabel("Please enter names for both players!");
         JButton goButton = new JButton("Go!");
         nameFrame.setTitle("Player Name Entry");
@@ -49,7 +50,7 @@ class Window extends JFrame {
 
         nameField1.setBounds(175,60,200,30);
         nameField2.setBounds(175,160,200,30);
-        error.setBounds(100,50, 200, 30);
+        error.setBounds(150,20, 300, 30);
         player1.setBounds(80,60,100,30);
         player2.setBounds(80,160,100,30);
         goButton.setBounds(200,200, 60, 40);
@@ -58,17 +59,18 @@ class Window extends JFrame {
         nameContainer.add(player1);
         nameContainer.add(player2);
         nameContainer.add(goButton);
+        nameContainer.add(error);
+        error.setVisible(false);
         goButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(nameField1.getText()!=null&&nameField2.getText()!=null) {
+                if (nameField1.getText().isEmpty() != true && nameField2.getText().isEmpty() != true) {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
                     nameFrame.setVisible(false);
                     nameFrame.dispose();
-                    Game.mainFrame=true;
-                }
-                else {
-                    nameContainer.add(error);
+                    Game.mainFrame = true;
+                } else {
+                    error.setVisible(true);
                 }
             }
         });
@@ -111,6 +113,7 @@ class Window extends JFrame {
         commands.restartText(this);
         //Adding info JLabel to JFrame
         mainFrame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
-        mainFrame.setVisible(false);
+        mainFrame.setVisible(true);
+        commandHandler.setNames(this);
     }
 }
