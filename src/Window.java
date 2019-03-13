@@ -108,6 +108,7 @@ class Window extends JFrame {
 
         infoLabel.setEditable(false);
         infoLabel.setLineWrap(true);
+        infoLabel.setWrapStyleWord(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         scrollPane.setBorder(border);
         commands.restartText(this);
