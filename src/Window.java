@@ -74,6 +74,9 @@ class Window extends JFrame {
                 }
             }
         });
+
+        nameContainer.getRootPane().setDefaultButton(goButton);
+
         nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         nameFrame.pack();
