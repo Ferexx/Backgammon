@@ -43,9 +43,7 @@ class commandHandler {
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
     public void appendText(String text, Window window) {
-        if (text.equalsIgnoreCase("quit")) {
-            catchQuit();
-        }
+
 
         //game happening for start
         if (text.equalsIgnoreCase("start")) {
@@ -91,6 +89,10 @@ class commandHandler {
             Game.cheatPoints();
             //updates the board
             window.drawing.update();
+        }
+
+        if (text.equalsIgnoreCase("quit")) {
+            catchQuit();
         }
 
         try {
