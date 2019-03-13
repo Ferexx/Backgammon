@@ -21,12 +21,12 @@ class commandHandler {
 
     //Rolling to decide who goes first
     public static void setFirstTurn(Window window) {
+
         window.diceHandler.rollDice1(window);
         window.diceHandler.rollDice2(window);
+        window.infoLabel.append("\nPlayer 1 rolled: " + window.diceHandler.getDice1Value() + " " + window.diceHandler.getDice2Value());
         window.diceHandler.rollDice3(window);
         window.diceHandler.rollDice4(window);
-
-        window.infoLabel.append("\nPlayer 1 rolled: " + window.diceHandler.getDice1Value() + " " + window.diceHandler.getDice2Value());
         window.infoLabel.append("\nPlayer 2 rolled: " + window.diceHandler.getDice3Value() + " " + window.diceHandler.getDice4Value());
 
         if((window.diceHandler.getDice1Value() + window.diceHandler.getDice2Value()) > (window.diceHandler.getDice3Value() + window.diceHandler.getDice4Value())) {
