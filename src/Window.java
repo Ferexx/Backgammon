@@ -1,4 +1,3 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -6,18 +5,12 @@ import javax.swing.text.DefaultCaret;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
 
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
 
     public final Drawing drawing = new Drawing(this);
-    public Dice dice1_1 = new Dice(this);
-    public Dice dice1_2 = new Dice(this);
-    public Dice dice2_1 = new Dice(this);
-    public Dice dice2_2 = new Dice(this);
+    public diceHandler diceHandler = new diceHandler(this);
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame

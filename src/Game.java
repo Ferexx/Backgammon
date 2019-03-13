@@ -5,7 +5,7 @@ class Game {
     public static boolean currentPlayer;
 
     //PlayerPlaying string will be used for controlling turns and which dice display
-    //Currently only used for displaying Dice
+    //Currently only used for displaying diceHandler
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
     private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";

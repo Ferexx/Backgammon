@@ -61,8 +61,8 @@ public class Moves {
         window.infoLabel.append("\nYour possible moves are: ");
         int dice1, dice2;
         if(Game.currentPlayer) {
-            dice1 = window.dice1_1.getDiceValue();
-            dice2 = window.dice1_2.getDiceValue();
+            dice1 = window.diceHandler.getDice1Value();
+            dice2 = window.diceHandler.getDice2Value();
 
             //Bar moves
             if (Game.pointList[24].getCount() != 0) {
@@ -143,8 +143,8 @@ public class Moves {
                 }
             }
         } else {
-            dice1 = window.dice2_1.getDiceValue();
-            dice2 = window.dice2_2.getDiceValue();
+            dice1 = window.diceHandler.getDice3Value();
+            dice2 = window.diceHandler.getDice4Value();
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor()=="Black") {
