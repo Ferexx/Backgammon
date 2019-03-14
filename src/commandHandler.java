@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static java.lang.Thread.sleep;
@@ -97,49 +98,48 @@ class commandHandler {
 
         try {
             Scanner sc = new Scanner(text);
+
             int point1 = sc.nextInt();
             int point2 = sc.nextInt();
             sc.close();
 
             Moves.isValidMove(window, point1, point2);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-
+        } catch (InputMismatchException e) {
+            window.infoLabel.append("test");
             Scanner sc = new Scanner(text);
-            String letter = sc.nextLine();
-            if (letter.matches("[A-Za-z]{1}")) {
+            char letter = sc.next().charAt(0);
+            if (Character.toString(letter).matches("[A-Za-z]{1}")) {
                 switch(letter) {
-                    case "A":
-                        Moves.getFromMove('A');
+                    case 'A':
+                        Moves.isValidMove(window, Moves.getFromMove('A'), Moves.getToMove('A'));
                         break;
 
-                    case "B":
+                    case 'B':
                         Moves.getFromMove('B');
                         break;
 
-                    case "C":
+                    case 'C':
                         Moves.getFromMove('C');
                         break;
 
-                    case "D":
+                    case 'D':
                         Moves.getFromMove('D');
                         break;
 
-                    case "E":
+                    case 'E':
                         Moves.getFromMove('E');
                         break;
 
-                    case "F":
+                    case 'F':
                         Moves.getFromMove('F');
                         break;
 
-                    case "G":
+                    case 'G':
                         Moves.getFromMove('G');
                         break;
                 }
             }
 
-            System.exit(-1);
         }
     }
 
