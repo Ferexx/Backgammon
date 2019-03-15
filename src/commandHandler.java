@@ -112,6 +112,8 @@ class commandHandler {
                 switch(letter) {
                     case 'A':
                         Moves.isValidMove(window, Moves.getFromMove('A'), Moves.getToMove('A'));
+                        System.out.println(Moves.getFromMove('A')+"yes");
+                        System.out.println(Moves.getToMove('A'));
                         break;
 
                     case 'B':

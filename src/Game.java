@@ -86,7 +86,4 @@ class Game {
         pointList[27].setCheckers(3);
         pointList[27].setColor("Black");
     }
-    public void mainFrame() {
-        final Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
-    }
 }
