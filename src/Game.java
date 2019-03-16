@@ -3,8 +3,6 @@ class Game {
 
     //We use the boolean "currentPlayer" to handle player turns. Player 1 = true, Player 2 = false.
     public static boolean currentPlayer;
-
-
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
     private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
@@ -16,16 +14,16 @@ class Game {
     public static void main(String[] args) {
             initPoints();
             Game game = new Game();
-            while(mainFrame!=true) {try{Thread.sleep(1);}catch(Exception e) {System.exit(-1);}}
+            while(!mainFrame) {try{Thread.sleep(1);}catch(Exception e) {System.exit(-1);}}
             final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
             //Adding Drawing image to JFrame after name input
             window.mainFrame.getContentPane().add(window.drawing);
     }
 
-    public static final Point[] pointList = new Point[28];
     //Last two points are bear off points, previous two are bar points
     private static final int[] pointXCoords = new int[]{915,865,816,766,716,665,574,524,474,424,375,325,325,375,424,474,524,574,665,716,766,816,865,915,620,620,230,230};
     private static final int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233,357,233};
+    public static final Point[] pointList = new Point[28];
 
     //Create points and assign them their pixel locations
     protected static void initPoints() {
