@@ -61,7 +61,7 @@ public class Moves {
 
     public static void possibleMoves(Window window) {
         movesList.clear();
-        window.infoLabel.append("\nYour possible moves are: ");
+        window.infoLabel.append("\nYour possible moves are:\n");
         int dice1, dice2;
         if(Game.currentPlayer) {
             dice1 = window.p1D1.getRoll();

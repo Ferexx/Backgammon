@@ -61,6 +61,7 @@ class commandHandler {
                 window.p2D2.roll(window);
                 window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
             }
+            window.drawing.update();
             Moves.possibleMoves(window);
         }
 
@@ -78,7 +79,7 @@ class commandHandler {
                 window.p2D2.roll(window);
                 window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
             }
-
+            window.drawing.update();
             Moves.possibleMoves(window);
         } else {
             window.infoLabel.append("\n" + text);
@@ -123,7 +124,7 @@ class commandHandler {
     //Used for restarting the game
     public void restartText(Window window) {
         window.infoLabel.setText(null);
-        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n\n");
+        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n");
     }
 
     //Quits
