@@ -4,7 +4,6 @@ class Game {
     //We use the boolean "currentPlayer" to handle player turns. Player 1 = true, Player 2 = false.
     public static boolean currentPlayer;
 
-
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
     private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
