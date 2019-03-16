@@ -70,7 +70,10 @@ public class Drawing extends JPanel {
         }
 
         //Drawing dice
-        window.diceHandler.drawDice(g);
+        window.p1D1.draw(g);
+        window.p1D2.draw(g);
+        window.p2D1.draw(g);
+        window.p2D2.draw(g);
 
         //Drawing bar
         g.setColor(Color.BLACK);
