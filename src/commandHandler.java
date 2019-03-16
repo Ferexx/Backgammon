@@ -8,6 +8,8 @@ class commandHandler {
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
     public static Player player1 = new Player();
     public static Player player2 = new Player();
+    int started = 0;
+
     public commandHandler() {
 
     }
@@ -96,22 +98,26 @@ class commandHandler {
             catchQuit();
         }
 
-        try {
-            Scanner sc = new Scanner(text);
+        if(started == 1)
+        {
+            try {
+                Scanner sc = new Scanner(text);
 
-            int point1 = sc.nextInt();
-            int point2 = sc.nextInt();
-            sc.close();
+                int point1 = sc.nextInt();
+                int point2 = sc.nextInt();
+                sc.close();
 
-            Moves.isValidMove(window, point1, point2);
-        } catch (InputMismatchException e) {
-            Scanner sc = new Scanner(text);
-            char letter = sc.next().charAt(0);
-            if (Character.toString(letter).matches("[A-Za-z]{1}")) {
-                Moves.isValidMove(window, Moves.getFromMove(letter), Moves.getToMove(letter));
+                Moves.isValidMove(window, point1, point2);
+            } catch (InputMismatchException e) {
+                Scanner sc = new Scanner(text);
+                char letter = sc.next().charAt(0);
+                if (Character.toString(letter).matches("[A-Za-z]{1}")) {
+                    Moves.isValidMove(window, Moves.getFromMove(letter), Moves.getToMove(letter));
+                }
             }
+            catch(ArrayIndexOutOfBoundsException e) { }
         }
-        catch(ArrayIndexOutOfBoundsException e) { }
+        started = 1;
     }
 
     //Used for restarting the game
