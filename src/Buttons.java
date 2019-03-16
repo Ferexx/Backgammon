@@ -19,7 +19,7 @@ class Buttons {
     //action listener for reset button
     private void resetPerformed(ActionEvent e, Window window) {
         commands.restartText(window);
-        Game.initPoints();
+        PointStorage.initPoints();
         window.drawing.update();
     }
 

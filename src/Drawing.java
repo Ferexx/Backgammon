@@ -54,19 +54,19 @@ public class Drawing extends JPanel {
         for(int i=0;i<24;i++) {
             g.setColor(Color.BLACK);
             if(Game.currentPlayer) {
-                if (Game.pointList[i].getyLoc() == 60) {
-                    g.drawString(Integer.toString(i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() - 10);
+                if (PointStorage.pointList[i].getyLoc() == 60) {
+                    g.drawString(Integer.toString(i), PointStorage.pointList[i].getxLoc() + 5, PointStorage.pointList[i].getyLoc() - 10);
                 } else {
-                    g.drawString(Integer.toString(i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() + 52);
+                    g.drawString(Integer.toString(i), PointStorage.pointList[i].getxLoc() + 5, PointStorage.pointList[i].getyLoc() + 52);
                 }
             } else {
-                if (Game.pointList[i].getyLoc() == 60) {
-                    g.drawString(Integer.toString(23-i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() - 10);
+                if (PointStorage.pointList[i].getyLoc() == 60) {
+                    g.drawString(Integer.toString(23-i), PointStorage.pointList[i].getxLoc() + 5, PointStorage.pointList[i].getyLoc() - 10);
                 } else {
-                    g.drawString(Integer.toString(23-i), Game.pointList[i].getxLoc() + 5, Game.pointList[i].getyLoc() + 52);
+                    g.drawString(Integer.toString(23-i), PointStorage.pointList[i].getxLoc() + 5, PointStorage.pointList[i].getyLoc() + 52);
                 }
             }
-            Game.pointList[i].drawPoint(g);
+            PointStorage.pointList[i].drawPoint(g);
         }
 
         //Drawing dice
@@ -77,20 +77,20 @@ public class Drawing extends JPanel {
 
         //Drawing bar
         g.setColor(Color.BLACK);
-        g.drawString(Integer.toString(24), Game.pointList[24].getxLoc()+5, Game.pointList[24].getyLoc()-5);
-        g.drawString(Integer.toString(25), Game.pointList[25].getxLoc()+5, Game.pointList[25].getyLoc()+47);
-        Game.pointList[24].drawPoint(g);
-        Game.pointList[25].drawPoint(g);
+        g.drawString(Integer.toString(24), PointStorage.pointList[24].getxLoc()+5, PointStorage.pointList[24].getyLoc()-5);
+        g.drawString(Integer.toString(25), PointStorage.pointList[25].getxLoc()+5, PointStorage.pointList[25].getyLoc()+47);
+        PointStorage.pointList[24].drawPoint(g);
+        PointStorage.pointList[25].drawPoint(g);
         g.setColor(Color.BLACK);
         g.drawString("B", 630, 300);
         g.drawString("A", 630, 315);
         g.drawString("R", 630, 330);
 
         //Drawing bear off
-        g.drawString(Integer.toString(26), Game.pointList[26].getxLoc()+5, Game.pointList[26].getyLoc()-5);
-        g.drawString(Integer.toString(27), Game.pointList[27].getxLoc()+5, Game.pointList[27].getyLoc()+52);
-        Game.pointList[26].drawSides(g);
-        Game.pointList[27].drawSides(g);
+        g.drawString(Integer.toString(26), PointStorage.pointList[26].getxLoc()+5, PointStorage.pointList[26].getyLoc()-5);
+        g.drawString(Integer.toString(27), PointStorage.pointList[27].getxLoc()+5, PointStorage.pointList[27].getyLoc()+52);
+        PointStorage.pointList[26].drawSides(g);
+        PointStorage.pointList[27].drawSides(g);
         g.setColor(Color.BLACK);
         g.drawString("Bear-Off", 195, 320);
     }
