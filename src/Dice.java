@@ -7,7 +7,10 @@ import java.util.Random;
 
 public class Dice extends JPanel {
 
+    //integer for roll will hold the dice's random roll
     private int roll;
+
+    //creating buffered images 1 through 6 for each possible face of the dice roll
     private BufferedImage diceImg1;
     private BufferedImage diceImg2;
     private BufferedImage diceImg3;
@@ -16,15 +19,19 @@ public class Dice extends JPanel {
     private BufferedImage diceImg6;
     private Graphics2D g;
 
+    //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
     public void roll() {
         Random random = new Random();
         roll = random.nextInt(6) + 1;
     }
 
+    //getter for roll method
     public int getRoll() {
         return roll;
     }
 
+    //method for drawing the dice
+    //TODO figure out how to assign the coordinates for each of the 4 proposed instances of the dice
     public void draw(Graphics2D graphics, int x, int y) {
         g = graphics;
 
@@ -41,6 +48,7 @@ public class Dice extends JPanel {
             System.exit(-1);
         }
 
+        //Switch statement for drawing only what side is rolled
         switch(roll) {
             case 1:
                 roll = 1;
@@ -71,8 +79,6 @@ public class Dice extends JPanel {
                 roll = 1;
                 g.drawImage(diceImg6, x, y, 45, 45, null);
                 break;
-
         }
-
     }
 }
