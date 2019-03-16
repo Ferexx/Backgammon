@@ -26,11 +26,11 @@ public class Drawing extends JPanel {
     //Basic move function, removes a checker from chosen point, and adds to new point, as well as updating color.
     public void move(Point from, Point to) {
         from.removeChecker();
+        to.setColor(from.getColor());
         if(from.getCount()==0) {
             from.setColor(null);
         }
         to.addChecker();
-        to.setColor(from.getColor());
         update();
     }
 
@@ -73,6 +73,7 @@ public class Drawing extends JPanel {
         window.diceHandler.drawDice(g);
 
         //Drawing bar
+        g.setColor(Color.BLACK);
         g.drawString(Integer.toString(24), Game.pointList[24].getxLoc()+5, Game.pointList[24].getyLoc()-5);
         g.drawString(Integer.toString(25), Game.pointList[25].getxLoc()+5, Game.pointList[25].getyLoc()+47);
         Game.pointList[24].drawPoint(g);

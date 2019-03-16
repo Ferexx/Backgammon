@@ -7,7 +7,7 @@ public class Moves {
         if(from > 25 || to > 27 || from < 0 || to < 0) {
             window.infoLabel.append("\nYour move is out of bounds.");
         }
-        if(Game.currentPlayer) {
+        else if(Game.currentPlayer) {
             if (Game.pointList[from].getCount() == 0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
             } else {
@@ -40,7 +40,8 @@ public class Moves {
 
     public static ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
     public static int getFromMove(char input) {
-        int a = Character.getNumericValue(Character.toUpperCase(input));
+        int a = input-65;
+        System.out.println(a);
         if (a>movesList.size()) {
             return -1;
         }
@@ -48,7 +49,8 @@ public class Moves {
         return move.getKey();
     }
     public static int getToMove(char input) {
-        int a = Character.getNumericValue(Character.toUpperCase(input));
+        int a = input-65;
+        System.out.println(a);
         if (a>movesList.size()) {
             return -1;
         }
@@ -246,7 +248,7 @@ public class Moves {
                 }
             }
         }
-        System.out.println(movesList.toString()+"yes");
+        System.out.println(movesList.toString()+movesList.size());
     }
 
     private static Boolean checkBearOffPossible() {

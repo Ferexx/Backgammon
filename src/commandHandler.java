@@ -105,44 +105,13 @@ class commandHandler {
 
             Moves.isValidMove(window, point1, point2);
         } catch (InputMismatchException e) {
-            window.infoLabel.append("test");
             Scanner sc = new Scanner(text);
             char letter = sc.next().charAt(0);
             if (Character.toString(letter).matches("[A-Za-z]{1}")) {
-                switch(letter) {
-                    case 'A':
-                        Moves.isValidMove(window, Moves.getFromMove('A'), Moves.getToMove('A'));
-                        System.out.println(Moves.getFromMove('A')+"yes");
-                        System.out.println(Moves.getToMove('A'));
-                        break;
-
-                    case 'B':
-                        Moves.getFromMove('B');
-                        break;
-
-                    case 'C':
-                        Moves.getFromMove('C');
-                        break;
-
-                    case 'D':
-                        Moves.getFromMove('D');
-                        break;
-
-                    case 'E':
-                        Moves.getFromMove('E');
-                        break;
-
-                    case 'F':
-                        Moves.getFromMove('F');
-                        break;
-
-                    case 'G':
-                        Moves.getFromMove('G');
-                        break;
-                }
+                Moves.isValidMove(window, Moves.getFromMove(letter), Moves.getToMove(letter));
             }
-
         }
+        catch(ArrayIndexOutOfBoundsException e) { }
     }
 
     //Used for restarting the game
