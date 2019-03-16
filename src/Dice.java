@@ -22,6 +22,10 @@ public class Dice extends JPanel {
     //integers x and y for the coordinates of each dice
     int x, y;
 
+    public Dice(Window window){
+
+    }
+
     //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
     public void roll() {
         Random random = new Random();

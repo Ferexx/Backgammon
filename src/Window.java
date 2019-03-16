@@ -10,6 +10,12 @@ import java.awt.event.ActionListener;
 class Window extends JFrame {
 
     public final Drawing drawing = new Drawing(this);
+
+    //TODO change all instances of diceHandler to new Dice methods
+    public Dice p1D1 = new Dice(this);
+    public Dice p1D2 = new Dice(this);
+    public Dice p2D1 = new Dice(this);
+    public Dice p2D2 = new Dice(this);
     public diceHandler diceHandler = new diceHandler(this);
 
     //Window > JFrame > JPanel > JLabel
