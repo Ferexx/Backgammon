@@ -19,6 +19,9 @@ public class Dice extends JPanel {
     private BufferedImage diceImg6;
     private Graphics2D g;
 
+    //integers x and y for the coordinates of each dice
+    int x, y;
+
     //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
     public void roll() {
         Random random = new Random();
@@ -30,9 +33,15 @@ public class Dice extends JPanel {
         return roll;
     }
 
+    //setter for the cords for the dice coordinates - BETA IDEA
+    public void setCords(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
     //method for drawing the dice
     //TODO figure out how to assign the coordinates for each of the 4 proposed instances of the dice
-    public void draw(Graphics2D graphics, int x, int y) {
+    public void draw(Graphics2D graphics) {
         g = graphics;
 
         //Assigning Dice images and storing them as they will all be used undoubtedly at some stage
