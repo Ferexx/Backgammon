@@ -4,7 +4,10 @@ import java.util.Map;
 
 public class Moves {
     public static void isValidMove(Window window, int from, int to) {
-        if(from > 25 || to > 27 || from < 0 || to < 0) {
+        if(from==-1||to==-1) {
+            window.infoLabel.append("\nThat is not a valid input.");
+        }
+        else if(from > 25 || to > 27 || from < 0 || to < 0) {
             window.infoLabel.append("\nYour move is out of bounds.");
         }
         else if(Game.currentPlayer) {
@@ -41,8 +44,7 @@ public class Moves {
     public static ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
     public static int getFromMove(char input) {
         int a = input-65;
-        System.out.println(a);
-        if (a>movesList.size()) {
+        if (a>=movesList.size()) {
             return -1;
         }
         Map.Entry<Integer, Integer> move =  movesList.get(a);
@@ -50,8 +52,7 @@ public class Moves {
     }
     public static int getToMove(char input) {
         int a = input-65;
-        System.out.println(a);
-        if (a>movesList.size()) {
+        if (a>=movesList.size()) {
             return -1;
         }
         Map.Entry<Integer, Integer> move =  movesList.get(a);
@@ -248,7 +249,7 @@ public class Moves {
                 }
             }
         }
-        System.out.println(movesList.toString()+movesList.size());
+        System.out.println("ArrayMap: "+movesList.toString()+" Size:"+movesList.size());
     }
 
     private static Boolean checkBearOffPossible() {
