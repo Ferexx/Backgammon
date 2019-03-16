@@ -87,7 +87,7 @@ class commandHandler {
         if (text.equalsIgnoreCase("sv_cheats 1")) {
             window.infoLabel.append("\nCheats have been enabled\n\n");
             //initialised the cheat positions
-            PointStorage.cheatPoints();
+            Game.cheatPoints();
             //updates the board
             window.drawing.update();
         }
