@@ -47,11 +47,12 @@ public class Dice extends JPanel {
         g = graphics;
 
         //Switch statement for drawing only what side is rolled
+        //Try and catch is the most efficient way of assigning an image to a class
+        //It isn't storing the 24 (ie. 4 dice * 6 possible images) possible combinations
+        //It's only storing 4 dice and overriding the images as each is needed
         switch(roll) {
             case 1:
                 roll = 1;
-                //Try and catch is the most efficient way of assigning an image to a class
-                //It isn't storing the 24 (ie. 4 * 6) possible combinations, it's only storing 4 and overriding them as each is needed
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice1.jpg"));
                     System.out.println("image 1");
