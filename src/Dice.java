@@ -17,8 +17,10 @@ public class Dice extends JPanel {
     //integers x and y for the coordinates of each dice
     private int x, y;
 
-    public Dice(Window window){
-
+    //Constructor takes in coordinates for the position of the new dice
+    public Dice(Window window, int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
     //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
@@ -32,13 +34,7 @@ public class Dice extends JPanel {
         return roll;
     }
 
-    //setter for the cords for the dice coordinates - BETA IDEA
-    public void setCords(int x, int y){
-        this.x = x;
-        this.y = y;
-    }
-
-    //getter for cords
+    //getter for cords - testing mainly
     public int getX(){
         return x;
     }
@@ -47,7 +43,6 @@ public class Dice extends JPanel {
     }
 
     //method for drawing the dice
-    //TODO figure out how to assign the coordinates for each of the 4 proposed instances of the dice
     public void draw(Graphics2D graphics) {
         g = graphics;
 
@@ -55,6 +50,8 @@ public class Dice extends JPanel {
         switch(roll) {
             case 1:
                 roll = 1;
+                //Try and catch is the most efficient way of assigning an image to a class
+                //It isn't storing the 24 (ie. 4 * 6) possible combinations, it's only storing 4 and overriding them as each is needed
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice1.jpg"));
                     System.out.println("image 1");
