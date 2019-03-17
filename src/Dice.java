@@ -50,7 +50,6 @@ public class Dice extends JPanel {
         //It's only storing 4 dice and overriding the images as each is needed
         switch(roll) {
             case 1:
-                roll = 1;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice1.jpg"));
                     System.out.println("image 1");
@@ -62,7 +61,6 @@ public class Dice extends JPanel {
                 break;
 
             case 2:
-                roll = 2;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice2.jpg"));
                     System.out.println("image 2");
@@ -74,7 +72,6 @@ public class Dice extends JPanel {
                 break;
 
             case 3:
-                roll = 3;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice3.jpg"));
                     System.out.println("image 3");
@@ -86,7 +83,6 @@ public class Dice extends JPanel {
                 break;
 
             case 4:
-                roll = 4;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice4.jpg"));
                     System.out.println("image 4");
@@ -98,7 +94,6 @@ public class Dice extends JPanel {
                 break;
 
             case 5:
-                roll = 5;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice5.jpg"));
                     System.out.println("image 5");
@@ -110,7 +105,6 @@ public class Dice extends JPanel {
                 break;
 
             case 6:
-                roll = 6;
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice6.jpg"));
                     System.out.println("image 6");
