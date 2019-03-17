@@ -24,11 +24,11 @@ class commandHandler {
     //Rolling to decide who goes first
     public static void setFirstTurn(Window window) {
 
-        window.p1D1.roll(window);
-        window.p1D2.roll(window);
+        window.p1D1.roll();
+        window.p1D2.roll();
         window.infoLabel.append("\nPlayer 1 rolled: " + window.p1D1.getRoll() + " " + window.p1D2.getRoll());
-        window.p2D1.roll(window);
-        window.p2D2.roll(window);
+        window.p2D1.roll();
+        window.p2D2.roll();
         window.infoLabel.append("\nPlayer 2 rolled: " + window.p2D1.getRoll() + " " + window.p2D2.getRoll());
 
         if((window.p1D1.getRoll() + window.p1D2.getRoll()) > (window.p2D1.getRoll() + window.p2D2.getRoll())) {
@@ -51,13 +51,13 @@ class commandHandler {
         if (text.equalsIgnoreCase("start")) {
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
-                window.p1D1.roll(window);
-                window.p1D2.roll(window);
+                window.p1D1.roll();
+                window.p1D2.roll();
                 window.infoLabel.append("Your rolls are " + window.p1D1.getRoll() + " and " + window.p1D2.getRoll());
             } else {
                 window.infoLabel.append("\n\nIt is your turn " + player2.getName() + ". ");
-                window.p2D1.roll(window);
-                window.p2D2.roll(window);
+                window.p2D1.roll();
+                window.p2D2.roll();
                 window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
             }
             window.drawing.update();
@@ -69,13 +69,13 @@ class commandHandler {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
-                window.p1D1.roll(window);
-                window.p1D2.roll(window);
+                window.p1D1.roll();
+                window.p1D2.roll();
                 window.infoLabel.append("Your rolls are " + window.p1D1.getRoll() + " and " + window.p1D2.getRoll());
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
-                window.p2D1.roll(window);
-                window.p2D2.roll(window);
+                window.p2D1.roll();
+                window.p2D2.roll();
                 window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
             }
             window.drawing.update();

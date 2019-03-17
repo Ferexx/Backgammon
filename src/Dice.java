@@ -11,8 +11,7 @@ public class Dice extends JPanel {
     private int roll;
 
     //creating buffered images 1 through 6 for each possible face of the dice roll
-    BufferedImage diceImg;
-    Graphics2D g;
+    private BufferedImage diceImg;
 
     //integers x and y for the coordinates of each dice
     private int x, y;
@@ -24,7 +23,7 @@ public class Dice extends JPanel {
     }
 
     //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
-    public void roll(Window window) {
+    public void roll() {
         Random random = new Random();
         roll = random.nextInt(6) + 1;
     }
@@ -44,7 +43,6 @@ public class Dice extends JPanel {
 
     //method for drawing the dice
     public void draw(Graphics2D graphics) {
-        g = graphics;
 
         //Switch statement for drawing only what side is rolled
         //Try and catch is the most efficient way of assigning an image to a class
@@ -60,7 +58,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
 
             case 2:
@@ -72,7 +70,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
 
             case 3:
@@ -84,7 +82,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
 
             case 4:
@@ -96,7 +94,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
 
             case 5:
@@ -108,7 +106,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
 
             case 6:
@@ -120,7 +118,7 @@ public class Dice extends JPanel {
                     e.printStackTrace();
                     System.exit(-1);
                 }
-                g.drawImage(diceImg, x, y, 45, 45, null);
+                graphics.drawImage(diceImg, x, y, 45, 45, null);
                 break;
         }
     }
