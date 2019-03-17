@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class Dice extends JPanel {
 
-    //integer for roll will hold the dice's random roll
+    //integer roll will hold the dice's random roll
     private int roll;
 
-    //creating buffered images 1 through 6 for each possible face of the dice roll
+    //creating buffered images one through 6 for each possible face of the dice roll
     private BufferedImage diceImg;
 
     //integers x and y for the coordinates of each dice
