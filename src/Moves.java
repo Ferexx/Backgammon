@@ -99,9 +99,9 @@ public class Moves {
                 }
             }
 
-            //Main moves
+            //Regular moves
             for (int i = 0; i < 24; i++) {
-                if(i+dice1<24 && i+dice2<24 && i+dice1+dice2<24) {
+                if(i+dice1<24 || i+dice2<24 || i+dice1+dice2<24) {
                     if (Game.pointList[i].getColor() == "Red" && Game.pointList[i].getCount() != 0) {
                         if (Game.pointList[i + dice1].getCount() == 0 || Game.pointList[i + dice1].getColor() == "Red") {
                             if (i + dice1 < 24) {
@@ -193,9 +193,9 @@ public class Moves {
                 }
             }
 
-
+            //Regular moves
             for (int i = 23; i >= 0; i--) {
-                if(i-dice1>=0&&i-dice2>=0&&i-dice1-dice2>=0) {
+                if(i-dice1>=0 || i-dice2>=0 || i-dice1-dice2>=0) {
                     if (Game.pointList[i].getColor() == "Black" && Game.pointList[i].getCount() != 0) {
                         //Standard move
                         if (Game.pointList[i - dice1].getCount() == 0 || Game.pointList[i - dice1].getColor() == "Black") {

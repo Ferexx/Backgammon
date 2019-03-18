@@ -52,7 +52,6 @@ public class Dice extends JPanel {
             case 1:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice1.jpg"));
-                    System.out.println("image 1");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -63,7 +62,6 @@ public class Dice extends JPanel {
             case 2:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice2.jpg"));
-                    System.out.println("image 2");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -74,7 +72,6 @@ public class Dice extends JPanel {
             case 3:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice3.jpg"));
-                    System.out.println("image 3");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -85,7 +82,6 @@ public class Dice extends JPanel {
             case 4:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice4.jpg"));
-                    System.out.println("image 4");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -96,7 +92,6 @@ public class Dice extends JPanel {
             case 5:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice5.jpg"));
-                    System.out.println("image 5");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
@@ -107,7 +102,6 @@ public class Dice extends JPanel {
             case 6:
                 try {
                     diceImg = ImageIO.read(this.getClass().getResource("Resources/Dice6.jpg"));
-                    System.out.println("image 6");
                 } catch (IOException e) {
                     e.printStackTrace();
                     System.exit(-1);
