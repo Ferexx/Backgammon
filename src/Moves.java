@@ -3,6 +3,9 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class Moves {
+
+    /*Basic checking for when user inputs via numbers (e.g. 0 3), catches any errors that
+    * may occur with input*/
     public static void isValidMove(Window window, int from, int to) {
         if(from==-1||to==-1) {
             window.infoLabel.append("\nThat is not a valid input.");
@@ -59,6 +62,16 @@ public class Moves {
         return move.getValue();
     }
 
+
+    /*This thing looks like a mess, but is actually fairly well-structured. There are two main parts to it, which
+    * are in essence identical, one for each player. The only difference between the two parts is the first part
+    * adds the dice count to i, whereas the second part subtracts it. This is because one player needs to move
+    * clockwise around the board, while the second player moves anticlockwise.
+    * First, the function checks for any moves from the bar, then checks for regular moves on the board. Finally,
+    * it checks if a bear off is possible (all checkers are in the homeboard).
+    * For each move checking, the function checks for a move first with die 1, then die 2, and finally die 1 and
+    * die 2 added together.
+    * When a valid move is found, it is printed to the info box, then added to the ArrayList.*/
     public static void possibleMoves(Window window) {
         movesList.clear();
         window.infoLabel.append("\nYour possible moves are:\n");
@@ -67,6 +80,7 @@ public class Moves {
             dice1 = window.p1D1.getRoll();
             dice2 = window.p1D2.getRoll();
 
+            //Moves for first player
             //Bar moves
             if (Game.pointList[24].getCount() != 0) {
                 if (Game.pointList[dice1-1].getCount() == 0 || Game.pointList[dice1-1].getColor()=="Red") {
@@ -157,7 +171,7 @@ public class Moves {
             }
         }
 
-
+        //Moves for second player
         else {
             dice1 = window.p2D1.getRoll();
             dice2 = window.p2D2.getRoll();
@@ -252,6 +266,8 @@ public class Moves {
         System.out.println("ArrayMap: "+movesList.toString()+" Size:"+movesList.size());
     }
 
+
+    //Checks if all checkers are on the homeboard
     private static Boolean checkBearOffPossible() {
         if(Game.currentPlayer) {
             for (int i = 0; i < 18; i++) {

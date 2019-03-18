@@ -9,9 +9,7 @@ class commandHandler {
     public static Player player1 = new Player();
     public static Player player2 = new Player();
 
-    public commandHandler() {
-
-    }
+    public commandHandler() {}
 
     public static void setNames(Window window) {
         player1.setChecker("Red");
@@ -45,7 +43,6 @@ class commandHandler {
 
     //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
     public void appendText(String text, Window window) {
-
 
         //game happening for start
         if (text.equalsIgnoreCase("start")) {
@@ -98,7 +95,7 @@ class commandHandler {
             catchQuit();
         }
 
-
+        //Getting user input, either text or numbers, errors are handled appropriately
         try {
             Scanner sc = new Scanner(text);
 

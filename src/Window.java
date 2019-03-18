@@ -10,12 +10,10 @@ import java.awt.event.ActionListener;
 class Window extends JFrame {
 
     public final Drawing drawing = new Drawing(this);
-
-    //TODO change all instances of diceHandler to new Dice methods
-    public Dice p1D1 = new Dice(this, 86, 120);
-    public Dice p1D2 = new Dice(this, 140, 166);
-    public Dice p2D1 = new Dice(this, 86, 420);
-    public Dice p2D2 = new Dice(this, 140, 466);
+    public Dice p1D1 = new Dice(86, 120);
+    public Dice p1D2 = new Dice(140, 166);
+    public Dice p2D1 = new Dice(86, 420);
+    public Dice p2D2 = new Dice(140, 466);
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
@@ -25,7 +23,7 @@ class Window extends JFrame {
     //JPanel to contain all die JLabels
     final JTextArea infoLabel = new JTextArea();   //Label with info text area
 
-    //Window constructor
+    //Window for getting names constructor
     Window() {
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
@@ -61,7 +59,7 @@ class Window extends JFrame {
         error.setVisible(false);
         goButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (nameField1.getText().isEmpty() != true && nameField2.getText().isEmpty() != true) {
+                if (!nameField1.getText().isEmpty() && !nameField2.getText().isEmpty()) {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
                     nameFrame.setVisible(false);
@@ -80,6 +78,8 @@ class Window extends JFrame {
         nameFrame.pack();
         nameFrame.setVisible(true);
     }
+
+    //Main window constructor
     Window(int width, int height, String title, commandHandler commands) {
         //Creating the window mainFrame with title
         mainFrame.setTitle(title);

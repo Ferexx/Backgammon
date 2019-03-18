@@ -17,7 +17,7 @@ public class Dice extends JPanel {
     private int x, y;
 
     //Constructor takes in coordinates for the position of the new dice
-    public Dice(Window window, int x, int y){
+    public Dice(int x, int y){
         this.x = x;
         this.y = y;
     }
