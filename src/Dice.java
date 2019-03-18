@@ -14,7 +14,8 @@ public class Dice extends JPanel {
     private BufferedImage diceImg;
 
     //integers x and y for the coordinates of each dice
-    private int x, y;
+    private final int x;
+    private final int y;
 
     //Constructor takes in coordinates for the position of the new dice
     public Dice(int x, int y){

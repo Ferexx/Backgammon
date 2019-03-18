@@ -1,13 +1,11 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static java.lang.Thread.sleep;
-
 class commandHandler {
 
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
-    public static Player player1 = new Player();
-    public static Player player2 = new Player();
+    public static final Player player1 = new Player();
+    public static final Player player2 = new Player();
 
     public commandHandler() {}
 
@@ -20,7 +18,7 @@ class commandHandler {
     }
 
     //Rolling to decide who goes first
-    public static void setFirstTurn(Window window) {
+    private static void setFirstTurn(Window window) {
 
         window.p1D1.roll();
         window.p1D2.roll();
@@ -114,7 +112,7 @@ class commandHandler {
                 Moves.isValidMove(window, Moves.getFromMove(letter), Moves.getToMove(letter));
             }
         }
-        catch(ArrayIndexOutOfBoundsException e) { }
+        catch(ArrayIndexOutOfBoundsException ignored) { }
     }
 
     //Used for restarting the game

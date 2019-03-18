@@ -10,15 +10,15 @@ import java.awt.event.ActionListener;
 class Window extends JFrame {
 
     public final Drawing drawing = new Drawing(this);
-    public Dice p1D1 = new Dice(86, 120);
-    public Dice p1D2 = new Dice(140, 166);
-    public Dice p2D1 = new Dice(86, 420);
-    public Dice p2D2 = new Dice(140, 466);
+    public final Dice p1D1 = new Dice(86, 120);
+    public final Dice p1D2 = new Dice(140, 166);
+    public final Dice p2D1 = new Dice(86, 420);
+    public final Dice p2D2 = new Dice(140, 466);
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
     //Frame for containing panel, label, and image in Window
-    final JFrame nameFrame = new JFrame();
+    private final JFrame nameFrame = new JFrame();
     final JFrame mainFrame = new JFrame();
     //JPanel to contain all die JLabels
     final JTextArea infoLabel = new JTextArea();   //Label with info text area

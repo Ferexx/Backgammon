@@ -21,10 +21,6 @@ public class Point {
         count--;
     }
 
-    public void clearCheckers() {
-        count = 0;
-    }
-
     public void setCheckers(int count) {
         this.count=count;
     }

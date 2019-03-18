@@ -8,8 +8,7 @@ public class Drawing extends JPanel {
 
     //Image declaration for Drawing
     private BufferedImage boardImg;
-    private Graphics2D g;
-    private Window window;
+    private final Window window;
 
     public Drawing(Window window){
         //SoundManager.playSound();
@@ -45,7 +44,7 @@ public class Drawing extends JPanel {
     */
     public void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        g = (Graphics2D) graphics;
+        Graphics2D g = (Graphics2D) graphics;
         //Draw the board
         g.drawImage(boardImg,265,20,743, 600, null);
         //Drawing numbers on points

@@ -8,23 +8,23 @@ class Buttons {
     /*int player1Set = 0;
     int player2Set = 1;*/
 
-    private JTextField textField;
+    private final JTextField textField;
 
-    private commandHandler commands = new commandHandler();
+    private final commandHandler commands = new commandHandler();
 
     //action listener for enter button
-    private void enterPerformed(ActionEvent e) {
+    private void enterPerformed() {
     }
 
     //action listener for reset button
-    private void resetPerformed(ActionEvent e, Window window) {
+    private void resetPerformed(Window window) {
         commands.restartText(window);
         Game.initPoints();
         window.drawing.update();
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
-    private void enterCommandPerformed(ActionEvent e, Window window) {
+    private void enterCommandPerformed(Window window) {
 
         String command = textField.getText();
         System.out.println("Command = " + command);
@@ -69,24 +69,24 @@ class Buttons {
         //New Game places the checkers in starting positions
         m11.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { enterPerformed(e); }
+            public void actionPerformed(ActionEvent e) { enterPerformed(); }
         });
 
         //Listener to reset the game. Only resets text currently.
         m13.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { resetPerformed(e, window); }
+            public void actionPerformed(ActionEvent e) { resetPerformed(window); }
         });
 
         reset.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { resetPerformed(e, window); }
+            public void actionPerformed(ActionEvent e) { resetPerformed(window); }
         });
 
         //Listener that we can attach to both a keypress of enter and pressing the enter key.
         Action enterCommand = new AbstractAction() {
             @Override
-            public void actionPerformed(ActionEvent e) { enterCommandPerformed(e, window); }
+            public void actionPerformed(ActionEvent e) { enterCommandPerformed(window); }
         };
         //Adding action listeners for both.
         textField.addActionListener(enterCommand);

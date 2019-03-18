@@ -2,11 +2,6 @@ class Player {
     private String PlayerName;
     private String colour;
 
-    public Player(String name, String checkerColour)
-    {
-        PlayerName = name;
-        colour = checkerColour;
-    }
     public Player() {}
 
     public void setName(String name)

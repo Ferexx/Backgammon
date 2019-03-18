@@ -26,7 +26,7 @@ class Game {
     public static final Point[] pointList = new Point[28];
 
     //Create points and assign them their pixel locations
-    protected static void initPoints() {
+    static void initPoints() {
         for(int i=0; i<28; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
@@ -53,7 +53,7 @@ class Game {
     }
 
     //Checker positions for the cheat command testing
-    protected static void cheatPoints() {
+    static void cheatPoints() {
         for(int i=0; i<28; i++) {
             pointList[i] = new Point(pointXCoords[i], pointYCoords[i]);
         }
