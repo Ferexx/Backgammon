@@ -50,17 +50,22 @@ public class Point {
 
     //Drawing for main points
     public void drawPoint(Graphics2D g) {
-        if(occupyingColor=="Black") {
-            g.setColor(Color.BLACK);
-        }
-        if(occupyingColor=="Red") {
-            g.setColor(Color.RED);
-        }
+
         for(int i=0;i<count;i++) {
             if (yLoc == 60 || yLoc == 357) {
+                if (occupyingColor=="Black") g.setColor(Color.RED);
+                else g.setColor(Color.BLACK);
                 g.fillOval(xLoc, yLoc + i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
+                if(occupyingColor=="Black") g.setColor(Color.BLACK);
+                else g.setColor(Color.RED);
+                g.fillOval(xLoc+2, yLoc+2 + i*CHECKER_DIAMETER, CHECKER_DIAMETER-4, CHECKER_DIAMETER-4);
             } else {
+                if (occupyingColor=="Black") g.setColor(Color.RED);
+                else g.setColor(Color.BLACK);
                 g.fillOval(xLoc, yLoc - i*CHECKER_DIAMETER, CHECKER_DIAMETER, CHECKER_DIAMETER);
+                if(occupyingColor=="Black") g.setColor(Color.BLACK);
+                else g.setColor(Color.RED);
+                g.fillOval(xLoc+2, yLoc+2 - i*CHECKER_DIAMETER, CHECKER_DIAMETER-4, CHECKER_DIAMETER-4);
             }
         }
     }
