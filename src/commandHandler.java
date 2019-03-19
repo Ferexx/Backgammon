@@ -106,13 +106,17 @@ class commandHandler {
             Scanner sc = new Scanner(text);
             char letter = sc.next().charAt(0);
             if(text.length() > 1) {
-                System.out.println("Text");
+                System.out.println("Text input");
             }
             else if (Character.toString(letter).matches("[A-Za-z]{1}")) {
-                Moves.isValidMove(window, Moves.getFromMove(letter), Moves.getToMove(letter));
+                try {
+                    window.drawing.move(Game.pointList[Moves.getFromMove(letter)], Game.pointList[Moves.getToMove(letter)]);
+                }
+                catch (ArrayIndexOutOfBoundsException ee) {
+                    window.infoLabel.append("\nThat is not a valid input.");
+                }
             }
         }
-        catch(ArrayIndexOutOfBoundsException ignored) { }
     }
 
     //Used for restarting the game
