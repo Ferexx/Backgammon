@@ -83,3 +83,7 @@ class Game {
         pointList[27].setColor("Black");
     }
 }
+
+//TODO Implement point capturing
+//TODO Win conditions
+//TODO Bar and bear-off moves

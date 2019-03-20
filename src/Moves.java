@@ -6,43 +6,90 @@ class Moves {
 
     /*Basic checking for when user inputs via numbers (e.g. 0 3), catches any errors that
     * may occur with input*/
+    private static int totalMoves;
     public static void isValidMove(Window window, int from, int to) {
+        //If the player inputs an invalid letter for text input
         if(from==-1||to==-1) {
             window.infoLabel.append("\nThat is not a valid input.");
+            return;
         }
-        else if(from > 25 || to > 27 || from < 0 || to < 0) {
+        //If the input is not within the bounds of the board
+        if(from > 25 || to > 27 || from < 0 || to < 0) {
             window.infoLabel.append("\nYour move is out of bounds.");
+            return;
         }
-        else if(Game.currentPlayer) {
+        //If the player tries to move the wrong way around the board
+        if(to<from) {
+            window.infoLabel.append("\nYou cannot move backwards.");
+            return;
+        }
+        //Specific to player 1
+        if(Game.currentPlayer) {
+            //If a player tries to move a certain amount not allowed by their dice rolls
+            if(to-from!=window.p1D1.getRoll()&&to-from!=window.p1D2.getRoll()&&to-from!=window.p1D1.getRoll()+window.p1D2.getRoll()) {
+                window.infoLabel.append("\nYour move does not match the dice rolls.");
+                return;
+            }
+            //If a player tries to move from a point with no checker on it
             if (Game.pointList[from].getCount() == 0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
-            } else {
-                window.drawing.move(Game.pointList[from], Game.pointList[to]);
+                return;
             }
-        } else {
-            if(from<24&&to<24) {
-                if (Game.pointList[23 - from].getCount() == 0) {
-                    window.infoLabel.append("\nThere is no checker on the starting point.");
-                } else {
-                    window.drawing.move(Game.pointList[23 - from], Game.pointList[23 - to]);
-                }
+            //If a player tries to move from a point controlled by the opposing player
+            if(Game.pointList[from].getColor()=="Black") {
+                window.infoLabel.append("\nYou cannot move opponents checkers.");
+                return;
             }
-            if(from<24&&to==27) {
-                if (Game.pointList[23 - from].getCount() == 0) {
-                    window.infoLabel.append("\nThere is no checker on the starting point.");
-                } else {
-                    window.drawing.move(Game.pointList[23 - from], Game.pointList[to]);
-                }
+            //If a player tries to move to a point controlled by the opposing player
+            if(Game.pointList[to].getColor()=="Black"&&Game.pointList[to].getCount()>1) {
+                window.infoLabel.append("\nYou cannot move to a point controlled by your opponent.");
+                return;
             }
-            if(from==25&&to<24) {
-                if (Game.pointList[from].getCount() == 0) {
-                    window.infoLabel.append("\nThere is no checker on the starting point.");
-                } else {
-                    window.drawing.move(Game.pointList[from], Game.pointList[23-to]);
-                }
+            totalMoves++;
+            window.drawing.move(Game.pointList[from], Game.pointList[to]);
+        }
+        //Specific to player 2
+        else {
+            //If a player tries to move a certain amount not allowed by their dice rolls
+            if(to-from!=window.p2D1.getRoll()&&to-from!=window.p2D2.getRoll()&&to-from!=window.p2D1.getRoll()+window.p2D2.getRoll()) {
+                window.infoLabel.append("\nYour move does not match the dice rolls.");
+                return;
+            }
+            //If a player tries to move from a point with no checker on it
+            if (Game.pointList[from].getCount() == 0) {
+                window.infoLabel.append("\nThere is no checker on the starting point.");
+                return;
+            }
+            //If a player tries to move from a point controlled by the opposing player
+            if(Game.pointList[from].getColor()=="Red") {
+                window.infoLabel.append("\nYou cannot move opponents checkers.");
+                return;
+            }
+            //If a player tries to move to a point controlled by the opposing player
+            if(Game.pointList[to].getColor()=="Red"&&Game.pointList[to].getCount()>1) {
+                window.infoLabel.append("\nYou cannot move to a point controlled by your opponent.");
+                return;
+            }
+            totalMoves++;
+            window.drawing.move(Game.pointList[from], Game.pointList[to]);
+        }
+        //Go to next turn if the move uses both dice
+        if(Game.currentPlayer) {
+            if(to-from>window.p1D1.getRoll()&&to-from>window.p1D2.getRoll()&&window.p1D1.getRoll()!=window.p1D2.getRoll()) {
+                commandHandler.nextPlayer(window);
+                return;
             }
         }
+        else {
+            if(to-from>window.p2D1.getRoll()&&to-from>window.p2D2.getRoll()&&window.p2D1.getRoll()!=window.p2D2.getRoll()) {
+                commandHandler.nextPlayer(window);
+                return;
+            }
+        }
+        //Only allow a player to make a maximum of two moves per turn
+        if(totalMoves==2) commandHandler.nextPlayer(window);
     }
+
 
     public static final ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
     public static int getFromMove(char input) {

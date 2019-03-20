@@ -5,9 +5,6 @@ import java.awt.event.ActionListener;
 
 class Buttons {
 
-    /*int player1Set = 0;
-    int player2Set = 1;*/
-
     private final JTextField textField;
 
     private final commandHandler commands = new commandHandler();
@@ -30,8 +27,6 @@ class Buttons {
         System.out.println("Command = " + command);
         textField.setText(null);
         commands.appendText(command, window);
-        /*player1Set = 1;
-        player2Set = 1;*/
     }
 
     //MAKING BUTTONS

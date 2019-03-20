@@ -7,8 +7,6 @@ class commandHandler {
     public static final Player player1 = new Player();
     public static final Player player2 = new Player();
 
-    public commandHandler() {}
-
     public static void setNames(Window window) {
         player1.setChecker("Red");
         player2.setChecker("Black");
@@ -61,20 +59,7 @@ class commandHandler {
 
         //Turn handler activated when next
         if (text.equalsIgnoreCase("next")) {
-            Game.currentPlayer = !Game.currentPlayer;
-            if (Game.currentPlayer) {
-                window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
-                window.p1D1.roll();
-                window.p1D2.roll();
-                window.infoLabel.append("Your rolls are " + window.p1D1.getRoll() + " and " + window.p1D2.getRoll());
-            } else {
-                window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
-                window.p2D1.roll();
-                window.p2D2.roll();
-                window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
-            }
-            window.drawing.update();
-            Moves.possibleMoves(window);
+            nextPlayer(window);
         } else {
             window.infoLabel.append("\n" + text);
         }
@@ -93,15 +78,15 @@ class commandHandler {
             catchQuit();
         }
 
-        //Getting user input, either text or numbers, errors are handled appropriately
+        /* Main user input section, first seeing if they input a
+        move using numbers, if not we go to text input. */
         try {
             Scanner sc = new Scanner(text);
-
             int point1 = sc.nextInt();
             int point2 = sc.nextInt();
             sc.close();
-
             Moves.isValidMove(window, point1, point2);
+
         } catch (InputMismatchException e) {
             Scanner sc = new Scanner(text);
             char letter = sc.next().charAt(0);
@@ -117,6 +102,33 @@ class commandHandler {
                 }
             }
         }
+    }
+
+    //Function to move the game on to the next player's turn.
+    public static void nextPlayer(Window window) {
+        do {
+            Game.currentPlayer = !Game.currentPlayer;
+            if (Game.currentPlayer) {
+                window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
+                window.p1D1.roll();
+                window.p1D2.roll();
+                window.infoLabel.append("Your rolls are " + window.p1D1.getRoll() + " and " + window.p1D2.getRoll());
+            } else {
+                window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
+                window.p2D1.roll();
+                window.p2D2.roll();
+                window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
+            }
+            window.drawing.update();
+            Moves.possibleMoves(window);
+            if (Moves.movesList.isEmpty()) {
+                window.infoLabel.append("\nYou have no possible moves. Skipping turn.");
+            }
+            if (Moves.movesList.size()==1) {
+                window.infoLabel.append("\nYou have only one possible move, automatically performing this move and moving to next players turn.");
+                window.drawing.move(Game.pointList[Moves.getFromMove('A')], Game.pointList[Moves.getToMove('A')]);
+            }
+        } while(Moves.movesList.size()<2);
     }
 
     //Used for restarting the game
