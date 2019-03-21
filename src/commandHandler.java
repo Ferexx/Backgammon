@@ -101,6 +101,15 @@ class commandHandler {
                     window.infoLabel.append("\nThat is not a valid input.");
                 }
             }
+            else if(text.toUpperCase().contains("BAR"))
+            {
+                //Moves.isValidMove(window, BAR?, point2);
+            }
+
+            else if(text.toUpperCase().contains("BEAR"))
+            {
+                //Moves.isValidMove(window, point1, BEAR);
+            }
         }
     }
 
