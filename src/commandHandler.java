@@ -103,12 +103,14 @@ class commandHandler {
             }
             else if(text.toUpperCase().contains("BAR"))
             {
-                //Moves.isValidMove(window, BAR?, point2);
+                int point = sc.nextInt();
+                //Moves.isValidMove(window, numberToRepresentBAR, point);
             }
 
             else if(text.toUpperCase().contains("BEAR"))
             {
-                //Moves.isValidMove(window, point1, BEAR);
+                int point = sc.nextInt();
+                //Moves.isValidMove(window, point, numberToRepresentBear);
             }
         }
     }
