@@ -105,13 +105,24 @@ class commandHandler {
             else if(text.toUpperCase().contains("BAR"))
             {
                 int point = sc.nextInt();
-                //Moves.isValidMove(window, numberToRepresentBAR, point);
+                if(Game.currentPlayer) {
+                    Moves.isValidMove(window, 24, point);
+                }
+                else {
+                    Moves.isValidMove(window, 25, point);
+                }
             }
 
             else if(text.toUpperCase().contains("BEAR"))
             {
                 int point = sc.nextInt();
-                //Moves.isValidMove(window, point, numberToRepresentBear);
+                if(Game.currentPlayer) {
+                    Moves.isValidMove(window, point, 27);
+                }
+                else {
+                    Moves.isValidMove(window, point, 26);
+                }
+                System.out.println("Hello there");
             }
         }
     }

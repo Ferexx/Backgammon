@@ -14,8 +14,18 @@ class Moves {
             return;
         }
         //If the input is not within the bounds of the board
-        if(from > 25 || to > 27 || from < 0 || to < 0) {
+        if(from > 27 || to > 27 || from < 0 || to < 0) {
             window.infoLabel.append("\nYour move is out of bounds.");
+            return;
+        }
+        //If a player tries to move onto the bar
+        if(to==24||to==25) {
+            window.infoLabel.append("\nYou cannot move onto the bar.");
+            return;
+        }
+        //If a player tries to move from bear-off
+        if(from==26||from==27) {
+            window.infoLabel.append("\nYou cannot move from bear-off");
             return;
         }
         //If the player tries to move the wrong way around the board
