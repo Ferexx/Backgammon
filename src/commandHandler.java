@@ -60,6 +60,7 @@ class commandHandler {
         //Turn handler activated when next
         if (text.equalsIgnoreCase("next")) {
             nextPlayer(window);
+
         } else {
             window.infoLabel.append("\n" + text);
         }
@@ -118,6 +119,7 @@ class commandHandler {
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
         do {
+            checkWin(window);
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
@@ -139,6 +141,7 @@ class commandHandler {
                 window.infoLabel.append("\nYou have only one possible move, automatically performing this move and moving to next players turn.");
                 window.drawing.move(Game.pointList[Moves.getFromMove('A')], Game.pointList[Moves.getToMove('A')]);
             }
+
         } while(Moves.movesList.size()<2);
     }
 
@@ -151,5 +154,20 @@ class commandHandler {
     //Quits
     private void catchQuit() {
         System.exit(0);
+    }
+
+    private static void checkWin(Window window) {
+        //Making this static in case we want to reference this method from anywhere.
+        if(Game.pointList[26].getCount() == 15)
+        {
+            ///Black won
+            window.infoLabel.append("" + player1.getName() + " wins!");
+        }
+
+        if(Game.pointList[27].getCount() == 15)
+        {
+            //Red won
+            window.infoLabel.append("" + player2.getName() + " wins!");
+        }
     }
 }
