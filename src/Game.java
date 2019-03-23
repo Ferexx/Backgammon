@@ -77,10 +77,10 @@ class Game {
         pointList[24].setColor("Red");
         pointList[25].setCheckers(3);
         pointList[25].setColor("Black");
-        pointList[26].setCheckers(2);
-        pointList[26].setColor("Red");
-        pointList[27].setCheckers(3);
-        pointList[27].setColor("Black");
+        pointList[26].setCheckers(3);
+        pointList[26].setColor("Black");
+        pointList[27].setCheckers(2);
+        pointList[27].setColor("Red");
     }
 }
 
