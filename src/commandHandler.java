@@ -149,7 +149,7 @@ class commandHandler {
     //Used for restarting the game
     public void restartText(Window window) {
         window.infoLabel.setText(null);
-        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n");
+        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
 
     //Quits
@@ -158,19 +158,15 @@ class commandHandler {
     }
 
     private static void checkWin(Window window) {
-        //Making this static in case we want to reference this method from anywhere.
-        if(Game.pointList[26].getCount() == 15)
+        //Making this static in case we want to reference this method from anywhere. We're using a check to see if ANYONE has won, and then we can change behaviour accordingly.
+        if(Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15)
         {
             ///Black won
-            window.infoLabel.append("" + player1.getName() + " wins!");
+            //window.infoLabel.append("" + player1.getName() + " wins!");
         }
+            //window.infoLabel.append("" + player2.getName() + " wins!");
+}
 
-        if(Game.pointList[27].getCount() == 15)
-        {
-            //Red won
-            window.infoLabel.append("" + player2.getName() + " wins!");
-        }
-    }
 
     private boolean isNumeric(String str) {
         try {
