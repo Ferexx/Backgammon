@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 class commandHandler {
 
@@ -159,12 +161,43 @@ class commandHandler {
 
     private static void checkWin(Window window) {
         //Making this static in case we want to reference this method from anywhere. We're using a check to see if ANYONE has won, and then we can change behaviour accordingly.
-        if(Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15)
-        {
-            ///Black won
-            //window.infoLabel.append("" + player1.getName() + " wins!");
+        if(Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
+            //If player 1 wins
+            if (Game.pointList[26].getCount() == 15)
+            {
+                JOptionPane.showMessageDialog(null, "" + player1.getName() + " won the game!");
+            }
+
+            //If player 2 wins
+            if (Game.pointList[27].getCount() == 15)
+            {
+                JOptionPane.showMessageDialog(null, "" + player2.getName() + " won the game!");
+            }
+
+            //Confirmation dialog box for a yes or no
+            int response = JOptionPane.showConfirmDialog(null, "Play again?", "Winner!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            //If they don't want to play again, we clear the text field (so their eyes are drawn to it) and then print that we are exiting. We then exit the program 2 seconds later.
+            if (response == JOptionPane.NO_OPTION) {
+                window.infoLabel.setText(null);
+                window.infoLabel.append("Exiting...");
+                try {
+                    TimeUnit.SECONDS.sleep(2);
+                } catch (InterruptedException e) {
+                    System.exit(-1);
+                }
+                System.exit(0);
+            }
+
+            //If the user says yes, we re-initiate the points and begin again.
+            else if(response == JOptionPane.YES_OPTION) {
+                window.infoLabel.setText(null);
+                window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
+                Game.initPoints();
+                window.drawing.update();
+            }
+
         }
-            //window.infoLabel.append("" + player2.getName() + " wins!");
 }
 
 
