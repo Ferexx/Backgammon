@@ -55,12 +55,13 @@ class commandHandler {
             }
             window.drawing.update();
             Moves.possibleMoves(window);
+            return;
         }
 
         //Turn handler activated when next
         if (text.equalsIgnoreCase("next")) {
             nextPlayer(window);
-
+            return;
         } else {
             window.infoLabel.append("\n" + text);
         }
@@ -73,57 +74,46 @@ class commandHandler {
             Game.cheatPoints();
             //updates the board
             window.drawing.update();
+            return;
         }
 
         if (text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
 
-        /* Main user input section, first seeing if they input a
-        move using numbers, if not we go to text input. */
-        try {
-            Scanner sc = new Scanner(text);
-            int point1 = sc.nextInt();
-            int point2 = sc.nextInt();
-            sc.close();
-            Moves.isValidMove(window, point1, point2);
-
-        } catch (InputMismatchException e) {
-            Scanner sc = new Scanner(text);
-            char letter = sc.next().charAt(0);
-            if(text.length() > 1) {
-                System.out.println("Text input");
+        /* Main user input section, parsing using delimiter, then checking the parsed strings
+         * for appropriate values */
+        String delims = "[ ]+";
+        String[] parsedInput = text.split(delims);
+        if(parsedInput.length>2) {
+            window.infoLabel.append("\nThat is not a valid input.");
+            return;
+        }
+        if(isNumeric(parsedInput[0])&&isNumeric(parsedInput[1])) {
+            Moves.isValidMove(window,Integer.parseInt(parsedInput[0]),Integer.parseInt(parsedInput[1]));
+        }
+        else if(isNumeric(parsedInput[0])&&parsedInput[1].equals("BEAR")) {
+            if(Game.currentPlayer) {
+                Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 27);
             }
-            else if (Character.toString(letter).matches("[A-Za-z]{1}")) {
-                try {
-                    window.drawing.move(Game.pointList[Moves.getFromMove(letter)], Game.pointList[Moves.getToMove(letter)]);
-                }
-                catch (ArrayIndexOutOfBoundsException ee) {
-                    window.infoLabel.append("\nThat is not a valid input.");
-                }
+            else {
+                Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 26);
             }
-            else if(text.toUpperCase().contains("BAR"))
-            {
-                int point = sc.nextInt();
-                if(Game.currentPlayer) {
-                    Moves.isValidMove(window, 24, point);
-                }
-                else {
-                    Moves.isValidMove(window, 25, point);
-                }
+        }
+        else if(parsedInput[0].equals("BAR")&&isNumeric(parsedInput[1])) {
+            if(Game.currentPlayer) {
+                Moves.isValidMove(window, 24, Integer.parseInt(parsedInput[1]));
             }
-
-            else if(text.toUpperCase().contains("BEAR"))
-            {
-                int point = sc.nextInt();
-                if(Game.currentPlayer) {
-                    Moves.isValidMove(window, point, 27);
-                }
-                else {
-                    Moves.isValidMove(window, point, 26);
-                }
-                System.out.println("Hello there");
+            else {
+                Moves.isValidMove(window, 25, Integer.parseInt(parsedInput[1]));
             }
+        }
+        else if(parsedInput[0].length()==1) {
+            char[] letter = parsedInput[0].toCharArray();
+            window.drawing.move(Game.pointList[Moves.getFromMove(letter[0])], Game.pointList[Moves.getToMove(letter[0])]);
+        }
+        else {
+            window.infoLabel.append("Couldn't parse the input");
         }
     }
 
@@ -179,6 +169,16 @@ class commandHandler {
         {
             //Red won
             window.infoLabel.append("" + player2.getName() + " wins!");
+        }
+    }
+
+    private boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        }
+        catch (NumberFormatException e) {
+            return false;
         }
     }
 }

@@ -25,6 +25,24 @@ public class Drawing extends JPanel {
     //Basic move function, removes a checker from chosen point, and adds to new point, as well as updating color.
     public void move(Point from, Point to) {
         from.removeChecker();
+        if(to.getCount()==1) {
+            if(Game.currentPlayer) {
+                if(to.getColor()=="Black") {
+                    Game.pointList[25].addChecker();
+                    to.setColor(from.getColor());
+                    update();
+                    return;
+                }
+            }
+            else {
+                if(to.getColor()=="Red") {
+                    Game.pointList[24].addChecker();
+                    to.setColor(from.getColor());
+                    update();
+                    return;
+                }
+            }
+        }
         to.setColor(from.getColor());
         if(from.getCount()==0) {
             from.setColor(null);
