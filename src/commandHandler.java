@@ -179,12 +179,11 @@ class commandHandler {
 
             //If they don't want to play again, we clear the text field (so their eyes are drawn to it) and then print that we are exiting. We then exit the program 2 seconds later.
             if (response == JOptionPane.NO_OPTION) {
-                window.infoLabel.setText(null);
-                window.infoLabel.append("Exiting...");
+                window.infoLabel.setText("Exiting...");
                 try {
-                    TimeUnit.SECONDS.sleep(2);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
-                    System.exit(-1);
+                    Thread.currentThread().interrupt();
                 }
                 System.exit(0);
             }
