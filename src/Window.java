@@ -25,6 +25,7 @@ class Window extends JFrame {
 
     //Window for getting names constructor
     Window() {
+        //Setting up window elements
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
         JTextField nameField1 = new JTextField(10);
@@ -44,6 +45,7 @@ class Window extends JFrame {
         nameFrame.setLayout(null);
         nameContainer.setLayout(null);
 
+        //Positioning everything
         nameField1.setBounds(175,60,200,30);
         nameField2.setBounds(175,160,200,30);
         error.setBounds(150,20, 300, 30);
@@ -59,10 +61,12 @@ class Window extends JFrame {
         error.setVisible(false);
         goButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                //If text has been entered in both fields
                 if (!nameField1.getText().isEmpty() && !nameField2.getText().isEmpty()) {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
                     nameFrame.setVisible(false);
+                    //Close current window and move to main window
                     nameFrame.dispose();
                     Game.mainFrame = true;
                 } else {

@@ -9,6 +9,7 @@ class commandHandler {
     public static final Player player1 = new Player();
     public static final Player player2 = new Player();
 
+    //Initial setup for game, welcoming players
     public static void setNames(Window window) {
         player1.setChecker("Red");
         player2.setChecker("Black");
@@ -19,7 +20,6 @@ class commandHandler {
 
     //Rolling to decide who goes first
     private static void setFirstTurn(Window window) {
-
         window.p1D1.roll();
         window.p1D2.roll();
         window.infoLabel.append("\nPlayer 1 rolled: " + window.p1D1.getRoll() + " " + window.p1D2.getRoll());
@@ -39,10 +39,9 @@ class commandHandler {
         }
     }
 
-    //Handler for catching events. We'll catch strings, find their meaning then convert them to actual appendages using if statements.
+    //Takes in the user-input text then checks against a variety of possible commands
     public void appendText(String text, Window window) {
-
-        //game happening for start
+        //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
@@ -60,7 +59,7 @@ class commandHandler {
             return;
         }
 
-        //Turn handler activated when next
+        //Moving to the next player's turn
         if (text.equalsIgnoreCase("next")) {
             nextPlayer(window);
             return;
@@ -68,9 +67,8 @@ class commandHandler {
             window.infoLabel.append("\n" + text);
         }
 
-        //cheat command - sv_cheats 1
-        //for testing
-        if (text.equalsIgnoreCase("sv_cheats 1")) {
+        //Cheat command, sets all checkers to points given in assignment
+        if (text.equalsIgnoreCase("cheat")) {
             window.infoLabel.append("\nCheats have been enabled\n\n");
             //initialised the cheat positions
             Game.cheatPoints();
@@ -79,21 +77,24 @@ class commandHandler {
             return;
         }
 
+        //Exit the game
         if (text.equalsIgnoreCase("quit")) {
             catchQuit();
         }
 
-        /* Main user input section, parsing using delimiter, then checking the parsed strings
+        /* Main user input section, parsing input using whitespace as a delimiter, then checking the parsed strings
          * for appropriate values */
-        String delims = "[ ]+";
-        String[] parsedInput = text.split(delims);
+        String delim = "[ ]+";
+        String[] parsedInput = text.split(delim);
         if(parsedInput.length>2) {
             window.infoLabel.append("\nThat is not a valid input.");
             return;
         }
+        //If the user is inputting numeric values to move checkers
         if(isNumeric(parsedInput[0])&&isNumeric(parsedInput[1])) {
             Moves.isValidMove(window,Integer.parseInt(parsedInput[0]),Integer.parseInt(parsedInput[1]));
         }
+        //If the user is making a bear-off move
         else if(isNumeric(parsedInput[0])&&parsedInput[1].equals("BEAR")) {
             if(Game.currentPlayer) {
                 Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 27);
@@ -102,6 +103,7 @@ class commandHandler {
                 Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 26);
             }
         }
+        //If the user is making a bar move
         else if(parsedInput[0].equals("BAR")&&isNumeric(parsedInput[1])) {
             if(Game.currentPlayer) {
                 Moves.isValidMove(window, 24, Integer.parseInt(parsedInput[1]));
@@ -110,18 +112,20 @@ class commandHandler {
                 Moves.isValidMove(window, 25, Integer.parseInt(parsedInput[1]));
             }
         }
+        //If the user is using letters to move checkers
         else if(parsedInput[0].length()==1) {
             char[] letter = parsedInput[0].toCharArray();
             window.drawing.move(Game.pointList[Moves.getFromMove(letter[0])], Game.pointList[Moves.getToMove(letter[0])]);
         }
         else {
-            window.infoLabel.append("Couldn't parse the input");
+            window.infoLabel.append("\nInvalid input syntax, please try again.");
         }
     }
 
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
         do {
+            //Check if a player has won first
             checkWin(window);
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
@@ -197,9 +201,9 @@ class commandHandler {
             }
 
         }
-}
+    }
 
-
+    //Small function to check if a string is a single digit
     private boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);

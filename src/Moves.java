@@ -4,9 +4,9 @@ import java.util.Map;
 
 class Moves {
 
-    /*Basic checking for when user inputs via numbers (e.g. 0 3), catches any errors that
-    * may occur with input*/
-    private static int totalMoves;
+    /*Checks syntax of moves, making sure they are valid according to certain
+    * conditions */
+    private static int totalMoves; //Used to ensure a player can only make a maximum of two moves per turn
     public static void isValidMove(Window window, int from, int to) {
         //If the player inputs an invalid letter for text input
         if(from==-1||to==-1) {
@@ -105,15 +105,15 @@ class Moves {
     }
 
 
-    public static final ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>();
-    public static int getFromMove(char input) {
+    public static final ArrayList<Map.Entry<Integer, Integer>> movesList = new ArrayList<>(); //Arraylist used to store all possible moves available to a player
+    public static int getFromMove(char input) {     //Get the point to remove a checker from from ArrayList
         int a = input-65;
         if (a>=movesList.size()) {
             return -1;
         }
         return movesList.get(a).getKey();
     }
-    public static int getToMove(char input) {
+    public static int getToMove(char input) {       //Get the point to add a checker to from ArrayList
         int a = input-65;
         if (a>=movesList.size()) {
             return -1;

@@ -14,6 +14,7 @@ class Game {
     public static void main(String[] args) {
             initPoints();
             Game game = new Game();
+            //Loop while we wait for username input
             while(!mainFrame) {try{Thread.sleep(1);}catch(Exception e) {System.exit(-1);}}
             final Window window = new Window(WIDTH,HEIGHT,TITLE,commands);
             //Adding Drawing image to JFrame after name input
@@ -83,7 +84,3 @@ class Game {
         pointList[27].setColor("Red");
     }
 }
-
-//TODO Implement point capturing
-//TODO Win conditions
-//TODO Bar and bear-off moves
