@@ -43,6 +43,7 @@ class commandHandler {
     public void appendText(String text, Window window) {
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
+            window.infoLabel.append("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
                 window.p1D1.roll();
@@ -95,7 +96,7 @@ class commandHandler {
             Moves.isValidMove(window,Integer.parseInt(parsedInput[0]),Integer.parseInt(parsedInput[1]));
         }
         //If the user is making a bear-off move
-        else if(isNumeric(parsedInput[0])&&parsedInput[1].equals("BEAR")) {
+        else if(isNumeric(parsedInput[0])&&parsedInput[1].equals("OFF")) {
             if(Game.currentPlayer) {
                 Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 27);
             }
@@ -115,7 +116,9 @@ class commandHandler {
         //If the user is using letters to move checkers
         else if(parsedInput[0].length()==1) {
             char[] letter = parsedInput[0].toCharArray();
+            Moves.totalMoves++;
             window.drawing.move(Game.pointList[Moves.getFromMove(letter[0])], Game.pointList[Moves.getToMove(letter[0])]);
+            if(Moves.totalMoves==2) nextPlayer(window);
         }
         else {
             window.infoLabel.append("\nInvalid input syntax, please try again.");
@@ -150,6 +153,7 @@ class commandHandler {
             }
 
         } while(Moves.movesList.size()<2);
+        Moves.totalMoves=0;
     }
 
     //Used for restarting the game

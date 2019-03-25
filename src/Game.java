@@ -5,7 +5,7 @@ class Game {
     public static boolean currentPlayer;
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
-    private static final String TITLE = "Backgammon Window - Pre-Alpha v1.0";
+    private static final String TITLE = "Backgammon Window - Beta v1.5";
     private static final commandHandler commands = new commandHandler();
     private final Window nameWindow = new Window();
     public static boolean mainFrame = false;

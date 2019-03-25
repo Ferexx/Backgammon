@@ -6,7 +6,7 @@ class Moves {
 
     /*Checks syntax of moves, making sure they are valid according to certain
     * conditions */
-    private static int totalMoves; //Used to ensure a player can only make a maximum of two moves per turn
+    public static int totalMoves; //Used to ensure a player can only make a maximum of two moves per turn
     public static void isValidMove(Window window, int from, int to) {
         //If the player inputs an invalid letter for text input
         if(from==-1||to==-1) {
@@ -144,31 +144,31 @@ class Moves {
             //Bar moves
             if (Game.pointList[24].getCount() != 0) {
                 if (Game.pointList[dice1-1].getCount() == 0 || Game.pointList[dice1-1].getColor()=="Red") {
-                    window.infoLabel.append("BAR-" + (dice1 - 1) + "\n");
+                    window.infoLabel.append("BAR " + (dice1 - 1) + "\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(24, dice1-1));
                 }
                 if (Game.pointList[dice2-1].getCount() == 0 || Game.pointList[dice2-1].getColor()=="Red") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + (dice2 - 1) + "\n");
+                        window.infoLabel.append("BAR " + (dice2 - 1) + "\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(24, dice2-1));
                     }
                 }
                 if(Game.pointList[dice1+dice2-1].getCount() == 0 || Game.pointList[dice1+dice2-1].getColor()=="Red") {
-                    window.infoLabel.append("BAR-"+ (dice1 + dice2 - 1) + "\n");
+                    window.infoLabel.append("BAR "+ (dice1 + dice2 - 1) + "\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(24,dice1+dice2-1));
                 }
                 if (Game.pointList[dice1-1].getCount() == 1 && Game.pointList[dice1-1].getColor()=="Black") {
-                    window.infoLabel.append("BAR-" + (dice1 - 1) + "*\n");
+                    window.infoLabel.append("BAR " + (dice1 - 1) + "*\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(24, dice1-1));
                 }
                 if (Game.pointList[dice2-1].getCount() == 1 && Game.pointList[dice2-1].getColor()=="Black") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + (dice2 - 1) + "*\n");
+                        window.infoLabel.append("BAR " + (dice2 - 1) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(24, dice2-1));
                     }
                 }
                 if(Game.pointList[dice1+dice2-1].getCount() == 1 && Game.pointList[dice1+dice2-1].getColor()=="Black") {
-                    window.infoLabel.append("BAR-"+ (dice1 + dice2 - 1) + "*\n");
+                    window.infoLabel.append("BAR "+ (dice1 + dice2 - 1) + "*\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(24,dice1+dice2-1));
                 }
             }
@@ -177,31 +177,31 @@ class Moves {
             for (int i = 0; i < 24; i++) {
                 if (Game.pointList[i].getColor() == "Red" && Game.pointList[i].getCount() != 0) {
                     if (i+dice1<24&&(Game.pointList[i + dice1].getCount() == 0 || Game.pointList[i + dice1].getColor() == "Red")) {
-                        window.infoLabel.append(i + "-" + (i + dice1) + "\n");
+                        window.infoLabel.append(i + " " + (i + dice1) + "\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice1));
                     }
                     if (i+dice2<24&&(Game.pointList[i + dice2].getCount() == 0 || Game.pointList[i + dice2].getColor() == "Red")) {
                         if (dice1 != dice2) {
-                            window.infoLabel.append(i + "-" + (i + dice2) + "\n");
+                            window.infoLabel.append(i + " " + (i + dice2) + "\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice2));
                         }
                     }
                     if (i+dice1+dice2<24&&(Game.pointList[i + dice1 + dice2].getCount() == 0 || Game.pointList[i + dice1 + dice2].getColor() == "Red")) {
-                        window.infoLabel.append(i + "-" + (i + dice1 + dice2) + "\n");
+                        window.infoLabel.append(i + " " + (i + dice1 + dice2) + "\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice1 + dice2));
                     }
                     if (i+dice1<24&&(Game.pointList[i + dice1].getColor() == "Black" && Game.pointList[i + dice1].getCount() == 1)) {
-                        window.infoLabel.append(i + "-" + (i + dice1) + "*\n");
+                        window.infoLabel.append(i + " " + (i + dice1) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice1));
                     }
                     if (i+dice2<24&&(Game.pointList[i + dice2].getColor() == "Black" && Game.pointList[i + dice2].getCount() == 1)) {
                         if (dice1 != dice2) {
-                            window.infoLabel.append(i + "=" + (i + dice2) + "*\n");
+                            window.infoLabel.append(i + " " + (i + dice2) + "*\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice2));
                         }
                     }
                     if (i+dice1+dice2<24&&(Game.pointList[i + dice1 + dice2].getColor() == "Black" && Game.pointList[i + dice1 + dice2].getCount() == 1)) {
-                        window.infoLabel.append(i + "-" + (i + dice1 + dice2) + "*\n");
+                        window.infoLabel.append(i + " " + (i + dice1 + dice2) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice1 + dice2));
                     }
                 }
@@ -209,15 +209,15 @@ class Moves {
                     //Bear-off moves
                     if (checkBearOffPossible()) {
                         if ((i + dice1) > 23) {
-                            window.infoLabel.append(i + "-OFF\n");
+                            window.infoLabel.append(i + " OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, 27));
                         }
                         if ((i + dice2) > 23 && dice1 != dice2) {
-                            window.infoLabel.append(i + "-OFF\n");
+                            window.infoLabel.append(i + " OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, 27));
                         }
                         if(i+dice1+dice2>23) {
-                            window.infoLabel.append(i+"-OFF\n");
+                            window.infoLabel.append(i+" OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i,27));
                         }
                     }
@@ -233,31 +233,31 @@ class Moves {
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor()=="Black") {
-                    window.infoLabel.append("BAR-" + (dice1 - 1) + "\n");
+                    window.infoLabel.append("BAR " + (dice1 - 1) + "\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice1));
                 }
                 if (Game.pointList[24 - dice2].getCount() == 0 || Game.pointList[24 - dice2].getColor()=="Black") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + (dice2 - 1) + "\n");
+                        window.infoLabel.append("BAR " + (dice2 - 1) + "\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice2));
                     }
                 }
                 if(Game.pointList[24-dice1-dice2].getCount() == 0 || Game.pointList[24-dice1-dice2].getColor()=="Black") {
-                    window.infoLabel.append("BAR-" + (dice1 + dice2 - 1) + "\n");
+                    window.infoLabel.append("BAR " + (dice1 + dice2 - 1) + "\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(25,24-dice1-dice2));
                 }
                 if (Game.pointList[24 - dice1].getCount() == 1 && Game.pointList[24 - dice1].getColor()=="Red") {
-                    window.infoLabel.append("BAR-" + (dice1 - 1) + "*\n");
+                    window.infoLabel.append("BAR " + (dice1 - 1) + "*\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice1));
                 }
                 if (Game.pointList[24 - dice2].getCount() == 1 && Game.pointList[24 - dice2].getColor()=="Red") {
                     if(dice1!=dice2) {
-                        window.infoLabel.append("BAR-" + (dice2 - 1) + "*\n");
+                        window.infoLabel.append("BAR " + (dice2 - 1) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice2));
                     }
                 }
                 if(Game.pointList[24-dice1-dice2].getCount() == 1 && Game.pointList[24-dice1-dice2].getColor()=="Red") {
-                    window.infoLabel.append("BAR-" + (dice1 + dice2 - 1) + "*\n");
+                    window.infoLabel.append("BAR " + (dice1 + dice2 - 1) + "*\n");
                     movesList.add(new AbstractMap.SimpleEntry<>(25,24-dice1-dice2));
                 }
             }
@@ -267,30 +267,30 @@ class Moves {
                 if (Game.pointList[i].getColor() == "Black" && Game.pointList[i].getCount() != 0) {
                     //Standard move
                     if (i-dice1>=0&&(Game.pointList[i - dice1].getCount() == 0 || Game.pointList[i - dice1].getColor() == "Black")) {
-                            window.infoLabel.append((23 - i) + "-" + (23 - i + dice1) + "\n");
+                            window.infoLabel.append((23 - i) + " " + (23 - i + dice1) + "\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice1));
                     }
                     if (i-dice2>=0&&(Game.pointList[i - dice2].getCount() == 0 || Game.pointList[i - dice2].getColor() == "Black")) {
                         if (dice1 != dice2) {
-                            window.infoLabel.append((23 - i) + "-" + (23 - i + dice2) + "\n");
+                            window.infoLabel.append((23 - i) + " " + (23 - i + dice2) + "\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice2));
                         }
                     }
                     if (i-dice1-dice2>=0&&(Game.pointList[i - dice1 - dice2].getCount() == 0 || Game.pointList[i - dice1 - dice2].getColor() == "Black")) {
-                        window.infoLabel.append((23 - i) + "-" + (23 - i + dice1 + dice2) + "\n");
+                        window.infoLabel.append((23 - i) + " " + (23 - i + dice1 + dice2) + "\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice1 - dice2));
                     }
                     //Move and capture point
                     if (i-dice1>=0&&(Game.pointList[i - dice1].getColor() == "Red" && Game.pointList[i - dice1].getCount() == 1)) {
-                        window.infoLabel.append((23 - i) + "-" + (23 - i + dice1) + "*\n");
+                        window.infoLabel.append((23 - i) + " " + (23 - i + dice1) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice1));
                     }
                     if (i-dice2>=0&&(Game.pointList[i - dice2].getColor() == "Red" && Game.pointList[i - dice2].getCount() == 1 && dice1 != dice2)) {
-                        window.infoLabel.append((23 - i) + "-" + (23 - i + dice2) + "*\n");
+                        window.infoLabel.append((23 - i) + " " + (23 - i + dice2) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice2));
                     }
                     if (i-dice1-dice2>=0&&(Game.pointList[i - dice1 - dice2].getColor() == "Red" && Game.pointList[i - dice1 - dice2].getCount() == 1)) {
-                        window.infoLabel.append((23 - i) + "-" + (23 - i + dice1 + dice2) + "*\n");
+                        window.infoLabel.append((23 - i) + " " + (23 - i + dice1 + dice2) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice1 - dice2));
                     }
                 }
@@ -298,15 +298,15 @@ class Moves {
                     //Bear-off moves
                     if (checkBearOffPossible()) {
                         if ((i - dice1) < 0) {
-                            window.infoLabel.append(23 - i + "-OFF\n");
+                            window.infoLabel.append(23 - i + " OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
                         }
                         if ((i - dice2) < 0 && dice1 != dice2) {
-                            window.infoLabel.append(23 - i + "-OFF\n");
+                            window.infoLabel.append(23 - i + " OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
                         }
                         if(i-dice1-dice2<0) {
-                            window.infoLabel.append(23-i+"-OFF\n");
+                            window.infoLabel.append(23-i+" OFF\n");
                             movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
                         }
                     }
