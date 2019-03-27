@@ -65,6 +65,7 @@ public class Drawing extends JPanel {
         Graphics2D g = (Graphics2D) graphics;
         //Draw the board
         g.drawImage(boardImg,265,20,743, 600, null);
+        Match.drawMatches(g);
         //Drawing numbers on points
         g.setFont(new Font("Courier",Font.BOLD,16));
         //Loop with check to change which way the numbers are drawn based on whose turn it is

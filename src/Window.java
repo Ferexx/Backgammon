@@ -28,8 +28,10 @@ class Window extends JFrame {
         //Setting up window elements
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
+        JLabel points = new JLabel("Number of points to be played:");
         JTextField nameField1 = new JTextField(10);
         JTextField nameField2 = new JTextField(10);
+        JTextField pointsField = new JTextField(10);
         JLabel error = new JLabel("Please enter names for both players!");
         JButton goButton = new JButton("Go!");
         nameFrame.setTitle("Player Name Entry");
@@ -46,16 +48,20 @@ class Window extends JFrame {
         nameContainer.setLayout(null);
 
         //Positioning everything
-        nameField1.setBounds(175,60,200,30);
-        nameField2.setBounds(175,160,200,30);
-        error.setBounds(150,20, 300, 30);
-        player1.setBounds(80,60,100,30);
-        player2.setBounds(80,160,100,30);
+        nameField1.setBounds(200,40,200,30);
+        nameField2.setBounds(200,90,200,30);
+        pointsField.setBounds(200, 140, 200, 30);
+        error.setBounds(150,5, 300, 30);
+        player1.setBounds(100,40,100,30);
+        player2.setBounds(100,90,100,30);
+        points.setBounds(15, 140, 200, 30);
         goButton.setBounds(200,200, 60, 40);
         nameContainer.add(nameField1);
         nameContainer.add(nameField2);
+        nameContainer.add(pointsField);
         nameContainer.add(player1);
         nameContainer.add(player2);
+        nameContainer.add(points);
         nameContainer.add(goButton);
         nameContainer.add(error);
         error.setVisible(false);
@@ -65,6 +71,7 @@ class Window extends JFrame {
                 if (!nameField1.getText().isEmpty() && !nameField2.getText().isEmpty()) {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
+                    Match.numberOfMatches=Integer.parseInt(pointsField.getText());
                     nameFrame.setVisible(false);
                     //Close current window and move to main window
                     nameFrame.dispose();
