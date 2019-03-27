@@ -173,13 +173,30 @@ class commandHandler {
             //If player 1 wins
             if (Game.pointList[26].getCount() == 15)
             {
-                JOptionPane.showMessageDialog(null, "" + player1.getName() + " won the game!");
+                Game.matchList[Match.currentMatch].setPlayerWon(1);
             }
 
             //If player 2 wins
             if (Game.pointList[27].getCount() == 15)
             {
-                JOptionPane.showMessageDialog(null, "" + player2.getName() + " won the game!");
+                Game.matchList[Match.currentMatch].setPlayerWon(2);
+            }
+            Match.currentMatch++;
+
+            int player1count=0, player2count=0;
+            for(int i = 0; i<Match.numberOfMatches;i++) {
+                if(Game.matchList[i].getPlayerWon()==1) {
+                    player1count++;
+                }
+                if(Game.matchList[i].getPlayerWon()==2) {
+                    player2count++;
+                }
+            }
+            if(player1count>Match.numberOfMatches) {
+                JOptionPane.showMessageDialog(null, player1.getName()+" wins!");
+            }
+            if(player2count>Match.numberOfMatches) {
+                JOptionPane.showMessageDialog(null, player2.getName()+" wins!");
             }
 
             //Confirmation dialog box for a yes or no

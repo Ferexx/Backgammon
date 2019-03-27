@@ -72,6 +72,8 @@ class Window extends JFrame {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
                     Match.numberOfMatches=Integer.parseInt(pointsField.getText());
+                    Game.matchList = new Match[Match.numberOfMatches];
+                    for(int i=0;i<Match.numberOfMatches;i++) Game.matchList[i] = new Match();
                     nameFrame.setVisible(false);
                     //Close current window and move to main window
                     nameFrame.dispose();

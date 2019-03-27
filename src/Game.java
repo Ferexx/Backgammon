@@ -25,7 +25,7 @@ class Game {
     private static final int[] pointXCoords = new int[]{915,865,816,766,716,665,574,524,474,424,375,325,325,375,424,474,524,574,665,716,766,816,865,915,620,620,230,230};
     private static final int[] pointYCoords = new int[]{547,547,547,547,547,547,547,547,547,547,547,547,60,60,60,60,60,60,60,60,60,60,60,60,357,233,357,233};
     public static final Point[] pointList = new Point[28];
-    public static Match[] matchList = new Match[5];
+    public static Match[] matchList;
 
     //Create points and assign them their pixel locations
     static void initPoints() {
