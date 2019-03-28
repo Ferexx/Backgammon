@@ -4,12 +4,19 @@ public class Match {
     public static int numberOfMatches;
     public static int currentMatch=0;
     private int playerWon=0;
+    private int matchValue=1;
 
     public void setPlayerWon(int won) {
         this.playerWon=won;
     }
     public int getPlayerWon() {
         return this.playerWon;
+    }
+    public void setMatchValue(int value) {
+        this.matchValue = value;
+    }
+    public int getMatchValue() {
+        return this.matchValue;
     }
 
     public static void drawMatches(Graphics2D g) {

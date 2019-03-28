@@ -37,7 +37,7 @@ class Moves {
         if(Game.currentPlayer) {
             //If a player tries to move a certain amount not allowed by their dice rolls
             if(to-from!=window.p1D1.getRoll()&&to-from!=window.p1D2.getRoll()&&to-from!=window.p1D1.getRoll()+window.p1D2.getRoll()) {
-                if(from!=24) {
+                if(from!=24&&to!=27) {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                     return;
                 }
@@ -64,7 +64,7 @@ class Moves {
         else {
             //If a player tries to move a certain amount not allowed by their dice rolls
             if(to-from!=window.p2D1.getRoll()&&to-from!=window.p2D2.getRoll()&&to-from!=window.p2D1.getRoll()+window.p2D2.getRoll()) {
-                if(from!=25) {
+                if(from!=25&&to!=26) {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                 }
                 return;
@@ -80,12 +80,16 @@ class Moves {
                 return;
             }
             //If a player tries to move to a point controlled by the opposing player
-            if(Game.pointList[23-to].getColor()=="Red"&&Game.pointList[23-to].getCount()>1) {
-                window.infoLabel.append("\nYou cannot move to a point controlled by your opponent.");
-                return;
+            if(to!=26) {
+                if (Game.pointList[23 - to].getColor() == "Red" && Game.pointList[23 - to].getCount() > 1) {
+                    window.infoLabel.append("\nYou cannot move to a point controlled by your opponent.");
+                    return;
+                }
             }
             totalMoves++;
-            window.drawing.move(Game.pointList[23-from], Game.pointList[23-to]);
+            if(from!=25&&to!=26) window.drawing.move(Game.pointList[23-from], Game.pointList[23-to]);
+            else if (from==25) window.drawing.move(Game.pointList[from], Game.pointList[23-to]);
+            else window.drawing.move(Game.pointList[23-from], Game.pointList[to]);
         }
         //Go to next turn if the move uses both dice
         if(Game.currentPlayer) {
@@ -204,8 +208,6 @@ class Moves {
                         window.infoLabel.append(i + " " + (i + dice1 + dice2) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i + dice1 + dice2));
                     }
-                }
-                else {
                     //Bear-off moves
                     if (checkBearOffPossible()) {
                         if ((i + dice1) > 23) {
@@ -293,8 +295,6 @@ class Moves {
                         window.infoLabel.append((23 - i) + " " + (23 - i + dice1 + dice2) + "*\n");
                         movesList.add(new AbstractMap.SimpleEntry<>(i, i - dice1 - dice2));
                     }
-                }
-                else {
                     //Bear-off moves
                     if (checkBearOffPossible()) {
                         if ((i - dice1) < 0) {
