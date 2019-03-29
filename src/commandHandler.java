@@ -188,7 +188,6 @@ class commandHandler {
         if (Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
             //If player 1 wins
             if (Game.pointList[27].getCount() == 15) {
-                JOptionPane.showMessageDialog(null, player1.getName() + " won!");
                 Game.matchList[Match.currentMatch].setPlayerWon(1);
                 Game.initPoints();
                 restartText(window);
@@ -197,7 +196,6 @@ class commandHandler {
 
             //If player 2 wins
             if (Game.pointList[26].getCount() == 15) {
-                JOptionPane.showMessageDialog(null, player1.getName() + " won!");
                 Game.matchList[Match.currentMatch].setPlayerWon(2);
                 Game.initPoints();
                 restartText(window);
@@ -216,8 +214,8 @@ class commandHandler {
                 }
             }
             if (Match.currentMatch==Match.numberOfMatches) {
-                if(player1count>player2count) JOptionPane.showMessageDialog(null, player1.getName() + " wins!");
-                if(player2count>player1count) JOptionPane.showMessageDialog(null, player2.getName() + " wins!");
+                if(player1count>player2count) JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
+                if(player2count>player1count) JOptionPane.showMessageDialog(null, player2.getName() + " wins the game!");
                 else JOptionPane.showMessageDialog(null, "Draw!");
 
                 //Confirmation dialog box for a yes or no
@@ -242,6 +240,8 @@ class commandHandler {
                     setNames(window);
                 }
             }
+            else if(Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
+            else JOptionPane.showMessageDialog(null, player2.getName() + " wins the match!");
     }
 }
 
