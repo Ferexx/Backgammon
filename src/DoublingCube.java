@@ -12,18 +12,18 @@ public class DoublingCube {
         g.setStroke(new BasicStroke(5));
         if(playerDoubling==0) {
             g.drawRect(90, 275, 80, 80);
-            if (doublingCube > 8) g.drawString(cube.getIterator(), 107, 327);
-            else g.drawString(cube.getIterator(), 120, 327);
+            if (doublingCube > 8) g.drawString(cube.getIterator(), 106, 327);
+            else g.drawString(cube.getIterator(), 118, 328);
         }
         else if(playerDoubling==1) {
             g.drawRect(180, 30, 80, 80);
-            if (doublingCube > 8) g.drawString(cube.getIterator(), 197, 82);
-            else g.drawString(cube.getIterator(), 210, 82);
+            if (doublingCube > 8) g.drawString(cube.getIterator(), 196, 82);
+            else g.drawString(cube.getIterator(), 208, 86);
         }
         else if(playerDoubling==2) {
             g.drawRect(180, 530, 80, 80);
-            if (doublingCube > 8) g.drawString(cube.getIterator(), 197, 582);
-            else g.drawString(cube.getIterator(), 210, 582);
+            if (doublingCube > 8) g.drawString(cube.getIterator(), 196, 582);
+            else g.drawString(cube.getIterator(), 208, 586);
         }
     }
     public static void doubleCube() {
