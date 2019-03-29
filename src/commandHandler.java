@@ -1,7 +1,4 @@
 import javax.swing.*;
-import java.util.InputMismatchException;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 class commandHandler {
 
@@ -127,6 +124,7 @@ class commandHandler {
 
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
+        int dice1, dice2;
         do {
             //Check if a player has won first
             checkWin(window);
@@ -135,12 +133,18 @@ class commandHandler {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
                 window.p1D1.roll();
                 window.p1D2.roll();
-                window.infoLabel.append("Your rolls are " + window.p1D1.getRoll() + " and " + window.p1D2.getRoll());
+                dice1 = window.p1D1.getRoll();
+                dice2 = window.p1D2.getRoll();
+                window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+                checkDoubles(window, dice1, dice2);
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
                 window.p2D1.roll();
                 window.p2D2.roll();
-                window.infoLabel.append("Your rolls are " + window.p2D1.getRoll() + " and " + window.p2D2.getRoll());
+                dice1 = window.p2D1.getRoll();
+                dice2 = window.p2D2.getRoll();
+                window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+                checkDoubles(window, dice1, dice2);
             }
             window.drawing.update();
             Moves.possibleMoves(window);
@@ -167,7 +171,7 @@ class commandHandler {
         System.exit(0);
     }
 
-    private static void checkWin(Window window) {
+    public static void checkWin(Window window) {
         //Making this static in case we want to reference this method from anywhere. We're using a check to see if ANYONE has won, and then we can change behaviour accordingly.
         if(Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
             //If player 1 wins
@@ -216,5 +220,23 @@ class commandHandler {
         catch (NumberFormatException e) {
             return false;
         }
+    }
+    //test comment
+
+    public static void checkDoubles(Window window, int dice1, int dice2) {
+        if(dice1 == dice2) {
+            window.infoLabel.append("Dice rolls are equal. Values will be doubled\n");
+            doubles(window, dice1, dice2);
+            Game.currentPlayer = !Game.currentPlayer;
+            Moves.totalMoves=0;
+        } else {
+            return;
+        }
+    }
+
+    public static void doubles(Window window, int dice1, int dice2) {
+
+        window.infoLabel.append("This is a double\n");
+
     }
 }
