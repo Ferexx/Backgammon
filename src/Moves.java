@@ -232,6 +232,7 @@ class Moves {
             System.out.print("Player 2 moves: ");
             dice1 = window.p2D1.getRoll();
             dice2 = window.p2D2.getRoll();
+
             //Bar moves
             if (Game.pointList[25].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor()=="Black") {
@@ -335,4 +336,5 @@ class Moves {
             return Game.pointList[25].getColor() != "Black";
         }
     }
+
 }
