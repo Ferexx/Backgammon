@@ -5,6 +5,8 @@ class commandHandler {
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
     public static final Player player1 = new Player();
     public static final Player player2 = new Player();
+    public static boolean playerRolled = false;
+    public static int finalScore;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -57,7 +59,7 @@ class commandHandler {
                 window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
             }
             window.drawing.update();
-            checkDoubles(window, dice1, dice2);
+            checkDoubles(window);
             Moves.possibleMoves(window);
             return;
         }
@@ -83,6 +85,30 @@ class commandHandler {
         //Exit the game
         if (text.equalsIgnoreCase("quit")) {
             catchQuit();
+        }
+
+        //Roll dice
+        if(text.equalsIgnoreCase("roll")) {
+            rollDice(window);
+            checkDoubles(window);
+            playerRolled=true;
+        }
+
+        //Doubling cube
+        if(text.equalsIgnoreCase("double")) {
+            if (!playerRolled && ((Game.currentPlayer && DoublingCube.playerDoubling == 1) || (!Game.currentPlayer && DoublingCube.playerDoubling == 2) || DoublingCube.playerDoubling == 0)) {
+                int response = JOptionPane.showConfirmDialog(null, "Double?", "Doubling Cube", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (response == JOptionPane.YES_OPTION) {
+                    DoublingCube.doubleCube();
+                    if (Game.currentPlayer) DoublingCube.playerDoubling = 2;
+                    else DoublingCube.playerDoubling = 1;
+                    window.drawing.update();
+                } else if (response == JOptionPane.NO_OPTION) {
+                    if (Game.currentPlayer) player1.setScore(player1.getScore()+1);
+                    else player2.setScore(player2.getScore()+1);
+                    restartGame(window);
+                }
+            } else window.infoLabel.append("\nYou cannot offer the doubling cube at the moment.");
         }
 
         /* Main user input section, parsing input using whitespace as a delimiter, then checking the parsed strings
@@ -119,27 +145,6 @@ class commandHandler {
             Moves.totalMoves++;
             window.drawing.move(Game.pointList[Moves.getFromMove(letter[0])], Game.pointList[Moves.getToMove(letter[0])]);
             if (Moves.totalMoves == 2) nextPlayer(window);
-        }
-        else if (parsedInput[0].equalsIgnoreCase("double")) {
-            if (Moves.totalMoves == 0 && ((Game.currentPlayer && DoublingCube.playerDoubling == 1) || (!Game.currentPlayer && DoublingCube.playerDoubling == 2) || DoublingCube.playerDoubling == 0)) {
-                int response = JOptionPane.showConfirmDialog(null, "Double?", "Doubling Cube", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                if (response == JOptionPane.YES_OPTION) {
-                    DoublingCube.doubleCube();
-                    if (Game.currentPlayer) DoublingCube.playerDoubling = 2;
-                    else DoublingCube.playerDoubling = 1;
-                    window.drawing.update();
-                } else if (response == JOptionPane.NO_OPTION) {
-                    if (Game.currentPlayer) Game.matchList[Match.currentMatch].setPlayerWon(1);
-                    else Game.matchList[Match.currentMatch].setPlayerWon(2);
-                    Game.matchList[Match.currentMatch].setMatchValue(DoublingCube.doublingCube);
-                    Game.initPoints();
-                    window.infoLabel.setText("\"Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\"\n");
-                    Match.currentMatch++;
-                    DoublingCube.playerDoubling = 0;
-                    setNames(window);
-                    window.drawing.update();
-                }
-            } else window.infoLabel.append("\nYou cannot offer the doubling cube at the moment.");
         } else {
             window.infoLabel.append("\nInvalid input syntax, please try again.");
         }
@@ -147,25 +152,12 @@ class commandHandler {
 
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
-        int dice1, dice2;
         do {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
-                window.p1D1.roll();
-                window.p1D2.roll();
-                dice1 = window.p1D1.getRoll();
-                dice2 = window.p1D2.getRoll();
-                window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
-                checkDoubles(window, dice1, dice2);
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
-                window.p2D1.roll();
-                window.p2D2.roll();
-                dice1 = window.p2D1.getRoll();
-                dice2 = window.p2D2.getRoll();
-                window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
-                checkDoubles(window, dice1, dice2);
             }
             window.drawing.update();
             Moves.possibleMoves(window);
@@ -181,10 +173,37 @@ class commandHandler {
         Moves.totalMoves = 0;
     }
 
+    public static void rollDice(Window window) {
+        int dice1, dice2;
+        if(Game.currentPlayer) {
+            window.p1D1.roll();
+            window.p1D2.roll();
+            dice1 = window.p1D1.getRoll();
+            dice2 = window.p1D2.getRoll();
+            window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+            checkDoubles(window);
+        }
+        else {
+            window.p2D1.roll();
+            window.p2D2.roll();
+            dice1 = window.p2D1.getRoll();
+            dice2 = window.p2D2.getRoll();
+            window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+            checkDoubles(window);
+        }
+    }
+
     //Used for restarting the game
     public static void restartText(Window window) {
         window.infoLabel.setText(null);
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
+    }
+    public static void restartGame(Window window) {
+        Game.initPoints();
+        restartText(window);
+        DoublingCube.playerDoubling=0;
+        setNames(window);
+        window.drawing.update();
     }
 
     //Quits
@@ -193,43 +212,33 @@ class commandHandler {
     }
 
     public static void checkWin(Window window) {
-        //Making this static in case we want to reference this method from anywhere. We're using a check to see if ANYONE has won, and then we can change behaviour accordingly.
         if (Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
             //If player 1 wins
             if (Game.pointList[27].getCount() == 15) {
-                Game.matchList[Match.currentMatch].setPlayerWon(1);
-                Game.initPoints();
-                restartText(window);
-                setNames(window);
+                player1.setScore(player1.getScore()+DoublingCube.doublingCube);
+                restartGame(window);
             }
 
             //If player 2 wins
             if (Game.pointList[26].getCount() == 15) {
-                Game.matchList[Match.currentMatch].setPlayerWon(2);
-                Game.initPoints();
-                restartText(window);
-                setNames(window);
+                player2.setScore(player2.getScore()+DoublingCube.doublingCube);
+                restartGame(window);
             }
-            Match.currentMatch++;
             Moves.totalMoves=0;
 
-            int player1count = 0, player2count = 0;
-            for (int i = 0; i < Match.numberOfMatches; i++) {
-                if (Game.matchList[i].getPlayerWon() == 1) {
-                    player1count += Game.matchList[i].getMatchValue();
+            if(player1.getScore()>=finalScore||player2.getScore()>=finalScore) {
+                if (player1.getScore() >= finalScore) {
+                    JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
+                    restartGame(window);
+                    return;
                 }
-                if (Game.matchList[i].getPlayerWon() == 2) {
-                    player2count += Game.matchList[i].getMatchValue();
+                if (player2.getScore() >= finalScore) {
+                    JOptionPane.showMessageDialog(null, player2.getName() + " wins the game!");
+                    restartGame(window);
+                    return;
                 }
-            }
-            if (Match.currentMatch==Match.numberOfMatches) {
-                if(player1count>player2count) JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
-                if(player2count>player1count) JOptionPane.showMessageDialog(null, player2.getName() + " wins the game!");
-                else JOptionPane.showMessageDialog(null, "Draw!");
-
                 //Confirmation dialog box for a yes or no
                 int response = JOptionPane.showConfirmDialog(null, "Play again?", "Winner!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
                 //If they don't want to play again, we clear the text field (so their eyes are drawn to it) and then print that we are exiting. We then exit the program 2 seconds later.
                 if (response == JOptionPane.NO_OPTION) {
                     window.infoLabel.setText("Exiting...");
@@ -243,14 +252,11 @@ class commandHandler {
 
                 //If the user says yes, we re-initiate the points and begin again.
                 else if (response == JOptionPane.YES_OPTION) {
-                    restartText(window);
-                    Game.initPoints();
-                    window.drawing.update();
-                    setNames(window);
+                    restartGame(window);
                 }
+                else if (Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
+                else JOptionPane.showMessageDialog(null, player2.getName() + " wins the match!");
             }
-            else if(Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
-            else JOptionPane.showMessageDialog(null, player2.getName() + " wins the match!");
     }
 }
 
@@ -265,20 +271,20 @@ class commandHandler {
         }
     }
 
-    public static void checkDoubles(Window window, int dice1, int dice2) {
-        if(dice1 == dice2) {
-            window.infoLabel.append("Dice rolls are equal. Values will be doubled\n");
-            doubles(window, dice1, dice2);
-            Game.currentPlayer = !Game.currentPlayer;
-            Moves.totalMoves=0;
-        } else {
-            return;
+    public static void checkDoubles(Window window) {
+        if(Game.currentPlayer) {
+            if(window.p1D1.getRoll()==window.p1D2.getRoll()) {
+                window.infoLabel.append("\nDice rolls are equal. Values will be doubled");
+                window.p1D1.setRoll(window.p1D1.getRoll() * 2);
+                window.p1D2.setRoll(window.p1D2.getRoll() * 2);
+            }
         }
-    }
-
-    public static void doubles(Window window, int dice1, int dice2) {
-
-        window.infoLabel.append("Doing double things here haha don't mind me\n");
-
+        else {
+            if(window.p2D1.getRoll()==window.p2D1.getRoll()) {
+                window.infoLabel.append("\nDice rolls are equal. Values will be doubled");
+                window.p2D1.setRoll(window.p1D1.getRoll() * 2);
+                window.p2D2.setRoll(window.p2D2.getRoll() * 2);
+            }
+        }
     }
 }

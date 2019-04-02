@@ -1,6 +1,7 @@
 class Player {
     private String PlayerName;
     private String colour;
+    private int score;
 
     public Player() {}
 
@@ -14,6 +15,10 @@ class Player {
         this.colour = checkerColour;
     }
 
+    public void setScore(int score) {
+        this.score = score;
+    }
+
     public String getName()
     {
         return PlayerName;
@@ -22,6 +27,10 @@ class Player {
     public String getColour()
     {
         return colour;
+    }
+
+    public int getScore() {
+        return score;
     }
 
 }
