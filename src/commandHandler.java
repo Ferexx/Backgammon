@@ -38,7 +38,7 @@ class commandHandler {
 
     //Takes in the user-input text then checks against a variety of possible commands
     public void appendText(String text, Window window) {
-        int dice1, dice2;
+        int dice1 = 0, dice2 = 0;
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             window.infoLabel.append("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
@@ -78,6 +78,12 @@ class commandHandler {
             //updates the board
             window.drawing.update();
             return;
+        }
+
+        if(text.equalsIgnoreCase("double")) {
+            if(checkDoubles(window, dice1, dice2) == -1) {
+                window.infoLabel.append("No double allowed.");
+            }
         }
 
         //Exit the game
@@ -265,14 +271,15 @@ class commandHandler {
         }
     }
 
-    public static void checkDoubles(Window window, int dice1, int dice2) {
+    public static int checkDoubles(Window window, int dice1, int dice2) {
         if(dice1 == dice2) {
             window.infoLabel.append("Dice rolls are equal. Values will be doubled\n");
             doubles(window, dice1, dice2);
             Game.currentPlayer = !Game.currentPlayer;
             Moves.totalMoves=0;
+            return 1;
         } else {
-            return;
+            return -1;
         }
     }
 
