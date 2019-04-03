@@ -66,7 +66,6 @@ public class Drawing extends JPanel {
         Graphics2D g = (Graphics2D) graphics;
         //Draw the board
         g.drawImage(boardImg,265,20,743, 600, null);
-        Match.drawMatches(g);
         DoublingCube.drawCube(g);
         //Drawing numbers on points
         g.setFont(new Font("Courier",Font.BOLD,16));
@@ -94,6 +93,14 @@ public class Drawing extends JPanel {
         window.p1D2.draw(g);
         window.p2D1.draw(g);
         window.p2D2.draw(g);
+
+        //Drawing score
+        g.setColor(Color.RED);
+        g.drawString("P1 Score: "+commandHandler.player1.getScore(), 800, 15);
+        g.setColor(Color.BLACK);
+        g.drawString("P2 Score: "+commandHandler.player2.getScore(), 900, 15);
+        g.setColor(Color.GREEN);
+        g.drawString("Winning Score: "+commandHandler.finalScore, 650, 15);
 
         //Drawing bar
         g.setColor(Color.BLACK);
