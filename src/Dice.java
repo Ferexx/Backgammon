@@ -24,9 +24,10 @@ public class Dice extends JPanel {
     }
 
     //roll method for casting the dice - random value between 1 and 6 inclusive assigned to integer roll
-    public void roll() {
+    public int roll() {
         Random random = new Random();
         roll = random.nextInt(6) + 1;
+        return roll;
     }
 
     //getter for roll method

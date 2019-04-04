@@ -156,8 +156,10 @@ class commandHandler {
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
+                rollDice(window);
             } else {
                 window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
+                rollDice(window);
             }
             window.drawing.update();
             Moves.possibleMoves(window);
@@ -174,21 +176,12 @@ class commandHandler {
     }
 
     public static void rollDice(Window window) {
-        int dice1, dice2;
         if(Game.currentPlayer) {
-            window.p1D1.roll();
-            window.p1D2.roll();
-            dice1 = window.p1D1.getRoll();
-            dice2 = window.p1D2.getRoll();
-            window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+            window.infoLabel.append("Your rolls are " + window.p1D1.roll() + " and " + window.p1D2.roll());
             checkDoubles(window);
         }
         else {
-            window.p2D1.roll();
-            window.p2D2.roll();
-            dice1 = window.p2D1.getRoll();
-            dice2 = window.p2D2.getRoll();
-            window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+            window.infoLabel.append("Your rolls are " + window.p2D1.roll() + " and " + window.p2D2.roll());
             checkDoubles(window);
         }
     }
