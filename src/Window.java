@@ -35,7 +35,7 @@ class Window extends JFrame {
         JLabel error = new JLabel("Please enter names for both players!");
         JButton goButton = new JButton("Go!");
         nameFrame.setTitle("Player Name Entry");
-        nameFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resources/Yay.jpeg")));
+        nameFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
         nameFrame.setPreferredSize(new Dimension(500,300));
         nameFrame.setMaximumSize(new Dimension(500,300));
         nameFrame.setMinimumSize(new Dimension(500,300));
@@ -95,7 +95,7 @@ class Window extends JFrame {
         //Creating the window mainFrame with title
         mainFrame.setTitle(title);
         //Set window icon
-        mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resources/Yay.jpeg")));
+        mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
         //Ensures that window always stays the same dimensions
         mainFrame.setPreferredSize(new Dimension(width, height));
         mainFrame.setMaximumSize(new Dimension(width, height));

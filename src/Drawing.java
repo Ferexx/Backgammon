@@ -14,7 +14,7 @@ public class Drawing extends JPanel {
         //SoundManager.playSound();
         this.window = window;
         try {
-            boardImg = ImageIO.read(this.getClass().getResource("Resources/SmallBoard.png"));
+            boardImg = ImageIO.read(this.getClass().getResource("res/Images/SmallBoard.png"));
         }
         catch (IOException e) {
             e.printStackTrace();
