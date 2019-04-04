@@ -3,7 +3,7 @@ public class Timer {
     private double now;
     private double timer;
 
-
+    //Probably call it when turn in changed or something
     public Timer() {
         //timer
         now = System.currentTimeMillis();
@@ -11,5 +11,4 @@ public class Timer {
         System.out.println("Time: " + timer);
         previousTime = System.currentTimeMillis();
     }
-
 }
