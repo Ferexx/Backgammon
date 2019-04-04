@@ -34,6 +34,11 @@ public class Dice extends JPanel {
         return roll;
     }
 
+    //Setter for roll method
+    public void setRoll(int roll) {
+        this.roll = roll;
+    }
+
     //getter for cords - testing mainly
     public int getX(){
         return x;
