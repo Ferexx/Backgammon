@@ -39,7 +39,7 @@ public class Dice extends JPanel {
 
     //Setter for roll method
     public void doubleRoll() {
-        this.roll*=2;
+        doubledRoll*=2;
     }
 
     //getter for cords - testing mainly
