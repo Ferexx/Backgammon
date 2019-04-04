@@ -9,6 +9,7 @@ public class Dice extends JPanel {
 
     //integer roll will hold the dice's random roll
     private int roll;
+    private int doubledRoll;
 
     //creating buffered images one through 6 for each possible face of the dice roll
     private BufferedImage diceImg;
@@ -27,17 +28,18 @@ public class Dice extends JPanel {
     public int roll() {
         Random random = new Random();
         roll = random.nextInt(6) + 1;
+        doubledRoll=roll;
         return roll;
     }
 
     //getter for roll method
     public int getRoll() {
-        return roll;
+        return doubledRoll;
     }
 
     //Setter for roll method
-    public void setRoll(int roll) {
-        this.roll = roll;
+    public void doubleRoll() {
+        doubledRoll*=2;
     }
 
     //getter for cords - testing mainly

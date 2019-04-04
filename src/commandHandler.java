@@ -47,6 +47,7 @@ class commandHandler {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
                 rollDice(window);
             } else {
+                window.infoLabel.append("\n\nIt is your turn " + player2.getName() + ". ");
                 rollDice(window);
             }
             window.drawing.update();
@@ -81,6 +82,7 @@ class commandHandler {
         if(text.equalsIgnoreCase("roll")) {
             rollDice(window);
             playerRolled=true;
+            return;
         }
 
         //Doubling cube
@@ -98,6 +100,7 @@ class commandHandler {
                     restartGame(window);
                 }
             } else window.infoLabel.append("\nYou cannot offer the doubling cube at the moment.");
+            return;
         }
 
         /* Main user input section, parsing input using whitespace as a delimiter, then checking the parsed strings
@@ -257,15 +260,15 @@ class commandHandler {
         if(Game.currentPlayer) {
             if(window.p1D1.getRoll()==window.p1D2.getRoll()) {
                 window.infoLabel.append("\nDice rolls are equal. Values will be doubled");
-                window.p1D1.setRoll(window.p1D1.getRoll() * 2);
-                window.p1D2.setRoll(window.p1D2.getRoll() * 2);
+                window.p1D1.doubleRoll();
+                window.p1D2.doubleRoll();
             }
         }
         else {
-            if(window.p2D1.getRoll()==window.p2D1.getRoll()) {
+            if(window.p2D1.getRoll()==window.p2D2.getRoll()) {
                 window.infoLabel.append("\nDice rolls are equal. Values will be doubled");
-                window.p2D1.setRoll(window.p1D1.getRoll() * 2);
-                window.p2D2.setRoll(window.p2D2.getRoll() * 2);
+                window.p2D1.doubleRoll();
+                window.p2D2.doubleRoll();
             }
         }
     }
