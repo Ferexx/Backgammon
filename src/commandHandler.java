@@ -40,26 +40,16 @@ class commandHandler {
 
     //Takes in the user-input text then checks against a variety of possible commands
     public void appendText(String text, Window window) {
-        int dice1, dice2;
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             window.infoLabel.append("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
-                window.p1D1.roll();
-                window.p1D2.roll();
-                dice1 = window.p1D1.getRoll();
-                dice2 = window.p1D2.getRoll();
-                window.infoLabel.append("Your dice rolls are " + dice1 + " and " + dice2);
+                rollDice(window);
             } else {
-                window.p1D1.roll();
-                window.p1D2.roll();
-                dice1 = window.p2D1.getRoll();
-                dice2 = window.p2D2.getRoll();
-                window.infoLabel.append("Your rolls are " + dice1 + " and " + dice2);
+                rollDice(window);
             }
             window.drawing.update();
-            checkDoubles(window);
             Moves.possibleMoves(window);
             return;
         }
@@ -90,7 +80,6 @@ class commandHandler {
         //Roll dice
         if(text.equalsIgnoreCase("roll")) {
             rollDice(window);
-            checkDoubles(window);
             playerRolled=true;
         }
 
