@@ -4,9 +4,9 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Timer {
 
     //AtomicLong so that all threads can see the timer.
-    public AtomicLong time = new AtomicLong();
+    private AtomicLong time = new AtomicLong();
 
-    public long counter = 0;
+    private long counter = 0;
 
     //Separate function so that we can restart games easier in the future.
     public void threadStart(Window window) {
@@ -14,7 +14,7 @@ public class Timer {
     }
 
     //Threading allows for easier management of something that runs independent to the game, like a timer.
-    public void timerThread(Window window) {
+    private void timerThread(Window window) {
         while(true) {
             try {
                 counter++;
