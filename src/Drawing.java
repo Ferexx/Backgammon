@@ -95,6 +95,9 @@ public class Drawing extends JPanel {
         window.p2D2.draw(g);
 
         //Drawing score
+
+        g.setColor(Color.BLACK);
+        g.drawString("" + window.timer.getTime(), 400, 15);
         g.setColor(Color.RED);
         g.drawString("P1 Score: "+commandHandler.player1.getScore(), 800, 15);
         g.setColor(Color.BLACK);

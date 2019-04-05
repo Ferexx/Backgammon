@@ -6,14 +6,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
+
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
+
+
 
     public final Drawing drawing = new Drawing(this);
     public final Dice p1D1 = new Dice(86, 120);
     public final Dice p1D2 = new Dice(140, 166);
     public final Dice p2D1 = new Dice(86, 420);
     public final Dice p2D2 = new Dice(140, 466);
+    public static final Timer timer = new Timer();
 
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
@@ -25,6 +31,7 @@ class Window extends JFrame {
 
     //Window for getting names constructor
     Window() {
+        timer.threadStart(this);
         //Setting up window elements
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
@@ -41,6 +48,7 @@ class Window extends JFrame {
         nameFrame.setMinimumSize(new Dimension(500,300));
         nameFrame.setResizable(false);
         nameFrame.setLocationRelativeTo(null);
+
 
         //Name fields
         JPanel nameContainer = (JPanel) nameFrame.getContentPane();
