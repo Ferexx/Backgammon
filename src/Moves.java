@@ -66,8 +66,8 @@ class Moves {
             if(to-from!=window.p2D1.getRoll()&&to-from!=window.p2D2.getRoll()&&to-from!=window.p2D1.getRoll()+window.p2D2.getRoll()) {
                 if(from!=25&&to!=26) {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
+                    return;
                 }
-                return;
             }
             //If a player tries to move from a point with no checker on it
             if (Game.pointList[23-from].getCount() == 0) {
