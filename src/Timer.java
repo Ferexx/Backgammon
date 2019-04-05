@@ -22,8 +22,8 @@ public class Timer {
                 counter++;
                 time.set(counter);
                 System.out.println("Time: " + time.get());
-                window.drawing.update();
                 Thread.sleep(1000);
+                window.drawing.update();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
