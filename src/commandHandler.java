@@ -19,6 +19,7 @@ class commandHandler {
 
     //Rolling to decide who goes first
     private static void setFirstTurn(Window window) {
+
         window.p1D1.roll();
         window.p1D2.roll();
         window.infoLabel.append("\nPlayer 1 rolled: " + window.p1D1.getRoll() + " " + window.p1D2.getRoll());
