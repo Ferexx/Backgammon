@@ -15,24 +15,19 @@ class Buttons {
 
     //action listener for reset button
     private void resetPerformed(Window window) {
-        commands.restartText(window);
-        Game.initPoints();
-        window.drawing.update();
+        commandHandler.restartGame(window);
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
     private void enterCommandPerformed(Window window) {
-
-        String command = textField.getText();
-        System.out.println("Command = " + command);
+        System.out.println("Command = " + textField.getText());
+        commands.appendText(textField.getText(), window);
         textField.setText(null);
-        commands.appendText(command, window);
     }
 
     //MAKING BUTTONS
     public Buttons(Window window){
 
-        //All button creation from Window.java will be in here soon
         //MENU BAR BUTTONS AND BUTTON OPTIONS
         JMenuBar mb = new JMenuBar();
         //defining menu buttons
@@ -93,8 +88,8 @@ class Buttons {
         panel.add(enter);
         panel.add(reset);
 
-        window.mainFrame.getContentPane().add(BorderLayout.SOUTH, panel);
-        window.mainFrame.getContentPane().add(BorderLayout.NORTH, mb);
+        window.frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        window.frame.getContentPane().add(BorderLayout.NORTH, mb);
 
     }
 }

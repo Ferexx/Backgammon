@@ -216,13 +216,9 @@ class commandHandler {
             if(player1.getScore()>=finalScore||player2.getScore()>=finalScore) {
                 if (player1.getScore() >= finalScore) {
                     JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
-                    restartGame(window);
-                    return;
                 }
                 if (player2.getScore() >= finalScore) {
                     JOptionPane.showMessageDialog(null, player2.getName() + " wins the game!");
-                    restartGame(window);
-                    return;
                 }
                 //Confirmation dialog box for a yes or no
                 int response = JOptionPane.showConfirmDialog(null, "Play again?", "Winner!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
@@ -239,7 +235,8 @@ class commandHandler {
 
                 //If the user says yes, we re-initiate the points and begin again.
                 else if (response == JOptionPane.YES_OPTION) {
-                    restartGame(window);
+                    window.frame.dispose();
+                    new Game();
                 }
                 else if (Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
                 else JOptionPane.showMessageDialog(null, player2.getName() + " wins the match!");

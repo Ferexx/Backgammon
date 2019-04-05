@@ -19,8 +19,7 @@ class Window extends JFrame {
     //Window > JFrame > JPanel > JLabel
     //Declarations for JFrame
     //Frame for containing panel, label, and image in Window
-    private final JFrame nameFrame = new JFrame();
-    final JFrame mainFrame = new JFrame();
+    final JFrame frame = new JFrame();
     //JPanel to contain all die JLabels
     final JTextArea infoLabel = new JTextArea();   //Label with info text area
 
@@ -35,17 +34,17 @@ class Window extends JFrame {
         JTextField pointsField = new JTextField(10);
         JLabel error = new JLabel("Please enter names for both players!");
         JButton goButton = new JButton("Go!");
-        nameFrame.setTitle("Player Name Entry");
-        nameFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
-        nameFrame.setPreferredSize(new Dimension(500,300));
-        nameFrame.setMaximumSize(new Dimension(500,300));
-        nameFrame.setMinimumSize(new Dimension(500,300));
-        nameFrame.setResizable(false);
-        nameFrame.setLocationRelativeTo(null);
+        frame.setTitle("Player Name Entry");
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
+        frame.setPreferredSize(new Dimension(500,300));
+        frame.setMaximumSize(new Dimension(500,300));
+        frame.setMinimumSize(new Dimension(500,300));
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
 
         //Name fields
-        JPanel nameContainer = (JPanel) nameFrame.getContentPane();
-        nameFrame.setLayout(null);
+        JPanel nameContainer = (JPanel) frame.getContentPane();
+        frame.setLayout(null);
         nameContainer.setLayout(null);
 
         //Positioning everything
@@ -73,10 +72,10 @@ class Window extends JFrame {
                     commandHandler.player1.setName(nameField1.getText());
                     commandHandler.player2.setName(nameField2.getText());
                     commandHandler.finalScore=Integer.parseInt(pointsField.getText());
-                    nameFrame.setVisible(false);
+                    frame.setVisible(false);
                     //Close current window and move to main window
-                    nameFrame.dispose();
-                    Game.mainFrame = true;
+                    frame.dispose();
+                    Game.gameWindow();
                 } else {
                     error.setVisible(true);
                 }
@@ -85,28 +84,28 @@ class Window extends JFrame {
 
         nameContainer.getRootPane().setDefaultButton(goButton);
 
-        nameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        nameFrame.pack();
-        nameFrame.setVisible(true);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     //Main window constructor
     Window(int width, int height, String title, commandHandler commands) {
-        //Creating the window mainFrame with title
-        mainFrame.setTitle(title);
+        //Creating the window frame with title
+        frame.setTitle(title);
         //Set window icon
-        mainFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("res/Images/Yay.jpeg")));
         //Ensures that window always stays the same dimensions
-        mainFrame.setPreferredSize(new Dimension(width, height));
-        mainFrame.setMaximumSize(new Dimension(width, height));
-        mainFrame.setMinimumSize(new Dimension(width, height));
-        mainFrame.setResizable(false);
+        frame.setPreferredSize(new Dimension(width, height));
+        frame.setMaximumSize(new Dimension(width, height));
+        frame.setMinimumSize(new Dimension(width, height));
+        frame.setResizable(false);
         //Sets window in middle of screen, as opposed to top left by default
-        mainFrame.setLocationRelativeTo(null);
+        frame.setLocationRelativeTo(null);
         //Ensures that the program quits when you hit (X)
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainFrame.setLayout(new BorderLayout());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
         //Creating Buttons
         new Buttons(this);
 
@@ -126,8 +125,8 @@ class Window extends JFrame {
         scrollPane.setBorder(border);
         commands.restartText(this);
         //Adding info JLabel to JFrame
-        mainFrame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
-        mainFrame.setVisible(true);
+        frame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
+        frame.setVisible(true);
         commandHandler.setNames(this);
     }
 }

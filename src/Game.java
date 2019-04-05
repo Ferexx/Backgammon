@@ -8,23 +8,17 @@ class Game {
     private static final String TITLE = "Backgammon Window - Beta v1.5";
     private static final commandHandler commands = new commandHandler();
     private final Window nameWindow = new Window();
-    public static boolean mainFrame = false;
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
         initPoints();
         Game game = new Game();
-        //Loop while we wait for username input
-        while (!mainFrame) {
-            try {
-                Thread.sleep(1);
-            } catch (Exception e) {
-                System.exit(-1);
-            }
-        }
+    }
+
+    public static void gameWindow() {
         final Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
         //Adding Drawing image to JFrame after name input
-        window.mainFrame.getContentPane().add(window.drawing);
+        window.frame.getContentPane().add(window.drawing);
     }
 
     //Last two points are bear off points, previous two are bar points
