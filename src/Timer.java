@@ -19,7 +19,7 @@ public class Timer {
             try {
                 counter++;
                 time.set(counter);
-                System.out.println("Time: " + time.get());
+                //System.out.println("Time: " + time.get());
                 Thread.sleep(1000);
                 window.drawing.update();
             } catch (InterruptedException e) {
