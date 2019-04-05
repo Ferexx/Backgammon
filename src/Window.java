@@ -31,7 +31,6 @@ class Window extends JFrame {
 
     //Window for getting names constructor
     Window() {
-        timer.threadStart(this);
         //Setting up window elements
         JLabel player1 = new JLabel("Player 1 Name:");
         JLabel player2 = new JLabel("Player 2 Name:");
