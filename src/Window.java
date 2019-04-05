@@ -6,13 +6,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
-
-
 //Window class is the class that makes the window, and controls the objects present on it
 class Window extends JFrame {
-
-
 
     public final Drawing drawing = new Drawing(this);
     public final Dice p1D1 = new Dice(86, 120);
@@ -47,7 +42,6 @@ class Window extends JFrame {
         nameFrame.setMinimumSize(new Dimension(500,300));
         nameFrame.setResizable(false);
         nameFrame.setLocationRelativeTo(null);
-
 
         //Name fields
         JPanel nameContainer = (JPanel) nameFrame.getContentPane();

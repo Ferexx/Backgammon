@@ -14,10 +14,8 @@ public class Timer {
     }
 
     //Threading allows for easier management of something that runs independent to the game, like a timer.
-    public void timerThread(Window window)
-    {
-        while(true)
-        {
+    public void timerThread(Window window) {
+        while(true) {
             try {
                 counter++;
                 time.set(counter);
@@ -27,7 +25,6 @@ public class Timer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
         }
     }
 
@@ -36,8 +33,7 @@ public class Timer {
     }
 
     //Basic function to return the formatted time
-    public String getTime()
-    {
+    public String getTime() {
         return (String.format("%02d:%02d:%02d",
                 TimeUnit.SECONDS.toHours(time.get()),
                 TimeUnit.SECONDS.toMinutes(time.get()) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(time.get())),

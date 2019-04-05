@@ -15,8 +15,7 @@ public class Drawing extends JPanel {
         this.window = window;
         try {
             boardImg = ImageIO.read(this.getClass().getResource("res/Images/SmallBoard.png"));
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             System.exit(-1);
         }
@@ -33,8 +32,7 @@ public class Drawing extends JPanel {
                     update();
                     return;
                 }
-            }
-            else {
+            } else {
                 if(to.getColor()=="Red") {
                     Game.pointList[24].addChecker();
                     to.setColor(from.getColor());
