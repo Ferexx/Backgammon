@@ -43,7 +43,7 @@ class commandHandler {
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             window.timer.threadStart(window);
-            window.infoLabel.append("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
+            window.infoLabel.append("WE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION.");
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
                 rollDice(window);
