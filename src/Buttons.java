@@ -24,21 +24,21 @@ class Buttons {
     private void help(Window window)
     {
         System.out.println("test");
-        JFrame frame = new JFrame("Help");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(helpField, BorderLayout.CENTER);
-        frame.pack();
-        frame.setPreferredSize(new Dimension(500,300));
-        frame.setMaximumSize(new Dimension(500,300));
-        frame.setMinimumSize(new Dimension(500,300));
+        JFrame helpFrame = new JFrame("Help");
+        helpFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        helpFrame.getContentPane().add(helpField, BorderLayout.CENTER);
+        helpFrame.pack();
+        helpFrame.setPreferredSize(new Dimension(500,300));
+        helpFrame.setMaximumSize(new Dimension(500,300));
+        helpFrame.setMinimumSize(new Dimension(500,300));
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         helpField.setBorder(border);
         helpField.setEditable(false);
         helpField.setLineWrap(true);
         helpField.setWrapStyleWord(true);
         helpField.setText("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        helpFrame.setLocationRelativeTo(null);
+        helpFrame.setVisible(true);
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
