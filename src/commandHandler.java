@@ -208,12 +208,38 @@ class commandHandler {
         if (Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
             //If player 1 wins
             if (Game.pointList[27].getCount() == 15) {
-                player1.setScore(player1.getScore()+DoublingCube.doublingCube);
+                if(Game.pointList[26].getCount()>0) {
+                    player1.setScore(player1.getScore() + DoublingCube.doublingCube);
+                }
+                else {
+                    boolean check = false;
+                    for(int i = 18;i<24;i++) {
+                        if(Game.pointList[i].getColor()=="Black"||Game.pointList[25].getCount()>0) {
+                            player1.setScore(player1.getScore()+(DoublingCube.doublingCube*3));
+                            check = true;
+                            break;
+                        }
+                    }
+                    if(!check) player1.setScore(player1.getScore()+(DoublingCube.doublingCube*2));
+                }
             }
 
             //If player 2 wins
             if (Game.pointList[26].getCount() == 15) {
-                player2.setScore(player2.getScore()+DoublingCube.doublingCube);
+                if(Game.pointList[27].getCount()>0) {
+                    player2.setScore(player2.getScore() + DoublingCube.doublingCube);
+                }
+                else {
+                    boolean check = false;
+                    for(int i = 0;i<6;i++) {
+                        if(Game.pointList[i].getColor()=="Black"||Game.pointList[24].getCount()>0) {
+                            player2.setScore(player2.getScore()+(DoublingCube.doublingCube*3));
+                            check = true;
+                            break;
+                        }
+                    }
+                    if(!check) player2.setScore(player2.getScore()+(DoublingCube.doublingCube*2));
+                }
             }
             Moves.totalMoves=0;
 
