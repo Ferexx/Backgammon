@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 class commandHandler {
 
@@ -7,7 +9,7 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
-    public static boolean restartGame = false;
+    public static boolean gameRestart = false;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -190,9 +192,44 @@ class commandHandler {
     public static void restartGame(Window window) {
         window.infoLabel.append("\n\nGame Over. Press any key to continue");
 
+        final JFrame invisi = new JFrame();
+        invisi.setResizable(false);
+        invisi.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+        invisi.setAlwaysOnTop(true);
+        invisi.setUndecorated(true);
+        invisi.setSize(300,200);
+        invisi.setLocationRelativeTo(null);
+        invisi.setOpacity(0.0f);
+        invisi.setVisible(true);
+
+        KeyListener keys = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                System.out.println("Test1");
+                gameRestart = true;
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("Test2");
+                gameRestart = true;
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("Test3");
+                gameRestart = true;
+            }
+        };
+
+        invisi.requestFocus();
+
+        invisi.addKeyListener(keys);
+
         //TODO - add action listener here for key pressed which sets restartGame to true
 
-        if(restartGame){
+        if(gameRestart){
             Game.initPoints();
             restartText(window);
             DoublingCube.playerDoubling=0;
