@@ -8,8 +8,6 @@ public class Timer {
 
     public long counter = 0;
 
-    boolean exit = false;
-
     //Separate function so that we can restart games easier in the future.
     public void threadStart(Window window) {
         new Thread(() -> timerThread(window)).start();
@@ -17,7 +15,7 @@ public class Timer {
 
     //Threading allows for easier management of something that runs independent to the game, like a timer.
     private void timerThread(Window window) {
-
+        boolean exit = false;
         while(!exit) {
             try {
                 counter++;
@@ -28,12 +26,13 @@ public class Timer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             if(commandHandler.player1.getScore()>= commandHandler.finalScore|| commandHandler.player2.getScore()>= commandHandler.finalScore) {
-                System.out.println("test");
+                System.out.println("Happening");
                 exit = true;
             }
         }
+
+
     }
 
     public Timer() {
