@@ -190,11 +190,11 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n");
     }
     public static void restartGame(Window window) {
-        window.timer.counter = 0;
         invisi.dispose();
         Game.initPoints();
         restartText(window);
         DoublingCube.playerDoubling=0;
+        window.timer.counter = 0;
         setNames(window);
         window.drawing.update();
     }
