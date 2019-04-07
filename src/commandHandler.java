@@ -9,6 +9,7 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
+    static JFrame invisi;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -190,8 +191,7 @@ class commandHandler {
     }
     public static void restartGame(Window window) {
         window.infoLabel.append("\n\nGame Over. Press any key to continue");
-
-        final JFrame invisi = new JFrame();
+        invisi = new JFrame();
         invisi.setResizable(false);
         invisi.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         invisi.setAlwaysOnTop(true);
@@ -209,6 +209,7 @@ class commandHandler {
                 DoublingCube.playerDoubling=0;
                 setNames(window);
                 window.drawing.update();
+                invisi.dispose();
             }
 
             @Override
@@ -268,6 +269,7 @@ class commandHandler {
                 //If the user says yes, we create a new game
                 else if (response == JOptionPane.YES_OPTION) {
                     window.frame.dispose();
+                    invisi.dispose();
                     new Game();
                 }
                 else if (Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
