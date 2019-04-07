@@ -7,6 +7,7 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
+    public static boolean restartGame = false;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -14,6 +15,7 @@ class commandHandler {
         player2.setChecker("Black");
         window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". You are player 1, and your dice are on top. Your colour is " + player1.getColour().toLowerCase() + ".\n");
         window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". You are player 2, and your dice are on the bottom. Your colour is " + player2.getColour().toLowerCase() + ".\n");
+        window.infoLabel.append("\nWE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION BEFORE STARTING.");
         setFirstTurn(window);
     }
 
@@ -43,7 +45,6 @@ class commandHandler {
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             window.timer.threadStart(window);
-            window.infoLabel.append("WE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION.");
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
                 rollDice(window);
@@ -66,9 +67,11 @@ class commandHandler {
 
         //Cheat command, sets all checkers to points given in assignment
         if (text.equalsIgnoreCase("cheat")) {
-            window.infoLabel.append("\nCheats have been enabled\n\n");
+            window.infoLabel.append("\nCheats have been enabled");
             //initialised the cheat positions
             Game.cheatPoints();
+            Game.currentPlayer = !Game.currentPlayer;
+            nextPlayer(window);
             //updates the board
             window.drawing.update();
             return;
@@ -185,11 +188,17 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
     public static void restartGame(Window window) {
-        Game.initPoints();
-        restartText(window);
-        DoublingCube.playerDoubling=0;
-        setNames(window);
-        window.drawing.update();
+        window.infoLabel.append("\n\nGame Over. Press any key to continue");
+
+        //TODO - add action listener here for key pressed which sets restartGame to true
+
+        if(restartGame){
+            Game.initPoints();
+            restartText(window);
+            DoublingCube.playerDoubling=0;
+            setNames(window);
+            window.drawing.update();
+        }
     }
 
     //Quits
