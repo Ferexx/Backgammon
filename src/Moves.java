@@ -45,7 +45,7 @@ class Moves {
                 }
             }
             //If a player tries to use a die they already used this turn
-            if((to-from==window.p1D1.getRoll()&&dice1Used)||(to-from==window.p1D2.getRoll()&&dice2Used)) {
+            if(((to-from==window.p1D1.getRoll()&&dice1Used)||(to-from==window.p1D2.getRoll()&&dice2Used))&&window.p1D1.getRoll()!=window.p1D2.getRoll()) {
                 window.infoLabel.append("\nYou already used that dice this turn.");
                 return;
             }
@@ -86,7 +86,7 @@ class Moves {
                 }
             }
             //If a player tries to use a die they already used this turn
-            if((to-from==window.p2D1.getRoll()&&dice1Used)||(to-from==window.p2D2.getRoll()&&dice2Used)) {
+            if(((to-from==window.p2D1.getRoll()&&dice1Used)||(to-from==window.p2D2.getRoll()&&dice2Used))&&window.p2D1.getRoll()!=window.p2D2.getRoll()) {
                 window.infoLabel.append("\nYou already used that dice this turn.");
                 return;
             }
