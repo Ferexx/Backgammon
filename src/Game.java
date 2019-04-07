@@ -1,8 +1,5 @@
 //Main Class
 
-//TODO - add action listener for the TODO in commandHandler
-//TODO - fix the games last few moves after the cheat command
-
 class Game {
 
     //We use the boolean "currentPlayer" to handle player turns. Player 1 = true, Player 2 = false.
