@@ -9,6 +9,7 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
+    static JFrame invisi;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -16,7 +17,7 @@ class commandHandler {
         player2.setChecker("Black");
         window.infoLabel.append("\nWelcome to the game " + player1.getName() + ". You are player 1, and your dice are on top. Your colour is " + player1.getColour().toLowerCase() + ".\n");
         window.infoLabel.append("\nWelcome to the game " + player2.getName() + ". You are player 2, and your dice are on the bottom. Your colour is " + player2.getColour().toLowerCase() + ".\n");
-        window.infoLabel.append("\nWE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION BEFORE STARTING.");
+        window.infoLabel.append("\nWE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION BEFORE STARTING.\n");
         setFirstTurn(window);
     }
 
@@ -189,6 +190,7 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
     public static void restartGame(Window window) {
+        invisi.dispose();
         Game.initPoints();
         restartText(window);
         DoublingCube.playerDoubling=0;
@@ -215,7 +217,7 @@ class commandHandler {
             Moves.totalMoves=0;
 
             window.infoLabel.append("\nGame over. Press any key to start the next game.");
-            final JFrame invisi = new JFrame();
+            invisi = new JFrame();
             invisi.setResizable(false);
             invisi.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
             invisi.setAlwaysOnTop(true);
