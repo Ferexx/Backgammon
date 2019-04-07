@@ -190,6 +190,7 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
     public static void restartGame(Window window) {
+        window.timer.counter = 0;
         invisi.dispose();
         Game.initPoints();
         restartText(window);
@@ -247,6 +248,7 @@ class commandHandler {
             invisi.addKeyListener(keys);
 
             if(player1.getScore()>=finalScore||player2.getScore()>=finalScore) {
+
                 if (player1.getScore() >= finalScore) {
                     JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
                 }
@@ -258,11 +260,6 @@ class commandHandler {
                 //If they don't want to play again, we clear the text field (so their eyes are drawn to it) and then print that we are exiting. We then exit the program 2 seconds later.
                 if (response == JOptionPane.NO_OPTION) {
                     window.infoLabel.setText("Exiting...");
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
                     System.exit(0);
                 }
 

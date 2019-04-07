@@ -6,7 +6,7 @@ public class Timer {
     //AtomicLong so that all threads can see the timer.
     private AtomicLong time = new AtomicLong();
 
-    private long counter = 0;
+    public long counter = 0;
 
     //Separate function so that we can restart games easier in the future.
     public void threadStart(Window window) {
