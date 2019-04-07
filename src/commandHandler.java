@@ -206,36 +206,27 @@ class commandHandler {
             @Override
             public void keyTyped(KeyEvent e) {
                 System.out.println("Test1");
-                gameRestart = true;
-
+                Game.initPoints();
+                restartText(window);
+                DoublingCube.playerDoubling=0;
+                setNames(window);
+                window.drawing.update();
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
                 System.out.println("Test2");
-                gameRestart = true;
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
                 System.out.println("Test3");
-                gameRestart = true;
             }
         };
 
         invisi.requestFocus();
 
         invisi.addKeyListener(keys);
-
-        //TODO - add action listener here for key pressed which sets restartGame to true
-
-        if(gameRestart){
-            Game.initPoints();
-            restartText(window);
-            DoublingCube.playerDoubling=0;
-            setNames(window);
-            window.drawing.update();
-        }
     }
 
     //Quits
