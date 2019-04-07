@@ -187,7 +187,7 @@ class commandHandler {
     //Used for restarting the game
     public static void restartText(Window window) {
         window.infoLabel.setText(null);
-        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
+        window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n");
     }
     public static void restartGame(Window window) {
         window.timer.counter = 0;
@@ -291,6 +291,8 @@ class commandHandler {
 
                 //If the user says yes, we create a new game
                 else if (response == JOptionPane.YES_OPTION) {
+                    player1.setScore(0);
+                    player2.setScore(0);
                     restartGame(window);
                     window.frame.dispose();
                     Game game = new Game();

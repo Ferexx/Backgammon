@@ -23,10 +23,8 @@ public class Timer {
                             try {
                                 counter++;
                                 time.set(counter);
-                                //System.out.println("Time: " + time.get());
                                 Thread.sleep(1000);
                                 window.drawing.update();
-                                System.out.println(counter);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                                 exit = true;
