@@ -8,30 +8,48 @@ public class Timer {
 
     public long counter = 0;
 
+    public boolean exit = false;
+
+
     //Separate function so that we can restart games easier in the future.
     public void threadStart(Window window) {
-        new Thread(() -> timerThread(window)).start();
+
+
+        Thread timer = new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        while(!exit) {
+                            try {
+                                counter++;
+                                time.set(counter);
+                                //System.out.println("Time: " + time.get());
+                                Thread.sleep(1000);
+                                window.drawing.update();
+                                System.out.println(counter);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                                exit = true;
+                                break;
+                            }
+
+                            if(Game.pointList[27].getCount() == 15 || Game.pointList[26].getCount() == 15) {
+                                counter = 0;
+                                break;
+                            }
+
+
+                        }
+                    }
+                });
+
+        timer.start();
+
+
     }
 
     //Threading allows for easier management of something that runs independent to the game, like a timer.
     private void timerThread(Window window) {
-        boolean exit = false;
-        while(!exit) {
-            try {
-                counter++;
-                time.set(counter);
-                //System.out.println("Time: " + time.get());
-                Thread.sleep(1000);
-                window.drawing.update();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            if(commandHandler.player1.getScore()>= commandHandler.finalScore|| commandHandler.player2.getScore()>= commandHandler.finalScore) {
-                System.out.println("Happening");
-                exit = true;
-            }
-        }
-
 
     }
 
