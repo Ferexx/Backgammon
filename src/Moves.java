@@ -20,17 +20,17 @@ class Moves {
             return;
         }
         //If a player tries to move onto the bar
-        if(to==24||to==25) {
+        if(to==P1BAR||to==P2BAR) {
             window.infoLabel.append("\nYou cannot move onto the bar.");
             return;
         }
         //If a player tries to move from bear-off
-        if(from==26||from==27) {
+        if(from==P1OFF||from==P2OFF) {
             window.infoLabel.append("\nYou cannot move from bear-off");
             return;
         }
         //If the player tries to move the wrong way around the board
-        if(to<from&&from!=24&&from!=25) {
+        if(to<from&&from!=P1BAR&&from!=P2BAR) {
             window.infoLabel.append("\nYou cannot move backwards.");
             return;
         }
@@ -38,7 +38,7 @@ class Moves {
         if(Game.currentPlayer) {
             //If a player tries to move a certain amount not allowed by their dice rolls
             if(to-from!=window.p1D1.getRoll()&&to-from!=window.p1D2.getRoll()&&to-from!=window.p1D1.getRoll()+window.p1D2.getRoll()) {
-                if(from!=24&&to!=27) {
+                if(from!=P1BAR&&to!=P1OFF) {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                     return;
                 }
@@ -65,7 +65,7 @@ class Moves {
         else {
             //If a player tries to move a certain amount not allowed by their dice rolls
             if(to-from!=window.p2D1.getRoll()&&to-from!=window.p2D2.getRoll()&&to-from!=window.p2D1.getRoll()+window.p2D2.getRoll()) {
-                if(from!=25&&to!=26) {
+                if(from!=P2BAR&&to!=P2OFF) {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                     return;
                 }
@@ -75,7 +75,7 @@ class Moves {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
                 return;
             }
-            else if(from==25&&Game.pointList[25].getCount()==0) {
+            else if(from==P2BAR&&Game.pointList[P2BAR].getCount()==0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
                 return;
             }
@@ -89,15 +89,15 @@ class Moves {
                 return;
             }
             //If a player tries to move to a point controlled by the opposing player
-            if(to!=26) {
+            if(to!=P2OFF) {
                 if (Game.pointList[23 - to].getColor() == "Red" && Game.pointList[23 - to].getCount() > 1) {
                     window.infoLabel.append("\nYou cannot move to a point controlled by your opponent.");
                     return;
                 }
             }
             totalMoves++;
-            if(from!=25&&to!=26) window.drawing.move(Game.pointList[23-from], Game.pointList[23-to]);
-            else if (from==25) window.drawing.move(Game.pointList[from], Game.pointList[23-to]);
+            if(from!=P2BAR&&to!=P2OFF) window.drawing.move(Game.pointList[23-from], Game.pointList[23-to]);
+            else if (from==P2BAR) window.drawing.move(Game.pointList[from], Game.pointList[23-to]);
             else window.drawing.move(Game.pointList[23-from], Game.pointList[to]);
         }
         //Go to next turn if the move uses both dice
@@ -155,34 +155,34 @@ class Moves {
             dice2 = window.p1D2.getRoll();
 
             //Bar moves
-            if (Game.pointList[24].getCount() != 0) {
+            if (Game.pointList[P1BAR].getCount() != 0) {
                 if (Game.pointList[dice1-1].getCount() == 0 || Game.pointList[dice1-1].getColor()=="Red") {
                     window.infoLabel.append("BAR " + (dice1 - 1) + "\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(24, dice1-1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P1BAR, dice1-1));
                 }
                 if (Game.pointList[dice2-1].getCount() == 0 || Game.pointList[dice2-1].getColor()=="Red") {
                     if(dice1!=dice2) {
                         window.infoLabel.append("BAR " + (dice2 - 1) + "\n");
-                        movesList.add(new AbstractMap.SimpleEntry<>(24, dice2-1));
+                        movesList.add(new AbstractMap.SimpleEntry<>(P1BAR, dice2-1));
                     }
                 }
                 if(Game.pointList[dice1+dice2-1].getCount() == 0 || Game.pointList[dice1+dice2-1].getColor()=="Red") {
                     window.infoLabel.append("BAR "+ (dice1 + dice2 - 1) + "\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(24,dice1+dice2-1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P1BAR,dice1+dice2-1));
                 }
                 if (Game.pointList[dice1-1].getCount() == 1 && Game.pointList[dice1-1].getColor()=="Black") {
                     window.infoLabel.append("BAR " + (dice1 - 1) + "*\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(24, dice1-1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P1BAR, dice1-1));
                 }
                 if (Game.pointList[dice2-1].getCount() == 1 && Game.pointList[dice2-1].getColor()=="Black") {
                     if(dice1!=dice2) {
                         window.infoLabel.append("BAR " + (dice2 - 1) + "*\n");
-                        movesList.add(new AbstractMap.SimpleEntry<>(24, dice2-1));
+                        movesList.add(new AbstractMap.SimpleEntry<>(P1BAR, dice2-1));
                     }
                 }
                 if(Game.pointList[dice1+dice2-1].getCount() == 1 && Game.pointList[dice1+dice2-1].getColor()=="Black") {
                     window.infoLabel.append("BAR "+ (dice1 + dice2 - 1) + "*\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(24,dice1+dice2-1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P1BAR,dice1+dice2-1));
                 }
             }
 
@@ -221,15 +221,15 @@ class Moves {
                     if (checkBearOffPossible()) {
                         if ((i + dice1) > 23) {
                             window.infoLabel.append(i + " OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i, 27));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i, P1OFF));
                         }
                         if ((i + dice2) > 23 && dice1 != dice2) {
                             window.infoLabel.append(i + " OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i, 27));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i, P1OFF));
                         }
                         if(i+dice1+dice2>23) {
                             window.infoLabel.append(i+" OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i,27));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i,P1OFF));
                         }
                     }
                 }
@@ -243,34 +243,34 @@ class Moves {
             dice2 = window.p2D2.getRoll();
 
             //Bar moves
-            if (Game.pointList[25].getCount() != 0) {
+            if (Game.pointList[P2BAR].getCount() != 0) {
                 if (Game.pointList[24 - dice1].getCount() == 0 || Game.pointList[24 - dice1].getColor()=="Black") {
                     window.infoLabel.append("BAR " + (dice1 - 1) + "\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice1));
                 }
                 if (Game.pointList[24 - dice2].getCount() == 0 || Game.pointList[24 - dice2].getColor()=="Black") {
                     if(dice1!=dice2) {
                         window.infoLabel.append("BAR " + (dice2 - 1) + "\n");
-                        movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice2));
+                        movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice2));
                     }
                 }
                 if(Game.pointList[24-dice1-dice2].getCount() == 0 || Game.pointList[24-dice1-dice2].getColor()=="Black") {
                     window.infoLabel.append("BAR " + (dice1 + dice2 - 1) + "\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(25,24-dice1-dice2));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice1-dice2));
                 }
                 if (Game.pointList[24 - dice1].getCount() == 1 && Game.pointList[24 - dice1].getColor()=="Red") {
                     window.infoLabel.append("BAR " + (dice1 - 1) + "*\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice1));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice1));
                 }
                 if (Game.pointList[24 - dice2].getCount() == 1 && Game.pointList[24 - dice2].getColor()=="Red") {
                     if(dice1!=dice2) {
                         window.infoLabel.append("BAR " + (dice2 - 1) + "*\n");
-                        movesList.add(new AbstractMap.SimpleEntry<>(25, 24-dice2));
+                        movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice2));
                     }
                 }
                 if(Game.pointList[24-dice1-dice2].getCount() == 1 && Game.pointList[24-dice1-dice2].getColor()=="Red") {
                     window.infoLabel.append("BAR " + (dice1 + dice2 - 1) + "*\n");
-                    movesList.add(new AbstractMap.SimpleEntry<>(25,24-dice1-dice2));
+                    movesList.add(new AbstractMap.SimpleEntry<>(P2BAR, 24-dice1-dice2));
                 }
             }
 
@@ -309,15 +309,15 @@ class Moves {
                     if (checkBearOffPossible()) {
                         if ((i - dice1) < 0) {
                             window.infoLabel.append(23 - i + " OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i, P2OFF));
                         }
                         if ((i - dice2) < 0 && dice1 != dice2) {
                             window.infoLabel.append(23 - i + " OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i, P2OFF));
                         }
                         if(i-dice1-dice2<0) {
                             window.infoLabel.append(23-i+" OFF\n");
-                            movesList.add(new AbstractMap.SimpleEntry<>(i, 26));
+                            movesList.add(new AbstractMap.SimpleEntry<>(i, P2OFF));
                         }
                     }
                 }
