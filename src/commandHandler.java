@@ -189,40 +189,11 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
     public static void restartGame(Window window) {
-        window.infoLabel.append("\n\nGame Over. Press any key to continue");
-
-        final JFrame invisi = new JFrame();
-        invisi.setResizable(false);
-        invisi.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        invisi.setAlwaysOnTop(true);
-        invisi.setUndecorated(true);
-        invisi.setSize(300,200);
-        invisi.setLocationRelativeTo(null);
-        invisi.setOpacity(0.0f);
-        invisi.setVisible(true);
-
-        KeyListener keys = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                Game.initPoints();
-                restartText(window);
-                DoublingCube.playerDoubling=0;
-                setNames(window);
-                window.drawing.update();
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-            }
-        };
-
-        invisi.requestFocus();
-
-        invisi.addKeyListener(keys);
+        Game.initPoints();
+        restartText(window);
+        DoublingCube.playerDoubling=0;
+        setNames(window);
+        window.drawing.update();
     }
 
     //Quits
@@ -235,15 +206,43 @@ class commandHandler {
             //If player 1 wins
             if (Game.pointList[27].getCount() == 15) {
                 player1.setScore(player1.getScore()+DoublingCube.doublingCube);
-                restartGame(window);
             }
 
             //If player 2 wins
             if (Game.pointList[26].getCount() == 15) {
                 player2.setScore(player2.getScore()+DoublingCube.doublingCube);
-                restartGame(window);
             }
             Moves.totalMoves=0;
+
+            window.infoLabel.append("\nGame over. Press any key to start the next game.");
+            final JFrame invisi = new JFrame();
+            invisi.setResizable(false);
+            invisi.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            invisi.setAlwaysOnTop(true);
+            invisi.setUndecorated(true);
+            invisi.setSize(300,200);
+            invisi.setLocationRelativeTo(null);
+            invisi.setOpacity(0.0f);
+            invisi.setVisible(true);
+
+            KeyListener keys = new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    restartGame(window);
+                }
+
+                @Override
+                public void keyPressed(KeyEvent e) {
+                }
+
+                @Override
+                public void keyReleased(KeyEvent e) {
+                }
+            };
+
+            invisi.requestFocus();
+
+            invisi.addKeyListener(keys);
 
             if(player1.getScore()>=finalScore||player2.getScore()>=finalScore) {
                 if (player1.getScore() >= finalScore) {
@@ -267,8 +266,9 @@ class commandHandler {
 
                 //If the user says yes, we create a new game
                 else if (response == JOptionPane.YES_OPTION) {
+                    restartGame(window);
                     window.frame.dispose();
-                    new Game();
+                    Game game = new Game();
                 }
                 else if (Game.currentPlayer) JOptionPane.showMessageDialog(null, player1.getName() + " wins the match!");
                 else JOptionPane.showMessageDialog(null, player2.getName() + " wins the match!");

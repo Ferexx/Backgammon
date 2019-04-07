@@ -7,8 +7,9 @@ class Game {
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
     private static final String TITLE = "Backgammon Window - Beta v1.5";
-    private static final commandHandler commands = new commandHandler();
+    public static final commandHandler commands = new commandHandler();
     private final Window nameWindow = new Window();
+    public static Window gameWindow;
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
@@ -17,9 +18,9 @@ class Game {
     }
 
     public static void gameWindow() {
-        final Window window = new Window(WIDTH, HEIGHT, TITLE, commands);
+        gameWindow = new Window(WIDTH, HEIGHT, TITLE, commands);
         //Adding Drawing image to JFrame after name input
-        window.frame.getContentPane().add(window.drawing);
+        gameWindow.frame.getContentPane().add(gameWindow.drawing);
     }
 
     //Last two points are bear off points, previous two are bar points

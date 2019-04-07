@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 class Moves {
+    static final int P1BAR=24, P2BAR=25, P2OFF=26, P1OFF=27;
 
     /*Checks syntax of moves, making sure they are valid according to certain
     * conditions */
@@ -70,12 +71,20 @@ class Moves {
                 }
             }
             //If a player tries to move from a point with no checker on it
-            if (Game.pointList[23-from].getCount() == 0) {
+            if (23-from>=0&&Game.pointList[23-from].getCount() == 0) {
+                window.infoLabel.append("\nThere is no checker on the starting point.");
+                return;
+            }
+            else if(from==25&&Game.pointList[25].getCount()==0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
                 return;
             }
             //If a player tries to move from a point controlled by the opposing player
-            if(Game.pointList[23-from].getColor()=="Red") {
+            if(23-from>=0&&Game.pointList[23-from].getColor()=="Red") {
+                window.infoLabel.append("\nYou cannot move opponents checkers.");
+                return;
+            }
+            else if(from==P2BAR&&Game.pointList[P2BAR].getColor()=="Red") {
                 window.infoLabel.append("\nYou cannot move opponents checkers.");
                 return;
             }
