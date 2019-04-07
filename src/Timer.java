@@ -15,7 +15,8 @@ public class Timer {
 
     //Threading allows for easier management of something that runs independent to the game, like a timer.
     private void timerThread(Window window) {
-        while(true) {
+        boolean exit = false;
+        while(!exit) {
             try {
                 counter++;
                 time.set(counter);
@@ -25,7 +26,12 @@ public class Timer {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            if(commandHandler.player1.getScore()>= commandHandler.finalScore|| commandHandler.player2.getScore()>= commandHandler.finalScore) {
+                exit = true;
+            }
         }
+
+
     }
 
     public Timer() {
