@@ -9,7 +9,6 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
-    public static boolean gameRestart = false;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -205,7 +204,6 @@ class commandHandler {
         KeyListener keys = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                System.out.println("Test1");
                 Game.initPoints();
                 restartText(window);
                 DoublingCube.playerDoubling=0;
@@ -215,12 +213,10 @@ class commandHandler {
 
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println("Test2");
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                System.out.println("Test3");
             }
         };
 
