@@ -65,12 +65,12 @@ class Buttons {
         //Listener to reset the game. Only resets text currently.
         m13.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { resetPerformed(window); }
+            public void actionPerformed(ActionEvent e) { resetPerformed(window); commandHandler.restartGame(window);}
         });
 
         reset.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { resetPerformed(window); }
+            public void actionPerformed(ActionEvent e) { resetPerformed(window); commandHandler.restartGame(window);}
         });
 
         //Listener that we can attach to both a keypress of enter and pressing the enter key.
