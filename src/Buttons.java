@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,8 @@ class Buttons {
 
     private final commandHandler commands = new commandHandler();
 
+    final JTextArea helpField = new JTextArea();
+
     //action listener for enter button
     private void enterPerformed() {
     }
@@ -16,6 +19,26 @@ class Buttons {
     //action listener for reset button
     private void resetPerformed(Window window) {
         commandHandler.restartGame(window);
+    }
+
+    private void help(Window window)
+    {
+        System.out.println("test");
+        JFrame helpFrame = new JFrame("Help");
+        helpFrame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        helpFrame.getContentPane().add(helpField, BorderLayout.CENTER);
+        helpFrame.pack();
+        helpFrame.setPreferredSize(new Dimension(500,300));
+        helpFrame.setMaximumSize(new Dimension(500,300));
+        helpFrame.setMinimumSize(new Dimension(500,300));
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        helpField.setBorder(border);
+        helpField.setEditable(false);
+        helpField.setLineWrap(true);
+        helpField.setWrapStyleWord(true);
+        helpField.setText("\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
+        helpFrame.setLocationRelativeTo(null);
+        helpFrame.setVisible(true);
     }
 
     //Catches when enter is performed (either by button or keypress) and saves the command entered to a string, passed to our commandHandler.
@@ -32,7 +55,7 @@ class Buttons {
         JMenuBar mb = new JMenuBar();
         //defining menu buttons
         JMenu m1 = new JMenu("File");
-        JMenu m2 = new JMenu("Help");
+        JMenu m2 = new JMenu("Other");
         //adding menu buttons
         mb.add(m1);
         mb.add(m2);
@@ -40,10 +63,12 @@ class Buttons {
         JMenuItem m11 = new JMenuItem("New game");
         JMenuItem m12 = new JMenuItem("Save winner");
         JMenuItem m13 = new JMenuItem("Reset game");
+        JMenuItem m21 = new JMenuItem("Help");
         //adding menu button options
         m1.add(m11);
         m1.add(m12);
         m1.add(m13);
+        m2.add(m21);
 
         //USER INTERACTION WITH BOARD OPTIONS
         JPanel panel = new JPanel();
@@ -67,6 +92,13 @@ class Buttons {
             @Override
             public void actionPerformed(ActionEvent e) { resetPerformed(window); commandHandler.restartGame(window);}
         });
+
+        m21.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { help(window); }
+        });
+
+
 
         reset.addActionListener(new ActionListener() {
             @Override

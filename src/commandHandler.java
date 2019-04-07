@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.event.KeyEvent;
 
 class commandHandler {
 
@@ -8,7 +7,6 @@ class commandHandler {
     public static final Player player2 = new Player();
     public static boolean playerRolled = false;
     public static int finalScore;
-    public static boolean restart = false;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -21,7 +19,6 @@ class commandHandler {
 
     //Rolling to decide who goes first
     private static void setFirstTurn(Window window) {
-
         window.p1D1.roll();
         window.p1D2.roll();
         window.infoLabel.append("\nPlayer 1 rolled: " + window.p1D1.getRoll() + " " + window.p1D2.getRoll());
@@ -46,7 +43,7 @@ class commandHandler {
         //Game happening for start
         if (text.equalsIgnoreCase("start")) {
             window.timer.threadStart(window);
-            window.infoLabel.append("\n\nPlease input moves as either a single character, or two numbers separated by a space, with the first number being the point you wish to move a checker from, and the second being the point you wish to move a checker to. In the case of a bar move, enter \"BAR\" followed by the point you wish to move to, separated by a space. In the case of bearing off, please enter the point you wish to move a checker from, followed by \"OFF\", again separated by a space.");
+            window.infoLabel.append("WE HIGHLY RECOMMEND TO READ THE HELP DOCUMENTATION.");
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
                 rollDice(window);
@@ -69,11 +66,9 @@ class commandHandler {
 
         //Cheat command, sets all checkers to points given in assignment
         if (text.equalsIgnoreCase("cheat")) {
-            window.infoLabel.append("\nCheats have been enabled");
+            window.infoLabel.append("\nCheats have been enabled\n\n");
             //initialised the cheat positions
             Game.cheatPoints();
-            Game.currentPlayer = !Game.currentPlayer;
-            nextPlayer(window);
             //updates the board
             window.drawing.update();
             return;
@@ -190,16 +185,11 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Conway.\n");
     }
     public static void restartGame(Window window) {
-        window.infoLabel.append("\n\nPress any key to restart the game\n");
-
-        //TODO - replace boolean restart with action listener for key
-        if(restart) {
-            Game.initPoints();
-            restartText(window);
-            DoublingCube.playerDoubling=0;
-            setNames(window);
-            window.drawing.update();
-        }
+        Game.initPoints();
+        restartText(window);
+        DoublingCube.playerDoubling=0;
+        setNames(window);
+        window.drawing.update();
     }
 
     //Quits
@@ -242,7 +232,7 @@ class commandHandler {
                     System.exit(0);
                 }
 
-                //If the user says yes, we re-initiate the points and begin again.
+                //If the user says yes, we create a new game
                 else if (response == JOptionPane.YES_OPTION) {
                     window.frame.dispose();
                     new Game();
