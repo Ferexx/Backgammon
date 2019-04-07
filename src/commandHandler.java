@@ -151,6 +151,8 @@ class commandHandler {
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
         do {
+            Moves.dice1Used=false;
+            Moves.dice2Used=false;
             Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");

@@ -4,6 +4,7 @@ import java.util.Map;
 
 class Moves {
     static final int P1BAR=24, P2BAR=25, P2OFF=26, P1OFF=27;
+    public static boolean dice1Used=false, dice2Used=false;
 
     /*Checks syntax of moves, making sure they are valid according to certain
     * conditions */
@@ -43,6 +44,16 @@ class Moves {
                     return;
                 }
             }
+            //If a player tries to use a die they already used this turn
+            if((to-from==window.p1D1.getRoll()&&dice1Used)||(to-from==window.p1D2.getRoll()&&dice2Used)) {
+                window.infoLabel.append("\nYou already used that dice this turn.");
+                return;
+            }
+            //If a player tries to move two dice after using one
+            if(to-from==window.p1D1.getRoll()+window.p1D2.getRoll()&&(dice1Used||dice2Used)) {
+                window.infoLabel.append("\nYou cannot move using two dice after already using one.");
+                return;
+            }
             //If a player tries to move from a point with no checker on it
             if (Game.pointList[from].getCount() == 0) {
                 window.infoLabel.append("\nThere is no checker on the starting point.");
@@ -59,6 +70,10 @@ class Moves {
                 return;
             }
             totalMoves++;
+            if(from==P1BAR&&to-1==window.p1D1.getRoll()) dice1Used=true;
+            if(from==P1BAR&&to-1==window.p1D2.getRoll()) dice2Used=true;
+            if(to-from==window.p1D1.getRoll()) dice1Used=true;
+            if(to-from==window.p1D2.getRoll()) dice2Used=true;
             window.drawing.move(Game.pointList[from], Game.pointList[to]);
         }
         //Specific to player 2
@@ -69,6 +84,16 @@ class Moves {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                     return;
                 }
+            }
+            //If a player tries to use a die they already used this turn
+            if((to-from==window.p2D1.getRoll()&&dice1Used)||(to-from==window.p2D2.getRoll()&&dice2Used)) {
+                window.infoLabel.append("\nYou already used that dice this turn.");
+                return;
+            }
+            //If a player tries to move two dice after using one
+            if(to-from==window.p2D1.getRoll()+window.p2D2.getRoll()&&(dice1Used||dice2Used)) {
+                window.infoLabel.append("\nYou cannot move using two dice after already using one.");
+                return;
             }
             //If a player tries to move from a point with no checker on it
             if (23-from>=0&&Game.pointList[23-from].getCount() == 0) {
@@ -96,6 +121,10 @@ class Moves {
                 }
             }
             totalMoves++;
+            if(from==P2BAR&&to-1==window.p2D1.getRoll()) dice1Used=true;
+            if(from==P2BAR&&to-1==window.p2D2.getRoll()) dice2Used=true;
+            if(to-from==window.p2D1.getRoll()) dice1Used=true;
+            if(to-from==window.p2D2.getRoll()) dice2Used=true;
             if(from!=P2BAR&&to!=P2OFF) window.drawing.move(Game.pointList[23-from], Game.pointList[23-to]);
             else if (from==P2BAR) window.drawing.move(Game.pointList[from], Game.pointList[23-to]);
             else window.drawing.move(Game.pointList[23-from], Game.pointList[to]);
