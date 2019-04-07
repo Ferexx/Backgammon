@@ -122,7 +122,7 @@ class commandHandler {
             Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), Integer.parseInt(parsedInput[1]));
         }
         //If the user is making a bear-off move
-        else if (isNumeric(parsedInput[0]) && parsedInput[1].equals("OFF")) {
+        else if (isNumeric(parsedInput[0]) && parsedInput[1].equalsIgnoreCase("OFF")) {
             if (Game.currentPlayer) {
                 Moves.isValidMove(window, Integer.parseInt(parsedInput[0]), 27);
             } else {
@@ -130,7 +130,7 @@ class commandHandler {
             }
         }
         //If the user is making a bar move
-        else if (parsedInput[0].equals("BAR") && isNumeric(parsedInput[1])) {
+        else if (parsedInput[0].equalsIgnoreCase("BAR") && isNumeric(parsedInput[1])) {
             if (Game.currentPlayer) {
                 Moves.isValidMove(window, 24, Integer.parseInt(parsedInput[1]));
             } else {
