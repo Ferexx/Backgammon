@@ -7,9 +7,9 @@ class commandHandler {
     //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
     public static final Player player1 = new Player();
     public static final Player player2 = new Player();
-    public static boolean playerRolled = false;
+    private static boolean playerRolled = false;
     public static int finalScore;
-    static JFrame invisi;
+    private static JFrame invisi;
 
     //Initial setup for game, welcoming players
     public static void setNames(Window window) {
@@ -49,13 +49,12 @@ class commandHandler {
             window.timer.threadStart(window);
             if (Game.currentPlayer) {
                 window.infoLabel.append("\n\nIt is your turn " + player1.getName() + ". ");
-                rollDice(window);
+                window.infoLabel.append("\nPlease enter \"roll\" or \"double\" to roll the dice or offer the doubling cube");
             } else {
                 window.infoLabel.append("\n\nIt is your turn " + player2.getName() + ". ");
-                rollDice(window);
+                window.infoLabel.append("\nPlease enter \"roll\" or \"double\" to roll the dice or offer the doubling cube");
             }
             window.drawing.update();
-            Moves.possibleMoves(window);
             return;
         }
 
@@ -81,7 +80,7 @@ class commandHandler {
 
         //Exit the game
         if (text.equalsIgnoreCase("quit")) {
-            catchQuit();
+            System.exit(0);
         }
 
         //Roll dice
@@ -93,6 +92,7 @@ class commandHandler {
 
         //Doubling cube
         if(text.equalsIgnoreCase("double")) {
+            //Can only offer cube if they have not yet rolled
             if (!playerRolled && ((Game.currentPlayer && DoublingCube.playerDoubling == 1) || (!Game.currentPlayer && DoublingCube.playerDoubling == 2) || DoublingCube.playerDoubling == 0)) {
                 int response = JOptionPane.showConfirmDialog(null, "Double?", "Doubling Cube", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                 if (response == JOptionPane.YES_OPTION) {
@@ -150,16 +150,29 @@ class commandHandler {
 
     //Function to move the game on to the next player's turn.
     public static void nextPlayer(Window window) {
+        Moves.dice1Used=false;
+        Moves.dice2Used=false;
+        Game.currentPlayer = !Game.currentPlayer;
+        if (Game.currentPlayer) {
+            window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
+            window.infoLabel.append("\nPlease enter \"roll\" or \"double\" to roll the dice or offer the doubling cube");
+        } else {
+            window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
+            window.infoLabel.append("\nPlease enter \"roll\" or \"double\" to roll the dice or offer the doubling cube");
+        }
+        Moves.totalMoves = 0;
+    }
+
+    public static void rollDice(Window window) {
+        /*The do while loop is here to automatically perform a move/turn skip if a player only has one or
+        * no moves available to them*/
         do {
-            Moves.dice1Used=false;
-            Moves.dice2Used=false;
-            Game.currentPlayer = !Game.currentPlayer;
             if (Game.currentPlayer) {
-                window.infoLabel.append("\n\nIt is now your turn " + player1.getName() + ". ");
-                rollDice(window);
+                window.infoLabel.append("Your rolls are " + window.p1D1.roll() + " and " + window.p1D2.roll());
+                checkDoubles(window);
             } else {
-                window.infoLabel.append("\n\nIt is now your turn " + player2.getName() + ". ");
-                rollDice(window);
+                window.infoLabel.append("Your rolls are " + window.p2D1.roll() + " and " + window.p2D2.roll());
+                checkDoubles(window);
             }
             window.drawing.update();
             Moves.possibleMoves(window);
@@ -170,20 +183,7 @@ class commandHandler {
                 window.infoLabel.append("\nYou have only one possible move, automatically performing this move and moving to next players turn.");
                 window.drawing.move(Game.pointList[Moves.getFromMove('A')], Game.pointList[Moves.getToMove('A')]);
             }
-
         } while (Moves.movesList.size() < 2);
-        Moves.totalMoves = 0;
-    }
-
-    public static void rollDice(Window window) {
-        if(Game.currentPlayer) {
-            window.infoLabel.append("Your rolls are " + window.p1D1.roll() + " and " + window.p1D2.roll());
-            checkDoubles(window);
-        }
-        else {
-            window.infoLabel.append("Your rolls are " + window.p2D1.roll() + " and " + window.p2D2.roll());
-            checkDoubles(window);
-        }
     }
 
     //Used for restarting the game
@@ -201,15 +201,13 @@ class commandHandler {
         window.drawing.update();
     }
 
-    //Quits
-    private void catchQuit() {
-        System.exit(0);
-    }
-
+    /*Used to check if a player has won a game, as well as the entire match. We call it every time a player makes a
+    * move. It assigns value to a game based on the doubling cube and whether a player score a gammon or backgammon.*/
     public static void checkWin(Window window) {
         if (Game.pointList[26].getCount() == 15 || Game.pointList[27].getCount() == 15) {
             //If player 1 wins
             if (Game.pointList[27].getCount() == 15) {
+                //Checking if player won by a gammon or backgammon
                 if(Game.pointList[26].getCount()>0) {
                     player1.setScore(player1.getScore() + DoublingCube.doublingCube);
                 }
@@ -228,6 +226,7 @@ class commandHandler {
 
             //If player 2 wins
             if (Game.pointList[26].getCount() == 15) {
+                //Checking if a player won by a gammon or backgammon
                 if(Game.pointList[27].getCount()>0) {
                     player2.setScore(player2.getScore() + DoublingCube.doublingCube);
                 }
@@ -245,6 +244,10 @@ class commandHandler {
             }
             Moves.totalMoves=0;
 
+            /*Creating a new invisible window once the game is over to check for when a user presses a key.
+            * This is necessary because in the main game window focus is on the text box, making it difficult
+            * to check when a user types a single key. This method circumvents that by removing focus from the
+            * text box.*/
             window.infoLabel.append("\nGame over. Press any key to start the next game.");
             invisi = new JFrame();
             invisi.setResizable(false);
@@ -261,22 +264,17 @@ class commandHandler {
                 public void keyTyped(KeyEvent e) {
                     restartGame(window);
                 }
-
                 @Override
-                public void keyPressed(KeyEvent e) {
-                }
-
+                public void keyPressed(KeyEvent e) {}
                 @Override
-                public void keyReleased(KeyEvent e) {
-                }
+                public void keyReleased(KeyEvent e) {}
             };
 
             invisi.requestFocus();
-
             invisi.addKeyListener(keys);
 
+            //Endgame stuff, seeing if a player has won the match
             if(player1.getScore()>=finalScore||player2.getScore()>=finalScore) {
-
                 if (player1.getScore() >= finalScore) {
                     JOptionPane.showMessageDialog(null, player1.getName() + " wins the game!");
                 }
@@ -316,7 +314,8 @@ class commandHandler {
         }
     }
 
-    public static void checkDoubles(Window window) {
+    //Checks if dice rolls are equal, then doubles the values of each die if true
+    private static void checkDoubles(Window window) {
         if(Game.currentPlayer) {
             if(window.p1D1.getRoll()==window.p1D2.getRoll()) {
                 window.infoLabel.append("\nDice rolls are equal. Values will be doubled");

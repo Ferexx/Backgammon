@@ -7,13 +7,10 @@ public class Timer {
     private AtomicLong time = new AtomicLong();
 
     public long counter = 0;
-
-    public boolean exit = false;
-
+    private boolean exit = false;
 
     //Separate function so that we can restart games easier in the future.
     public void threadStart(Window window) {
-
 
         Thread timer = new Thread(
                 new Runnable() {
@@ -35,24 +32,12 @@ public class Timer {
                                 counter = 0;
                                 break;
                             }
-
-
                         }
                     }
                 });
 
         timer.start();
 
-
-    }
-
-    //Threading allows for easier management of something that runs independent to the game, like a timer.
-    private void timerThread(Window window) {
-
-    }
-
-    public Timer() {
-        //Default
     }
 
     //Basic function to return the formatted time
@@ -62,6 +47,4 @@ public class Timer {
                 TimeUnit.SECONDS.toMinutes(time.get()) - TimeUnit.HOURS.toMinutes(TimeUnit.SECONDS.toHours(time.get())),
                 TimeUnit.SECONDS.toSeconds(time.get()) - TimeUnit.MINUTES.toSeconds(TimeUnit.SECONDS.toMinutes(time.get()))));
     }
-
-
 }

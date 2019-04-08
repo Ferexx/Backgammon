@@ -60,62 +60,32 @@ public class Dice extends JPanel {
         try{
             switch(roll) {
                 case 1:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice1.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice1.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
 
                 case 2:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice2.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice2.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
 
                 case 3:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice3.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice3.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
 
                 case 4:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice4.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice4.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
 
                 case 5:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice5.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice5.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
 
                 case 6:
-                    try {
-                        diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice6.jpg"));
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        System.exit(-1);
-                    }
+                    diceImg = ImageIO.read(this.getClass().getResource("res/DiceImages/Dice6.jpg"));
                     graphics.drawImage(diceImg, x, y, 45, 45, null);
                     break;
             }
