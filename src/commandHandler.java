@@ -4,7 +4,6 @@ import java.awt.event.KeyListener;
 
 class commandHandler {
 
-    //Making these static as we may want to access these from anywhere in the game. Adding them to commandHandler as I feel they are relevant to this class.
     public static final Player player1 = new Player();
     public static final Player player2 = new Player();
     private static boolean playerRolled = false;
@@ -163,7 +162,7 @@ class commandHandler {
         Moves.totalMoves = 0;
     }
 
-    public static void rollDice(Window window) {
+    private static void rollDice(Window window) {
         /*The do while loop is here to automatically perform a move/turn skip if a player only has one or
         * no moves available to them*/
         do {
@@ -192,7 +191,6 @@ class commandHandler {
         window.infoLabel.setText("Welcome to Backgammon!\nBy Evin Kierans, Jack Price, Adam Cobwag.\n");
     }
     public static void restartGame(Window window) {
-        invisi.dispose();
         Game.initPoints();
         restartText(window);
         DoublingCube.playerDoubling=0;
@@ -263,6 +261,7 @@ class commandHandler {
                 @Override
                 public void keyTyped(KeyEvent e) {
                     restartGame(window);
+                    invisi.dispose();
                 }
                 @Override
                 public void keyPressed(KeyEvent e) {}

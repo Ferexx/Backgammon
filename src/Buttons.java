@@ -10,7 +10,7 @@ class Buttons {
 
     private final commandHandler commands = new commandHandler();
 
-    final JTextArea helpField = new JTextArea();
+    private final JTextArea helpField = new JTextArea();
 
     //action listener for enter button
     private void enterPerformed() {
@@ -21,7 +21,7 @@ class Buttons {
         commandHandler.restartGame(window);
     }
 
-    private void help(Window window)
+    private void help()
     {
         System.out.println("test");
         JFrame helpFrame = new JFrame("Help");
@@ -84,7 +84,7 @@ class Buttons {
         //New Game places the checkers in starting positions
         m11.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { enterPerformed(); }
+            public void actionPerformed(ActionEvent e) { commands.restartGame(window); }
         });
 
         //Listener to reset the game. Only resets text currently.
@@ -95,7 +95,7 @@ class Buttons {
 
         m21.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { help(window); }
+            public void actionPerformed(ActionEvent e) { help(); }
         });
 
 

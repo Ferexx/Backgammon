@@ -6,10 +6,9 @@ class Game {
     public static boolean currentPlayer;
     private static final int WIDTH = 1280;
     private static final int HEIGHT = 720;
-    private static final String TITLE = "Backgammon Window - Beta v1.5";
-    public static final commandHandler commands = new commandHandler();
+    private static final String TITLE = "Backgammon Window - Beta v2.0";
     private final Window nameWindow = new Window();
-    public static Window gameWindow;
+    private static Window gameWindow;
 
     //Main function, used to get game started, as well as testing new functionality
     public static void main(String[] args) {
@@ -18,7 +17,7 @@ class Game {
     }
 
     public static void gameWindow() {
-        gameWindow = new Window(WIDTH, HEIGHT, TITLE, commands);
+        gameWindow = new Window(WIDTH, HEIGHT, TITLE);
         //Adding Drawing image to JFrame after name input
         gameWindow.frame.getContentPane().add(gameWindow.drawing);
     }

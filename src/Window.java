@@ -91,7 +91,7 @@ class Window extends JFrame {
     }
 
     //Main window constructor
-    Window(int width, int height, String title, commandHandler commands) {
+    Window(int width, int height, String title) {
         //Creating the window frame with title
         frame.setTitle(title);
         //Set window icon
@@ -123,7 +123,7 @@ class Window extends JFrame {
         infoLabel.setWrapStyleWord(true);
         Border border = BorderFactory.createLineBorder(Color.BLACK);
         scrollPane.setBorder(border);
-        commands.restartText(this);
+        commandHandler.restartText(this);
         //Adding info JLabel to JFrame
         frame.getContentPane().add(BorderLayout.LINE_START, scrollPane);
         frame.setVisible(true);
