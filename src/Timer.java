@@ -4,7 +4,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class Timer {
 
     //AtomicLong so that all threads can see the timer.
-    private AtomicLong time = new AtomicLong();
+    public AtomicLong time = new AtomicLong();
 
     public long counter = 0;
     private boolean exit = false;

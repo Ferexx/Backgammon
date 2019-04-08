@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.concurrent.atomic.AtomicLong;
 
 class commandHandler {
 
@@ -195,6 +196,7 @@ class commandHandler {
         restartText(window);
         DoublingCube.playerDoubling=0;
         window.timer.counter = 0;
+        window.timer.time = new AtomicLong(0);
         setNames(window);
         window.drawing.update();
     }
