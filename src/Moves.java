@@ -44,6 +44,10 @@ class Moves {
                     return;
                 }
             }
+            if(from==P1BAR&&to!=window.p1D1.getRoll()-1&&to!=window.p1D2.getRoll()-1&&to!=window.p1D1.getRoll()+window.p1D2.getRoll()-1) {
+                window.infoLabel.append("\nYour move does not match the dice rolls.");
+                return;
+            }
             //If a player tries to use a die they already used this turn
             if(((to-from==window.p1D1.getRoll()&&dice1Used)||(to-from==window.p1D2.getRoll()&&dice2Used))&&window.p1D1.getRoll()!=window.p1D2.getRoll()) {
                 window.infoLabel.append("\nYou already used that dice this turn.");
@@ -84,6 +88,10 @@ class Moves {
                     window.infoLabel.append("\nYour move does not match the dice rolls.");
                     return;
                 }
+            }
+            if(from==P2BAR&&to!=window.p2D1.getRoll()-1&&to!=window.p2D2.getRoll()-1&&to!=window.p2D1.getRoll()+window.p2D2.getRoll()-1) {
+                window.infoLabel.append("\nYour move does not match the dice rolls.");
+                return;
             }
             //If a player tries to use a die they already used this turn
             if(((to-from==window.p2D1.getRoll()&&dice1Used)||(to-from==window.p2D2.getRoll()&&dice2Used))&&window.p2D1.getRoll()!=window.p2D2.getRoll()) {
