@@ -168,10 +168,10 @@ class commandHandler {
         * no moves available to them*/
         do {
             if (Game.currentPlayer) {
-                window.infoLabel.append("Your rolls are " + window.p1D1.roll() + " and " + window.p1D2.roll());
+                window.infoLabel.append("\nYour rolls are " + window.p1D1.roll() + " and " + window.p1D2.roll());
                 checkDoubles(window);
             } else {
-                window.infoLabel.append("Your rolls are " + window.p2D1.roll() + " and " + window.p2D2.roll());
+                window.infoLabel.append("\nYour rolls are " + window.p2D1.roll() + " and " + window.p2D2.roll());
                 checkDoubles(window);
             }
             window.drawing.update();
